@@ -1,6 +1,6 @@
 {
   "accentColor": "",
-  "theme": "obsidian",
+  "theme": "moonstone",
   "baseFontSize": 17,
   "cssTheme": "Blue Topaz",
   "translucency": false,
@@ -19,7 +19,10 @@
     "remove hover editor property",
     "excalidraw-md-background",
     "tag",
-    "excalidraw-toolicon-svg"
+    "excalidraw-toolicon-svg",
+    "horizontal-clean",
+    "font",
+    "question"
   ],
   "baseFontSizeAction": false
 }

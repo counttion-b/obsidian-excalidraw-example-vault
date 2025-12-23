@@ -1,0 +1,130 @@
+/* 题目 callout：完全透明、无边框无竖线 */
+.callout[data-callout="ti"] {
+    background: transparent !important;
+    border: none !important;
+    border-left: none !important;
+    box-shadow: none !important;
+    padding: 0 !important;
+    margin: 14px 0 !important;
+  }
+  
+  /* 标题行：无底色无边框 */
+  .callout[data-callout="ti"] .callout-title {
+    background: transparent !important;
+    border: none !important;
+    box-shadow: none !important;
+    padding: 0 !important;
+    margin: 0 0 6px 0 !important;
+  
+    font-weight: 700;
+    font-size: 1.05em;
+    display: flex;
+    align-items: baseline;
+    gap: 8px;
+  }
+  
+  /* 隐藏标题左侧图标 */
+  .callout[data-callout="ti"] .callout-icon {
+    display: none !important;
+  }
+  
+  /* 标题里的“来源”：灰色小字 */
+  .callout[data-callout="ti"] .callout-title em {
+    color: var(--text-muted) !important;
+    font-style: normal !important;
+    font-weight: 400;
+    font-size: 0.9em;
+  }
+  
+  /* 内容区行距 */
+  .callout[data-callout="ti"] .callout-content {
+    background: transparent !important;
+    border: none !important;
+    padding: 0 !important;
+    margin: 0 !important;
+  
+    font-size: 1em;
+    line-height: 1.9;
+  }
+  
+  /* 普通“竖排选项”间距 */
+  .callout[data-callout="ti"] .callout-content p {
+    margin: 8px 0;
+  }
+
+
+
+  /* ===== opts 子 callout：隐形开关 ===== */
+.callout[data-callout^="opts"] {
+    background: transparent !important;
+    border: none !important;
+    box-shadow: none !important;
+    padding: 0 !important;
+    margin: 6px 0 0 0 !important;
+  }
+  .callout[data-callout^="opts"] .callout-title { display: none !important; }
+  .callout[data-callout^="opts"] .callout-content { padding: 0 !important; margin: 0 !important; }
+  
+  /* 关键：只对 opts 里的列表去点、去缩进 */
+  .callout[data-callout^="opts"] .callout-content ul {
+    list-style: none !important;     /* 去掉圆点 */
+    margin: 0 !important;
+    padding-left: 0 !important;      /* 去掉左缩进 */
+  }
+  .callout[data-callout^="opts"] .callout-content li {
+    margin: 6px 0 !important;
+    line-height: 1.9;
+    break-inside: avoid;
+  }
+  
+/* 2×2：按“行优先”排版 -> AB在上，CD在下 */
+.callout[data-callout="opts2"] .callout-content ul {
+  display: grid !important;
+  grid-template-columns: 1fr 1fr;  /* 两列 */
+  column-gap: 28px;
+  row-gap: 6px;                    /* 行间距可自行调 */
+  margin: 0 !important;
+  padding-left: 0 !important;
+  list-style: none !important;
+}
+
+/* li 保持你原来的设置即可 */
+.callout[data-callout="opts2"] .callout-content li {
+  margin: 0 !important;  /* 让 row-gap 接管间距，避免叠加 */
+  line-height: 1.9;
+  break-inside: avoid;
+}
+
+
+  /* 4×1 */
+  .callout[data-callout="opts4"] .callout-content ul {
+    column-count: 4;
+    column-gap: 22px;
+  }
+
+  /* ===== Live Preview 下真正的“圆点” ===== */
+.callout[data-callout^="opts"] ul.has-list-bullet {
+    padding-left: 0 !important;  /* 去缩进 */
+    margin-left: 0 !important;
+  }
+  
+  /* 隐藏 Obsidian 注入的子弹 span */
+  .callout[data-callout^="opts"] ul.has-list-bullet > li > span.list-bullet {
+    display: none !important;
+    width: 0 !important;
+    margin: 0 !important;
+    padding: 0 !important;
+  }
+  
+  /* 让 li 自己对齐成“试题选项” */
+  .callout[data-callout^="opts"] ul.has-list-bullet > li {
+    text-indent: 0 !important;
+    margin-left: 0 !important;
+  }
+  
+  
+  
+  /* 让题目里的表格变成“选项排版表格”（无边框） */
+  .ca
+
+  

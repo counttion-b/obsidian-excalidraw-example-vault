@@ -1,11 +1,12 @@
 [
-  "obsidian-kanban",
-  "obsidian-style-settings",
-  "templater-obsidian",
+  "editing-toolbar",
   "obsidian42-brat",
-  "unicode-search-ymjr",
   "obsidian-excalidraw-plugin-ymjr",
-  "quickadd",
   "obsidian-admonition",
-  "obsidian-hover-editor"
+  "horizontal-blocks",
+  "better-export-pdf",
+  "obsidian-style-settings",
+  "obsidian-contextual-typography",
+  "templater-obsidian",
+  "obsidian-git"
 ]

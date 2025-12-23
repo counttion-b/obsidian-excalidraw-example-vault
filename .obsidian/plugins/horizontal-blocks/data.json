@@ -1,0 +1,61 @@
+{
+  "horizontal-block-layout-19796fafdd28796a": {
+    "width-0": 537,
+    "bg-0": "#ffffff",
+    "fg-0": "#ffffff",
+    "bg-1": "#ffffff",
+    "fg-1": "#ffffff"
+  },
+  "style": {
+    "themeAware": false,
+    "dividerColor": "#6aa9ff",
+    "dividerThickness": 2,
+    "dividerOpacity": 1,
+    "dividerStyle": "transparent",
+    "blockBgColor": "#ffffff",
+    "blockTextColor": "#ffffff",
+    "titleTextColor": "#ffffff",
+    "alternatingShading": false,
+    "showBorders": false,
+    "borderRadius": 0,
+    "borderThickness": 0,
+    "blockPadding": 0,
+    "blockGap": 0,
+    "showToolbar": false,
+    "dividerHoverColor": "#ffffff",
+    "dragActiveShadow": "#ffffff"
+  },
+  "horizontal-block-layout-f8e7deb7f030d54d": {
+    "width-0": 309
+  },
+  "horizontal-block-layout-b67b78bb7dc8e918": {
+    "width-0": 299
+  },
+  "horizontal-block-layout-1a6e343f85866970": {
+    "width-0": 338
+  },
+  "horizontal-block-layout-df8b086f4ffb3e14": {
+    "width-0": 353
+  },
+  "horizontal-block-layout-44c4fbfb866e8408": {
+    "width-0": 428
+  },
+  "horizontal-block-layout-4125311f01177785": {
+    "width-1": 266
+  },
+  "horizontal-block-layout-f42f0ccf4f5b2f0b": {
+    "width-0": 254
+  },
+  "horizontal-block-layout-18ab363106c58fe5": {
+    "width-0": 401
+  },
+  "horizontal-block-layout-50103452459654ad": {
+    "width-0": 248
+  },
+  "horizontal-block-layout-486eca0e49b547d0": {
+    "width-0": 317
+  },
+  "horizontal-block-layout-d03919ae51fd7844": {
+    "width-0": 489
+  }
+}

@@ -201,5 +201,51 @@
       ],
       "key": "C"
     }
-  ]
+  ],
+  "obsidian-excalidraw-plugin-ymjr:Downloaded(Custom)/convert elements to latex": [
+    {
+      "modifiers": [
+        "Alt",
+        "Mod"
+      ],
+      "key": "Q"
+    }
+  ],
+  "obsidian-excalidraw-plugin-ymjr:Downloaded/Reset LaTeX Size": [
+    {
+      "modifiers": [
+        "Alt",
+        "Mod"
+      ],
+      "key": "E"
+    }
+  ],
+  "obsidian-excalidraw-plugin-ymjr:Downloaded/Box Selected Elements": [
+    {
+      "modifiers": [
+        "Alt",
+        "Mod"
+      ],
+      "key": "Numpad1"
+    }
+  ],
+  "templater-obsidian:plugins/Templater/mathpix.md": [
+    {
+      "modifiers": [
+        "Alt",
+        "Mod"
+      ],
+      "key": "Numpad2"
+    }
+  ],
+  "editing-toolbar:toggle-italics": [
+    {
+      "modifiers": [
+        "Alt",
+        "Mod"
+      ],
+      "key": "I"
+    }
+  ],
+  "editor:delete-paragraph": []
 }

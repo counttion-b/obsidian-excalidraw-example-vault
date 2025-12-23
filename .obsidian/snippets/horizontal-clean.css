@@ -1,0 +1,7 @@
+/* 精准去除 Horizontal Blocks 的阴影、边框、背景（阅读模式 + PDF） */
+.horizontal-block-container,
+.horizontal-block-container .hblocks-resizable {
+    background: transparent !important;
+    border: none !important;
+    box-shadow: none !important;
+}
