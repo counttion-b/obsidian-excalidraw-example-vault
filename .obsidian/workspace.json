@@ -13,10 +13,10 @@
             "state": {
               "type": "excalidraw",
               "state": {
-                "file": "学案/必修三/静电场/图/静电场结构_图.md"
+                "file": "学案/选修二/电磁感应/法拉第电磁感应定律_图.md"
               },
               "icon": "excalidraw-icon",
-              "title": "静电场结构_图"
+              "title": "法拉第电磁感应定律_图"
             }
           },
           {
@@ -61,8 +61,7 @@
               "title": "电磁场科技仪器"
             }
           }
-        ],
-        "currentTab": 2
+        ]
       }
     ],
     "direction": "vertical"
@@ -208,15 +207,21 @@
       "templates:插入模板": false,
       "command-palette:打开命令面板": false,
       "workspaces:管理工作区布局": false,
-      "obsidian42-brat:BRAT": false,
       "bases:创建新数据库": false,
+      "obsidian42-brat:BRAT": false,
       "obsidian-excalidraw-plugin-ymjr:新建绘图文件": false,
       "templater-obsidian:Templater": false,
       "obsidian-git:Open Git source control": false
     }
   },
-  "active": "abc1e2bca3d407da",
+  "active": "cffbcddb37b6ed32",
   "lastOpenFiles": [
+    "().md",
+    "学案/选修二/电磁感应/法拉第电磁感应定律_图.md",
+    "Excalidraw-LaTeX-Edit.md",
+    "学案/选修二/电磁感应/法拉第电磁感应定律 1.md",
+    "学案/必修三/静电场/图/静电场结构_图.md",
+    "学案/必修三/磁场/电磁场科技仪器.md",
     "plugins/Excalidraw/Scripts/Downloaded(Custom)/normalize-arrow-endpoints.md",
     "plugins/Excalidraw/Scripts/Downloaded(Custom)/normalize-arrow-endpoints-5points.md",
     "plugins/Excalidraw/Scripts/Downloaded(Custom)/generate polygon.md",
@@ -234,16 +239,10 @@
     "example/example - 代码高亮2.excalidraw.md",
     "example/example - callout2.excalidraw.md",
     "example/example - Latex预览与Latex Suite.excalidraw.md",
-    "Excalidraw-LaTeX-Edit.md",
     "obsidian-papers",
-    "学案/必修三/磁场/电磁场科技仪器.md",
     "学案/必修三/磁场/磁场圆周运动.md",
-    "学案/选修二/电磁感应/法拉第电磁感应定律 1.md",
     "学案/必修三/静电场/电容器与电容.md",
     "学案/必修三/静电场/粒子运动.md",
-    "学案/必修三/静电场/图/静电场结构_图.md",
-    "学案/必修三/磁场/洛伦兹力.md",
-    "学案/必修三/静电场/电容器与电容_图.md",
     "未命名.canvas",
     "学案/必修三/静电场/attachments/Pasted image 20251221012008.png",
     "学案/必修三/静电场/attachments/Pasted image 20251221011717.png",

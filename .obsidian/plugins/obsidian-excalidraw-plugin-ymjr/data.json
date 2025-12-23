@@ -38,6 +38,8 @@
   "overrideObsidianFontSize": false,
   "dynamicStyling": "colorful",
   "isLeftHanded": false,
+  "desktopUIMode": "tray",
+  "tabletUIMode": "compact",
   "iframeMatchExcalidrawTheme": true,
   "matchTheme": false,
   "matchThemeAlways": false,
@@ -108,7 +110,7 @@
   "library2": {
     "type": "excalidrawlib",
     "version": 2,
-    "source": "https://github.com/zsviczian/obsidian-excalidraw-plugin/releases/tag/2.15.1-1",
+    "source": "https://github.com/zsviczian/obsidian-excalidraw-plugin/releases/tag/2.18.0-9",
     "libraryItems": [
       {
         "id": "HBqdrRXM0q3zJyEYVZ063",
@@ -3117,11 +3119,17 @@
         "value": 10,
         "description": "Padding between the bounding box of the selected elements, and the box the script creates"
       }
+    },
+    "Downloaded(Custom)/autorun-excalidrawExtraColors_Hook": {
+      "Palette List": {
+        "value": "Cherry Blossom:#EDAFB8, Powder Petal:#F7E1D7, Dust Grey:#DEDBD2, Ash Grey:#B0C4B1, Iron Grey:#f08c01",
+        "description": "Format: Name:#Hex, Name:#Hex (separate items with commas)"
+      }
     }
   },
-  "defaultTrayMode": true,
-  "previousRelease": "2.15.1-1",
+  "previousRelease": "2.18.0-9",
   "showReleaseNotes": true,
+  "compareManifestToPluginVersion": true,
   "showNewVersionNotification": true,
   "latexBoilerplate": "",
   "latexPreambleLocation": "preamble.sty",
@@ -3496,6 +3504,7 @@
   "aiEnabled": true,
   "openAIAPIToken": "",
   "openAIDefaultTextModel": "gpt-3.5-turbo-1106",
+  "openAIDefaultTextModelMaxTokens": 4096,
   "openAIDefaultVisionModel": "gpt-4o",
   "openAIDefaultImageGenerationModel": "dall-e-3",
   "openAIURL": "https://api.openai.com/v1/chat/completions",
@@ -3832,6 +3841,9 @@
     "alignment": "center",
     "margin": "normal"
   },
+  "disableContextMenu": false,
+  "latexEditorMode": "native",
+  "defaultTrayMode": true,
   "autosaveInterval": 15000,
   "strokeWidthSliderStemp": 1
 }
