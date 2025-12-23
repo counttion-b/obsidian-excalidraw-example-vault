@@ -3842,7 +3842,7 @@
     "margin": "normal"
   },
   "disableContextMenu": false,
-  "latexEditorMode": "native",
+  "latexEditorMode": "modal",
   "defaultTrayMode": true,
   "autosaveInterval": 15000,
   "strokeWidthSliderStemp": 1

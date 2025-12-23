@@ -1,3 +1,4 @@
 $$
-E=mc^2 333
+\text{Enter LaTeX}
+
 $$
