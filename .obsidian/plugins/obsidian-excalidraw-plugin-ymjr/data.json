@@ -113,6 +113,218 @@
     "source": "https://github.com/zsviczian/obsidian-excalidraw-plugin/releases/tag/2.18.0-9",
     "libraryItems": [
       {
+        "id": "dngA6jCjjA1I6bGaZ79B1",
+        "status": "unpublished",
+        "elements": [
+          {
+            "id": "ML42qTcrmXhBql7ZhExyr",
+            "type": "line",
+            "x": 106.82009218037558,
+            "y": -13.881568157492552,
+            "width": 51.660410837603195,
+            "height": 29.457025298185116,
+            "angle": 0,
+            "strokeColor": "#1e1e1e",
+            "backgroundColor": "transparent",
+            "fillStyle": "solid",
+            "strokeWidth": 4,
+            "strokeStyle": "solid",
+            "roughness": 0,
+            "opacity": 100,
+            "groupIds": [],
+            "frameId": null,
+            "index": "b0b",
+            "roundness": {
+              "type": 2
+            },
+            "seed": 1833628242,
+            "version": 536,
+            "versionNonce": 542533458,
+            "isDeleted": false,
+            "boundElements": [],
+            "updated": 1766564018631,
+            "link": null,
+            "locked": false,
+            "points": [
+              [
+                0,
+                0
+              ],
+              [
+                15.666866550798098,
+                2.0573448030438755
+              ],
+              [
+                31.06023618607672,
+                8.56174304826898
+              ],
+              [
+                42.92788972777117,
+                18.103767474549358
+              ],
+              [
+                51.660410837603195,
+                29.457025298185116
+              ]
+            ],
+            "startBinding": null,
+            "endBinding": null,
+            "startArrowhead": null,
+            "endArrowhead": null,
+            "polygon": false
+          },
+          {
+            "id": "Jhg3aac2Z8CZtPZ6nMPiF",
+            "type": "image",
+            "x": 97.12700527225333,
+            "y": -0.9976621105404604,
+            "width": 43.2,
+            "height": 33.6,
+            "angle": 0,
+            "strokeColor": "#000000",
+            "backgroundColor": "transparent",
+            "fillStyle": "hachure",
+            "strokeWidth": 1,
+            "strokeStyle": "solid",
+            "roughness": 1,
+            "opacity": 100,
+            "roundness": null,
+            "seed": 485976338,
+            "version": 143,
+            "versionNonce": 863087890,
+            "updated": 1766564018631,
+            "isDeleted": false,
+            "groupIds": [],
+            "boundElements": [],
+            "link": null,
+            "locked": false,
+            "frameId": null,
+            "fileId": "1c1bf7964c9457104f4c4cbd527a183c5bd928f1",
+            "scale": [
+              1,
+              1
+            ],
+            "customData": {
+              "latex": {
+                "scale": 2.4
+              },
+              "imageLib": {}
+            },
+            "index": "b0n",
+            "status": "pending",
+            "crop": null
+          }
+        ],
+        "created": 1766564036528,
+        "name": "60arc"
+      },
+      {
+        "id": "uPQM6WuXoww4zKbPdTHUt",
+        "status": "unpublished",
+        "elements": [
+          {
+            "id": "NRpHFE83cJpjcS8NhIHMY",
+            "type": "line",
+            "x": -0.06096018835580708,
+            "y": -166.41684862810047,
+            "width": 41.74227811965255,
+            "height": 15.81296765491723,
+            "angle": 0,
+            "strokeColor": "#1e1e1e",
+            "backgroundColor": "transparent",
+            "fillStyle": "solid",
+            "strokeWidth": 4,
+            "strokeStyle": "solid",
+            "roughness": 0,
+            "opacity": 100,
+            "groupIds": [],
+            "frameId": null,
+            "index": "b0V",
+            "roundness": {
+              "type": 2
+            },
+            "seed": 2099148754,
+            "version": 324,
+            "versionNonce": 2102886866,
+            "isDeleted": false,
+            "boundElements": [],
+            "updated": 1766563999031,
+            "link": null,
+            "locked": false,
+            "points": [
+              [
+                0,
+                0
+              ],
+              [
+                12.273051736253151,
+                1.0784244802203204
+              ],
+              [
+                22.786375713830736,
+                3.437674151694168
+              ],
+              [
+                34.274570728092385,
+                9.52543093692006
+              ],
+              [
+                41.74227811965255,
+                15.81296765491723
+              ]
+            ],
+            "startBinding": null,
+            "endBinding": null,
+            "startArrowhead": null,
+            "endArrowhead": null,
+            "polygon": false
+          },
+          {
+            "id": "76LycNAI",
+            "type": "image",
+            "x": -16.024469600331415,
+            "y": -150.55434692139102,
+            "width": 43.199999999999996,
+            "height": 33.6,
+            "angle": 0,
+            "strokeColor": "#000000",
+            "backgroundColor": "transparent",
+            "fillStyle": "hachure",
+            "strokeWidth": 1,
+            "strokeStyle": "solid",
+            "roughness": 1,
+            "opacity": 100,
+            "roundness": null,
+            "seed": 74092,
+            "version": 73,
+            "versionNonce": 1599924494,
+            "updated": 1766564016267,
+            "isDeleted": false,
+            "groupIds": [],
+            "boundElements": [],
+            "link": null,
+            "locked": false,
+            "frameId": null,
+            "fileId": "10453d251b232dfee472ad549eabcf3c3c766f7b",
+            "scale": [
+              1,
+              1
+            ],
+            "customData": {
+              "latex": {
+                "scale": 2.4
+              },
+              "imageLib": {}
+            },
+            "index": "b0m",
+            "status": "pending",
+            "crop": null
+          }
+        ],
+        "created": 1766564028086,
+        "name": "45arc"
+      },
+      {
         "id": "HBqdrRXM0q3zJyEYVZ063",
         "status": "unpublished",
         "elements": [
@@ -3140,7 +3352,6 @@
     "plugins/Excalidraw/Scripts/Downloaded(Custom)/Add order list.md",
     "plugins/Excalidraw/Scripts/Downloaded(Custom)/Horizontal distribution.md",
     "plugins/Excalidraw/Scripts/Downloaded(Custom)/Vertical distribution.md",
-    "plugins/Excalidraw/Scripts/Downloaded(Custom)/distribute elements (center).md",
     "plugins/Excalidraw/Scripts/Downloaded(Custom)/add top brace.md",
     "plugins/Excalidraw/Scripts/Downloaded(Custom)/add bottom brace.md",
     "plugins/Excalidraw/Scripts/Downloaded(Custom)/add left brace.md",
@@ -3842,7 +4053,7 @@
     "margin": "normal"
   },
   "disableContextMenu": false,
-  "latexEditorMode": "modal",
+  "latexEditorMode": "legacy",
   "defaultTrayMode": true,
   "autosaveInterval": 15000,
   "strokeWidthSliderStemp": 1
