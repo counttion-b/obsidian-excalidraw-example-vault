@@ -13,38 +13,52 @@
             "state": {
               "type": "markdown",
               "state": {
-                "file": "学案/选修二/电磁感应/电磁感应电路问题.md",
-                "mode": "preview",
+                "file": "学案/选修一/几何光学.md",
+                "mode": "source",
                 "source": false
               },
               "icon": "lucide-file",
-              "title": "电磁感应电路问题"
+              "title": "几何光学"
             }
           },
           {
-            "id": "e21549af3848f40f",
+            "id": "5ca144bd044e079f",
             "type": "leaf",
             "state": {
               "type": "markdown",
               "state": {
-                "file": "学案/选修一/机械振动.md",
-                "mode": "preview",
+                "file": "学案/选修一/机械波.md",
+                "mode": "source",
                 "source": false
               },
               "icon": "lucide-file",
-              "title": "机械振动"
+              "title": "机械波"
+            }
+          },
+          {
+            "id": "789c4401836c258c",
+            "type": "leaf",
+            "state": {
+              "type": "excalidraw",
+              "state": {
+                "file": "学案/选修一/图/机械波结构图.md"
+              },
+              "icon": "excalidraw-icon",
+              "title": "机械波结构图"
             }
           },
           {
             "id": "d1026aa0c0510bc3",
             "type": "leaf",
             "state": {
-              "type": "excalidraw",
+              "type": "markdown",
               "state": {
-                "file": "学案/必修一/图/运动学结构图.md"
+                "file": "学案/示例文件.md",
+                "mode": "source",
+                "source": false
               },
-              "icon": "excalidraw-icon",
-              "title": "运动学结构图"
+              "icon": "lucide-file",
+              "title": "示例文件"
             }
           },
           {
@@ -60,20 +74,6 @@
             }
           },
           {
-            "id": "50425d82427fd375",
-            "type": "leaf",
-            "state": {
-              "type": "markdown",
-              "state": {
-                "file": "学案/选修二/电磁感应/电磁感应动力学问题.md",
-                "mode": "preview",
-                "source": false
-              },
-              "icon": "lucide-file",
-              "title": "电磁感应动力学问题"
-            }
-          },
-          {
             "id": "5a422e31ffd56bf6",
             "type": "leaf",
             "state": {
@@ -85,6 +85,18 @@
               },
               "icon": "lucide-file",
               "title": "电磁感应电路问题"
+            }
+          },
+          {
+            "id": "aa5cb7ad7ef2aeaf",
+            "type": "leaf",
+            "state": {
+              "type": "excalidraw",
+              "state": {
+                "file": "学案/选修一/图/外力作用下的振动_图.md"
+              },
+              "icon": "excalidraw-icon",
+              "title": "外力作用下的振动_图"
             }
           }
         ],
@@ -240,54 +252,54 @@
       "templater-obsidian:Templater": false
     }
   },
-  "active": "e21549af3848f40f",
+  "active": "5ca144bd044e079f",
   "lastOpenFiles": [
-    "学案/选修一/attachments/Pasted image 20260105234615.png",
-    "学案/选修一/attachments",
-    "学案/示例文件.md",
+    "学案/选修一/图/机械振动结构图.md",
+    "学案/选修一/图/机械波结构图.md",
+    "学案/选修一/几何光学.md",
     "学案/选修一/机械振动.md",
+    "学案/必修二/圆周运动/圆周运动动力学.md",
+    "学案/必修二/圆周运动/圆周运动运动学.md",
+    "学案/必修二/抛体运动/曲线运动.md",
+    "学案/必修二/万有引力与宇宙航行/万有引力.md",
+    "学案/必修二/抛体运动/平抛运动.md",
+    "学案/必修二/抛体运动/曲线运动 1.md",
+    "学案/选修一/机械波.md",
+    "学案/选修一/单摆.md",
+    "学案/选修一/attachments/Pasted image 20260108143204.png",
+    "学案/选修一/attachments/Pasted image 20260108143014.png",
+    "学案/选修一/attachments/Pasted image 20260108142913.png",
+    "学案/选修一/attachments/Pasted image 20260108142814.png",
+    "学案/选修一/attachments/Pasted image 20260108121151.png",
+    "学案/选修一/attachments/Pasted image 20260108121008.png",
+    "学案/选修一/attachments/Pasted image 20260108115903.png",
+    "学案/选修一/attachments/Pasted image 20260108113829.png",
+    "学案/选修一/attachments/Pasted image 20260108113631.png",
+    "学案/选修一/attachments/Pasted image 20260108112315.png",
+    "学案/示例文件.md",
+    "学案/选修二/电磁感应/法拉第电磁感应定律 1.md",
+    "学案/选修二/电磁感应/法拉第电磁感应定律.md",
+    "学案/选修二/电磁感应/电磁感应动力学问题.md",
     "学案/选修二/电磁感应/电磁感应电路问题.md",
+    "学案/选修一/外力作用下的振动.md",
+    "学案/选修一/图/外力作用下的振动_图.md",
+    "学案/选修一/图/attachments",
+    "学案/选修一/图/Drawing 2026-01-06 11.52.17.excalidraw.md",
+    "学案/选修一/图",
+    "学案/选修一/单摆周期计算问题.md",
+    "学案/必修一/图/运动学结构图.md",
+    "未命名.md",
+    "学案/选修一/attachments",
     "学案/选修一",
-    "学案/选修二/电磁感应/attachments/Pasted image 20260103015742.png",
-    "学案/选修二/电磁感应/attachments/Pasted image 20260103015425.png",
-    "学案/选修二/电磁感应/attachments/Pasted image 20260103015341.png",
-    "学案/选修二/电磁感应/attachments/Pasted image 20260103015205.png",
-    "学案/选修二/电磁感应/attachments/Pasted image 20260103015127.png",
-    "学案/选修二/电磁感应/attachments/Pasted image 20260103015035.png",
-    "学案/选修二/电磁感应/attachments/Pasted image 20260103014952.png",
-    "学案/选修二/电磁感应/attachments/Pasted image 20260103014906.png",
     "学案/必修三/电路/图/电路结构图.md",
     "学案/必修三/电路/电源的外特性曲线.md",
-    "学案/必修一/图/运动学结构图.md",
-    "学案/必修三/电路/attachments/Pasted image 20260103014012.png",
-    "学案/必修三/电路/attachments/Pasted image 20260103014007.png",
     "学案/必修三/电路/图/电路画图.md",
-    "学案/选修二/电磁感应/自感.md",
-    "学案/必修三/电路/电路中的能量转化.md",
-    "学案/选修二/电磁感应/图/电磁感应电路与力问题_图.md",
-    "学案/选修二/电磁感应/电磁感应动力学问题.md",
-    "学案/选修二/电磁感应/法拉第电磁感应定律.md",
-    "学案/选修二/电磁感应/法拉第电磁感应定律 1.md",
-    "学案/选修二/电磁感应/法拉第电磁感应定律_图.md",
-    "学案/必修三/静电场/图/静电场结构_图.md",
-    "学案/必修一/图/动力学结构图.md",
-    "学案/必修一/复习.md",
-    "学案/必修三/静电场/图/电容器与电容_图.md",
-    "学案/必修三/静电场/图/静电平衡_图.md",
-    "学案/必修三/静电场/场强叠加-连续带电体.md",
-    "学案/必修三/静电场/带电粒子运动.md",
-    "学案/必修三/静电场/电容器与电容.md",
-    "学案/必修三/静电场/静电平衡.md",
-    "学案/必修三/静电场/库仑力下的平衡.md",
-    "学案/必修三/静电场/两个点电荷的叠加场中场强与电势的变化.md",
     "学案/选修二/电磁感应/图/attachments",
     "学案/必修三/电路/attachments",
     "学案/必修三/电路/图",
     "学案/必修二/抛体运动/图/attachments",
     "obsidian-papers",
     "未命名.canvas",
-    "学案/必修二/抛体运动/attachments",
-    "学案/选修二/电磁感应/attachments",
-    "学案/必修二/机械能守恒定律"
+    "学案/必修二/抛体运动/attachments"
   ]
 }
