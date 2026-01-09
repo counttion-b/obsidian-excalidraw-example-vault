@@ -1,102 +1,32 @@
 {
   "main": {
-    "id": "3335a8f44e18ade1",
+    "id": "a8a66ea46ce3b770",
     "type": "split",
     "children": [
       {
-        "id": "7b1cdc739be0ddb7",
+        "id": "4ffdfc2748b0617b",
         "type": "tabs",
         "children": [
           {
-            "id": "c36e1da2f2480642",
-            "type": "leaf",
-            "state": {
-              "type": "markdown",
-              "state": {
-                "file": "学案/选修一/几何光学.md",
-                "mode": "source",
-                "source": false
-              },
-              "icon": "lucide-file",
-              "title": "几何光学"
-            }
-          },
-          {
-            "id": "5ca144bd044e079f",
-            "type": "leaf",
-            "state": {
-              "type": "markdown",
-              "state": {
-                "file": "学案/选修一/机械波.md",
-                "mode": "source",
-                "source": false
-              },
-              "icon": "lucide-file",
-              "title": "机械波"
-            }
-          },
-          {
-            "id": "789c4401836c258c",
+            "id": "cc394156b50e7fd0",
             "type": "leaf",
             "state": {
               "type": "excalidraw",
               "state": {
-                "file": "学案/选修一/图/机械波结构图.md"
+                "file": "学案/必修一/图/静力学结构图.md"
               },
               "icon": "excalidraw-icon",
-              "title": "机械波结构图"
+              "title": "静力学结构图"
             }
           },
           {
-            "id": "d1026aa0c0510bc3",
+            "id": "a0f24c15f9a696bb",
             "type": "leaf",
             "state": {
-              "type": "markdown",
-              "state": {
-                "file": "学案/示例文件.md",
-                "mode": "source",
-                "source": false
-              },
+              "type": "empty",
+              "state": {},
               "icon": "lucide-file",
-              "title": "示例文件"
-            }
-          },
-          {
-            "id": "784d01a9c18a4c43",
-            "type": "leaf",
-            "state": {
-              "type": "excalidraw",
-              "state": {
-                "file": "学案/选修二/电磁感应/图/电磁感应电路与力问题_图.md"
-              },
-              "icon": "excalidraw-icon",
-              "title": "电磁感应电路与力问题_图"
-            }
-          },
-          {
-            "id": "5a422e31ffd56bf6",
-            "type": "leaf",
-            "state": {
-              "type": "markdown",
-              "state": {
-                "file": "学案/选修二/电磁感应/电磁感应电路问题.md",
-                "mode": "source",
-                "source": false
-              },
-              "icon": "lucide-file",
-              "title": "电磁感应电路问题"
-            }
-          },
-          {
-            "id": "aa5cb7ad7ef2aeaf",
-            "type": "leaf",
-            "state": {
-              "type": "excalidraw",
-              "state": {
-                "file": "学案/选修一/图/外力作用下的振动_图.md"
-              },
-              "icon": "excalidraw-icon",
-              "title": "外力作用下的振动_图"
+              "title": "新标签页"
             }
           }
         ],
@@ -106,15 +36,15 @@
     "direction": "vertical"
   },
   "left": {
-    "id": "982edd3e7a26874a",
+    "id": "0de43b034dac1cfa",
     "type": "split",
     "children": [
       {
-        "id": "2e610dd4ef6964ef",
+        "id": "51ce39eda59d0c7d",
         "type": "tabs",
         "children": [
           {
-            "id": "587ccf90dd5151c5",
+            "id": "3269cd30af246781",
             "type": "leaf",
             "state": {
               "type": "file-explorer",
@@ -127,13 +57,13 @@
             }
           },
           {
-            "id": "4db9a3615e13993c",
+            "id": "2f8966191b62d50b",
             "type": "leaf",
             "state": {
               "type": "search",
               "state": {
                 "query": "",
-                "matchingCase": true,
+                "matchingCase": false,
                 "explainSearch": false,
                 "collapseAll": false,
                 "extraContext": false,
@@ -144,36 +74,35 @@
             }
           },
           {
-            "id": "20f9dffbaeeee2af",
+            "id": "bd6cf8e05e264a68",
             "type": "leaf",
             "state": {
               "type": "bookmarks",
               "state": {},
               "icon": "lucide-bookmark",
-              "title": "Bookmarks"
+              "title": "书签"
             }
           }
         ]
       }
     ],
     "direction": "horizontal",
-    "width": 200
+    "width": 300
   },
   "right": {
-    "id": "975f8a95335c54f4",
+    "id": "8007be8319c85924",
     "type": "split",
     "children": [
       {
-        "id": "c8bf40d21dddebcc",
+        "id": "d233b7c13167d5e3",
         "type": "tabs",
         "children": [
           {
-            "id": "60693c543c2953f0",
+            "id": "40c2d90ad6fd8d5e",
             "type": "leaf",
             "state": {
               "type": "backlink",
               "state": {
-                "file": "视频合集.md",
                 "collapseAll": false,
                 "extraContext": false,
                 "sortOrder": "alphabetical",
@@ -183,11 +112,11 @@
                 "unlinkedCollapsed": true
               },
               "icon": "links-coming-in",
-              "title": "视频合集 的反向链接列表"
+              "title": "反向链接"
             }
           },
           {
-            "id": "20b97141b07f9e4c",
+            "id": "954ce002e31f3c2c",
             "type": "leaf",
             "state": {
               "type": "outgoing-link",
@@ -196,26 +125,11 @@
                 "unlinkedCollapsed": true
               },
               "icon": "links-going-out",
-              "title": "Outgoing links"
+              "title": "出链"
             }
           },
           {
-            "id": "4512b3065be8b312",
-            "type": "leaf",
-            "state": {
-              "type": "outline",
-              "state": {
-                "file": "学案/选修一/机械振动.md",
-                "followCursor": true,
-                "showSearch": true,
-                "searchQuery": ""
-              },
-              "icon": "lucide-list",
-              "title": "机械振动 的大纲"
-            }
-          },
-          {
-            "id": "a0ddd3282a892520",
+            "id": "1e45123515f7c550",
             "type": "leaf",
             "state": {
               "type": "tag",
@@ -228,13 +142,26 @@
               "icon": "lucide-tags",
               "title": "标签"
             }
+          },
+          {
+            "id": "19de8d43ab12f710",
+            "type": "leaf",
+            "state": {
+              "type": "outline",
+              "state": {
+                "followCursor": false,
+                "showSearch": false,
+                "searchQuery": ""
+              },
+              "icon": "lucide-list",
+              "title": "大纲"
+            }
           }
-        ],
-        "currentTab": 2
+        ]
       }
     ],
     "direction": "horizontal",
-    "width": 200,
+    "width": 300,
     "collapsed": true
   },
   "left-ribbon": {
@@ -252,54 +179,15 @@
       "templater-obsidian:Templater": false
     }
   },
-  "active": "5ca144bd044e079f",
+  "active": "a0f24c15f9a696bb",
   "lastOpenFiles": [
-    "学案/选修一/图/机械振动结构图.md",
-    "学案/选修一/图/机械波结构图.md",
+    "学案/必修一/图/静力学结构图.md",
+    "学案/必修一/图/力学模板图.md",
     "学案/选修一/几何光学.md",
-    "学案/选修一/机械振动.md",
-    "学案/必修二/圆周运动/圆周运动动力学.md",
-    "学案/必修二/圆周运动/圆周运动运动学.md",
-    "学案/必修二/抛体运动/曲线运动.md",
-    "学案/必修二/万有引力与宇宙航行/万有引力.md",
-    "学案/必修二/抛体运动/平抛运动.md",
-    "学案/必修二/抛体运动/曲线运动 1.md",
-    "学案/选修一/机械波.md",
-    "学案/选修一/单摆.md",
-    "学案/选修一/attachments/Pasted image 20260108143204.png",
-    "学案/选修一/attachments/Pasted image 20260108143014.png",
-    "学案/选修一/attachments/Pasted image 20260108142913.png",
-    "学案/选修一/attachments/Pasted image 20260108142814.png",
-    "学案/选修一/attachments/Pasted image 20260108121151.png",
-    "学案/选修一/attachments/Pasted image 20260108121008.png",
-    "学案/选修一/attachments/Pasted image 20260108115903.png",
-    "学案/选修一/attachments/Pasted image 20260108113829.png",
-    "学案/选修一/attachments/Pasted image 20260108113631.png",
-    "学案/选修一/attachments/Pasted image 20260108112315.png",
-    "学案/示例文件.md",
-    "学案/选修二/电磁感应/法拉第电磁感应定律 1.md",
-    "学案/选修二/电磁感应/法拉第电磁感应定律.md",
-    "学案/选修二/电磁感应/电磁感应动力学问题.md",
-    "学案/选修二/电磁感应/电磁感应电路问题.md",
     "学案/选修一/外力作用下的振动.md",
-    "学案/选修一/图/外力作用下的振动_图.md",
-    "学案/选修一/图/attachments",
-    "学案/选修一/图/Drawing 2026-01-06 11.52.17.excalidraw.md",
-    "学案/选修一/图",
+    "学案/选修一/机械振动.md",
+    "学案/选修一/机械波.md",
     "学案/选修一/单摆周期计算问题.md",
-    "学案/必修一/图/运动学结构图.md",
-    "未命名.md",
-    "学案/选修一/attachments",
-    "学案/选修一",
-    "学案/必修三/电路/图/电路结构图.md",
-    "学案/必修三/电路/电源的外特性曲线.md",
-    "学案/必修三/电路/图/电路画图.md",
-    "学案/选修二/电磁感应/图/attachments",
-    "学案/必修三/电路/attachments",
-    "学案/必修三/电路/图",
-    "学案/必修二/抛体运动/图/attachments",
-    "obsidian-papers",
-    "未命名.canvas",
-    "学案/必修二/抛体运动/attachments"
+    "学案/选修一/单摆.md"
   ]
 }
