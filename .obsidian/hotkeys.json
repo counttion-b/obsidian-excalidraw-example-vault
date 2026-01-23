@@ -247,5 +247,14 @@
       "key": "I"
     }
   ],
-  "editor:delete-paragraph": []
+  "editor:delete-paragraph": [],
+  "number-headings-obsidian:number-headings": [
+    {
+      "modifiers": [
+        "Alt",
+        "Mod"
+      ],
+      "key": "Numpad3"
+    }
+  ]
 }

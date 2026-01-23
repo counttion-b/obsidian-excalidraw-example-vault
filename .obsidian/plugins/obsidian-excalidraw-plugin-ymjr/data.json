@@ -4438,12 +4438,12 @@
   "strokeWidthSliderStep": 1,
   "pdfSettings": {
     "pageSize": "A4",
-    "pageOrientation": "portrait",
+    "pageOrientation": "landscape",
     "fitToPage": 1,
     "paperColor": "white",
     "customPaperColor": "#ffffff",
     "alignment": "center",
-    "margin": "normal"
+    "margin": "none"
   },
   "disableContextMenu": false,
   "latexEditorMode": "legacy",

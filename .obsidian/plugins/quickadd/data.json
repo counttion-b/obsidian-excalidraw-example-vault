@@ -1,69 +1,27 @@
 {
   "choices": [
     {
-      "id": "075e3c84-dc8d-44dc-a0ad-64bfeec855d8",
-      "name": "paste annotation with link from json",
+      "id": "5f9c3037-e418-4625-962a-f663baf1266f",
+      "name": "renumberh6",
       "type": "Macro",
-      "command": true,
-      "macroId": "e3d93fa7-2507-4f59-8c8a-c54a91f05869"
-    },
-    {
-      "id": "85153863-45f7-430e-a540-aba60fe86d8a",
-      "name": "close http server",
-      "type": "Macro",
-      "command": true,
-      "macroId": "8ffc1809-0771-42b7-8ad7-207daebaf83a"
-    },
-    {
-      "id": "56ce77b0-3a3e-48c1-bdf6-5057cd087523",
-      "name": "add image with link from http",
-      "type": "Macro",
-      "command": true,
-      "macroId": "b6051bca-f89c-42d1-b6ad-3458e81a3ca3"
+      "command": false,
+      "macroId": "7b7e59b4-a8ce-4b1d-b356-80ef02d6a1fe"
     }
   ],
   "macros": [
     {
-      "name": "paste annotation with link from json",
-      "id": "e3d93fa7-2507-4f59-8c8a-c54a91f05869",
+      "name": "renumberh6",
+      "id": "7b7e59b4-a8ce-4b1d-b356-80ef02d6a1fe",
       "commands": [
         {
-          "name": "paste annotation with link from json",
+          "name": "renumbeh6",
           "type": "UserScript",
-          "id": "a0ed1468-815d-4dba-b2f6-8362d0a22654",
-          "path": "plugins/QuickAdd/paste annotation with link from json.js",
+          "id": "162fe44c-838d-4645-9ddb-fde8e01fe900",
+          "path": "plugins/QuickAdd/renumbeh6.js",
           "settings": {}
         }
       ],
       "runOnStartup": true
-    },
-    {
-      "name": "add image with link from http",
-      "id": "b6051bca-f89c-42d1-b6ad-3458e81a3ca3",
-      "commands": [
-        {
-          "name": "add image with link from http",
-          "type": "UserScript",
-          "id": "9e837d51-9414-4a9a-8288-9c6074e2fda4",
-          "path": "plugins/QuickAdd/add image with link from http.js",
-          "settings": {}
-        }
-      ],
-      "runOnStartup": false
-    },
-    {
-      "name": "close http server",
-      "id": "8ffc1809-0771-42b7-8ad7-207daebaf83a",
-      "commands": [
-        {
-          "name": "close http server",
-          "type": "UserScript",
-          "id": "de8e0f0c-bcf2-4f45-8696-afe8b3ec949e",
-          "path": "plugins/QuickAdd/close http server.js",
-          "settings": {}
-        }
-      ],
-      "runOnStartup": false
     }
   ],
   "inputPrompt": "single-line",

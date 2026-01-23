@@ -1,237 +1,369 @@
-.markdown-preview-view {
-  font-size: 15px;
-  line-height: 1.65;
-  }
-  
-/* ====== H0：题型大标题（用 #h0 标签触发） ====== */
+/* =========================================================
+   讲义排版（精简整合版）
+   - Reading: .markdown-preview-view / .markdown-rendered
+   - Live Preview: .markdown-source-view / .cm-s-obsidian
+   - Print: @media print
+   ========================================================= */
 
-/* 预览模式：标题里包含 #h0 标签 */
-.markdown-preview-view h1:has(a.tag[href="#h0"]) {
-  text-align: center;
-  font-size: 28px;
-  font-weight: 800;
-  margin: 0em 0 0em 0;
-  color: #2D4E9D;
-  letter-spacing: 1.2px;
-  border-bottom: 3px solid #2D4E9D;
-  padding: 0.4em 0;
-  background-color: #F0F5FF;
-  border-radius: 6px;
-}
-
-/* Live Preview（编辑实时预览）：同理 */
-.markdown-source-view.is-live-preview .cm-content .HyperMD-header-1:has(.cm-tag) {
-  /* 只要你在 h1 后面写 #h0，它会变成 cm-tag */
-}
-.markdown-source-view.is-live-preview .cm-content .HyperMD-header-1:has(.cm-tag-h0) {
-  text-align: center;
-  font-size: 28px;
-  font-weight: 800;
-  color: #2D4E9D;
-  letter-spacing: 1.2px;
-  border-bottom: 3px solid #2D4E9D;
-  padding: 0.4em 0;
-  background-color: #F0F5FF;
-  border-radius: 6px;
-  display: block;
-}
-
-/* 把标题里的 #h0 标签隐藏掉（不影响触发） */
-.markdown-preview-view h1 a.tag[href="#h0"] {
-  display: none !important;
-}
-
-.markdown-source-view.is-live-preview .cm-tag-h0 {
-  display: none !important;
-}
-
-  
 
 /* =========================
-   标题体系（简约成熟版）
-   兼容 H0(#h0 标签) 的排除
+   0) 全局基础 + 计数器初始化
    ========================= */
 
-/* ====== 普通 H1（排除 #h0 大标题） ======
-   触发条件：h1 里没有 #h0 标签
-*/
-.markdown-preview-view h1:not(:has(a.tag[href="#h0"])) {
-  font-size: 20px;
-  font-weight: 700;
-  margin-top: 1.8em;
-  margin-bottom: 0.7em;
-  padding-bottom: 0.25em;
-  color: rgba(34,74,157,0.95);
-
-  /* 细而淡的下划线，比你原来更克制 */
-  border-bottom: 1.5px solid rgba(79,124,255,0.45);
-  letter-spacing: 0.3px;
-}
-
-/* ====== H2 ====== */
-.markdown-preview-view h2 {
-  font-size: 16.5px;
-  font-weight: 650;
-  margin-top: 1.4em;
-  margin-bottom: 0.55em;
-  color: var(--text-normal);
-
-  /* 左侧竖线更细更淡 */
-  padding-left: 0.55em;
-  border-left: 2px solid rgba(79,124,255,0.7);
-  letter-spacing: 0.2px;
-}
-
-/* ====== H3 ====== */
-.markdown-preview-view h3 {
-  font-size: 15.5px;
-  font-weight: 700;
-  margin-top: 1.15em;
-  margin-bottom: 0.35em;
-
-  /* 轻微降饱和，不用纯黑硬顶 */
-  color: var(--text-normal);
-  opacity: 0.92;
-
-  border-left: none;
-  padding-left: 0;
-  letter-spacing: 0.1px;
-}
-
-/* 1) 行内分式整体放大 */
-.math.math-inline mjx-mfrac {
-  font-size: 1.18em !important;   /* 1.12~1.25 自调 */
-}
-
-/* 2) 但只在“分式内部”取消 MathJax 的 s/ss 缩小 */
-.math.math-inline mjx-mfrac mjx-mrow[size="s"],
-.math.math-inline mjx-mfrac mjx-mrow[size="ss"],
-.math.math-inline mjx-mfrac mjx-mi[size="s"],
-.math.math-inline mjx-mfrac mjx-mi[size="ss"],
-.math.math-inline mjx-mfrac mjx-mn[size="s"],
-.math.math-inline mjx-mfrac mjx-mn[size="ss"] {
-  font-size: 0.95em !important;
-}
-
-/* ===== 行距统一 + 段间距=行间距 ===== */
-
-/* 阅读模式：正文段落 */
-.markdown-rendered p {
-  line-height: 2.3 !important;
-  margin-block-start: 0 !important;
-  margin-block-end: 0 !important;
-}
-
-/* 阅读模式：引用块（含内部段落/列表） */
-.markdown-rendered blockquote,
-.markdown-rendered blockquote p,
-.markdown-rendered blockquote li {
-  line-height: 2.3 !important;
-  margin-block-start: 0 !important;
-  margin-block-end: 0 !important;
-}
-
-/* 阅读模式：列表也别额外拉开（可选，但常常需要） */
-.markdown-rendered ul,
-.markdown-rendered ol {
-  margin-block-start: 0 !important;
-  margin-block-end: 0 !important;
-}
-
-/* 编辑模式 Live Preview：每一行 */
-.cm-s-obsidian .cm-line {
-  line-height: 2.3 !important;
-}
-
-/* 编辑模式：引用行 */
-.cm-s-obsidian .HyperMD-quote,
-.cm-s-obsidian .HyperMD-quote .cm-line {
-  line-height: 2.3 !important;
-}
-
-
-
-/* ===== 只在计算题后加题间距（选择题后不加）===== */
-
-/* ===== 计算题题后间距：ti 内没有 opts 子callout 才加 ===== */
-
-/* 阅读模式 */
-.markdown-rendered
-  .callout[data-callout="ti"]:not(:has(.callout[data-callout^="opts"])) {
-  /* 在你原本的 14px 下，再额外加一点 */
-  margin-bottom: calc(14px + 4em) !important;
-}
-
-/* PDF / 打印模式：用不折叠的方式撑开 */
-@media print {
-  .callout[data-callout="ti"]:not(:has(.callout[data-callout^="opts"])) {
-    /* 保留原 margin 也行，但 print 里可能折叠，所以再加 padding/border */
-    padding-bottom: 4em !important;
-    border-bottom: 4em solid transparent !important;
+   .markdown-preview-view {
+    font-size: 15px;
+    line-height: 1.65;
+  
+    /* 标题编号(h2-h5) + 题号(ti) 统一在这里初始化，避免 counter-reset 覆盖事故 */
+    counter-reset: h2 h3 h4 h5 ti;
   }
+  
+  
+  /* =========================
+     1) H0：题型大标题（#h0 标签触发）
+     ========================= */
+  
+  /* Reading：标题里包含 #h0 标签 */
+  .markdown-preview-view h1:has(a.tag[href="#h0"]) {
+    text-align: center;
+    font-size: 28px;
+    font-weight: 800;
+    margin: 0;
+    color: #2D4E9D;
+    letter-spacing: 1.2px;
+    border-bottom: 3px solid #2D4E9D;
+    padding: 0.4em 0;
+    background-color: #F0F5FF;
+    border-radius: 6px;
+  }
+  
+  /* Live Preview：h1 + #h0 */
+  .markdown-source-view.is-live-preview .cm-content .HyperMD-header-1:has(.cm-tag-h0) {
+    text-align: center;
+    font-size: 28px;
+    font-weight: 800;
+    color: #2D4E9D;
+    letter-spacing: 1.2px;
+    border-bottom: 3px solid #2D4E9D;
+    padding: 0.4em 0;
+    background-color: #F0F5FF;
+    border-radius: 6px;
+    display: block;
+  }
+  
+  /* 隐藏 #h0 标签本体 */
+  .markdown-preview-view h1 a.tag[href="#h0"],
+  .markdown-source-view.is-live-preview .cm-tag-h0 {
+    display: none !important;
+  }
+  
+  
+  /* =========================
+     2) 标题样式（你当前只给 H3-H5 做了定制）
+     ========================= */
+  
+  .markdown-preview-view h3 {
+    font-size: 15.5px;
+    font-weight: 700;
+    margin-top: 1.15em;
+    margin-bottom: 0.35em;
+    color: var(--text-normal);
+    opacity: 0.92;
+    padding-left: 0.5em;
+    border-left: 1.5px solid rgba(79,124,255,0.5);
+    letter-spacing: 0.1px;
+  }
+  
+  .markdown-preview-view h4 {
+    font-size: 14.6px;
+    font-weight: 650;
+    margin-top: 0.85em;
+    margin-bottom: 0.25em;
+    color: var(--text-normal);
+    opacity: 0.85;
+    letter-spacing: 0.05px;
+  }
+  
+  .markdown-preview-view h5 {
+    font-size: 14px;
+    font-weight: 600;
+    margin-top: 0.6em;
+    margin-bottom: 0.15em;
+    color: var(--text-normal);
+    opacity: 0.75;
+  }
+  
+  /* =========================
+   3) 讲义标题自动编号（H2-H5）— 修复版：挂在 el-hX 上
+   ========================= */
+
+/* H1：不编号，但重置下级（排除 #h0 大标题） */
+.markdown-preview-view h1:not(:has(a.tag[href="#h0"])) {
+  counter-reset: h2 h3 h4 h5;
 }
 
+/* H2：在 el-h2 上计数/重置 */
+.markdown-preview-view .el-h2 {
+  counter-increment: h2;
+  counter-reset: h3 h4 h5;
+}
+.markdown-preview-view h2::before {
+  content: counter(h2) ". ";
+  font-weight: 700;
+  color: rgba(79,124,255,0.9);
+}
 
+/* H3：在 el-h3 上计数/重置（关键修复点：这里重置 h4） */
+.markdown-preview-view .el-h3 {
+  counter-increment: h3;
+  counter-reset: h4 h5;
+}
+.markdown-preview-view h3::before {
+  content: counter(h2) "." counter(h3) " ";
+  font-weight: 600;
+  color: rgba(79,124,255,0.85);
+}
 
-/* 兜底：题内 opts（嵌套 callout）强制无间距 */
-.markdown-rendered .callout-content > .callout,
-@media print {
-  .callout-content > .callout {
+/* H4：在 el-h4 上计数/重置 */
+.markdown-preview-view .el-h4 {
+  counter-increment: h4;
+  counter-reset: h5;
+}
+.markdown-preview-view h4::before {
+  content: counter(h2) "." counter(h3) "." counter(h4) " ";
+  font-weight: 500;
+  color: rgba(79,124,255,0.75);
+}
+
+/* H5：在 el-h5 上计数 */
+.markdown-preview-view .el-h5 {
+  counter-increment: h5;
+}
+.markdown-preview-view h5::before {
+  content: counter(h5, lower-alpha) ". ";
+  font-weight: 500;
+  color: rgba(79,124,255,0.7);
+}
+
+  
+  
+  /* =========================
+     4) 数学：行内分式优化
+     ========================= */
+  
+  .math.math-inline mjx-mfrac {
+    font-size: 1.18em !important;
+  }
+  .math.math-inline mjx-mfrac mjx-mrow[size="s"],
+  .math.math-inline mjx-mfrac mjx-mrow[size="ss"],
+  .math.math-inline mjx-mfrac mjx-mi[size="s"],
+  .math.math-inline mjx-mfrac mjx-mi[size="ss"],
+  .math.math-inline mjx-mfrac mjx-mn[size="s"],
+  .math.math-inline mjx-mfrac mjx-mn[size="ss"] {
+    font-size: 0.95em !important;
+  }
+  
+  
+  /* =========================
+     5) 行距统一 + 段间距=行间距
+     ========================= */
+  
+  .markdown-rendered p,
+  .markdown-rendered blockquote,
+  .markdown-rendered blockquote p,
+  .markdown-rendered blockquote li {
+    line-height: 2.3 !important;
+    margin-block-start: 0 !important;
+    margin-block-end: 0 !important;
+  }
+  
+  .markdown-rendered ul,
+  .markdown-rendered ol {
+    margin-block-start: 0 !important;
+    margin-block-end: 0 !important;
+  }
+  
+  /* Live Preview：每一行 */
+  .cm-s-obsidian .cm-line,
+  .cm-s-obsidian .HyperMD-quote,
+  .cm-s-obsidian .HyperMD-quote .cm-line {
+    line-height: 2.3 !important;
+  }
+  
+  
+  /* =========================
+     6) 题目系统：H6 锚点 + ti 题号（阅读）
+     - 依赖结构：.el-h6 + .el-div[data-callout="ti"]
+     ========================= */
+  
+  /* 阅读：隐藏 H6 本体（目录仍显示） */
+  .markdown-preview-view .el-h6 {
+    height: 0 !important;
+    margin: 0 !important;
+    padding: 0 !important;
+    overflow: hidden !important;
+  }
+  .markdown-preview-view .el-h6 h6 {
+    font-size: 0.01px !important;
+    margin: 0 !important;
+    padding: 0 !important;
+  }
+  
+  /* 阅读：遇到一题（el-h6 + ti）就题号 +1 */
+  .markdown-preview-view .el-h6 + .el-div[data-callout="ti"] {
+    counter-increment: ti;
+  }
+  
+  /* 阅读：题号插入标题行（图标后、标题文字前） */
+  .markdown-preview-view
+  .el-h6 + .el-div[data-callout="ti"]
+  .callout-title .callout-title-inner::before {
+    content: "" counter(ti) ".";
+    font-weight: 800;
+    margin-right: 0.35em;
+    color: rgba(34,74,157,0.95);
+  }
+  
+  
+  /* =========================
+     7) [!ti] 视觉：题目图标徽章（阅读）
+     ========================= */
+  
+  .markdown-preview-view .el-div[data-callout="ti"] .callout-title {
+    align-items: center;
+    gap: 0.35em;
+  }
+  
+  .markdown-preview-view .el-div[data-callout="ti"] .callout-title .callout-icon {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    width: 1.9em;
+    height: 1.9em;
+    border-radius: 999px;
+    background: rgba(34,74,157,0.12);
+    border: 1px solid rgba(34,74,157,0.35);
+  }
+  
+  .markdown-preview-view .el-div[data-callout="ti"] .callout-title .callout-icon svg {
+    width: 1.05em;
+    height: 1.05em;
+    opacity: 0.9;
+  }
+  
+  .markdown-preview-view .el-div[data-callout="ti"] .callout-title .callout-icon::after {
+    content: "题";
+    margin-left: 0.35em;
+    font-weight: 800;
+    font-size: 0.95em;
+    color: rgba(34,74,157,0.95);
+  }
+  
+  .markdown-preview-view .el-div[data-callout="ti"] .callout-title .callout-title-inner {
+    opacity: 0.95;
+  }
+  
+  
+  /* =========================
+     8) 题后间距（仅计算题：ti 内没有 opts 子 callout）
+     ========================= */
+  
+  .markdown-rendered
+    .callout[data-callout="ti"]:not(:has(.callout[data-callout^="opts"])) {
+    margin-bottom: calc(14px + 4em) !important;
+  }
+  
+  /* 题内 opts（嵌套 callout）强制无间距 */
+  .markdown-rendered .callout-content > .callout {
     margin-top: 0 !important;
     padding-top: 0 !important;
     border-top: 0 solid transparent !important;
   }
-}
-
-
-/* ===== 手动可调空行：阅读模式 + 编辑模式 + PDF ===== */
-
-/* 每 1 行空白的高度（统一在这调） */
-:root{
-  --gap-unit: 0.8em;  /* 一行空白高度 */
-}
-
-/* 1) 阅读模式（Reading） */
-.markdown-rendered .gap{
-  display:block;
-  height: calc(var(--n, 1) * var(--gap-unit));
-}
-
-/* 2) 编辑模式 Live Preview（CM6） */
-.markdown-source-view.mod-cm6 .gap,
-.cm-editor .gap{
-  display:block;
-  height: calc(var(--n, 1) * var(--gap-unit));
-}
-
-/* 让编辑模式里“看得见这是个空行块”，但阅读模式不显示提示 */
-.markdown-source-view.mod-cm6 .gap::after,
-.cm-editor .gap::after{
-  content: "↕ gap ×" attr(style); /* 只是一个提示 */
-  display:block;
-  font-size: 0.75em;
-  color: var(--text-muted);
-  opacity: 0.5;
-  line-height: 1;
-  transform: translateY(-0.1em);
-}
-
-/* 更美观一点：编辑模式给个淡淡的虚线框，便于选中 */
-.markdown-source-view.mod-cm6 .gap,
-.cm-editor .gap{
-  outline: 1px dashed var(--background-modifier-border);
-  outline-offset: -2px;
-  border-radius: 4px;
-}
-
-/* 3) PDF / 打印模式 */
-@media print{
-  .gap{
-    display:block;
+  
+  
+  /* =========================
+     9) 手动可调空行 gap
+     ========================= */
+  
+  :root { --gap-unit: 0.8em; }
+  
+  .markdown-rendered .gap {
+    display: block;
     height: calc(var(--n, 1) * var(--gap-unit));
-    outline: none !important;
   }
-  .gap::after{ content:""; }
-}
-
-
+  
+  .markdown-source-view.mod-cm6 .gap,
+  .cm-editor .gap {
+    display: block;
+    height: calc(var(--n, 1) * var(--gap-unit));
+    outline: 1px dashed var(--background-modifier-border);
+    outline-offset: -2px;
+    border-radius: 4px;
+  }
+  
+  .markdown-source-view.mod-cm6 .gap::after,
+  .cm-editor .gap::after {
+    content: "↕ gap ×" attr(style);
+    display: block;
+    font-size: 0.75em;
+    color: var(--text-muted);
+    opacity: 0.5;
+    line-height: 1;
+    transform: translateY(-0.1em);
+  }
+  
+  
+  /* =========================
+     10) 打印模式汇总
+     ========================= */
+  
+  @media print {
+  
+    /* 计数器：打印从 1 开始（包含标题编号 + 题号） */
+    body { counter-reset: h2 h3 h4 h5 ti; }
+  
+    /* 打印：题号按 ti callout 出现顺序编号（不依赖 H6 相邻结构） */
+    body .callout[data-callout="ti"] {
+      counter-increment: ti;
+    }
+  
+    /* 打印：题号插入标题行（图标后、标题文字前） */
+    body .callout[data-callout="ti"] .callout-title .callout-title-inner::before {
+      content: "" counter(ti) "." !important;
+      font-weight: 800 !important;
+      margin-right: 0.35em !important;
+      color: rgba(34,74,157,0.95) !important;
+    }
+  
+    /* 打印：隐藏 H6（避免标题数字单独占行） */
+    body .el-h6,
+    body h6 {
+      height: 0 !important;
+      margin: 0 !important;
+      padding: 0 !important;
+      overflow: hidden !important;
+    }
+    body .el-h6 h6 {
+      font-size: 0.01px !important;
+      margin: 0 !important;
+      padding: 0 !important;
+    }
+  
+    /* 打印：计算题题后间距（避免 margin 折叠） */
+    .callout[data-callout="ti"]:not(:has(.callout[data-callout^="opts"])) {
+      padding-bottom: 4em !important;
+      border-bottom: 4em solid transparent !important;
+    }
+  
+    /* 打印：题内 opts 无间距 */
+    .callout-content > .callout {
+      margin-top: 0 !important;
+      padding-top: 0 !important;
+      border-top: 0 solid transparent !important;
+    }
+  
+    /* 打印：gap 不显示提示 */
+    .gap { outline: none !important; }
+    .gap::after { content: "" !important; }
+  }
+  
