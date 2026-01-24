@@ -15,7 +15,7 @@
     line-height: 1.65;
   
     /* 标题编号(h2-h5) + 题号(ti) 统一在这里初始化，避免 counter-reset 覆盖事故 */
-    counter-reset: h2 h3 h4 h5 ti;
+    counter-reset: ti;
   }
   
   
@@ -93,57 +93,6 @@
     opacity: 0.75;
   }
   
-  /* =========================
-   3) 讲义标题自动编号（H2-H5）— 修复版：挂在 el-hX 上
-   ========================= */
-
-/* H1：不编号，但重置下级（排除 #h0 大标题） */
-.markdown-preview-view h1:not(:has(a.tag[href="#h0"])) {
-  counter-reset: h2 h3 h4 h5;
-}
-
-/* H2：在 el-h2 上计数/重置 */
-.markdown-preview-view .el-h2 {
-  counter-increment: h2;
-  counter-reset: h3 h4 h5;
-}
-.markdown-preview-view h2::before {
-  content: counter(h2) ". ";
-  font-weight: 700;
-  color: rgba(79,124,255,0.9);
-}
-
-/* H3：在 el-h3 上计数/重置（关键修复点：这里重置 h4） */
-.markdown-preview-view .el-h3 {
-  counter-increment: h3;
-  counter-reset: h4 h5;
-}
-.markdown-preview-view h3::before {
-  content: counter(h2) "." counter(h3) " ";
-  font-weight: 600;
-  color: rgba(79,124,255,0.85);
-}
-
-/* H4：在 el-h4 上计数/重置 */
-.markdown-preview-view .el-h4 {
-  counter-increment: h4;
-  counter-reset: h5;
-}
-.markdown-preview-view h4::before {
-  content: counter(h2) "." counter(h3) "." counter(h4) " ";
-  font-weight: 500;
-  color: rgba(79,124,255,0.75);
-}
-
-/* H5：在 el-h5 上计数 */
-.markdown-preview-view .el-h5 {
-  counter-increment: h5;
-}
-.markdown-preview-view h5::before {
-  content: counter(h5, lower-alpha) ". ";
-  font-weight: 500;
-  color: rgba(79,124,255,0.7);
-}
 
   
   
@@ -225,43 +174,6 @@
   }
   
   
-  /* =========================
-     7) [!ti] 视觉：题目图标徽章（阅读）
-     ========================= */
-  
-  .markdown-preview-view .el-div[data-callout="ti"] .callout-title {
-    align-items: center;
-    gap: 0.35em;
-  }
-  
-  .markdown-preview-view .el-div[data-callout="ti"] .callout-title .callout-icon {
-    display: inline-flex;
-    align-items: center;
-    justify-content: center;
-    width: 1.9em;
-    height: 1.9em;
-    border-radius: 999px;
-    background: rgba(34,74,157,0.12);
-    border: 1px solid rgba(34,74,157,0.35);
-  }
-  
-  .markdown-preview-view .el-div[data-callout="ti"] .callout-title .callout-icon svg {
-    width: 1.05em;
-    height: 1.05em;
-    opacity: 0.9;
-  }
-  
-  .markdown-preview-view .el-div[data-callout="ti"] .callout-title .callout-icon::after {
-    content: "题";
-    margin-left: 0.35em;
-    font-weight: 800;
-    font-size: 0.95em;
-    color: rgba(34,74,157,0.95);
-  }
-  
-  .markdown-preview-view .el-div[data-callout="ti"] .callout-title .callout-title-inner {
-    opacity: 0.95;
-  }
   
   
   /* =========================
@@ -320,7 +232,7 @@
   @media print {
   
     /* 计数器：打印从 1 开始（包含标题编号 + 题号） */
-    body { counter-reset: h2 h3 h4 h5 ti; }
+    body { counter-reset: ti; }
   
     /* 打印：题号按 ti callout 出现顺序编号（不依赖 H6 相邻结构） */
     body .callout[data-callout="ti"] {
