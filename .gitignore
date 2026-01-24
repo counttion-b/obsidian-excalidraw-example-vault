@@ -1,0 +1,7 @@
+# ===== Obsidian: 不同步的状态文件 =====
+.obsidian/workspace*
+.obsidian/cache/
+.obsidian/graph.json
+.obsidian/app.json
+.obsidian/appearance.json
+.obsidian/workspace-mobile.json
