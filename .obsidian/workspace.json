@@ -1,108 +1,39 @@
 {
   "main": {
-    "id": "a8a66ea46ce3b770",
+    "id": "478f5c39cf5e09ef",
     "type": "split",
     "children": [
       {
-        "id": "4ffdfc2748b0617b",
+        "id": "98989c25ea0ffc13",
         "type": "tabs",
         "children": [
           {
-            "id": "b49cffb7ebf03507",
+            "id": "3933c5f252d0087f",
             "type": "leaf",
             "state": {
               "type": "excalidraw",
               "state": {
-                "file": "学案/必修三/磁场/图/洛伦兹力图.md"
+                "file": "学案/必修一/图/静力学结构图.md"
               },
               "icon": "excalidraw-icon",
-              "title": "洛伦兹力图"
-            }
-          },
-          {
-            "id": "b150edaa14a5fbfc",
-            "type": "leaf",
-            "state": {
-              "type": "markdown",
-              "state": {
-                "file": "高三创新题积累/电通量.md",
-                "mode": "source",
-                "source": false
-              },
-              "icon": "lucide-file",
-              "title": "电通量"
-            }
-          },
-          {
-            "id": "54270b90e6509a43",
-            "type": "leaf",
-            "state": {
-              "type": "markdown",
-              "state": {
-                "file": "吴雨桐/期末补充.md",
-                "mode": "source",
-                "source": false
-              },
-              "icon": "lucide-file",
-              "title": "期末补充"
-            }
-          },
-          {
-            "id": "757cc14b8fb27cb1",
-            "type": "leaf",
-            "state": {
-              "type": "markdown",
-              "state": {
-                "file": "学案/高二力电复习/场的性质.md",
-                "mode": "source",
-                "source": false
-              },
-              "icon": "lucide-file",
-              "title": "场的性质"
-            }
-          },
-          {
-            "id": "c04c156270b18694",
-            "type": "leaf",
-            "state": {
-              "type": "markdown",
-              "state": {
-                "file": "学案/高二力电复习/场的性质.md",
-                "mode": "source",
-                "source": false
-              },
-              "icon": "lucide-file",
-              "title": "场的性质"
-            }
-          },
-          {
-            "id": "a497cc710f42b648",
-            "type": "leaf",
-            "state": {
-              "type": "excalidraw",
-              "state": {
-                "file": "学案/必修三/磁场/图/安培力图.md"
-              },
-              "icon": "excalidraw-icon",
-              "title": "安培力图"
+              "title": "静力学结构图"
             }
           }
-        ],
-        "currentTab": 4
+        ]
       }
     ],
     "direction": "vertical"
   },
   "left": {
-    "id": "0de43b034dac1cfa",
+    "id": "0cb6443f93f6098b",
     "type": "split",
     "children": [
       {
-        "id": "51ce39eda59d0c7d",
+        "id": "6fffb99d6c97f593",
         "type": "tabs",
         "children": [
           {
-            "id": "3269cd30af246781",
+            "id": "d6bbab33be67a8b0",
             "type": "leaf",
             "state": {
               "type": "file-explorer",
@@ -115,12 +46,12 @@
             }
           },
           {
-            "id": "2f8966191b62d50b",
+            "id": "1bed21db0ce12b93",
             "type": "leaf",
             "state": {
               "type": "search",
               "state": {
-                "query": "\"![[Pasted image 20260111011524.png]]\"",
+                "query": "",
                 "matchingCase": false,
                 "explainSearch": false,
                 "collapseAll": false,
@@ -132,7 +63,7 @@
             }
           },
           {
-            "id": "bd6cf8e05e264a68",
+            "id": "ca88830afc278b1f",
             "type": "leaf",
             "state": {
               "type": "bookmarks",
@@ -145,25 +76,25 @@
       }
     ],
     "direction": "horizontal",
-    "width": 200
+    "width": 300
   },
   "right": {
-    "id": "8007be8319c85924",
+    "id": "c60c1a521e79b62a",
     "type": "split",
     "children": [
       {
-        "id": "d233b7c13167d5e3",
+        "id": "81cac814b857279d",
         "type": "tabs",
         "children": [
           {
-            "id": "40c2d90ad6fd8d5e",
+            "id": "24f0470a04193d41",
             "type": "leaf",
             "state": {
               "type": "backlink",
               "state": {
-                "file": "学案/必修三/电路/电源的外特性曲线.md",
-                "collapseAll": true,
-                "extraContext": true,
+                "file": "学案/必修一/图/静力学结构图.md",
+                "collapseAll": false,
+                "extraContext": false,
                 "sortOrder": "alphabetical",
                 "showSearch": false,
                 "searchQuery": "",
@@ -171,25 +102,25 @@
                 "unlinkedCollapsed": true
               },
               "icon": "links-coming-in",
-              "title": "电源的外特性曲线 的反向链接列表"
+              "title": "静力学结构图 的反向链接列表"
             }
           },
           {
-            "id": "954ce002e31f3c2c",
+            "id": "d9e8e0573c490386",
             "type": "leaf",
             "state": {
               "type": "outgoing-link",
               "state": {
-                "file": "学案/必修三/电路/图/电路结构图.md",
+                "file": "学案/必修一/图/静力学结构图.md",
                 "linksCollapsed": false,
                 "unlinkedCollapsed": true
               },
               "icon": "links-going-out",
-              "title": "电路结构图 的出链列表"
+              "title": "静力学结构图 的出链列表"
             }
           },
           {
-            "id": "1e45123515f7c550",
+            "id": "cc81a78ad4209859",
             "type": "leaf",
             "state": {
               "type": "tag",
@@ -204,30 +135,29 @@
             }
           },
           {
-            "id": "19de8d43ab12f710",
+            "id": "393251ff21919841",
             "type": "leaf",
             "state": {
               "type": "outline",
               "state": {
-                "file": "学案/高二力电复习/场的性质.md",
+                "file": "学案/必修一/图/静力学结构图.md",
                 "followCursor": false,
                 "showSearch": false,
                 "searchQuery": ""
               },
               "icon": "lucide-list",
-              "title": "场的性质 的大纲"
+              "title": "静力学结构图 的大纲"
             }
           }
-        ],
-        "currentTab": 3
+        ]
       }
     ],
     "direction": "horizontal",
-    "width": 300
+    "width": 300,
+    "collapsed": true
   },
   "left-ribbon": {
     "hiddenItems": {
-      "bases:新建数据库": false,
       "switcher:打开快速切换": false,
       "graph:查看关系图谱": false,
       "canvas:新建白板": false,
@@ -235,55 +165,15 @@
       "templates:插入模板": false,
       "command-palette:打开命令面板": false,
       "workspaces:管理工作区布局": false,
+      "bases:新建数据库": false,
       "obsidian42-brat:BRAT": false,
       "obsidian-excalidraw-plugin-ymjr:新建绘图文件": false,
       "templater-obsidian:Templater": false
     }
   },
-  "active": "c04c156270b18694",
+  "active": "3933c5f252d0087f",
   "lastOpenFiles": [
-    "吴雨桐/期末补充.md",
-    "学案/高二力电复习/场的性质练习题.md",
-    "学案/高二力电复习/场的性质.md",
-    "吴雨桐/attachments/Pasted image 20260123191254.png",
-    "吴雨桐/attachments/Pasted image 20260123190909.png",
-    "吴雨桐/attachments",
-    "学案/示例文件.md",
-    "吴雨桐",
-    "学案/高二力电复习/未命名.md",
-    "学案/高二力电复习/attachments/Pasted image 20260122220218.png",
-    "学案/必修三/电路/串并联.md",
-    "学案/高二力电复习/attachments/Pasted image 20260122215515.png",
-    "学案/高二力电复习/attachments/Pasted image 20260122215158.png",
-    "学案/高二力电复习/attachments/Pasted image 20260122215131.png",
-    "学案/高二力电复习/attachments/Pasted image 20260122214829.png",
-    "学案/必修三/磁场/图/洛伦兹力图.md",
-    "高三创新题积累/电通量.md",
-    "学案/必修三/磁场/图/安培力图.md",
-    "学案/必修三/磁场/图/复合场中粒子运动_图.md",
-    "学案/必修三/磁场/图/电磁场科技仪器_图.md",
-    "学案/必修三/磁场/图/磁场基本概念与性质_配图.md",
-    "学案/必修三/磁场/图/磁场结构图.md",
-    "学案/必修三/磁场/图/磁场画图.md",
-    "学案/必修三/静电场/电容器与电容.md",
-    "学案/高二力电复习/attachments/Pasted image 20260122212139.png",
-    "学案/高二力电复习/attachments/Pasted image 20260122211118.png",
-    "学案/高二力电复习/attachments/Pasted image 20260122210559.png",
-    "学案/必修三/静电场/图/电容器与电容_图.md",
-    "学案/高二力电复习/attachments",
-    "plugins/Templater/mathpix.md",
-    "plugins/QuickAdd/renumbeh6.js",
-    "plugins/QuickAdd/新建 文本文档.txt",
-    "寒假课内容和时间安排.md",
-    "学案/必修一/图/动力学结构图.md",
-    "高三创新题积累/attachments",
-    "高三创新题积累",
-    "学案/必修一/图/静力学结构图.md",
-    "学案/高二力电复习/课程设计.md",
-    "学案/必修三/静电场/两个点电荷的叠加场中场强与电势的变化.md",
-    "学案/高二力电复习",
-    "学案/必修三/静电场/库仑力下的平衡.md",
-    "学案/必修三/静电场/静电平衡.md",
-    "学案/必修三/静电场/静电场复习.md"
+    "学案/必修一/图/力学模板图.md",
+    "学案/必修一/图/静力学结构图.md"
   ]
 }
