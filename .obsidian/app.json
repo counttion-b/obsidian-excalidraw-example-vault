@@ -11,5 +11,6 @@
   },
   "showLineNumber": false,
   "readableLineLength": true,
-  "smartIndentList": true
+  "smartIndentList": true,
+  "strictLineBreaks": false
 }
