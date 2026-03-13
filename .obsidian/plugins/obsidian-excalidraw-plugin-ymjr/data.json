@@ -113,6 +113,74 @@
     "source": "https://github.com/zsviczian/obsidian-excalidraw-plugin/releases/tag/2.18.0-9",
     "libraryItems": [
       {
+        "id": "QLdKT4AI04NfihhyNUfjE",
+        "status": "unpublished",
+        "elements": [
+          {
+            "id": "P8pU0CzDSPg_ViQOmJZXH",
+            "type": "rectangle",
+            "x": -1940,
+            "y": 1920,
+            "width": 669.9999999999999,
+            "height": 877.4380875295731,
+            "angle": 0,
+            "strokeColor": "#1e1e1e",
+            "backgroundColor": "transparent",
+            "fillStyle": "solid",
+            "strokeWidth": 4,
+            "strokeStyle": "dotted",
+            "roughness": 0,
+            "opacity": 100,
+            "groupIds": [
+              "wYYsIbJRyAFpFDNwcJQ_t"
+            ],
+            "frameId": null,
+            "index": "bNbV",
+            "roundness": null,
+            "seed": 828205046,
+            "version": 1710,
+            "versionNonce": 704745002,
+            "isDeleted": false,
+            "boundElements": [],
+            "updated": 1773391835039,
+            "link": null,
+            "locked": false
+          },
+          {
+            "id": "Vc_EtMAh00zoxq3BKov7X",
+            "type": "rectangle",
+            "x": -1270,
+            "y": 1920,
+            "width": 669.9999999999999,
+            "height": 877.4380875295731,
+            "angle": 0,
+            "strokeColor": "#1e1e1e",
+            "backgroundColor": "transparent",
+            "fillStyle": "solid",
+            "strokeWidth": 4,
+            "strokeStyle": "dotted",
+            "roughness": 0,
+            "opacity": 100,
+            "groupIds": [
+              "wYYsIbJRyAFpFDNwcJQ_t"
+            ],
+            "frameId": null,
+            "index": "bNc",
+            "roundness": null,
+            "seed": 303226422,
+            "version": 1745,
+            "versionNonce": 398604522,
+            "isDeleted": false,
+            "boundElements": [],
+            "updated": 1773391835039,
+            "link": null,
+            "locked": false
+          }
+        ],
+        "created": 1773391842222,
+        "name": "A3"
+      },
+      {
         "id": "w7lod-CwKN8dGbaegP2E9",
         "status": "unpublished",
         "elements": [
