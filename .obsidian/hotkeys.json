@@ -256,5 +256,14 @@
       ],
       "key": "Numpad3"
     }
+  ],
+  "break-page:insert-break-page": [
+    {
+      "modifiers": [
+        "Alt",
+        "Mod"
+      ],
+      "key": "Numpad6"
+    }
   ]
 }
