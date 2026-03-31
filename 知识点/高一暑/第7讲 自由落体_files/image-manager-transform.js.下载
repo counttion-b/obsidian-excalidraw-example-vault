@@ -1,0 +1,204 @@
+"use strict";
+
+/**
+ * https://www.coder.work/article/1123885
+ * http://demo.deanhan.cn/transform/
+ * 获取旋转指定角度后的rect
+ * @param  {[type]} options rect { width, height }
+ * @param  {[type]} angle   旋转角度
+ * @return {[type]}
+ */
+function transform(options, angle) {
+  angle = Number(angle);
+  var _options$width = options.width,
+      width = _options$width === void 0 ? 0 : _options$width,
+      _options$height = options.height,
+      height = _options$height === void 0 ? 0 : _options$height;
+
+  if (angle % 360 === 0 || angle % 180 === 0) {
+    return options;
+  } else if (angle % 90 === 0) {
+    var _width = options.width,
+        _height = options.height;
+    return {
+      width: _height,
+      height: _width
+    };
+  }
+
+  var rotate = angle * Math.PI / 180;
+  var sin = Math.sin(rotate);
+  var cos = Math.cos(rotate); // (0,0) stays as (0, 0)
+  // (w,0) rotation
+
+  var x1 = cos * width,
+      y1 = sin * width; // (0,h) rotation
+
+  var x2 = -sin * height,
+      y2 = cos * height; // (w,h) rotation
+
+  var x3 = cos * width - sin * height,
+      y3 = sin * width + cos * height;
+  var minX = Math.min(0, x1, x2, x3),
+      maxX = Math.max(0, x1, x2, x3),
+      minY = Math.min(0, y1, y2, y3),
+      maxY = Math.max(0, y1, y2, y3);
+  var rotatedWidth = Math.ceil(maxX - minX),
+      rotatedHeight = Math.ceil(maxY - minY);
+  return {
+    width: rotatedWidth,
+    height: rotatedHeight
+  };
+} // 360-n
+
+
+function reversalA(direction, beforeRotate, log) {
+  // log && console.log(log)
+  var angle = (360 - beforeRotate) % 360;
+  return Object.assign(direction, {
+    angle: angle
+  });
+}
+/*
+  小于180: (360-n-180);
+  大于180: (360-n+180)
+*/
+
+
+function reversalB(transform, beforeRotate, log) {
+  // log && console.log(log)
+  var angle = 0;
+  beforeRotate = beforeRotate % 360;
+
+  if (beforeRotate < 180) {
+    angle = 360 - beforeRotate - 180;
+  }
+
+  if (beforeRotate > 180) {
+    angle = 360 - beforeRotate + 180;
+  }
+
+  return Object.assign(transform, {
+    angle: angle
+  });
+}
+/*
+  // 0, 90, 180, 270, 360
+  (n % 90 === 0) => n
+    (n % 180 === 0) => 180-n
+  // 除了 0, 90, 180, 270, 360以外
+  (n > 0 && n < 90 || n > 180 && n < 270)  => n + 90
+  (n > 90 && n < 180 || n > 270 && n < 360)  => n - 90
+ */
+
+
+function reversalC(transform, beforeRotate, log) {
+  // log && console.log(log)
+  var angle;
+  angle = beforeRotate % 360;
+
+  if (angle % 90 === 0) {
+    if (angle % 180 === 0) {
+      angle = 180 - angle;
+    }
+  }
+
+  if (angle % 90 !== 0) {
+    if (angle > 0 && angle < 90 || angle > 180 && angle < 270) {
+      angle = angle + 90;
+    }
+
+    if (angle > 90 && angle < 180 || angle > 270 && angle < 360) {
+      angle = angle - 90;
+    }
+  }
+
+  return Object.assign(transform, {
+    x: 1,
+    y: 1,
+    angle: angle
+  });
+} //
+
+
+function reversalD(transform, beforeRotate, log) {
+  var angle;
+  angle = beforeRotate % 360;
+
+  if (angle % 90 === 0) {
+    if (angle % 180 === 0) {
+      angle = 180 - angle;
+    }
+  }
+
+  if (angle % 90 !== 0) {
+    return reversalB(transform, beforeRotate, log);
+  } // log && console.log(log)
+
+
+  return Object.assign(transform, {
+    x: 1,
+    y: 1,
+    angle: angle
+  });
+}
+
+function reversalE(transform, beforeRotate, log) {
+  // log && console.log(log)
+  return Object.assign(transform, {
+    angle: beforeRotate
+  });
+}
+
+var getReversalData = function getReversalData(curTranlate, direction) {
+  var x = curTranlate.scaleX,
+      y = curTranlate.scaleY,
+      _curTranlate$rotate = curTranlate.rotate,
+      rotate = _curTranlate$rotate === void 0 ? 0 : _curTranlate$rotate;
+  console.log('curTranlate: ', curTranlate);
+  var expressName = "x".concat(x, "_y").concat(y);
+  console.log('express name:', expressName);
+  var obj = {
+    'x1_y1': {
+      'x': reversalA.bind(null, {
+        x: -1,
+        y: 1
+      }, rotate, 'x1,y1 => 水平翻转(x-1) => x-1,y1'),
+      'y': reversalB.bind(null, {
+        x: -1,
+        y: 1
+      }, rotate, 'x1,y1=> 垂直翻转(y-1) => x-1,y1')
+    },
+    'x-1_y1': {
+      'x': reversalA.bind(null, {
+        x: 1,
+        y: 1
+      }, rotate, 'x-1,y1 => 水平翻转(x1) => x1,y1'),
+      'y': reversalD.bind(null, {
+        x: 1,
+        y: 1
+      }, rotate, 'x-1,y1 => 垂直翻转(y-1) => x1,y1')
+    },
+    'x1_y-1': {
+      'x': reversalB.bind(null, {
+        x: 1,
+        y: 1
+      }, rotate),
+      'y': reversalA.bind(null, {
+        x: 1,
+        y: 1
+      }, rotate)
+    },
+    'x-1_y-1': {
+      'x': reversalB.bind(null, {
+        x: -1,
+        y: 1
+      }, rotate, 'x-1,y-1 => 水平翻转(x) => x-1,y1'),
+      'y': reversalA.bind(null, {
+        x: -1,
+        y: 1
+      }, rotate, 'x-1,y-1 => 垂直翻转(y) => x-1,y1')
+    }
+  };
+  return obj[expressName][direction]();
+};

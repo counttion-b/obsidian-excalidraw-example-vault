@@ -1,0 +1,797 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<!DOCTYPE svg PUBLIC "-//W3C//DTD SVG 1.1//EN" "http://www.w3.org/Graphics/SVG/1.1/DTD/svg11.dtd">
+<!-- 由 Microsoft Visio, SVG Export 生成 确定向心力的基本步骤.svg 页-1 -->
+<svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" xmlns:ev="http://www.w3.org/2001/xml-events"
+		xmlns:v="http://schemas.microsoft.com/visio/2003/SVGExtensions/" width="3.49743in" height="2.42566in"
+		viewBox="0 0 251.815 174.647" xml:space="preserve" color-interpolation-filters="sRGB" class="st9">
+	<v:documentProperties v:langID="2052" v:metric="true" v:viewMarkup="false"/>
+
+	<style type="text/css">
+	<![CDATA[
+		.st1 {fill:#ffffff;stroke:#000000;stroke-linecap:round;stroke-linejoin:round;stroke-width:0.24}
+		.st2 {fill:#ffffff;stroke:#000000;stroke-linecap:round;stroke-linejoin:round;stroke-width:0.24;visibility:hidden}
+		.st3 {fill:#ffffff;stroke:#000000;stroke-linecap:round;stroke-linejoin:round;stroke-width:0.72;visibility:hidden}
+		.st4 {fill:#000000;fill-opacity:1;stroke:#000000;stroke-opacity:1;stroke-width:0.35714285714286}
+		.st5 {fill:#000000;stroke:#cccccc;stroke-linecap:round;stroke-linejoin:round;stroke-width:0.72;visibility:hidden}
+		.st6 {fill:#000000;font-family:微软雅黑;font-size:1.16666em}
+		.st7 {marker-end:url(#mrkr4-183);stroke:#000000;stroke-linecap:round;stroke-linejoin:round;stroke-width:0.72}
+		.st8 {fill:#000000;fill-opacity:1;stroke:#000000;stroke-opacity:1;stroke-width:0.28571428571429}
+		.st9 {fill:none;fill-rule:evenodd;font-size:12px;overflow:visible;stroke-linecap:square;stroke-miterlimit:3}
+	]]>
+	</style>
+
+	<defs id="Markers">
+		<g id="lend1">
+			<path d="M 1 -1 L 0 0 L 1 1 " style="stroke-linecap:round;stroke-linejoin:round;fill:none"/>
+		</g>
+		<marker id="mrkr1-24" class="st4" v:arrowType="1" v:arrowSize="1" orient="auto" markerUnits="strokeWidth"
+				overflow="visible">
+			<use xlink:href="#lend1" transform="scale(-2.8,-2.8) "/>
+		</marker>
+		<g id="lend4">
+			<path d="M 2 1 L 0 0 L 2 -1 L 2 1 " style="stroke:none"/>
+		</g>
+		<marker id="mrkr4-183" class="st8" v:arrowType="4" v:arrowSize="1" v:setback="7" refX="-7" orient="auto"
+				markerUnits="strokeWidth" overflow="visible">
+			<use xlink:href="#lend4" transform="scale(-3.5,-3.5) "/>
+		</marker>
+	</defs>
+	<g v:mID="0" v:index="1" v:groupContext="foregroundPage">
+		<title>页-1</title>
+		<v:pageProperties v:drawingScale="0.0393701" v:pageScale="0.0393701" v:drawingUnits="24" v:shadowOffsetX="8.50394"
+				v:shadowOffsetY="-8.50394"/>
+		<v:layer v:name="流程图" v:index="0"/>
+		<v:layer v:name="连接线" v:index="1"/>
+		<g id="group1-1" transform="translate(42.994,-146.87)" v:mID="1" v:groupContext="group" v:layerMember="0">
+			<v:custProps>
+				<v:cp v:nameU="BpmnId" v:lbl="Id" v:prompt="" v:type="0" v:format="" v:sortKey="" v:invis="true" v:ask="false"
+						v:langID="2052" v:cal="0" v:val="VT4()"/>
+				<v:cp v:nameU="BpmnCategories" v:lbl="类别" v:prompt="" v:type="0" v:format="" v:sortKey="" v:invis="false"
+						v:ask="false" v:langID="2052" v:cal="0" v:val="VT4()"/>
+				<v:cp v:nameU="BpmnDocumentation" v:lbl="文档" v:prompt="" v:type="0" v:format="" v:sortKey="" v:invis="false"
+						v:ask="false" v:langID="2052" v:cal="0" v:val="VT4()"/>
+				<v:cp v:nameU="BpmnName" v:lbl="名称" v:prompt="" v:type="0" v:format="" v:sortKey="" v:invis="true" v:ask="false"
+						v:langID="2052" v:cal="0" v:val="VT4()"/>
+				<v:cp v:nameU="BpmnActivityType" v:lbl="ActivityType" v:prompt="" v:type="1" v:format="任务;子流程" v:sortKey=""
+						v:invis="true" v:ask="false" v:langID="2052" v:cal="0" v:val="VT4(任务)"/>
+				<v:cp v:nameU="BpmnLoopType" v:lbl="LoopType" v:prompt="" v:type="1" v:format="无; 标准; 并行多实例; 顺序多实例" v:sortKey=""
+						v:invis="false" v:ask="false" v:langID="2052" v:cal="0" v:val="VT4(无)"/>
+				<v:cp v:nameU="BpmnTaskType" v:lbl="TaskType" v:prompt="" v:type="1"
+						v:format="无; 服务; 接收; 发送; 用户; 脚本; 摘要; 手动; 实例化接收; 业务规则" v:sortKey="" v:invis="false" v:ask="false"
+						v:langID="2052" v:cal="0" v:val="VT4(无)"/>
+				<v:cp v:nameU="BpmnScript" v:lbl="脚本" v:prompt="" v:type="0" v:format="" v:sortKey="" v:invis="true" v:ask="false"
+						v:langID="2052" v:cal="0" v:val="VT4()"/>
+				<v:cp v:nameU="BpmnInstantiate" v:lbl="实例化" v:prompt="" v:type="3" v:format="" v:sortKey="" v:invis="true"
+						v:ask="false" v:langID="2052" v:cal="0" v:val="VT0(0):5"/>
+				<v:cp v:nameU="BpmnSubProcessType" v:lbl="SubProcessType" v:prompt="" v:type="1" v:format="嵌入;可重用;引用" v:sortKey=""
+						v:invis="true" v:ask="false" v:langID="2052" v:cal="0" v:val="VT4(嵌入)"/>
+				<v:cp v:nameU="BpmnIsCollapsed" v:lbl="IsCollapsed" v:prompt="" v:type="3" v:format="" v:sortKey="" v:invis="true"
+						v:ask="false" v:langID="2052" v:cal="0" v:val="VT0(0):5"/>
+				<v:cp v:nameU="BpmnIsATransaction" v:lbl="IsATransaction" v:prompt="" v:type="3" v:format="" v:sortKey=""
+						v:invis="true" v:ask="false" v:langID="2052" v:cal="0" v:val="VT0(0):5"/>
+				<v:cp v:nameU="BpmnIsForCompensation" v:lbl="IsForCompensation" v:prompt="" v:type="3" v:format="" v:sortKey=""
+						v:invis="false" v:ask="false" v:langID="2052" v:cal="0" v:val="VT0(0):5"/>
+				<v:cp v:nameU="BpmnElementType" v:lbl="ElementType" v:prompt="" v:type="1" v:format="子流程;事件;网关;流程图;池;通道;工件;连接对象"
+						v:sortKey="" v:invis="true" v:ask="false" v:langID="2052" v:cal="0" v:val="VT4(子流程)"/>
+				<v:cp v:nameU="BpmnAdHoc" v:lbl="AdHoc" v:prompt="" v:type="3" v:format="" v:sortKey="" v:invis="true"
+						v:ask="false" v:langID="2052" v:cal="0" v:val="VT0(0):5"/>
+				<v:cp v:nameU="BpmnAdHocOrdering" v:lbl="AdHocOrdering" v:prompt="" v:type="1" v:format="连续;平行" v:sortKey=""
+						v:invis="true" v:ask="false" v:langID="2052" v:cal="0" v:val="VT4(平行)"/>
+				<v:cp v:nameU="BpmnBoundaryType" v:lbl="BoundaryType" v:prompt="" v:type="1" v:format="默认值; 调用" v:sortKey=""
+						v:invis="false" v:ask="false" v:langID="2052" v:cal="0" v:val="VT4(默认值)"/>
+				<v:cp v:nameU="BpmnName" v:lbl="" v:prompt="" v:type="0" v:format="" v:sortKey="" v:invis="false" v:ask="false"
+						v:langID="0" v:cal="0" v:val="VT4(确定圆周运动所在平面)"/>
+			</v:custProps>
+			<v:userDefs>
+				<v:ud v:nameU="BpmnNumIconsVisible" v:prompt="" v:val="VT0(0):26"/>
+				<v:ud v:nameU="BpmnIsExtendedSubProcess" v:prompt="" v:val="VT0(0):5"/>
+				<v:ud v:nameU="msvStructureType" v:prompt="" v:val="VT0(0):26"/>
+				<v:ud v:nameU="msvSDContainerResize" v:prompt="" v:val="VT0(0):26"/>
+				<v:ud v:nameU="visVersion" v:prompt="" v:val="VT0(15):26"/>
+				<v:ud v:nameU="msvShapeCategories" v:prompt="" v:val="VT4(Task)"/>
+				<v:ud v:nameU="BpmnIconHeight" v:prompt="" v:val="VT0(0.15748031496063):24"/>
+				<v:ud v:nameU="BpmnIconPinY" v:prompt="" v:val="VT0(0.11811023622047):24"/>
+				<v:ud v:nameU="BpmnBoundaryType" v:prompt="" v:val="VT0(0):26"/>
+				<v:ud v:nameU="DefaultWidth" v:prompt="" v:val="VT0(0.98425196850394):24"/>
+				<v:ud v:nameU="DefaultHeight" v:prompt="" v:val="VT0(0.78740157480315):24"/>
+				<v:ud v:nameU="ResizeTxtHeight" v:prompt="" v:val="VT0(0.78740157480315):24"/>
+				<v:ud v:nameU="IsInstance" v:prompt="" v:val="VT0(0):5"/>
+				<v:ud v:nameU="IsInstance" v:prompt="" v:val="VT0(1):5"/>
+			</v:userDefs>
+			<title>任务</title>
+			<desc>确定圆周运动所在平面</desc>
+			<g id="shape2-2" v:mID="2" v:groupContext="shape" v:layerMember="0">
+				<title>工作表.2</title>
+				<rect x="0" y="146.99" width="165.827" height="27.6569" rx="5.66929" ry="5.66929" class="st1"/>
+			</g>
+			<g id="group3-4" v:mID="3" v:groupContext="group" v:layerMember="0">
+				<title>工作表.3</title>
+				<g id="shape4-5" v:mID="4" v:groupContext="shape" v:layerMember="0">
+					<title>工作表.4</title>
+					<rect x="0" y="146.99" width="165.827" height="27.6569" rx="2.12598" ry="2.12598" class="st2"/>
+				</g>
+				<g id="shape5-7" v:mID="5" v:groupContext="shape" v:layerMember="0" transform="translate(1.8,-1.8)">
+					<title>工作表.5</title>
+					<rect x="0" y="150.59" width="162.227" height="24.0569" rx="2.12598" ry="2.12598" class="st2"/>
+				</g>
+			</g>
+			<g id="shape6-9" v:mID="6" v:groupContext="shape" v:layerMember="0" transform="translate(83.7241,-2.12598)">
+				<title>工作表.6</title>
+				<v:userDefs>
+					<v:ud v:nameU="BpmnIconPosition" v:prompt="" v:val="VT0(1):26"/>
+					<v:ud v:nameU="BpmnIconWidth" v:prompt="" v:val="VT0(0.18):26"/>
+				</v:userDefs>
+			</g>
+			<g id="group7-11" transform="translate(84.0841,-2.83465)" v:mID="7" v:groupContext="group" v:layerMember="0">
+				<v:userDefs>
+					<v:ud v:nameU="BpmnIconPosition" v:prompt="" v:val="VT0(1):26"/>
+					<v:ud v:nameU="BpmnIconWidth" v:prompt="" v:val="VT0(0.19):26"/>
+				</v:userDefs>
+				<title>工作表.7</title>
+				<g id="shape8-12" v:mID="8" v:groupContext="shape" v:layerMember="0">
+					<title>工作表.8</title>
+					<rect x="0" y="163.309" width="11.3386" height="11.3386" class="st3"/>
+				</g>
+				<g id="shape9-14" v:mID="9" v:groupContext="shape" v:layerMember="0" transform="translate(2.83465,-2.83465)">
+					<title>工作表.9</title>
+				</g>
+			</g>
+			<g id="shape10-16" v:mID="10" v:groupContext="shape" v:layerMember="0" transform="translate(84.0841,-3.68504)">
+				<title>工作表.10</title>
+				<v:userDefs>
+					<v:ud v:nameU="BpmnIconPosition" v:prompt="" v:val="VT0(1):26"/>
+					<v:ud v:nameU="BpmnIconWidth" v:prompt="" v:val="VT0(0.19):26"/>
+				</v:userDefs>
+			</g>
+			<g id="shape11-18" v:mID="11" v:groupContext="shape" v:layerMember="0" transform="translate(85.1981,-3.68504)">
+				<title>工作表.11</title>
+				<v:userDefs>
+					<v:ud v:nameU="BpmnIconPosition" v:prompt="" v:val="VT0(1):26"/>
+					<v:ud v:nameU="BpmnIconWidth" v:prompt="" v:val="VT0(0.18):26"/>
+				</v:userDefs>
+			</g>
+			<g id="group12-20" transform="translate(83.7241,-2.83465)" v:mID="12" v:groupContext="group" v:layerMember="0">
+				<v:userDefs>
+					<v:ud v:nameU="BpmnIconPosition" v:prompt="" v:val="VT0(1):26"/>
+					<v:ud v:nameU="BpmnIconWidth" v:prompt="" v:val="VT0(0.18):26"/>
+				</v:userDefs>
+				<title>工作表.12</title>
+				<g id="shape13-21" v:mID="13" v:groupContext="shape" v:layerMember="0"
+						transform="translate(8.11863,338.96) rotate(179.753)">
+					<title>工作表.13</title>
+				</g>
+			</g>
+			<g id="shape14-25" v:mID="14" v:groupContext="shape" v:layerMember="0" transform="translate(3.50394,-14.153)">
+				<title>工作表.14</title>
+			</g>
+			<g id="shape15-27" v:mID="15" v:groupContext="shape" v:layerMember="0" transform="translate(3.00394,-13.653)">
+				<title>工作表.15</title>
+			</g>
+			<g id="group16-29" transform="translate(2.50394,-15.153)" v:mID="16" v:groupContext="group" v:layerMember="0">
+				<title>工作表.16</title>
+				<g id="shape17-30" v:mID="17" v:groupContext="shape" v:layerMember="0">
+					<title>工作表.17</title>
+					<rect x="0" y="166.647" width="12" height="8" class="st5"/>
+				</g>
+				<g id="shape18-32" v:mID="18" v:groupContext="shape" v:layerMember="0" transform="translate(-1.9984E-15,-4.20339)">
+					<title>工作表.18</title>
+				</g>
+			</g>
+			<g id="shape19-34" v:mID="19" v:groupContext="shape" v:layerMember="0" transform="translate(2.50394,-15.153)">
+				<title>工作表.19</title>
+			</g>
+			<g id="shape20-36" v:mID="20" v:groupContext="shape" v:layerMember="0" transform="translate(3.50394,-14.153)">
+				<title>工作表.20</title>
+			</g>
+			<g id="shape21-38" v:mID="21" v:groupContext="shape" v:layerMember="0" transform="translate(3.00394,-15.153)">
+				<title>工作表.21</title>
+			</g>
+			<g id="shape22-40" v:mID="22" v:groupContext="shape" v:layerMember="0" transform="translate(3.00394,-15.153)">
+				<title>工作表.22</title>
+			</g>
+			<g id="shape23-42" v:mID="23" v:groupContext="shape" v:layerMember="0"
+					transform="translate(-80.435,170.339) rotate(-90)">
+				<title>工作表.23</title>
+				<v:userDefs>
+					<v:ud v:nameU="BpmnIconPosition" v:prompt="" v:val="VT0(1):26"/>
+					<v:ud v:nameU="BpmnIconWidth" v:prompt="" v:val="VT0(0.18):26"/>
+				</v:userDefs>
+			</g>
+			<g id="shape1-44" v:mID="1" v:groupContext="groupContent" v:layerMember="0">
+				<v:textBlock v:margins="rect(2,2,2,2)" v:tabSpace="42.5197"/>
+				<v:textRect cx="82.9134" cy="160.819" width="165.83" height="0"/>
+				<text x="12.91" y="165.02" class="st6" v:langID="2052"><v:paragraph v:horizAlign="1"/><v:tabList/>确定圆周运动所在平面</text>			</g>
+		</g>
+		<g id="group142-46" transform="translate(56.4586,-97.9536)" v:mID="142" v:groupContext="group" v:layerMember="0">
+			<v:custProps>
+				<v:cp v:nameU="BpmnId" v:lbl="Id" v:prompt="" v:type="0" v:format="" v:sortKey="" v:invis="true" v:ask="false"
+						v:langID="2052" v:cal="0" v:val="VT4()"/>
+				<v:cp v:nameU="BpmnCategories" v:lbl="类别" v:prompt="" v:type="0" v:format="" v:sortKey="" v:invis="false"
+						v:ask="false" v:langID="2052" v:cal="0" v:val="VT4()"/>
+				<v:cp v:nameU="BpmnDocumentation" v:lbl="文档" v:prompt="" v:type="0" v:format="" v:sortKey="" v:invis="false"
+						v:ask="false" v:langID="2052" v:cal="0" v:val="VT4()"/>
+				<v:cp v:nameU="BpmnName" v:lbl="名称" v:prompt="" v:type="0" v:format="" v:sortKey="" v:invis="true" v:ask="false"
+						v:langID="2052" v:cal="0" v:val="VT4()"/>
+				<v:cp v:nameU="BpmnActivityType" v:lbl="ActivityType" v:prompt="" v:type="1" v:format="任务;子流程" v:sortKey=""
+						v:invis="true" v:ask="false" v:langID="2052" v:cal="0" v:val="VT4(任务)"/>
+				<v:cp v:nameU="BpmnLoopType" v:lbl="LoopType" v:prompt="" v:type="1" v:format="无; 标准; 并行多实例; 顺序多实例" v:sortKey=""
+						v:invis="false" v:ask="false" v:langID="2052" v:cal="0" v:val="VT4(无)"/>
+				<v:cp v:nameU="BpmnTaskType" v:lbl="TaskType" v:prompt="" v:type="1"
+						v:format="无; 服务; 接收; 发送; 用户; 脚本; 摘要; 手动; 实例化接收; 业务规则" v:sortKey="" v:invis="false" v:ask="false"
+						v:langID="2052" v:cal="0" v:val="VT4(无)"/>
+				<v:cp v:nameU="BpmnScript" v:lbl="脚本" v:prompt="" v:type="0" v:format="" v:sortKey="" v:invis="true" v:ask="false"
+						v:langID="2052" v:cal="0" v:val="VT4()"/>
+				<v:cp v:nameU="BpmnInstantiate" v:lbl="实例化" v:prompt="" v:type="3" v:format="" v:sortKey="" v:invis="true"
+						v:ask="false" v:langID="2052" v:cal="0" v:val="VT0(0):5"/>
+				<v:cp v:nameU="BpmnSubProcessType" v:lbl="SubProcessType" v:prompt="" v:type="1" v:format="嵌入;可重用;引用" v:sortKey=""
+						v:invis="true" v:ask="false" v:langID="2052" v:cal="0" v:val="VT4(嵌入)"/>
+				<v:cp v:nameU="BpmnIsCollapsed" v:lbl="IsCollapsed" v:prompt="" v:type="3" v:format="" v:sortKey="" v:invis="true"
+						v:ask="false" v:langID="2052" v:cal="0" v:val="VT0(0):5"/>
+				<v:cp v:nameU="BpmnIsATransaction" v:lbl="IsATransaction" v:prompt="" v:type="3" v:format="" v:sortKey=""
+						v:invis="true" v:ask="false" v:langID="2052" v:cal="0" v:val="VT0(0):5"/>
+				<v:cp v:nameU="BpmnIsForCompensation" v:lbl="IsForCompensation" v:prompt="" v:type="3" v:format="" v:sortKey=""
+						v:invis="false" v:ask="false" v:langID="2052" v:cal="0" v:val="VT0(0):5"/>
+				<v:cp v:nameU="BpmnElementType" v:lbl="ElementType" v:prompt="" v:type="1" v:format="子流程;事件;网关;流程图;池;通道;工件;连接对象"
+						v:sortKey="" v:invis="true" v:ask="false" v:langID="2052" v:cal="0" v:val="VT4(子流程)"/>
+				<v:cp v:nameU="BpmnAdHoc" v:lbl="AdHoc" v:prompt="" v:type="3" v:format="" v:sortKey="" v:invis="true"
+						v:ask="false" v:langID="2052" v:cal="0" v:val="VT0(0):5"/>
+				<v:cp v:nameU="BpmnAdHocOrdering" v:lbl="AdHocOrdering" v:prompt="" v:type="1" v:format="连续;平行" v:sortKey=""
+						v:invis="true" v:ask="false" v:langID="2052" v:cal="0" v:val="VT4(平行)"/>
+				<v:cp v:nameU="BpmnBoundaryType" v:lbl="BoundaryType" v:prompt="" v:type="1" v:format="默认值; 调用" v:sortKey=""
+						v:invis="false" v:ask="false" v:langID="2052" v:cal="0" v:val="VT4(默认值)"/>
+				<v:cp v:nameU="BpmnName" v:lbl="" v:prompt="" v:type="0" v:format="" v:sortKey="" v:invis="false" v:ask="false"
+						v:langID="0" v:cal="0" v:val="VT4(找到轨道圆心的位置)"/>
+			</v:custProps>
+			<v:userDefs>
+				<v:ud v:nameU="BpmnNumIconsVisible" v:prompt="" v:val="VT0(0):26"/>
+				<v:ud v:nameU="BpmnIsExtendedSubProcess" v:prompt="" v:val="VT0(0):5"/>
+				<v:ud v:nameU="msvStructureType" v:prompt="" v:val="VT0(0):26"/>
+				<v:ud v:nameU="msvSDContainerResize" v:prompt="" v:val="VT0(0):26"/>
+				<v:ud v:nameU="visVersion" v:prompt="" v:val="VT0(15):26"/>
+				<v:ud v:nameU="msvShapeCategories" v:prompt="" v:val="VT4(Task)"/>
+				<v:ud v:nameU="BpmnIconHeight" v:prompt="" v:val="VT0(0.15748031496063):24"/>
+				<v:ud v:nameU="BpmnIconPinY" v:prompt="" v:val="VT0(0.11811023622047):24"/>
+				<v:ud v:nameU="BpmnBoundaryType" v:prompt="" v:val="VT0(0):26"/>
+				<v:ud v:nameU="DefaultWidth" v:prompt="" v:val="VT0(0.98425196850394):24"/>
+				<v:ud v:nameU="DefaultHeight" v:prompt="" v:val="VT0(0.78740157480315):24"/>
+				<v:ud v:nameU="ResizeTxtHeight" v:prompt="" v:val="VT0(0.78740157480315):24"/>
+				<v:ud v:nameU="IsInstance" v:prompt="" v:val="VT0(0):5"/>
+				<v:ud v:nameU="IsInstance" v:prompt="" v:val="VT0(1):5"/>
+			</v:userDefs>
+			<title>任务.142</title>
+			<desc>找到轨道圆心的位置</desc>
+			<g id="shape143-47" v:mID="143" v:groupContext="shape" v:layerMember="0">
+				<title>工作表.143</title>
+				<rect x="0" y="146.99" width="138.898" height="27.6569" rx="5.66929" ry="5.66929" class="st1"/>
+			</g>
+			<g id="group144-49" v:mID="144" v:groupContext="group" v:layerMember="0">
+				<title>工作表.144</title>
+				<g id="shape145-50" v:mID="145" v:groupContext="shape" v:layerMember="0">
+					<title>工作表.145</title>
+					<rect x="0" y="146.99" width="138.898" height="27.6569" rx="2.12598" ry="2.12598" class="st2"/>
+				</g>
+				<g id="shape146-52" v:mID="146" v:groupContext="shape" v:layerMember="0" transform="translate(1.8,-1.8)">
+					<title>工作表.146</title>
+					<rect x="0" y="150.59" width="135.298" height="24.0569" rx="2.12598" ry="2.12598" class="st2"/>
+				</g>
+			</g>
+			<g id="shape147-54" v:mID="147" v:groupContext="shape" v:layerMember="0" transform="translate(70.2595,-2.12598)">
+				<title>工作表.147</title>
+				<v:userDefs>
+					<v:ud v:nameU="BpmnIconPosition" v:prompt="" v:val="VT0(1):26"/>
+					<v:ud v:nameU="BpmnIconWidth" v:prompt="" v:val="VT0(0.18):26"/>
+				</v:userDefs>
+			</g>
+			<g id="group148-56" transform="translate(70.6195,-2.83465)" v:mID="148" v:groupContext="group" v:layerMember="0">
+				<v:userDefs>
+					<v:ud v:nameU="BpmnIconPosition" v:prompt="" v:val="VT0(1):26"/>
+					<v:ud v:nameU="BpmnIconWidth" v:prompt="" v:val="VT0(0.19):26"/>
+				</v:userDefs>
+				<title>工作表.148</title>
+				<g id="shape149-57" v:mID="149" v:groupContext="shape" v:layerMember="0">
+					<title>工作表.149</title>
+					<rect x="0" y="163.309" width="11.3386" height="11.3386" class="st3"/>
+				</g>
+				<g id="shape150-59" v:mID="150" v:groupContext="shape" v:layerMember="0" transform="translate(2.83465,-2.83465)">
+					<title>工作表.150</title>
+				</g>
+			</g>
+			<g id="shape151-61" v:mID="151" v:groupContext="shape" v:layerMember="0" transform="translate(70.6195,-3.68504)">
+				<title>工作表.151</title>
+				<v:userDefs>
+					<v:ud v:nameU="BpmnIconPosition" v:prompt="" v:val="VT0(1):26"/>
+					<v:ud v:nameU="BpmnIconWidth" v:prompt="" v:val="VT0(0.19):26"/>
+				</v:userDefs>
+			</g>
+			<g id="shape152-63" v:mID="152" v:groupContext="shape" v:layerMember="0" transform="translate(71.7335,-3.68504)">
+				<title>工作表.152</title>
+				<v:userDefs>
+					<v:ud v:nameU="BpmnIconPosition" v:prompt="" v:val="VT0(1):26"/>
+					<v:ud v:nameU="BpmnIconWidth" v:prompt="" v:val="VT0(0.18):26"/>
+				</v:userDefs>
+			</g>
+			<g id="group153-65" transform="translate(70.2595,-2.83465)" v:mID="153" v:groupContext="group" v:layerMember="0">
+				<v:userDefs>
+					<v:ud v:nameU="BpmnIconPosition" v:prompt="" v:val="VT0(1):26"/>
+					<v:ud v:nameU="BpmnIconWidth" v:prompt="" v:val="VT0(0.18):26"/>
+				</v:userDefs>
+				<title>工作表.153</title>
+				<g id="shape154-66" v:mID="154" v:groupContext="shape" v:layerMember="0"
+						transform="translate(8.11863,338.96) rotate(179.753)">
+					<title>工作表.154</title>
+				</g>
+			</g>
+			<g id="shape155-69" v:mID="155" v:groupContext="shape" v:layerMember="0" transform="translate(3.50394,-14.153)">
+				<title>工作表.155</title>
+			</g>
+			<g id="shape156-71" v:mID="156" v:groupContext="shape" v:layerMember="0" transform="translate(3.00394,-13.653)">
+				<title>工作表.156</title>
+			</g>
+			<g id="group157-73" transform="translate(2.50394,-15.153)" v:mID="157" v:groupContext="group" v:layerMember="0">
+				<title>工作表.157</title>
+				<g id="shape158-74" v:mID="158" v:groupContext="shape" v:layerMember="0">
+					<title>工作表.158</title>
+					<rect x="0" y="166.647" width="12" height="8" class="st5"/>
+				</g>
+				<g id="shape159-76" v:mID="159" v:groupContext="shape" v:layerMember="0"
+						transform="translate(-1.9984E-15,-4.20339)">
+					<title>工作表.159</title>
+				</g>
+			</g>
+			<g id="shape160-78" v:mID="160" v:groupContext="shape" v:layerMember="0" transform="translate(2.50394,-15.153)">
+				<title>工作表.160</title>
+			</g>
+			<g id="shape161-80" v:mID="161" v:groupContext="shape" v:layerMember="0" transform="translate(3.50394,-14.153)">
+				<title>工作表.161</title>
+			</g>
+			<g id="shape162-82" v:mID="162" v:groupContext="shape" v:layerMember="0" transform="translate(3.00394,-15.153)">
+				<title>工作表.162</title>
+			</g>
+			<g id="shape163-84" v:mID="163" v:groupContext="shape" v:layerMember="0" transform="translate(3.00394,-15.153)">
+				<title>工作表.163</title>
+			</g>
+			<g id="shape164-86" v:mID="164" v:groupContext="shape" v:layerMember="0"
+					transform="translate(-93.8996,170.339) rotate(-90)">
+				<title>工作表.164</title>
+				<v:userDefs>
+					<v:ud v:nameU="BpmnIconPosition" v:prompt="" v:val="VT0(1):26"/>
+					<v:ud v:nameU="BpmnIconWidth" v:prompt="" v:val="VT0(0.18):26"/>
+				</v:userDefs>
+			</g>
+			<g id="shape142-88" v:mID="142" v:groupContext="groupContent" v:layerMember="0">
+				<v:textBlock v:margins="rect(2,2,2,2)" v:tabSpace="42.5197"/>
+				<v:textRect cx="69.4488" cy="160.819" width="138.9" height="0"/>
+				<text x="6.45" y="165.02" class="st6" v:langID="2052"><v:paragraph v:horizAlign="1"/><v:tabList/>找到轨道圆心的位置</text>			</g>
+		</g>
+		<g id="group165-90" transform="translate(15.3562,-49.0368)" v:mID="165" v:groupContext="group" v:layerMember="0">
+			<v:custProps>
+				<v:cp v:nameU="BpmnId" v:lbl="Id" v:prompt="" v:type="0" v:format="" v:sortKey="" v:invis="true" v:ask="false"
+						v:langID="2052" v:cal="0" v:val="VT4()"/>
+				<v:cp v:nameU="BpmnCategories" v:lbl="类别" v:prompt="" v:type="0" v:format="" v:sortKey="" v:invis="false"
+						v:ask="false" v:langID="2052" v:cal="0" v:val="VT4()"/>
+				<v:cp v:nameU="BpmnDocumentation" v:lbl="文档" v:prompt="" v:type="0" v:format="" v:sortKey="" v:invis="false"
+						v:ask="false" v:langID="2052" v:cal="0" v:val="VT4()"/>
+				<v:cp v:nameU="BpmnName" v:lbl="名称" v:prompt="" v:type="0" v:format="" v:sortKey="" v:invis="true" v:ask="false"
+						v:langID="2052" v:cal="0" v:val="VT4()"/>
+				<v:cp v:nameU="BpmnActivityType" v:lbl="ActivityType" v:prompt="" v:type="1" v:format="任务;子流程" v:sortKey=""
+						v:invis="true" v:ask="false" v:langID="2052" v:cal="0" v:val="VT4(任务)"/>
+				<v:cp v:nameU="BpmnLoopType" v:lbl="LoopType" v:prompt="" v:type="1" v:format="无; 标准; 并行多实例; 顺序多实例" v:sortKey=""
+						v:invis="false" v:ask="false" v:langID="2052" v:cal="0" v:val="VT4(无)"/>
+				<v:cp v:nameU="BpmnTaskType" v:lbl="TaskType" v:prompt="" v:type="1"
+						v:format="无; 服务; 接收; 发送; 用户; 脚本; 摘要; 手动; 实例化接收; 业务规则" v:sortKey="" v:invis="false" v:ask="false"
+						v:langID="2052" v:cal="0" v:val="VT4(无)"/>
+				<v:cp v:nameU="BpmnScript" v:lbl="脚本" v:prompt="" v:type="0" v:format="" v:sortKey="" v:invis="true" v:ask="false"
+						v:langID="2052" v:cal="0" v:val="VT4()"/>
+				<v:cp v:nameU="BpmnInstantiate" v:lbl="实例化" v:prompt="" v:type="3" v:format="" v:sortKey="" v:invis="true"
+						v:ask="false" v:langID="2052" v:cal="0" v:val="VT0(0):5"/>
+				<v:cp v:nameU="BpmnSubProcessType" v:lbl="SubProcessType" v:prompt="" v:type="1" v:format="嵌入;可重用;引用" v:sortKey=""
+						v:invis="true" v:ask="false" v:langID="2052" v:cal="0" v:val="VT4(嵌入)"/>
+				<v:cp v:nameU="BpmnIsCollapsed" v:lbl="IsCollapsed" v:prompt="" v:type="3" v:format="" v:sortKey="" v:invis="true"
+						v:ask="false" v:langID="2052" v:cal="0" v:val="VT0(0):5"/>
+				<v:cp v:nameU="BpmnIsATransaction" v:lbl="IsATransaction" v:prompt="" v:type="3" v:format="" v:sortKey=""
+						v:invis="true" v:ask="false" v:langID="2052" v:cal="0" v:val="VT0(0):5"/>
+				<v:cp v:nameU="BpmnIsForCompensation" v:lbl="IsForCompensation" v:prompt="" v:type="3" v:format="" v:sortKey=""
+						v:invis="false" v:ask="false" v:langID="2052" v:cal="0" v:val="VT0(0):5"/>
+				<v:cp v:nameU="BpmnElementType" v:lbl="ElementType" v:prompt="" v:type="1" v:format="子流程;事件;网关;流程图;池;通道;工件;连接对象"
+						v:sortKey="" v:invis="true" v:ask="false" v:langID="2052" v:cal="0" v:val="VT4(子流程)"/>
+				<v:cp v:nameU="BpmnAdHoc" v:lbl="AdHoc" v:prompt="" v:type="3" v:format="" v:sortKey="" v:invis="true"
+						v:ask="false" v:langID="2052" v:cal="0" v:val="VT0(0):5"/>
+				<v:cp v:nameU="BpmnAdHocOrdering" v:lbl="AdHocOrdering" v:prompt="" v:type="1" v:format="连续;平行" v:sortKey=""
+						v:invis="true" v:ask="false" v:langID="2052" v:cal="0" v:val="VT4(平行)"/>
+				<v:cp v:nameU="BpmnBoundaryType" v:lbl="BoundaryType" v:prompt="" v:type="1" v:format="默认值; 调用" v:sortKey=""
+						v:invis="false" v:ask="false" v:langID="2052" v:cal="0" v:val="VT4(默认值)"/>
+				<v:cp v:nameU="BpmnName" v:lbl="" v:prompt="" v:type="0" v:format="" v:sortKey="" v:invis="false" v:ask="false"
+						v:langID="0" v:cal="0" v:val="VT4(对圆周运动的物体进行受力分析)"/>
+			</v:custProps>
+			<v:userDefs>
+				<v:ud v:nameU="BpmnNumIconsVisible" v:prompt="" v:val="VT0(0):26"/>
+				<v:ud v:nameU="BpmnIsExtendedSubProcess" v:prompt="" v:val="VT0(0):5"/>
+				<v:ud v:nameU="msvStructureType" v:prompt="" v:val="VT0(0):26"/>
+				<v:ud v:nameU="msvSDContainerResize" v:prompt="" v:val="VT0(0):26"/>
+				<v:ud v:nameU="visVersion" v:prompt="" v:val="VT0(15):26"/>
+				<v:ud v:nameU="msvShapeCategories" v:prompt="" v:val="VT4(Task)"/>
+				<v:ud v:nameU="BpmnIconHeight" v:prompt="" v:val="VT0(0.15748031496063):24"/>
+				<v:ud v:nameU="BpmnIconPinY" v:prompt="" v:val="VT0(0.11811023622047):24"/>
+				<v:ud v:nameU="BpmnBoundaryType" v:prompt="" v:val="VT0(0):26"/>
+				<v:ud v:nameU="DefaultWidth" v:prompt="" v:val="VT0(0.98425196850394):24"/>
+				<v:ud v:nameU="DefaultHeight" v:prompt="" v:val="VT0(0.78740157480315):24"/>
+				<v:ud v:nameU="ResizeTxtHeight" v:prompt="" v:val="VT0(0.78740157480315):24"/>
+				<v:ud v:nameU="IsInstance" v:prompt="" v:val="VT0(0):5"/>
+				<v:ud v:nameU="IsInstance" v:prompt="" v:val="VT0(1):5"/>
+			</v:userDefs>
+			<title>任务.165</title>
+			<desc>对圆周运动的物体进行受力分析</desc>
+			<g id="shape166-91" v:mID="166" v:groupContext="shape" v:layerMember="0">
+				<title>工作表.166</title>
+				<rect x="0" y="146.99" width="221.102" height="27.6569" rx="5.66929" ry="5.66929" class="st1"/>
+			</g>
+			<g id="group167-93" v:mID="167" v:groupContext="group" v:layerMember="0">
+				<title>工作表.167</title>
+				<g id="shape168-94" v:mID="168" v:groupContext="shape" v:layerMember="0">
+					<title>工作表.168</title>
+					<rect x="0" y="146.99" width="221.102" height="27.6569" rx="2.12598" ry="2.12598" class="st2"/>
+				</g>
+				<g id="shape169-96" v:mID="169" v:groupContext="shape" v:layerMember="0" transform="translate(1.8,-1.8)">
+					<title>工作表.169</title>
+					<rect x="0" y="150.59" width="217.502" height="24.0569" rx="2.12598" ry="2.12598" class="st2"/>
+				</g>
+			</g>
+			<g id="shape170-98" v:mID="170" v:groupContext="shape" v:layerMember="0" transform="translate(111.362,-2.12598)">
+				<title>工作表.170</title>
+				<v:userDefs>
+					<v:ud v:nameU="BpmnIconPosition" v:prompt="" v:val="VT0(1):26"/>
+					<v:ud v:nameU="BpmnIconWidth" v:prompt="" v:val="VT0(0.18):26"/>
+				</v:userDefs>
+			</g>
+			<g id="group171-100" transform="translate(111.722,-2.83465)" v:mID="171" v:groupContext="group" v:layerMember="0">
+				<v:userDefs>
+					<v:ud v:nameU="BpmnIconPosition" v:prompt="" v:val="VT0(1):26"/>
+					<v:ud v:nameU="BpmnIconWidth" v:prompt="" v:val="VT0(0.19):26"/>
+				</v:userDefs>
+				<title>工作表.171</title>
+				<g id="shape172-101" v:mID="172" v:groupContext="shape" v:layerMember="0">
+					<title>工作表.172</title>
+					<rect x="0" y="163.309" width="11.3386" height="11.3386" class="st3"/>
+				</g>
+				<g id="shape173-103" v:mID="173" v:groupContext="shape" v:layerMember="0" transform="translate(2.83465,-2.83465)">
+					<title>工作表.173</title>
+				</g>
+			</g>
+			<g id="shape174-105" v:mID="174" v:groupContext="shape" v:layerMember="0" transform="translate(111.722,-3.68504)">
+				<title>工作表.174</title>
+				<v:userDefs>
+					<v:ud v:nameU="BpmnIconPosition" v:prompt="" v:val="VT0(1):26"/>
+					<v:ud v:nameU="BpmnIconWidth" v:prompt="" v:val="VT0(0.19):26"/>
+				</v:userDefs>
+			</g>
+			<g id="shape175-107" v:mID="175" v:groupContext="shape" v:layerMember="0" transform="translate(112.836,-3.68504)">
+				<title>工作表.175</title>
+				<v:userDefs>
+					<v:ud v:nameU="BpmnIconPosition" v:prompt="" v:val="VT0(1):26"/>
+					<v:ud v:nameU="BpmnIconWidth" v:prompt="" v:val="VT0(0.18):26"/>
+				</v:userDefs>
+			</g>
+			<g id="group176-109" transform="translate(111.362,-2.83465)" v:mID="176" v:groupContext="group" v:layerMember="0">
+				<v:userDefs>
+					<v:ud v:nameU="BpmnIconPosition" v:prompt="" v:val="VT0(1):26"/>
+					<v:ud v:nameU="BpmnIconWidth" v:prompt="" v:val="VT0(0.18):26"/>
+				</v:userDefs>
+				<title>工作表.176</title>
+				<g id="shape177-110" v:mID="177" v:groupContext="shape" v:layerMember="0"
+						transform="translate(8.11863,338.96) rotate(179.753)">
+					<title>工作表.177</title>
+				</g>
+			</g>
+			<g id="shape178-113" v:mID="178" v:groupContext="shape" v:layerMember="0" transform="translate(3.50394,-14.153)">
+				<title>工作表.178</title>
+			</g>
+			<g id="shape179-115" v:mID="179" v:groupContext="shape" v:layerMember="0" transform="translate(3.00394,-13.653)">
+				<title>工作表.179</title>
+			</g>
+			<g id="group180-117" transform="translate(2.50394,-15.153)" v:mID="180" v:groupContext="group" v:layerMember="0">
+				<title>工作表.180</title>
+				<g id="shape181-118" v:mID="181" v:groupContext="shape" v:layerMember="0">
+					<title>工作表.181</title>
+					<rect x="0" y="166.647" width="12" height="8" class="st5"/>
+				</g>
+				<g id="shape182-120" v:mID="182" v:groupContext="shape" v:layerMember="0"
+						transform="translate(-1.9984E-15,-4.20339)">
+					<title>工作表.182</title>
+				</g>
+			</g>
+			<g id="shape183-122" v:mID="183" v:groupContext="shape" v:layerMember="0" transform="translate(2.50394,-15.153)">
+				<title>工作表.183</title>
+			</g>
+			<g id="shape184-124" v:mID="184" v:groupContext="shape" v:layerMember="0" transform="translate(3.50394,-14.153)">
+				<title>工作表.184</title>
+			</g>
+			<g id="shape185-126" v:mID="185" v:groupContext="shape" v:layerMember="0" transform="translate(3.00394,-15.153)">
+				<title>工作表.185</title>
+			</g>
+			<g id="shape186-128" v:mID="186" v:groupContext="shape" v:layerMember="0" transform="translate(3.00394,-15.153)">
+				<title>工作表.186</title>
+			</g>
+			<g id="shape187-130" v:mID="187" v:groupContext="shape" v:layerMember="0"
+					transform="translate(-52.7972,170.339) rotate(-90)">
+				<title>工作表.187</title>
+				<v:userDefs>
+					<v:ud v:nameU="BpmnIconPosition" v:prompt="" v:val="VT0(1):26"/>
+					<v:ud v:nameU="BpmnIconWidth" v:prompt="" v:val="VT0(0.18):26"/>
+				</v:userDefs>
+			</g>
+			<g id="shape165-132" v:mID="165" v:groupContext="groupContent" v:layerMember="0">
+				<v:textBlock v:margins="rect(2,2,2,2)" v:tabSpace="42.5197"/>
+				<v:textRect cx="110.551" cy="160.819" width="221.11" height="0"/>
+				<text x="12.55" y="165.02" class="st6" v:langID="2052"><v:paragraph v:horizAlign="1"/><v:tabList/>对圆周运动的物体进行受力分析</text>			</g>
+		</g>
+		<g id="group188-134" transform="translate(0.12,-0.12)" v:mID="188" v:groupContext="group" v:layerMember="0">
+			<v:custProps>
+				<v:cp v:nameU="BpmnId" v:lbl="Id" v:prompt="" v:type="0" v:format="" v:sortKey="" v:invis="true" v:ask="false"
+						v:langID="2052" v:cal="0" v:val="VT4()"/>
+				<v:cp v:nameU="BpmnCategories" v:lbl="类别" v:prompt="" v:type="0" v:format="" v:sortKey="" v:invis="false"
+						v:ask="false" v:langID="2052" v:cal="0" v:val="VT4()"/>
+				<v:cp v:nameU="BpmnDocumentation" v:lbl="文档" v:prompt="" v:type="0" v:format="" v:sortKey="" v:invis="false"
+						v:ask="false" v:langID="2052" v:cal="0" v:val="VT4()"/>
+				<v:cp v:nameU="BpmnName" v:lbl="名称" v:prompt="" v:type="0" v:format="" v:sortKey="" v:invis="true" v:ask="false"
+						v:langID="2052" v:cal="0" v:val="VT4()"/>
+				<v:cp v:nameU="BpmnActivityType" v:lbl="ActivityType" v:prompt="" v:type="1" v:format="任务;子流程" v:sortKey=""
+						v:invis="true" v:ask="false" v:langID="2052" v:cal="0" v:val="VT4(任务)"/>
+				<v:cp v:nameU="BpmnLoopType" v:lbl="LoopType" v:prompt="" v:type="1" v:format="无; 标准; 并行多实例; 顺序多实例" v:sortKey=""
+						v:invis="false" v:ask="false" v:langID="2052" v:cal="0" v:val="VT4(无)"/>
+				<v:cp v:nameU="BpmnTaskType" v:lbl="TaskType" v:prompt="" v:type="1"
+						v:format="无; 服务; 接收; 发送; 用户; 脚本; 摘要; 手动; 实例化接收; 业务规则" v:sortKey="" v:invis="false" v:ask="false"
+						v:langID="2052" v:cal="0" v:val="VT4(无)"/>
+				<v:cp v:nameU="BpmnScript" v:lbl="脚本" v:prompt="" v:type="0" v:format="" v:sortKey="" v:invis="true" v:ask="false"
+						v:langID="2052" v:cal="0" v:val="VT4()"/>
+				<v:cp v:nameU="BpmnInstantiate" v:lbl="实例化" v:prompt="" v:type="3" v:format="" v:sortKey="" v:invis="true"
+						v:ask="false" v:langID="2052" v:cal="0" v:val="VT0(0):5"/>
+				<v:cp v:nameU="BpmnSubProcessType" v:lbl="SubProcessType" v:prompt="" v:type="1" v:format="嵌入;可重用;引用" v:sortKey=""
+						v:invis="true" v:ask="false" v:langID="2052" v:cal="0" v:val="VT4(嵌入)"/>
+				<v:cp v:nameU="BpmnIsCollapsed" v:lbl="IsCollapsed" v:prompt="" v:type="3" v:format="" v:sortKey="" v:invis="true"
+						v:ask="false" v:langID="2052" v:cal="0" v:val="VT0(0):5"/>
+				<v:cp v:nameU="BpmnIsATransaction" v:lbl="IsATransaction" v:prompt="" v:type="3" v:format="" v:sortKey=""
+						v:invis="true" v:ask="false" v:langID="2052" v:cal="0" v:val="VT0(0):5"/>
+				<v:cp v:nameU="BpmnIsForCompensation" v:lbl="IsForCompensation" v:prompt="" v:type="3" v:format="" v:sortKey=""
+						v:invis="false" v:ask="false" v:langID="2052" v:cal="0" v:val="VT0(0):5"/>
+				<v:cp v:nameU="BpmnElementType" v:lbl="ElementType" v:prompt="" v:type="1" v:format="子流程;事件;网关;流程图;池;通道;工件;连接对象"
+						v:sortKey="" v:invis="true" v:ask="false" v:langID="2052" v:cal="0" v:val="VT4(子流程)"/>
+				<v:cp v:nameU="BpmnAdHoc" v:lbl="AdHoc" v:prompt="" v:type="3" v:format="" v:sortKey="" v:invis="true"
+						v:ask="false" v:langID="2052" v:cal="0" v:val="VT0(0):5"/>
+				<v:cp v:nameU="BpmnAdHocOrdering" v:lbl="AdHocOrdering" v:prompt="" v:type="1" v:format="连续;平行" v:sortKey=""
+						v:invis="true" v:ask="false" v:langID="2052" v:cal="0" v:val="VT4(平行)"/>
+				<v:cp v:nameU="BpmnBoundaryType" v:lbl="BoundaryType" v:prompt="" v:type="1" v:format="默认值; 调用" v:sortKey=""
+						v:invis="false" v:ask="false" v:langID="2052" v:cal="0" v:val="VT4(默认值)"/>
+				<v:cp v:nameU="BpmnName" v:lbl="" v:prompt="" v:type="0" v:format="" v:sortKey="" v:invis="false" v:ask="false"
+						v:langID="0" v:cal="0" v:val="VT4(找出这些力指向圆心的合力就是向心力)"/>
+			</v:custProps>
+			<v:userDefs>
+				<v:ud v:nameU="BpmnNumIconsVisible" v:prompt="" v:val="VT0(0):26"/>
+				<v:ud v:nameU="BpmnIsExtendedSubProcess" v:prompt="" v:val="VT0(0):5"/>
+				<v:ud v:nameU="msvStructureType" v:prompt="" v:val="VT0(0):26"/>
+				<v:ud v:nameU="msvSDContainerResize" v:prompt="" v:val="VT0(0):26"/>
+				<v:ud v:nameU="visVersion" v:prompt="" v:val="VT0(15):26"/>
+				<v:ud v:nameU="msvShapeCategories" v:prompt="" v:val="VT4(Task)"/>
+				<v:ud v:nameU="BpmnIconHeight" v:prompt="" v:val="VT0(0.15748031496063):24"/>
+				<v:ud v:nameU="BpmnIconPinY" v:prompt="" v:val="VT0(0.11811023622047):24"/>
+				<v:ud v:nameU="BpmnBoundaryType" v:prompt="" v:val="VT0(0):26"/>
+				<v:ud v:nameU="DefaultWidth" v:prompt="" v:val="VT0(0.98425196850394):24"/>
+				<v:ud v:nameU="DefaultHeight" v:prompt="" v:val="VT0(0.78740157480315):24"/>
+				<v:ud v:nameU="ResizeTxtHeight" v:prompt="" v:val="VT0(0.78740157480315):24"/>
+				<v:ud v:nameU="IsInstance" v:prompt="" v:val="VT0(0):5"/>
+				<v:ud v:nameU="IsInstance" v:prompt="" v:val="VT0(1):5"/>
+			</v:userDefs>
+			<title>任务.188</title>
+			<desc>找出这些力指向圆心的合力就是向心力</desc>
+			<g id="shape189-135" v:mID="189" v:groupContext="shape" v:layerMember="0">
+				<title>工作表.189</title>
+				<rect x="0" y="146.99" width="251.575" height="27.6569" rx="5.66929" ry="5.66929" class="st1"/>
+			</g>
+			<g id="group190-137" v:mID="190" v:groupContext="group" v:layerMember="0">
+				<title>工作表.190</title>
+				<g id="shape191-138" v:mID="191" v:groupContext="shape" v:layerMember="0">
+					<title>工作表.191</title>
+					<rect x="0" y="146.99" width="251.575" height="27.6569" rx="2.12598" ry="2.12598" class="st2"/>
+				</g>
+				<g id="shape192-140" v:mID="192" v:groupContext="shape" v:layerMember="0" transform="translate(1.8,-1.8)">
+					<title>工作表.192</title>
+					<rect x="0" y="150.59" width="247.975" height="24.0569" rx="2.12598" ry="2.12598" class="st2"/>
+				</g>
+			</g>
+			<g id="shape193-142" v:mID="193" v:groupContext="shape" v:layerMember="0" transform="translate(126.598,-2.12598)">
+				<title>工作表.193</title>
+				<v:userDefs>
+					<v:ud v:nameU="BpmnIconPosition" v:prompt="" v:val="VT0(1):26"/>
+					<v:ud v:nameU="BpmnIconWidth" v:prompt="" v:val="VT0(0.18):26"/>
+				</v:userDefs>
+			</g>
+			<g id="group194-144" transform="translate(126.958,-2.83465)" v:mID="194" v:groupContext="group" v:layerMember="0">
+				<v:userDefs>
+					<v:ud v:nameU="BpmnIconPosition" v:prompt="" v:val="VT0(1):26"/>
+					<v:ud v:nameU="BpmnIconWidth" v:prompt="" v:val="VT0(0.19):26"/>
+				</v:userDefs>
+				<title>工作表.194</title>
+				<g id="shape195-145" v:mID="195" v:groupContext="shape" v:layerMember="0">
+					<title>工作表.195</title>
+					<rect x="0" y="163.309" width="11.3386" height="11.3386" class="st3"/>
+				</g>
+				<g id="shape196-147" v:mID="196" v:groupContext="shape" v:layerMember="0" transform="translate(2.83465,-2.83465)">
+					<title>工作表.196</title>
+				</g>
+			</g>
+			<g id="shape197-149" v:mID="197" v:groupContext="shape" v:layerMember="0" transform="translate(126.958,-3.68504)">
+				<title>工作表.197</title>
+				<v:userDefs>
+					<v:ud v:nameU="BpmnIconPosition" v:prompt="" v:val="VT0(1):26"/>
+					<v:ud v:nameU="BpmnIconWidth" v:prompt="" v:val="VT0(0.19):26"/>
+				</v:userDefs>
+			</g>
+			<g id="shape198-151" v:mID="198" v:groupContext="shape" v:layerMember="0" transform="translate(128.072,-3.68504)">
+				<title>工作表.198</title>
+				<v:userDefs>
+					<v:ud v:nameU="BpmnIconPosition" v:prompt="" v:val="VT0(1):26"/>
+					<v:ud v:nameU="BpmnIconWidth" v:prompt="" v:val="VT0(0.18):26"/>
+				</v:userDefs>
+			</g>
+			<g id="group199-153" transform="translate(126.598,-2.83465)" v:mID="199" v:groupContext="group" v:layerMember="0">
+				<v:userDefs>
+					<v:ud v:nameU="BpmnIconPosition" v:prompt="" v:val="VT0(1):26"/>
+					<v:ud v:nameU="BpmnIconWidth" v:prompt="" v:val="VT0(0.18):26"/>
+				</v:userDefs>
+				<title>工作表.199</title>
+				<g id="shape200-154" v:mID="200" v:groupContext="shape" v:layerMember="0"
+						transform="translate(8.11863,338.96) rotate(179.753)">
+					<title>工作表.200</title>
+				</g>
+			</g>
+			<g id="shape201-157" v:mID="201" v:groupContext="shape" v:layerMember="0" transform="translate(3.50394,-14.153)">
+				<title>工作表.201</title>
+			</g>
+			<g id="shape202-159" v:mID="202" v:groupContext="shape" v:layerMember="0" transform="translate(3.00394,-13.653)">
+				<title>工作表.202</title>
+			</g>
+			<g id="group203-161" transform="translate(2.50394,-15.153)" v:mID="203" v:groupContext="group" v:layerMember="0">
+				<title>工作表.203</title>
+				<g id="shape204-162" v:mID="204" v:groupContext="shape" v:layerMember="0">
+					<title>工作表.204</title>
+					<rect x="0" y="166.647" width="12" height="8" class="st5"/>
+				</g>
+				<g id="shape205-164" v:mID="205" v:groupContext="shape" v:layerMember="0"
+						transform="translate(-1.9984E-15,-4.20339)">
+					<title>工作表.205</title>
+				</g>
+			</g>
+			<g id="shape206-166" v:mID="206" v:groupContext="shape" v:layerMember="0" transform="translate(2.50394,-15.153)">
+				<title>工作表.206</title>
+			</g>
+			<g id="shape207-168" v:mID="207" v:groupContext="shape" v:layerMember="0" transform="translate(3.50394,-14.153)">
+				<title>工作表.207</title>
+			</g>
+			<g id="shape208-170" v:mID="208" v:groupContext="shape" v:layerMember="0" transform="translate(3.00394,-15.153)">
+				<title>工作表.208</title>
+			</g>
+			<g id="shape209-172" v:mID="209" v:groupContext="shape" v:layerMember="0" transform="translate(3.00394,-15.153)">
+				<title>工作表.209</title>
+			</g>
+			<g id="shape210-174" v:mID="210" v:groupContext="shape" v:layerMember="0"
+					transform="translate(-37.561,170.339) rotate(-90)">
+				<title>工作表.210</title>
+				<v:userDefs>
+					<v:ud v:nameU="BpmnIconPosition" v:prompt="" v:val="VT0(1):26"/>
+					<v:ud v:nameU="BpmnIconWidth" v:prompt="" v:val="VT0(0.18):26"/>
+				</v:userDefs>
+			</g>
+			<g id="shape188-176" v:mID="188" v:groupContext="groupContent" v:layerMember="0">
+				<v:textBlock v:margins="rect(2,2,2,2)" v:tabSpace="42.5197"/>
+				<v:textRect cx="125.787" cy="160.819" width="251.58" height="0"/>
+				<text x="6.79" y="165.02" class="st6" v:langID="2052"><v:paragraph v:horizAlign="1"/><v:tabList/>找出这些力指向圆心的合力就是向心力</text>			</g>
+		</g>
+		<g id="shape212-178" v:mID="212" v:groupContext="shape" v:layerMember="1" transform="translate(118.821,-146.87)">
+			<title>序列流</title>
+			<v:custProps>
+				<v:cp v:nameU="BpmnId" v:lbl="Id" v:prompt="" v:type="0" v:format="" v:sortKey="" v:invis="true" v:ask="false"
+						v:langID="2052" v:cal="0" v:val="VT4()"/>
+				<v:cp v:nameU="BpmnCategories" v:lbl="类别" v:prompt="" v:type="0" v:format="" v:sortKey="" v:invis="false"
+						v:ask="false" v:langID="2052" v:cal="0" v:val="VT4()"/>
+				<v:cp v:nameU="BpmnDocumentation" v:lbl="文档" v:prompt="" v:type="0" v:format="" v:sortKey="" v:invis="false"
+						v:ask="false" v:langID="2052" v:cal="0" v:val="VT4()"/>
+				<v:cp v:nameU="BpmnName" v:lbl="名称" v:prompt="" v:type="0" v:format="" v:sortKey="" v:invis="true" v:ask="false"
+						v:langID="2052" v:cal="0" v:val="VT4()"/>
+				<v:cp v:nameU="BpmnConnectingObjectType" v:lbl="ConnectingObjectType" v:prompt="" v:type="1" v:format="序列流;消息流;关联"
+						v:sortKey="" v:invis="false" v:ask="false" v:langID="2052" v:cal="0" v:val="VT4(序列流)"/>
+				<v:cp v:nameU="BpmnConditionType" v:lbl="ConditionType" v:prompt="" v:type="1" v:format="无;表达式;默认" v:sortKey=""
+						v:invis="false" v:ask="false" v:langID="2052" v:cal="0" v:val="VT4(无)"/>
+				<v:cp v:nameU="BpmnDirection" v:lbl="方向" v:prompt="" v:type="1" v:format="无;一个;两个" v:sortKey="" v:invis="true"
+						v:ask="false" v:langID="2052" v:cal="0" v:val="VT4(一个)"/>
+				<v:cp v:nameU="BpmnElementType" v:lbl="ElementType" v:prompt="" v:type="1" v:format="子流程;事件;网关;流程图;池;通道;工件;连接对象"
+						v:sortKey="" v:invis="true" v:ask="false" v:langID="2052" v:cal="0" v:val="VT4(连接对象)"/>
+			</v:custProps>
+			<v:userDefs>
+				<v:ud v:nameU="msvShapeCategories" v:prompt="" v:val="VT4(Connecting Object)"/>
+				<v:ud v:nameU="visVersion" v:prompt="" v:val="VT0(15):26"/>
+				<v:ud v:nameU="PositionX" v:prompt="" v:val="VT0(0.49212598425197):24"/>
+				<v:ud v:nameU="PositionY" v:prompt="" v:val="VT0(0.098425196850394):1"/>
+				<v:ud v:nameU="NearestPointOnPath" v:prompt="" v:val="VT0(0.4999999961853):26"/>
+				<v:ud v:nameU="PtOnPath" v:prompt="" v:val="VT7(PNT(0.49212598425197,0.098425194621086)):40"/>
+				<v:ud v:nameU="IsInstance" v:prompt="" v:val="VT0(0):5"/>
+				<v:ud v:nameU="PositionX" v:prompt="" v:val="VT0(0.098425196850394):1"/>
+				<v:ud v:nameU="PositionY" v:prompt="" v:val="VT0(-0.14763779527559):24"/>
+				<v:ud v:nameU="NearestPointOnPath" v:prompt="" v:val="VT0(0.49999998609226):26"/>
+				<v:ud v:nameU="PtOnPath" v:prompt="" v:val="VT7(PNT(0.098425194621086,-0.14763779527559)):40"/>
+				<v:ud v:nameU="IsInstance" v:prompt="" v:val="VT0(1):5"/>
+			</v:userDefs>
+			<path d="M7.09 174.65 L7.09 190.87" class="st7"/>
+		</g>
+		<g id="shape214-184" v:mID="214" v:groupContext="shape" v:layerMember="1" transform="translate(118.821,-97.9536)">
+			<title>序列流.214</title>
+			<v:custProps>
+				<v:cp v:nameU="BpmnId" v:lbl="Id" v:prompt="" v:type="0" v:format="" v:sortKey="" v:invis="true" v:ask="false"
+						v:langID="2052" v:cal="0" v:val="VT4()"/>
+				<v:cp v:nameU="BpmnCategories" v:lbl="类别" v:prompt="" v:type="0" v:format="" v:sortKey="" v:invis="false"
+						v:ask="false" v:langID="2052" v:cal="0" v:val="VT4()"/>
+				<v:cp v:nameU="BpmnDocumentation" v:lbl="文档" v:prompt="" v:type="0" v:format="" v:sortKey="" v:invis="false"
+						v:ask="false" v:langID="2052" v:cal="0" v:val="VT4()"/>
+				<v:cp v:nameU="BpmnName" v:lbl="名称" v:prompt="" v:type="0" v:format="" v:sortKey="" v:invis="true" v:ask="false"
+						v:langID="2052" v:cal="0" v:val="VT4()"/>
+				<v:cp v:nameU="BpmnConnectingObjectType" v:lbl="ConnectingObjectType" v:prompt="" v:type="1" v:format="序列流;消息流;关联"
+						v:sortKey="" v:invis="false" v:ask="false" v:langID="2052" v:cal="0" v:val="VT4(序列流)"/>
+				<v:cp v:nameU="BpmnConditionType" v:lbl="ConditionType" v:prompt="" v:type="1" v:format="无;表达式;默认" v:sortKey=""
+						v:invis="false" v:ask="false" v:langID="2052" v:cal="0" v:val="VT4(无)"/>
+				<v:cp v:nameU="BpmnDirection" v:lbl="方向" v:prompt="" v:type="1" v:format="无;一个;两个" v:sortKey="" v:invis="true"
+						v:ask="false" v:langID="2052" v:cal="0" v:val="VT4(一个)"/>
+				<v:cp v:nameU="BpmnElementType" v:lbl="ElementType" v:prompt="" v:type="1" v:format="子流程;事件;网关;流程图;池;通道;工件;连接对象"
+						v:sortKey="" v:invis="true" v:ask="false" v:langID="2052" v:cal="0" v:val="VT4(连接对象)"/>
+			</v:custProps>
+			<v:userDefs>
+				<v:ud v:nameU="msvShapeCategories" v:prompt="" v:val="VT4(Connecting Object)"/>
+				<v:ud v:nameU="visVersion" v:prompt="" v:val="VT0(15):26"/>
+				<v:ud v:nameU="PositionX" v:prompt="" v:val="VT0(0.49212598425197):24"/>
+				<v:ud v:nameU="PositionY" v:prompt="" v:val="VT0(0.098425196850394):1"/>
+				<v:ud v:nameU="NearestPointOnPath" v:prompt="" v:val="VT0(0.4999999961853):26"/>
+				<v:ud v:nameU="PtOnPath" v:prompt="" v:val="VT7(PNT(0.49212598425197,0.098425194621086)):40"/>
+				<v:ud v:nameU="IsInstance" v:prompt="" v:val="VT0(0):5"/>
+				<v:ud v:nameU="PositionX" v:prompt="" v:val="VT0(0.098425196850394):1"/>
+				<v:ud v:nameU="PositionY" v:prompt="" v:val="VT0(-0.14763779527559):24"/>
+				<v:ud v:nameU="NearestPointOnPath" v:prompt="" v:val="VT0(0.49999998609225):26"/>
+				<v:ud v:nameU="PtOnPath" v:prompt="" v:val="VT7(PNT(0.098425194621086,-0.14763779527559)):40"/>
+				<v:ud v:nameU="IsInstance" v:prompt="" v:val="VT0(1):5"/>
+			</v:userDefs>
+			<path d="M7.09 174.65 L7.09 190.87" class="st7"/>
+		</g>
+		<g id="shape215-189" v:mID="215" v:groupContext="shape" v:layerMember="1" transform="translate(118.821,-49.0368)">
+			<title>序列流.215</title>
+			<v:custProps>
+				<v:cp v:nameU="BpmnId" v:lbl="Id" v:prompt="" v:type="0" v:format="" v:sortKey="" v:invis="true" v:ask="false"
+						v:langID="2052" v:cal="0" v:val="VT4()"/>
+				<v:cp v:nameU="BpmnCategories" v:lbl="类别" v:prompt="" v:type="0" v:format="" v:sortKey="" v:invis="false"
+						v:ask="false" v:langID="2052" v:cal="0" v:val="VT4()"/>
+				<v:cp v:nameU="BpmnDocumentation" v:lbl="文档" v:prompt="" v:type="0" v:format="" v:sortKey="" v:invis="false"
+						v:ask="false" v:langID="2052" v:cal="0" v:val="VT4()"/>
+				<v:cp v:nameU="BpmnName" v:lbl="名称" v:prompt="" v:type="0" v:format="" v:sortKey="" v:invis="true" v:ask="false"
+						v:langID="2052" v:cal="0" v:val="VT4()"/>
+				<v:cp v:nameU="BpmnConnectingObjectType" v:lbl="ConnectingObjectType" v:prompt="" v:type="1" v:format="序列流;消息流;关联"
+						v:sortKey="" v:invis="false" v:ask="false" v:langID="2052" v:cal="0" v:val="VT4(序列流)"/>
+				<v:cp v:nameU="BpmnConditionType" v:lbl="ConditionType" v:prompt="" v:type="1" v:format="无;表达式;默认" v:sortKey=""
+						v:invis="false" v:ask="false" v:langID="2052" v:cal="0" v:val="VT4(无)"/>
+				<v:cp v:nameU="BpmnDirection" v:lbl="方向" v:prompt="" v:type="1" v:format="无;一个;两个" v:sortKey="" v:invis="true"
+						v:ask="false" v:langID="2052" v:cal="0" v:val="VT4(一个)"/>
+				<v:cp v:nameU="BpmnElementType" v:lbl="ElementType" v:prompt="" v:type="1" v:format="子流程;事件;网关;流程图;池;通道;工件;连接对象"
+						v:sortKey="" v:invis="true" v:ask="false" v:langID="2052" v:cal="0" v:val="VT4(连接对象)"/>
+			</v:custProps>
+			<v:userDefs>
+				<v:ud v:nameU="msvShapeCategories" v:prompt="" v:val="VT4(Connecting Object)"/>
+				<v:ud v:nameU="visVersion" v:prompt="" v:val="VT0(15):26"/>
+				<v:ud v:nameU="PositionX" v:prompt="" v:val="VT0(0.49212598425197):24"/>
+				<v:ud v:nameU="PositionY" v:prompt="" v:val="VT0(0.098425196850394):1"/>
+				<v:ud v:nameU="NearestPointOnPath" v:prompt="" v:val="VT0(0.4999999961853):26"/>
+				<v:ud v:nameU="PtOnPath" v:prompt="" v:val="VT7(PNT(0.49212598425197,0.098425194621086)):40"/>
+				<v:ud v:nameU="IsInstance" v:prompt="" v:val="VT0(0):5"/>
+				<v:ud v:nameU="PositionX" v:prompt="" v:val="VT0(0.098425196850394):1"/>
+				<v:ud v:nameU="PositionY" v:prompt="" v:val="VT0(-0.14763779527559):24"/>
+				<v:ud v:nameU="NearestPointOnPath" v:prompt="" v:val="VT0(0.49999998609225):26"/>
+				<v:ud v:nameU="PtOnPath" v:prompt="" v:val="VT7(PNT(0.098425194621086,-0.14763779527559)):40"/>
+				<v:ud v:nameU="IsInstance" v:prompt="" v:val="VT0(1):5"/>
+			</v:userDefs>
+			<path d="M7.09 174.65 L7.09 190.87" class="st7"/>
+		</g>
+	</g>
+</svg>

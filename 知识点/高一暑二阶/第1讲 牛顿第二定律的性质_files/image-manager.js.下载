@@ -1,0 +1,1090 @@
+"use strict";
+
+function _typeof(obj) { "@babel/helpers - typeof"; if (typeof Symbol === "function" && typeof Symbol.iterator === "symbol") { _typeof = function _typeof(obj) { return typeof obj; }; } else { _typeof = function _typeof(obj) { return obj && typeof Symbol === "function" && obj.constructor === Symbol && obj !== Symbol.prototype ? "symbol" : typeof obj; }; } return _typeof(obj); }
+
+/*
+ * 图片编辑工具扩展功能
+ * 注意：如果改动image-manager.js：需要在image-magnager-es6.js改，改完转成es5，保存到image-manager.js
+ * babel es6转es5 https://babeljs.io/repl
+ * 埋点 eventName: crop inverseColor removeBg rotate
+ *
+ */
+var htmlStr = '';
+
+function imageManager(CKEDITOR) {
+  // 获取图片地址参数中的角度°值
+  var getRotateInfo = transform;
+
+  function getImageUrlAngle(imgSrc) {
+    var angle = 0;
+    var rotateReg = /rotate,([0-9]+)/;
+    var rotateRes = imgSrc.match(rotateReg);
+
+    if (rotateRes) {
+      angle = rotateRes[1] || 0;
+    }
+
+    return Number(angle);
+  } // 去除url参数
+
+
+  function resetImageUrl(imgSrc) {
+    var endIndex = imgSrc.indexOf('?');
+    endIndex = endIndex > 0 ? endIndex : imgSrc.length;
+    return imgSrc.slice(0, endIndex);
+  }
+
+  function getImgScaleSize(_ref) {
+    var _ref$width = _ref.width,
+        width = _ref$width === void 0 ? 0 : _ref$width,
+        _ref$height = _ref.height,
+        height = _ref$height === void 0 ? 0 : _ref$height;
+    var maxWidth = arguments.length > 1 && arguments[1] !== undefined ? arguments[1] : 594;
+    maxWidth = maxWidth && maxWidth > 0 ? maxWidth : 594;
+    maxWidth = maxWidth > 594 ? 594 : maxWidth;
+    var imgSize = {
+      width: width,
+      height: height
+    };
+
+    if (width > maxWidth) {
+      var scale = maxWidth / width;
+      var newHeight = height * scale;
+      imgSize = {
+        width: maxWidth,
+        height: newHeight
+      };
+    }
+
+    return imgSize;
+  }
+  /**
+   * 设置 crop
+   * @params rotate { Number } 角度
+   * @params cropUrl { String } 裁剪、反色、去背景后这三个操作，都会更新cropUrl的值,存储新编辑的图片地址
+   * @params cropUrlSync { Number } [1,0] 根据操作决定是否读取cropUrl地址；默认初始读取origin-src属性的值去渲染
+  */
+
+
+  function setCropAttrs(data) {
+    if (_typeof(data) !== 'object') return;
+    Object.keys(data).forEach(function (key) {
+      setCropAttr(key, data[key]);
+    });
+  } // 不传值则清空data-crop, 传值则只清楚参数里的字段
+
+
+  function resetCropAttrs(keys) {
+    var dataCrop = targetImg.dataset.crop || null;
+    dataCrop = JSON.parse(dataCrop) || {};
+
+    if (keys && keys.length > 0) {
+      keys.forEach(function (key) {
+        delete dataCrop[key];
+      });
+    } else {
+      dataCrop = {};
+    }
+
+    targetImg.setAttribute('data-crop', JSON.stringify(dataCrop));
+  }
+
+  function setCropAttr(key, value) {
+    var initCropData = {
+      scaleX: 1,
+      scaleY: 1,
+      rotate: 0
+    };
+    var dataCrop = targetImg.dataset.crop || null;
+    dataCrop = Object.assign(initCropData, JSON.parse(dataCrop));
+
+    if (key === 'rotate') {
+      var newAngle = (Number(value) + 360) % 360;
+      dataCrop[key] = newAngle;
+    } else {
+      dataCrop[key] = value;
+    }
+
+    targetImg.setAttribute('data-crop', JSON.stringify(dataCrop));
+  }
+
+  function getCropAttrs() {
+    var initCropData = {
+      scaleX: 1,
+      scaleY: 1,
+      rotate: 0
+    };
+    var dataCrop = targetImg.dataset.crop || null;
+    dataCrop = Object.assign(initCropData, JSON.parse(dataCrop));
+    return dataCrop;
+  }
+
+  function getCropAttr(key) {
+    var initCropData = {
+      scaleX: 1,
+      scaleY: 1,
+      rotate: 0
+    };
+    var dataCrop = targetImg.dataset.crop || null;
+    dataCrop = Object.assign(initCropData, JSON.parse(dataCrop));
+    return dataCrop[key] || null;
+  } // base64地址转为file
+
+
+  var dataURLtoFile = function dataURLtoFile(dataurl, filename) {
+    var arr = dataurl.split(',');
+    var mime = arr[0].match(/:(.*?);/)[1];
+    var bstr = atob(arr[1]);
+    var n = bstr.length;
+    var u8arr = new Uint8Array(n);
+
+    while (n--) {
+      u8arr[n] = bstr.charCodeAt(n);
+    }
+
+    return new File([u8arr], filename, {
+      type: mime
+    });
+  }; // 上传图片
+
+
+  var uploadImage = function uploadImage(dataurl, cb) {
+    console.time('image uploading');
+    window.__isUploadingImage = true;
+    var n = new XMLHttpRequest();
+    n.open('post', window.editorConfig ? window.editorConfig.baseUrl : '');
+    var params = 'paperId=' + sessionStorage.paperId;
+    n.setRequestHeader('Content-type', 'application/x-www-form-urlencoded');
+    n.send(params);
+
+    n.onreadystatechange = function () {
+      if (n.readyState == 4 && n.status == 200) {
+        var b = JSON.parse(n.responseText);
+        var url = null;
+        var client = new OSS.Wrapper(b.data);
+        var r = 'xxxxxxxx-xxxx-4xxx-yxxx-xxxxxxxxxxxx'.replace(/[xy]/g, function (e) {
+          var t = 16 * Math.random() | 0,
+              n = 'x' == e ? t : 3 & t | 8;
+          return n.toString(16);
+        });
+        var file = dataURLtoFile(dataurl, r + '.png');
+        var key = 'imgFile/' + r + '.png';
+        client.multipartUpload(key, file, {}).then(function (res) {
+          var resUrl = res.res.requestUrls[0].replace('http://', 'https://');
+          url = resUrl.indexOf('?') > 0 ? resUrl.substring(0, resUrl.indexOf('?')) : resUrl;
+
+          if (url) {
+            console.timeEnd('image uploading');
+            cb(url);
+          } // window.__isUploadingImage = false
+
+        }).catch(function (err) {
+          url = null;
+          window.__isUploadingImage = false;
+        });
+      }
+    };
+  };
+
+  var ORIGINAL_SRC = 'original-src';
+  var ORIGINAL_WIDTH = 'original-width';
+  var ORIGINAL_HEIGHT = 'original-height';
+  var cropper = null;
+  var targetImg = this.element.$; // 当前图片
+
+  var originalWidth = targetImg.getAttribute(ORIGINAL_WIDTH);
+  var originalHeight = targetImg.getAttribute(ORIGINAL_HEIGHT);
+  var merge = CKEDITOR.tools.object.merge;
+  var editor = this.editor;
+  var widget = this;
+  var edited = false; // 是否编辑中
+
+  var widgetWidth;
+  var widgetHeight; // 禁止右键监听
+
+  var disableContextMenu = null;
+  var disableDoubleclick = null;
+
+  var disableContextMenuHandler = function disableContextMenuHandler(evt) {
+    evt.stop();
+    evt.data.preventDefault();
+  };
+
+  if (targetImg.nodeName.toLowerCase() != 'img') {
+    targetImg = targetImg.getElementsByTagName('img')[0];
+  }
+
+  var ckeImageResize = targetImg.parentNode.querySelector('.cke_image_resizer');
+  var imgControlVisible = false;
+  var removeBgDialogVisible = false;
+  var imgControl = document.createElement('span');
+  imgControl.classList.add('image-handle-btn');
+  imgControl.innerHTML = htmlStr;
+  imgControl.style.display = 'none';
+  var cropConfig = {
+    viewMode: 1,
+    autoCropArea: 1,
+    zoomable: true,
+    minContainerWidth: 10,
+    minContainerHeight: 10,
+    minCropBoxWidth: 20,
+    minCropBoxHeight: 20,
+    center: false,
+    guides: false,
+    ready: function ready() {
+      // 还原data-crop数据
+      var dataCrop = targetImg.dataset.crop || null;
+
+      if (dataCrop) {
+        dataCrop = JSON.parse(dataCrop);
+        var _dataCrop = dataCrop,
+            width = _dataCrop.width,
+            height = _dataCrop.height,
+            _dataCrop$x = _dataCrop.x,
+            x = _dataCrop$x === void 0 ? 0 : _dataCrop$x,
+            _dataCrop$y = _dataCrop.y,
+            y = _dataCrop$y === void 0 ? 0 : _dataCrop$y,
+            _dataCrop$scaleX = _dataCrop.scaleX,
+            scaleX = _dataCrop$scaleX === void 0 ? 1 : _dataCrop$scaleX,
+            _dataCrop$scaleY = _dataCrop.scaleY,
+            scaleY = _dataCrop$scaleY === void 0 ? 1 : _dataCrop$scaleY,
+            _dataCrop$rotate = _dataCrop.rotate,
+            rotate = _dataCrop$rotate === void 0 ? 0 : _dataCrop$rotate;
+        console.log('data-crop: ', dataCrop);
+        cropper.setData({
+          scaleX: scaleX,
+          scaleY: scaleY,
+          rotate: rotate
+        });
+        cropper.moveTo(0);
+        cropper.zoomTo(0); // 初次裁剪，则填满
+
+        if (!width && !height) {
+          var _cropper$getCanvasDat = cropper.getCanvasData(),
+              _width = _cropper$getCanvasDat.naturalWidth,
+              _height = _cropper$getCanvasDat.naturalHeight;
+
+          cropper.setData({
+            x: x,
+            y: y,
+            width: _width,
+            height: _height
+          });
+        } else {
+          cropper.setData({
+            x: x,
+            y: y,
+            width: width,
+            height: height
+          });
+        }
+      } // 隐藏上下工具按钮
+
+
+      if (ckeImageResize) {
+        ckeImageResize.style.display = 'none';
+      } // 禁用右键
+
+
+      disableContextMenu = editor.editable().attachListener(editor.editable(), 'contextmenu', disableContextMenuHandler, null, null, 0);
+
+      if (!edited) {
+        edited = true;
+      }
+
+      widget.editor.fire('setLoading', false);
+    }
+  }; // 在(旋转|反转|反色|去背景)时, 提前判断是取裁切后的图还是原图, 如果是裁剪图则将 cropUrl 更新为当前图
+
+  function cropAfterHandle() {
+    var _getCropAttrs = getCropAttrs(),
+        cropUrl = _getCropAttrs.cropUrl,
+        cropUrlSync = _getCropAttrs.cropUrlSync;
+
+    if (cropUrl && cropUrlSync === 0) {
+      resetCropAttrs();
+      setCropAttrs({
+        cropUrl: targetImg.src,
+        cropUrlSync: 1
+      });
+    }
+  } // 指定值旋转
+
+
+  function imageFreeRotate(angle) {
+    edited = true;
+    angle = Number(angle) || 0;
+    cropAfterHandle();
+    setCropAttr('rotate', angle);
+    widget.editor.fire('imageManagerHandle', {
+      name: 'rotate',
+      type: 'rotate-n'
+    });
+    return imageRender();
+  } // 累加旋转
+
+
+  function imageRotate(angle) {
+    edited = true;
+    angle = Number(angle) || 0;
+    cropAfterHandle();
+
+    var _getCropAttrs2 = getCropAttrs(),
+        _getCropAttrs2$rotate = _getCropAttrs2.rotate,
+        rotate = _getCropAttrs2$rotate === void 0 ? 0 : _getCropAttrs2$rotate;
+
+    var newAngle;
+    newAngle = (angle + Number(rotate)) % 360;
+    setCropAttr('rotate', newAngle);
+
+    if (angle === -90) {
+      widget.editor.fire('imageManagerHandle', {
+        name: 'rotate',
+        type: 'rotate-left'
+      });
+    }
+
+    if (angle === 90) {
+      widget.editor.fire('imageManagerHandle', {
+        name: 'rotate',
+        type: 'rotate-right'
+      });
+    }
+
+    return imageRender();
+  } // 反转
+
+
+  function imageFlip(direction) {
+    edited = true;
+    cropAfterHandle();
+
+    var _getCropAttrs3 = getCropAttrs(),
+        oldScaleX = _getCropAttrs3.scaleX,
+        oldScaleY = _getCropAttrs3.scaleY,
+        oldRotate = _getCropAttrs3.rotate;
+
+    var newTranslateData = getReversalData({
+      scaleX: oldScaleX,
+      scaleY: oldScaleY,
+      rotate: oldRotate
+    }, direction);
+    console.log('newTranslateData: ', newTranslateData);
+    var _newTranslateData$x = newTranslateData.x,
+        scaleX = _newTranslateData$x === void 0 ? 1 : _newTranslateData$x,
+        _newTranslateData$y = newTranslateData.y,
+        scaleY = _newTranslateData$y === void 0 ? 1 : _newTranslateData$y,
+        _newTranslateData$ang = newTranslateData.angle,
+        rotate = _newTranslateData$ang === void 0 ? 0 : _newTranslateData$ang;
+    setCropAttrs({
+      scaleX: scaleX,
+      scaleY: scaleY,
+      rotate: rotate
+    });
+    widget.editor.fire('imageManagerHandle', {
+      name: 'rotate',
+      type: "scale-".concat(direction)
+    });
+    imageRender();
+  }
+
+  function imageInverseColor() {
+    edited = true;
+    cropAfterHandle();
+    widget.editor.fire('setLoading', true);
+    widget.editor.fire('imageManagerHandle', {
+      name: 'inverseColor'
+    });
+    imageRender({
+      inverseColor: true
+    }).then(function (base64) {
+      uploadImage(base64, function (url) {
+        // widget.setData('width', targetImg.getAttribute('width'))
+        var imgTmp = new Image();
+        imgTmp.src = url;
+
+        imgTmp.onload = function () {
+          widget.setData('src', url);
+          resetCropAttrs();
+          setCropAttrs({
+            cropUrl: url,
+            cropUrlSync: 1 // 表示data-crop对象里面的参数是 对crop-url设置的
+
+          });
+          widget.editor.fire('setLoading', false);
+          window.__isUploadingImage = false;
+        };
+      });
+    });
+  }
+  /**
+   * 点击去背景按钮
+   * 该方法触发一个(ELEMENT组件内，编辑器外的)按钮(.remove-bg-btn) 的click, 来展示去背景弹层
+   * 每次点击获取.remove-bg-btn的data-url和data-base64，根据这两个值来决定不同操作
+   * data-url，data-base64都为空 -> 显示弹窗组件
+   * data-url无值，data-base64有值 -> 表示点击了去背景弹窗的完成，替换图片然后上传
+   * data-url有值，data-base64没值 -> 表示点击了取消，将data-url赋空
+  */
+
+
+  function imageRemoveBg(event) {
+    edited = true;
+    var removeBtn = document.querySelector('.remove-bg-btn'); // element内、编辑器外 的一个标签, 用来触发显示去背景组件
+
+    var toolsRemoveBgBtn = event.target; // 当前点击按钮
+
+    removeBgDialogVisible = true;
+    cropAfterHandle();
+    widget.editor.fire('imageManagerHandle', {
+      name: 'removeBg'
+    });
+
+    if (removeBtn) {
+      var base64 = removeBtn.dataset.base64; // 去背景后生成的base64图
+
+      var url = removeBtn.dataset.url; // 去背景源图地址
+      // 完成去背景
+
+      if (!url && base64) {
+        widget.editor.fire('setLoading', true);
+        removeBtn.dataset.url = '';
+        removeBtn.dataset.base64 = '';
+        toolsRemoveBgBtn.classList.remove('category-remove-bg--edit'); // 当初已经生成背景的时候触发并去获取
+
+        uploadImage(base64, function (url) {
+          var imgTmp = new Image();
+          imgTmp.src = url;
+
+          imgTmp.onload = function () {
+            widget.setData('src', url);
+            resetCropAttrs();
+            setCropAttrs({
+              cropUrl: url,
+              cropUrlSync: 1
+            });
+            widget.editor.fire('setLoading', false);
+            window.__isUploadingImage = false;
+            removeBgDialogVisible = false;
+            widget.editor.focusManager.unlock();
+            widget.focus();
+          };
+        });
+      } // 当点击了去背景弹窗的取消按钮的时触发
+
+
+      if (url && !base64) {
+        removeBtn.dataset.url = '';
+        toolsRemoveBgBtn.classList.remove('category-remove-bg--edit');
+        removeBgDialogVisible = false;
+        widget.editor.focusManager.unlock();
+        widget.focus();
+      } // 当初次点击去背景按钮的时候触发
+
+
+      if (!url && !base64) {
+        console.log('初次点击去背景 lock');
+        widget.editor.fire('setLoading', true);
+        widget.editor.focusManager.lock();
+        imageRender().then(function (base64) {
+          widget.editor.fire('setLoading', false);
+          toolsRemoveBgBtn.classList.add('category-remove-bg--edit');
+          removeBtn.dataset.url = base64;
+          removeBtn.click();
+        });
+      }
+    }
+  }
+  /*
+    对data-crop里面的数据进行渲染
+    @params inverseColor { Number } [1,0] 是否反色
+   */
+
+
+  function imageRender() {
+    var _ref2 = arguments.length > 0 && arguments[0] !== undefined ? arguments[0] : {},
+        _ref2$inverseColor = _ref2.inverseColor,
+        inverseColor = _ref2$inverseColor === void 0 ? false : _ref2$inverseColor;
+
+    return new Promise(function (resolve, reject) {
+      var _getCropAttrs4 = getCropAttrs(),
+          newAngle = _getCropAttrs4.rotate,
+          scaleX = _getCropAttrs4.scaleX,
+          scaleY = _getCropAttrs4.scaleY,
+          _getCropAttrs4$cropUr = _getCropAttrs4.cropUrl,
+          cropUrl = _getCropAttrs4$cropUr === void 0 ? '' : _getCropAttrs4$cropUr,
+          cropUrlSync = _getCropAttrs4.cropUrlSync;
+
+      var targetImgSrc;
+      targetImgSrc = targetImg.getAttribute(ORIGINAL_SRC); // 没有origian-src属性就设置, 设置角度为0的地址
+
+      if (!targetImgSrc) {
+        targetImgSrc = targetImg.src;
+        targetImg.setAttribute(ORIGINAL_SRC, targetImgSrc);
+      } else {
+        var newAngleSrc = resetImageUrl(targetImgSrc, 0);
+        targetImgSrc = newAngleSrc;
+        targetImg.setAttribute(ORIGINAL_SRC, newAngleSrc);
+      } // 根据data-crop cropUrlSync决定要处理的原图是哪个
+
+
+      if (cropUrl && cropUrlSync) {
+        targetImgSrc = cropUrl;
+      }
+
+      if (cropUrl && !cropUrlSync && inverseColor) {
+        targetImgSrc = targetImg.src;
+      }
+
+      var isBase64 = targetImgSrc.indexOf('data:image') > -1;
+
+      if (!isBase64) {
+        targetImgSrc += "?".concat(+new Date());
+      }
+
+      var canvas = document.createElement('canvas');
+      var ctx = canvas.getContext('2d');
+      var imgTmp = new Image();
+      imgTmp.setAttribute("crossOrigin", 'anonymous');
+      console.log('targetImgSrc: ', targetImgSrc);
+      imgTmp.src = targetImgSrc;
+      console.time('image loading');
+
+      imgTmp.onload = function () {
+        console.timeEnd('image loading');
+        console.time('image render');
+        var imgTmpW = imgTmp.width;
+        var imgTmpH = imgTmp.height;
+
+        var _getRotateInfo = getRotateInfo({
+          width: imgTmpW,
+          height: imgTmpH
+        }, newAngle),
+            canvasW = _getRotateInfo.width,
+            canvasH = _getRotateInfo.height; // console.log({imgTmpW, imgTmpH, newAngle, canvasW, canvasH}, getRotateInfo({ width: imgTmpW, height: imgTmpH }, newAngle))
+
+
+        canvas.width = canvasW;
+        canvas.height = canvasH;
+        var translateX = canvasW / 2;
+        var translateY = canvasH / 2;
+        ctx.clearRect(0, 0, canvasW, canvasH);
+        ctx.save();
+        ctx.translate(translateX, translateY); // 将canvas原点移至中心
+
+        ctx.rotate(Math.PI / 180 * newAngle); // 旋转角度
+
+        ctx.scale(scaleX, scaleY);
+        ctx.drawImage(imgTmp, -imgTmpW / 2, -imgTmpH / 2, imgTmpW, imgTmpH);
+        ctx.restore(); // 反转颜色设置
+
+        if (inverseColor) {
+          var imageData = ctx.getImageData(0, 0, canvas.width, canvas.height);
+          var t = imageData.data;
+
+          for (var i = 0; i < t.length; i += 4) {
+            t[i] = 255 - t[i];
+            t[i + 1] = 255 - t[i + 1];
+            t[i + 2] = 255 - t[i + 2]; // t[i+3] = 255;
+          }
+
+          ctx.putImageData(imageData, 0, 0);
+        }
+
+        console.log('draw: ', {
+          newAngle: newAngle,
+          scaleX: scaleX,
+          scaleY: scaleY
+        });
+        var base64 = canvas.toDataURL(); // widget.setData('width', canvasW)
+        // widget.setData('height', canvasH)
+
+        targetImg.setAttribute('src', base64);
+        console.timeEnd('image render'); // console.log('targetImg: ', JSON.parse(JSON.stringify(targetImg.getBoundingClientRect())))
+
+        setInputAngle();
+        resolve(base64);
+      };
+    });
+  } // todo: 图片没有original-src的时候，直接 new Cropoer
+
+
+  function initCrop() {
+    if (!cropper) {
+      widget.editor.fire('setLoading', true);
+      widget.editor.fire('imageManagerHandle', {
+        name: 'crop'
+      });
+      var targetImgSrc;
+      targetImgSrc = targetImg.getAttribute(ORIGINAL_SRC); // 没有origian-src属性就设置, 设置角度为0的地址
+
+      if (!targetImgSrc) {
+        targetImgSrc = targetImg.src;
+        targetImg.setAttribute(ORIGINAL_SRC, targetImgSrc);
+      } else {
+        var newAngleSrc = resetImageUrl(targetImgSrc, 0);
+        targetImg.setAttribute(ORIGINAL_SRC, newAngleSrc);
+        targetImgSrc = newAngleSrc;
+      }
+
+      var _getCropAttrs5 = getCropAttrs(),
+          cropUrl = _getCropAttrs5.cropUrl,
+          cropUrlSync = _getCropAttrs5.cropUrlSync;
+
+      if (!cropUrl) {
+        setCropAttrs({
+          cropUrl: targetImgSrc,
+          cropUrlSync: 0
+        });
+      } // 如果对裁剪后的图处理过的则 裁剪当前图
+
+
+      if (cropUrl) {
+        targetImgSrc = cropUrl;
+      } // console.log('initCrop imgSrc:', targetImgSrc)
+
+
+      var imgTmp = new Image();
+      imgTmp.setAttribute("crossOrigin", 'anonymous');
+      var isBase64 = targetImgSrc.indexOf('data:image') > -1;
+
+      if (!isBase64) {
+        targetImgSrc += "?".concat(+new Date());
+      }
+
+      imgTmp.src = targetImgSrc;
+
+      imgTmp.onload = function () {
+        var _getCropAttrs6 = getCropAttrs(['rotate', 'width']),
+            rotate = _getCropAttrs6.rotate,
+            cropBoxW = _getCropAttrs6.width,
+            cropBoxH = _getCropAttrs6.height,
+            cropMaxWidth = _getCropAttrs6.cropMaxWidth;
+
+        var _getRotateInfo2 = getRotateInfo({
+          width: imgTmp.width,
+          height: imgTmp.height
+        }, rotate),
+            width = _getRotateInfo2.width,
+            height = _getRotateInfo2.height; // - 如果没有裁剪的图，取当前图最大宽度
+
+
+        var maxWidth = null;
+
+        if (!cropBoxW || !cropBoxH) {
+          maxWidth = parseInt(widget.data.width);
+        }
+
+        var _getImgScaleSize = getImgScaleSize({
+          width: width,
+          height: height
+        }, cropMaxWidth || maxWidth),
+            newWidth = _getImgScaleSize.width,
+            newHeight = _getImgScaleSize.height; // -
+
+
+        targetImg.style.width = newWidth + 'px';
+        targetImg.style.height = newHeight + 'px';
+        targetImg.classList.add('cropper-no-margin');
+        targetImg.src = targetImgSrc;
+        cropper = new Cropper(targetImg, cropConfig); // console.log('cropper', cropper)
+      };
+    }
+  } // 保存裁剪
+
+
+  var saveCrop = function saveCrop(ifUpload, callback) {
+    console.log('saveCrop');
+    var base64 = '';
+
+    if (cropper) {
+      var dataCrop = cropper.getData();
+      var dataCropBox = cropper.getCropBoxData();
+      widgetWidth = dataCropBox.width;
+      widgetHeight = dataCropBox.height;
+      var cropCanvas = cropper.getCroppedCanvas();
+      base64 = cropCanvas.toDataURL();
+      setCropAttrs(dataCrop); // targetImg.setAttribute('data-crop', JSON.stringify(dataCrop))
+    } else {
+      base64 = targetImg.getAttribute('src');
+    }
+
+    if (!targetImg.getAttribute(ORIGINAL_SRC)) {
+      targetImg.setAttribute(ORIGINAL_SRC, widget.data.src);
+    }
+
+    if (ifUpload && base64.indexOf('data:image') > -1) {
+      uploadImage(base64, function (url) {
+        // widget.setData('width', targetImg.getAttribute('width'))
+        var imgTmp = new Image();
+        imgTmp.src = url;
+
+        imgTmp.onload = function () {
+          widget.setData('src', url);
+
+          if (cropper) {
+            var _cropper$getCanvasDat2 = cropper.getCanvasData(),
+                width = _cropper$getCanvasDat2.width;
+
+            console.log('getCanvasData:', cropper.getCanvasData());
+            setCropAttrs({
+              cropMaxWidth: width,
+              cropUrlSync: 0
+            });
+          }
+
+          if (callback) {
+            callback();
+          }
+
+          window.__isUploadingImage = false;
+        };
+      }); // 从缓存删除
+      // var key =targetImg.getAttribute('edit-key')
+      // if (key) {
+      //   var imageEditMap = JSON.parse(sessionStorage.getItem('imageEditMap'))
+      //   delete imageEditMap[key]
+      //   sessionStorage.setItem('imageEditMap', JSON.stringify(imageEditMap))
+      // }
+    } else {
+      targetImg.setAttribute('src', base64);
+      setEditKey();
+    } // targetImg.height = dataCropBox.height
+    // targetImg.width = dataCropBox.width
+
+
+    edited = false;
+  }; // 销毁裁剪实例
+
+
+  var destroyCropper = function destroyCropper() {
+    targetImg.classList.remove('cropper-no-margin');
+    cropper.destroy();
+    cropper = null;
+
+    if (disableContextMenu) {
+      disableContextMenu.removeListener('contextmenu', disableContextMenuHandler);
+    }
+
+    widget.setData('width', widgetWidth);
+    widget.setData('height', widgetHeight); // 隐藏上下工具按钮
+
+    if (ckeImageResize) {
+      ckeImageResize.style.display = '';
+    }
+  }; // 设置input角度
+
+
+  function setInputAngle() {
+    var _getCropAttrs7 = getCropAttrs(),
+        _getCropAttrs7$rotate = _getCropAttrs7.rotate,
+        rotate = _getCropAttrs7$rotate === void 0 ? 0 : _getCropAttrs7$rotate,
+        cropUrl = _getCropAttrs7.cropUrl,
+        cropUrlSync = _getCropAttrs7.cropUrlSync;
+
+    imgControl.querySelector('input').value = rotate;
+
+    if (cropUrl && !cropUrlSync) {
+      imgControl.querySelector('input').value = 0;
+    } else {
+      imgControl.querySelector('input').value = rotate;
+    }
+  } // 记录图片地址和key，用于上传和替换图片
+
+
+  var setEditKey = function setEditKey() {
+    var editKey = targetImg.getAttribute('edit-key');
+    var newDataUrl = targetImg.getAttribute('src');
+
+    if (!editKey) {
+      editKey = 'xxxxxxxx-xxxx-4xxx-yxxx-xxxxxxxxxxxx'.replace(/[xy]/g, function (e) {
+        var t = 16 * Math.random() | 0,
+            n = 'x' == e ? t : 3 & t | 8;
+        return n.toString(16);
+      });
+      targetImg.setAttribute('edit-key', editKey);
+    }
+
+    var imageEditMap = sessionStorage.getItem('imageEditMap');
+
+    if (imageEditMap) {
+      imageEditMap = JSON.parse(imageEditMap);
+    } else {
+      imageEditMap = {};
+    }
+
+    imageEditMap[editKey] = newDataUrl;
+    sessionStorage.setItem('imageEditMap', JSON.stringify(imageEditMap));
+  }; // 双击
+
+
+  this.editor.on('doubleclick', function (evt) {
+    var target = evt.data.element.$;
+
+    if (target.classList.contains('image-handle-btn') || target.parentNode && target.parentNode.classList.contains('image-handle-btn')) {
+      evt.stop();
+      return false;
+    }
+  }, null, null, 0);
+  var inputDom = imgControl.querySelectorAll('input')[0];
+  inputDom && inputDom.addEventListener('click', function (event) {
+    widget.editor.focusManager.lock();
+    var value = event.target.value;
+    event.target.focus();
+    event.target.value = '';
+    event.target.value = value;
+  });
+  inputDom && inputDom.addEventListener('blur', function (event) {
+    console.log('input blur');
+    widget.editor.focusManager.unlock();
+    widget.editor.focusManager.focus();
+    widget.focus();
+  });
+  inputDom && inputDom.addEventListener('keyup', function (event) {
+    var keyCode = event.keyCode;
+    var value = event.target.value;
+    console.log('value: ', value); // console.log(event.target)
+    // console.log('keyup dom:', event)
+
+    value = parseInt(value);
+
+    if (value > 360 || value < -360) {
+      var _getCropAttrs8 = getCropAttrs(),
+          rotate = _getCropAttrs8.rotate;
+
+      event.target.value = rotate; // console.log('target.value', event.target.value)
+    }
+
+    if (keyCode === 38) {
+      var valueDown = parseInt(value);
+
+      if (valueDown !== NaN) {
+        imageFreeRotate(valueDown);
+      } else {
+        imageRotate(1);
+      }
+    } else if (keyCode === 40) {
+      var _valueDown = parseInt(value);
+
+      if (_valueDown !== NaN) {
+        imageFreeRotate(_valueDown);
+      } else {
+        imageRotate(-1);
+      }
+    }
+
+    if (keyCode === 13) {
+      widget.editor.focusManager.unlock();
+      widget.editor.fire('setLoading', true);
+      imgControlVisible = false;
+      imgControl.style.display = 'none';
+      imageFreeRotate(value).then(function (base64) {
+        saveCrop(true, function () {
+          widget.editor.fire('setLoading', false);
+          widget.editor.focusManager.focus(); // widget.editor.focus()
+
+          widget.focus();
+        });
+      });
+    }
+  }, false); // 禁止弹出图片属性弹窗
+
+  imgControl.addEventListener('dblclick', function (event) {
+    event.stopPropagation();
+  });
+  imgControl.querySelectorAll('.image-handle-menu button').forEach(function (buttonEl) {
+    buttonEl.addEventListener('click', function (event) {
+      if (cropper) {
+        return;
+      }
+
+      widget.focus();
+      var category = this.dataset.category;
+
+      if (category) {
+        switch (category) {
+          case 'crop':
+            initCrop();
+            break;
+
+          case 'rotate-up':
+            var valueUp = parseInt(inputDom.value);
+
+            if (valueUp !== NaN) {
+              imageFreeRotate(valueUp + 1);
+            } else {
+              imageRotate(1);
+            }
+
+            break;
+
+          case 'rotate-down':
+            var valueDown = parseInt(inputDom.value);
+
+            if (valueDown !== NaN) {
+              imageFreeRotate(valueDown - 1);
+            } else {
+              imageRotate(-1);
+            }
+
+            break;
+
+          case 'rotate-right':
+            imageRotate(90);
+            break;
+
+          case 'rotate-left':
+            imageRotate(-90);
+            break;
+
+          case 'scale-x':
+            imageFlip('x');
+            break;
+
+          case 'scale-y':
+            imageFlip('y');
+            break;
+
+          case 'inverse':
+            imageInverseColor();
+            break;
+
+          case 'remove-bg':
+            imageRemoveBg.call(this, event);
+            break;
+        }
+      }
+    });
+  }); // 实时计算自由旋转input度数
+
+  imgControl.querySelector('.menu-btn--has-sub').addEventListener('mouseenter', function () {
+    setInputAngle();
+  });
+
+  var saveBeforeResize = function saveBeforeResize(e) {
+    if (edited) {
+      // 保存裁剪图片
+      saveCrop(true, function () {
+        if (cropper) {
+          destroyCropper();
+        }
+      });
+    } // 重置容器高度
+    // cropperHeight = null
+    // e.currentTarget.removeEventListener('mousedown', saveBeforeResize)
+
+  }; // 缩放图片前直接上传图片
+
+
+  var resizer = targetImg.parentNode.getElementsByClassName('cke_image_resizer');
+
+  if (resizer && resizer.length) {
+    resizer[0].addEventListener('mousedown', saveBeforeResize);
+  } // this.on('focus', function() {
+  //  console.log('img focus')
+  // })
+
+
+  this.on('key', function (event) {
+    var keyCode = event.data.keyCode;
+
+    if (keyCode === 13 && cropper && edited) {
+      widget.editor.fire('setLoading', true); // 保存裁剪图片
+
+      saveCrop(true, function () {
+        if (cropper) {
+          widget.editor.fire('setLoading', false);
+          destroyCropper();
+          targetImg.style.width = '';
+          targetImg.style.height = ''; // targetImg.setAttribute('width', '')
+          // targetImg.setAttribute('height', '')
+        }
+      });
+    }
+  }); // 图片失焦
+
+  this.on('blur', function (e) {
+    console.log("img blur => canUpload: ".concat(!(imgControlVisible || removeBgDialogVisible), ";"), "isEdited: ".concat(edited));
+
+    if (imgControlVisible || removeBgDialogVisible) {
+      return false;
+    }
+
+    if (window.location.href.indexOf('dontNeedSave') > -1) {
+      return;
+    }
+
+    if (window.__isUploadingImage) {
+      return;
+    }
+
+    if (edited) {
+      // 保存裁剪图片
+      saveCrop(true, function () {
+        if (cropper) {
+          targetImg.style.width = '';
+          targetImg.style.height = '';
+          destroyCropper(); // targetImg.setAttribute('width', '')
+          // targetImg.setAttribute('height', '')
+        }
+      });
+    }
+  }); // 与图片编辑冲突的操作，操作前移除按钮，操作后再加上
+
+  var execList = ['justifycenter', 'textindent', 'justifyblock', 'justifyright', 'justifyleft']; // 打开源码等操作，会触发getData而报错，所以保存图片
+
+  this.editor.on('beforeCommandExec', function (e) {
+    if (execList.indexOf(e.data.name) >= 0 && targetImg.parentNode && targetImg.parentNode.contains(imgControl)) {
+      targetImg.parentNode.removeChild(imgControl);
+    }
+
+    if (e.data.name != 'applyFormatting') {
+      if (edited && cropper) {
+        // 直接取消裁剪
+        destroyCropper(); // 保存裁剪图片
+        // saveCrop(true, function() {
+        //   if (cropper) {
+        //     destroyCropper()
+        //   }
+        // })
+        // setEditKey()
+      }
+    }
+  });
+  this.editor.on('afterCommandExec', function (e) {
+    if (execList.indexOf(e.data.name) >= 0 && targetImg.parentNode && !targetImg.parentNode.contains(imgControl)) {
+      targetImg.parentNode.appendChild(imgControl);
+    }
+  }); //
+
+  var src = targetImg.getAttribute('src');
+
+  if (!targetImg.getAttribute('xcx_url') && !targetImg.getAttribute('data') && src.indexOf('.gif') < 0 && !targetImg.getAttribute('svg-code')) {
+    var parentNode = targetImg.parentNode;
+    parentNode.appendChild(imgControl);
+    parentNode.addEventListener('mouseenter', function (event) {
+      imgControlVisible = true;
+
+      if (!cropper) {
+        imgControl.style.display = 'block';
+      }
+    });
+    parentNode.addEventListener('mouseleave', function (event) {
+      imgControl.style.display = 'none';
+      imgControlVisible = false;
+    });
+  }
+} // html
+
+
+htmlStr = "<span class=\"image-handle-menu\">\n  <button class=\"menu-btn\" data-category=\"crop\">\n    <span class=\"menu-btn__tooltips\">\u88C1\u526A</span>\n    <span class=\"icon-btn icon-crop icon--large\"></span>\n  </button>\n  <span class=\"menu-btn menu-btn--has-sub\">\n    <span class=\"menu-btn__tooltips\">\u65CB\u8F6C</span>\n    <span class=\"icon-btn icon-rotate-right icon--large\"></span>\n    <span class=\"tools-arrow--down\"></span>\n    <span class=\"sub-menu\">\n      <button class=\"item-transform\" data-category=\"rotate-left\">\n        <span class=\"icon-btn icon-rotate-left\"></span>\n        <span class=\"transform-content\">\u5411\u5DE6\u65CB\u8F6C90\xB0</span>\n      </button>\n      <button class=\"item-transform\" data-category=\"rotate-right\">\n        <span class=\"icon-btn icon-rotate-right\"></span>\n        <span class=\"transform-content\">\n          <span class=\"transform-content__text\">\u5411\u53F3\u65CB\u8F6C90\xB0</span>\n        </span>\n      </button>\n      <span class=\"item-transform\">\n        <span class=\"icon-btn icon-free-rotate\"></span>\n        <span class=\"transform-content item-transform__freedom\">\n          <span class=\"transform-content__text\">\u81EA\u7531\u65CB\u8F6C</span>\n          <span class=\"freedom-rotate\">\n            <input class=\"cke_enable_context_menu\" type=\"number\" max=\"360\" min=\"-360\" value=\"0\">\n            <span class=\"angle-txt\">\xB0</span>\n            <span class=\"angle-tools\">\n              <button class=\"tools-arrow--up\" data-category=\"rotate-up\"></button>\n              <button class=\"tools-arrow--down\" data-category=\"rotate-down\"></button>\n            </span>\n          </span>\n        </span>\n      </span>\n      <span class=\"item-transform--line\"></span>\n      <button class=\"item-transform\" data-category=\"scale-x\">\n        <span class=\"icon-btn icon-scale-x\"></span>\n        <span class=\"transform-content\">\n          <span class=\"transform-content__text\">\u6C34\u5E73\u65CB\u8F6C</span>\n        </span>\n      </button>\n      <button class=\"item-transform\" data-category=\"scale-y\">\n        <span class=\"icon-btn icon-scale-y\"></span>\n        <span class=\"transform-content\">\n          <span class=\"transform-content__text\">\u5782\u76F4\u53CD\u8F6C</span>\n        </span>\n      </button>\n    </span>\n  </span>\n  <span class=\"item-line\"></span>\n  <button class=\"menu-btn category-inverse\" data-category=\"inverse\">\u53CD\u8272</button>\n  <button class=\"menu-btn category-remove-bg\" data-category=\"remove-bg\">\u53BB\u80CC\u666F</button>\n  </span>"; // css样式表
+
+var styleInlineText = "\n.image-handle-btn{\n  min-width: 200px;\n  position: absolute;\n  box-sizing: border-box;\n  text-indent: initial;\n  left: 0;\n  top: 0;\n  transform: translateY(-30px);\n  padding: 8px 12px;\n  background:rgba(255,255,255,1);\n  box-shadow:0px 3px 8px 0px rgba(0,0,0,0.2),0px 0px 1px 0px rgba(0,0,0,0.3);\n  border-radius:3px;\n  z-index: 10000;\n  display: bblock !important;\n}\n.image-handle-menu button{\n  background: none;\n  border: none;\n  outline: none;\n  margin: 0;\n  padding: 0;\n  cursor: pointer;\n}\n.image-handle-menu{\n  height: 24px;\n  display: flex;\n  justify-content: center;\n  align-items: center;\n  font-size: 12px;\n}\n.image-handle-menu .menu-btn{\n  cursor: pointer;\n  position: relative;\n  padding: 4px;\n  height: 100%;\n  display: flex;\n  align-items: center;\n  border-radius:4px;\n  flex-shrink: 0;\n}\n\n.image-handle-menu .menu-btn:hover .menu-btn__tooltips{\n  display: block;\n}\n.image-handle-menu .menu-btn__tooltips{\n  display: none;\n  position: absolute;\n  left: 50%;\n  top:0;\n  transform: translate(-50%,-46px);\n  background-color: rgba(9, 14, 20, 0.8);\n  padding: 8px;\n  line-height:1;\n  border-radius: 2px;\n  color: #ffffff;\n  white-space: nowrap;\n}\n.image-handle-menu .menu-btn__tooltips::before{\n  position: absolute;\n  top: 100%;\n  display: block;\n  content: '';\n  border-color: rgba(9, 14, 20, 0.8) transparent transparent transparent;\n  border-width: 8px 8px 0 8px;\n  border-style: solid;\n  left: 50%;\n  transform: translateX(-50%);\n}\n.image-handle-menu .menu-btn:hover{\n  background-color: #ccc;\n}\n.image-handle-menu .item-line{\n  height: 20px;\n  border-left: 1px solid #E4E5E6;\n  width:0;\n  margin-right:12px;\n}\n.image-handle-menu .menu-btn:not(:last-child){\n  margin-right:12px;\n}\n.image-handle-menu .menu-btn:hover{\n  background-color:#F0F1F2;\n}\n.image-handle-menu .icon-btn{\n  display: block;\n  width: 16px;\n  height: 16px;\n}\n.image-handle-menu .icon--large{\n  width: 20px;\n  height: 20px;\n  background-size: 20px;\n}\n/* \u5B50\u83DC\u5355 */\n.menu-btn:hover .sub-menu{\n  display: block;\n}\n.image-handle-menu .sub-menu{\n  display: none;\n  position: absolute;\n  left: -4px;\n  top: 100%;\n  width: 150px;\n  padding-top:4px;\n  padding-bottom:4px;\n  border-radius:4px;\n  background-color: #ffffff;\n  box-shadow:0px 3px 8px 0px rgba(0,0,0,0.2),0px 0px 1px 0px rgba(0,0,0,0.3);\n}\n\n.image-handle-menu .item-transform{\n  height: 28px;\n  padding-left: 10px;\n  padding-right: 10px;\n  display: flex;\n  width: 100%;\n  box-sizing: border-box;\n  background:none;\n  border:0;\n  outline:none;\n  cursor: pointer;\n}\n\n.item-transform:hover{\n  background-color:#F5F6F7;\n}\n.item-transform {\n  display: flex;\n  justify-content: center;\n  align-items: center;\n}\n.item-transform .icon-btn{\n  flex-shrink: 0;\n}\n.item-transform .transform-content{\n  flex-grow:1;\n  text-align: left;\n  padding-left:10px;\n}\n.image-handle-menu .item-transform--line{\n  border-bottom: 1px solid #E4E5E6;\n  margin-left: 8px;\n  margin-right: 8px;\n  display:block;\n}\n.item-transform__freedom{\n  display: flex;\n  justify-content: space-between;\n  align-items: center;\n}\n.item-transform__freedom .transform-content__text{\n  flex-shrink: 0;\n  flex-grow: 1;\n  line-height: 1;\n}\n/* \u81EA\u5B9A\u4E49\u65CB\u8F6C */\n.item-transform__freedom .freedom-rotate{\n  width: 40px;\n  position: relative;\n  display: flex;\n  justify-content: center;\n  align-items: center;\n}\n.item-transform__freedom .freedom-rotate input{\n  display:block;\n  width: 100%;\n  border-radius:2px;\n  border:1px solid #E4E5E6;\n  padding-right: 12px;\n  text-align: right;\n  padding-left: 6px;\n}\n.item-transform__freedom .freedom-rotate input::-webkit-inner-spin-button{\n  display: none;\n}\n.item-transform__freedom .freedom-rotate > [class^='angle-']{\n  position: absolute;\n  width: 12px;\n  text-align: center;\n  right:1px;\n  top: 1px;\n  bottom:1px;\n  z-index: 2;\n  visibility: hidden;\n}\n.item-transform__freedom .freedom-rotate .angle-tools{\n}\n\n.item-transform__freedom .freedom-rotate .angle-txt{\n  line-height: 1;\n  visibility: visible;\n}\n.item-transform__freedom .freedom-rotate:hover .angle-tools,\n.item-transform__freedom .freedom-rotate input:focus ~ .angle-tools{\n  visibility: visible;\n}\n\n.item-transform__freedom .freedom-rotate:hover .angle-txt,\n.item-transform__freedom .freedom-rotate input:focus ~ .angle-txt{\n  visibility: hidden;\n}\n\n/* \u4E0A\u4E0B\u7BAD\u5934 */\n.image-handle-menu .menu-btn>.tools-arrow--down{\n  margin-left:2px;\n}\n\n.image-handle-menu .sub-menu button[class^='tools-arrow--']{\n  width:100%;\n  height: 50%;\n  display: flex;\n  justify-content: center;\n  align-items: center;\n  border: 0;\n  margin: 0;\n  padding: 0;\n  outline: none;\n  cursor: pointer;\n  background-color: transparent;\n}\n\n.image-handle-menu [class^='tools-arrow--']::before{\n  display: block;\n  content: '';\n  border-style: solid;\n}\n\n/* arrow */\n.image-handle-menu .tools-arrow--up::before{\n  border-width: 0 3px 4px 3px;\n  border-color: transparent transparent #909090 transparent;\n}\n\n.image-handle-menu .tools-arrow--down::before{\n  border-width: 4px 3px 0 3px;\n  border-color: #909090 transparent transparent transparent;\n}\n/* arrow \u70B9\u51FB\u72B6\u6001 */\n.image-handle-menu .tools-arrow--up:active::before{\n border-bottom-color: #3F92FF\n}\n.image-handle-menu .tools-arrow--down:active::before{\n border-top-color: #3F92FF\n}\n/* icon */\n.icon-btn{\n  background-size: 16px;\n  background-repeat: no-repeat;\n  background-position: center;\n}\n\n.icon-btn.icon-crop{ background-image: url('".concat(CKEDITOR.getUrl('cropIcon/crop.svg'), " ');}\n.image-handle-menu button:active > .icon-btn.icon-crop{ background-image: url('").concat(CKEDITOR.getUrl('cropIcon/crop-active.svg'), " ');}\n\n.icon-btn.icon-rotate-left{ background-image: url('").concat(CKEDITOR.getUrl('cropIcon/left.svg'), " ');}\n.image-handle-menu button:active > .icon-btn.icon-rotate-left{ background-image: url('").concat(CKEDITOR.getUrl('cropIcon/left-active.svg'), " ');}\n\n.icon-btn.icon-rotate-right{ background-image: url('").concat(CKEDITOR.getUrl('cropIcon/right.svg'), " ');}\n.image-handle-menu button:active > .icon-btn.icon-rotate-right{ background-image: url('").concat(CKEDITOR.getUrl('cropIcon/right-active.svg'), " ');}\n\n.icon-btn.icon-scale-y{ background-image: url('").concat(CKEDITOR.getUrl('cropIcon/scaley.svg'), " ');}\n.image-handle-menu button:active > .icon-btn.icon-scale-y{ background-image: url('").concat(CKEDITOR.getUrl('cropIcon/scaley-active.svg'), " ');}\n\n.icon-btn.icon-scale-x{ background-image: url('").concat(CKEDITOR.getUrl('cropIcon/scalex.svg'), " ');}\n.image-handle-menu button:active > .icon-btn.icon-scale-x{ background-image: url('").concat(CKEDITOR.getUrl('cropIcon/scalex-active.svg'), " ');}\n\n.icon-btn.icon-free-rotate{ background-image: url('").concat(CKEDITOR.getUrl('cropIcon/rotate.svg'), " ');}\n/* \u4E00\u7EA7\u83DC\u5355\u6309\u94AE\u72B6\u6001 */\n.image-handle-menu .menu-btn:hover>.icon-rotate-right{\n  background-image: url('").concat(CKEDITOR.getUrl('cropIcon/right-active.svg'), " ')\n}\n.image-handle-menu .menu-btn:hover>.tools-arrow--down::before{\n  border-top-color: #3F92FF;\n}\n\n/* cropper \u5B9E\u4F8B\u5316\u524D\u8BBE\u7F6E\u6B64\u7C7B\uFF0C\u4E3A\u4E86\u6846\u9009\u5C3A\u5BF8\u5339\u914D */\n.cropper-no-margin{\n  margin-top: 0 !important;\n  margin-bottom: 0 !important;\n  opacity: 0;\n}\n\n");
+var styleTag = document.createElement('style'); //创建一个style元素
+
+styleTag.type = 'text/css'; //这里必须显示设置style元素的type属性为text/css，否则在ie中不起作用
+
+var textNode = document.createTextNode(styleInlineText);
+styleTag.appendChild(textNode);
+var head = document.head || document.getElementsByTagName('head')[0]; //获取head元素
+
+head.appendChild(styleTag); //把创建的style元素插入到head中
