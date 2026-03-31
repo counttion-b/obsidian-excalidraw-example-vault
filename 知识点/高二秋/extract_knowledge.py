@@ -71,7 +71,7 @@ def image_to_md(node: Tag) -> str:
     if not src:
         return ""
     alt = (node.get("alt") or "").strip()
-    return f"![{alt}]({src}|300)"
+    return f"![[{src.lstrip('./')}|300]]"
 
 
 def block_text(elem: Tag) -> str:
