@@ -22,7 +22,9 @@
     "excalidraw-toolicon-svg",
     "horizontal-clean",
     "font",
-    "question"
+    "question",
+    "weekly-homework"
   ],
-  "baseFontSizeAction": false
+  "baseFontSizeAction": false,
+  "textFontFamily": ""
 }

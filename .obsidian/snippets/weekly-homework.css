@@ -1,0 +1,262 @@
+/* 每周作业模板专属样式：只作用于 cssclass: weekly-homework */
+
+.markdown-preview-view.weekly-homework,
+.markdown-source-view.mod-cm6.is-live-preview.weekly-homework {
+  --weekly-black: #111111;
+  --weekly-gray: #666666;
+  --weekly-light: #d9d9d9;
+}
+
+/* 整体正文收敛为简洁黑白风 */
+.markdown-preview-view.weekly-homework {
+  color: var(--weekly-black);
+}
+
+.markdown-preview-view.weekly-homework p,
+.markdown-preview-view.weekly-homework li,
+.markdown-preview-view.weekly-homework blockquote,
+.markdown-preview-view.weekly-homework blockquote p {
+  color: var(--weekly-black);
+}
+
+/* 封面：标题更大，位置在中上偏上（三分之一区域） */
+.markdown-preview-view.weekly-homework h1 {
+  text-align: center !important;
+  font-size: 88px !important;
+  font-weight: 700 !important;
+  color: var(--weekly-black) !important;
+  letter-spacing: 1.2px;
+  margin-top: 8vh !important;
+  margin-bottom: 16px !important;
+  border: none !important;
+  background: none !important;
+  padding: 0 !important;
+  box-shadow: none !important;
+}
+
+.markdown-preview-view.weekly-homework h1 a.tag[href="#h0"] {
+  display: none !important;
+}
+
+/* 封面知识点：排在 Week 下方，更靠下且左对齐 */
+.markdown-preview-view.weekly-homework .cover-topics {
+  display: flex !important;
+  flex-direction: column;
+  align-items: flex-start;
+  justify-content: flex-start;
+  width: fit-content;
+  margin: 48px auto 0 auto !important;
+}
+
+.markdown-preview-view.weekly-homework .cover-topics > div {
+  width: auto;
+  text-align: left !important;
+  color: #7a7a7a !important;
+  font-size: 30px !important;
+  font-weight: 600 !important;
+  line-height: 1.5 !important;
+  letter-spacing: 0.1px;
+  margin: 0 !important;
+}
+
+/* 每页日期标题 */
+.markdown-preview-view.weekly-homework h2 {
+  font-size: 20px !important;
+  font-weight: 700 !important;
+  color: var(--weekly-black) !important;
+  border: none !important;
+  padding: 0 0 8px 0 !important;
+  margin-top: 0 !important;
+  margin-bottom: 14px !important;
+  border-bottom: 1.5px solid var(--weekly-black) !important;
+  letter-spacing: 0.3px;
+}
+
+/* 今日目标卡片简化成细线框 */
+.markdown-preview-view.weekly-homework .callout[data-callout="info"] {
+  background: transparent !important;
+  border: 1px solid var(--weekly-light) !important;
+  box-shadow: none !important;
+  padding: 10px 14px !important;
+  margin: 0 0 18px 0 !important;
+}
+
+.markdown-preview-view.weekly-homework .callout[data-callout="info"] .callout-title {
+  background: transparent !important;
+  padding: 0 0 4px 0 !important;
+  color: var(--weekly-black) !important;
+  font-weight: 700 !important;
+}
+
+.markdown-preview-view.weekly-homework .callout[data-callout="info"] .callout-content {
+  padding: 0 !important;
+  color: var(--weekly-gray) !important;
+}
+
+/* 题号锚点不显示，但保留结构 */
+.markdown-preview-view.weekly-homework .el-h6 {
+  height: 0 !important;
+  margin: 0 !important;
+  padding: 0 !important;
+  overflow: hidden !important;
+}
+
+.markdown-preview-view.weekly-homework .el-h6 h6 {
+  font-size: 0.01px !important;
+  margin: 0 !important;
+  padding: 0 !important;
+}
+
+/* 题目计数：独立于旧模板 */
+.markdown-preview-view.weekly-homework {
+  counter-reset: weekly-ti;
+}
+
+.markdown-preview-view.weekly-homework .el-h6 + .el-div[data-callout="ti"] {
+  counter-increment: weekly-ti;
+}
+
+/* 题目样式：黑色题号 + 灰色来源 */
+.markdown-preview-view.weekly-homework .callout[data-callout="ti"] {
+  background: transparent !important;
+  border: none !important;
+  box-shadow: none !important;
+  padding: 0 !important;
+  margin: 16px 0 !important;
+}
+
+.markdown-preview-view.weekly-homework .callout[data-callout="ti"] .callout-title {
+  background: transparent !important;
+  border: none !important;
+  box-shadow: none !important;
+  padding: 0 !important;
+  margin: 0 0 6px 0 !important;
+  font-size: 15px;
+  font-weight: 600;
+  color: var(--weekly-black) !important;
+}
+
+.markdown-preview-view.weekly-homework .callout[data-callout="ti"] .callout-icon {
+  display: none !important;
+}
+
+.markdown-preview-view.weekly-homework .el-h6 + .el-div[data-callout="ti"] .callout-title .callout-title-inner::before {
+  content: counter(weekly-ti) ". ";
+  font-weight: 700;
+  color: var(--weekly-black);
+}
+
+.markdown-preview-view.weekly-homework .callout[data-callout="ti"] .callout-title em {
+  color: var(--weekly-gray) !important;
+  font-style: normal !important;
+  font-size: 0.92em;
+  font-weight: 400 !important;
+}
+
+.markdown-preview-view.weekly-homework .callout[data-callout="ti"] .callout-content {
+  padding: 0 !important;
+  margin: 0 !important;
+  line-height: 1.95;
+  color: var(--weekly-black) !important;
+}
+
+/* 选项区继续保持干净排版 */
+.markdown-preview-view.weekly-homework .callout[data-callout^="opts"] {
+  background: transparent !important;
+  border: none !important;
+  box-shadow: none !important;
+}
+
+.markdown-preview-view.weekly-homework .callout[data-callout^="opts"] .callout-title {
+  display: none !important;
+}
+
+.markdown-preview-view.weekly-homework .callout[data-callout^="opts"] .callout-content {
+  padding: 0 !important;
+  margin: 2px 0 0 0 !important;
+}
+
+.markdown-preview-view.weekly-homework .callout[data-callout^="opts"] ul {
+  list-style: none !important;
+  margin: 0 !important;
+  padding-left: 0 !important;
+}
+
+.markdown-preview-view.weekly-homework .callout[data-callout="opts2"] .callout-content ul {
+  display: grid !important;
+  grid-template-columns: 1fr 1fr;
+  column-gap: 32px;
+  row-gap: 6px;
+}
+
+.markdown-preview-view.weekly-homework .callout[data-callout="opts4"] .callout-content ul {
+  column-count: 4;
+  column-gap: 20px;
+}
+
+.markdown-preview-view.weekly-homework .callout[data-callout^="opts"] li {
+  line-height: 1.9;
+  break-inside: avoid;
+  margin: 0 !important;
+}
+
+/* 表格：黑白线条 + 按内容宽度 + 居中 */
+.markdown-preview-view.weekly-homework table {
+  width: max-content !important;
+  max-width: 100% !important;
+  margin: 10px auto 14px auto !important;
+  border-collapse: collapse !important;
+  table-layout: auto !important;
+  background: transparent !important;
+}
+
+.markdown-preview-view.weekly-homework table th,
+.markdown-preview-view.weekly-homework table td {
+  border: 1px solid #000 !important;
+  color: #000 !important;
+  background: transparent !important;
+  padding: 6px 14px !important;
+  white-space: nowrap;
+  text-align: center;
+}
+
+.markdown-preview-view.weekly-homework table th {
+  font-weight: 700;
+}
+
+/* 避免主题给表格外再加圆角/阴影 */
+.markdown-preview-view.weekly-homework .table-wrapper,
+.markdown-preview-view.weekly-homework .table-wrapper table {
+  box-shadow: none !important;
+  border-radius: 0 !important;
+}
+
+/* 留白高度稍克制，打印更像作业纸 */
+.markdown-preview-view.weekly-homework .gap {
+  display: block;
+  height: calc(var(--n, 1) * 0.9em);
+}
+
+/* 打印时进一步保证纯黑白 */
+@media print {
+  .markdown-preview-view.weekly-homework h1,
+  .markdown-preview-view.weekly-homework h2,
+  .markdown-preview-view.weekly-homework p,
+  .markdown-preview-view.weekly-homework li,
+  .markdown-preview-view.weekly-homework .callout-title,
+  .markdown-preview-view.weekly-homework .callout-content {
+    color: #000 !important;
+  }
+
+  .markdown-preview-view.weekly-homework .callout[data-callout="info"] {
+    border-color: #999 !important;
+  }
+
+  .markdown-preview-view.weekly-homework table,
+  .markdown-preview-view.weekly-homework table th,
+  .markdown-preview-view.weekly-homework table td {
+    border-color: #000 !important;
+    color: #000 !important;
+    background: transparent !important;
+  }
+}

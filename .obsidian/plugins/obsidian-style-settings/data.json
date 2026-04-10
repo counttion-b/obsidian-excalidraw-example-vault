@@ -13,5 +13,7 @@
   "blue-topaz-theme@@text-indentation-two-em": true,
   "blue-topaz-theme@@paragraph-spacing": 0,
   "blue-topaz-theme@@toggle-paragraph-spacing": false,
-  "blue-topaz-theme@@line-height-main": 2.5
+  "blue-topaz-theme@@line-height-main": 2.5,
+  "blue-topaz-theme@@tab-head-style": "underline-tab-style",
+  "blue-topaz-theme@@style-options-for-admonition-plugin": false
 }
