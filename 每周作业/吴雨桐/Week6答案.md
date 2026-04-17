@@ -1,3 +1,11 @@
+---
+tags:
+  - 每周作业
+  - 物理
+  - 模板
+cssclass: weekly-homework
+---
+
 
 1.6 m/s;  1s ; 3m
 
