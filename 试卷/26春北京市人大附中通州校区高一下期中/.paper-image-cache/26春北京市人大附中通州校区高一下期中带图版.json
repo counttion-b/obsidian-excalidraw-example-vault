@@ -1,0 +1,171 @@
+[
+  {
+    "questionNo": "1",
+    "matched": false,
+    "score": 0,
+    "answer": "",
+    "analysis": ""
+  },
+  {
+    "questionNo": "2",
+    "matched": false,
+    "score": 0,
+    "answer": "",
+    "analysis": ""
+  },
+  {
+    "questionNo": "3",
+    "matched": false,
+    "score": 0,
+    "answer": "",
+    "analysis": ""
+  },
+  {
+    "questionNo": "4",
+    "matched": false,
+    "score": 0,
+    "answer": "",
+    "analysis": ""
+  },
+  {
+    "questionNo": "5",
+    "matched": false,
+    "score": 0,
+    "answer": "",
+    "analysis": ""
+  },
+  {
+    "questionNo": "6",
+    "matched": false,
+    "score": 0,
+    "answer": "",
+    "analysis": ""
+  },
+  {
+    "questionNo": "7",
+    "matched": false,
+    "score": 0,
+    "answer": "",
+    "analysis": ""
+  },
+  {
+    "questionNo": "8",
+    "matched": false,
+    "score": 0,
+    "answer": "",
+    "analysis": ""
+  },
+  {
+    "questionNo": "9",
+    "matched": false,
+    "score": 0,
+    "answer": "",
+    "analysis": ""
+  },
+  {
+    "questionNo": "10",
+    "matched": false,
+    "score": 0,
+    "answer": "",
+    "analysis": ""
+  },
+  {
+    "questionNo": "11",
+    "matched": true,
+    "score": 73.93,
+    "url": "https://xbresource.jiaoyanyun.com/#/boutique/search?sid=4&gid=3&queId=2c7b6bcaf4944d628128562225814124",
+    "answer": "A\nC",
+    "analysis": "【详解】AB．当小物体运动到终端皮带轮的最高点时，皮带轮刚好对物体无支持力，根据\nmg = m\\frac{v^{2}}{r}\n解得\nv = \\sqrt{gr}\n即皮带的最小速度，选项A正确，B错误；\nCD．最小速度对应的就是每秒最少转数\n2\\pi nr = \\sqrt{gr}\n解得\nn = \\frac{1}{2\\pi}\\sqrt{\\frac{g}{r}}\n选项C正确，D错误。\n故选AC。",
+    "imageCount": 1
+  },
+  {
+    "questionNo": "12",
+    "matched": true,
+    "score": 100,
+    "url": "https://xbresource.jiaoyanyun.com/#/boutique/search?sid=4&gid=3&queId=1e10c0d7b11744c29da47204d8f7f3ef",
+    "answer": "A\nC",
+    "analysis": "A选项，B选项：第一宇宙速度是近星的环绕速度，根据万有引力提供向心力，列出等式有：Gfrac{Mm}{{{R}^{2}}}=mfrac{{{v}^{2}}}{R}，\n所以有：v=sqrt{frac{GM}{R}}，\n该星球的直径缩小到原来的四分之一，若收缩时质量不变，所以星球的第一宇宙速度增大到原来的2倍，故B错误，A正确；\nC选项，D选项：忽略星球自转的影响，根据万有引力等于重力列出等式Gfrac{Mm}{{{R}^{2}}}=mg，该星球的直径缩小到原来的四分之一，若收缩时质量不变，所以同一物体在星球表面受到的重力加速度增大到原来的16倍，故C正确，D错误；\n故选AC．",
+    "imageCount": 0
+  },
+  {
+    "questionNo": "13",
+    "matched": true,
+    "score": 74.14,
+    "url": "https://xbresource.jiaoyanyun.com/#/boutique/search?sid=4&gid=3&queId=a661cfec1540469080ead4ccc67919da",
+    "answer": "D",
+    "analysis": "【详解】\nA．探测飞船在半径为r1的圆轨道上做圆周运动时，有\nG\\frac{Mm_{1}}{{r}_{1}^{2}}=m_{1}\\left(\\frac{2\\pi }{T_{1}}\\right)^{2}r_{1}\n解得\nM=\\frac{4\\pi ^{2}{r}_{1}^{3}}{G{T}_{1}^{2}}\n故A错误；\nB．飞船所在处的重力加速度为\ng'=a=\\frac{4\\pi ^{2}r_{1}}{{T}_{1}^{2}}\nX星球表面的重力加速度小于此值，故B错误；\nC．根据万有引力提供向心力，有\nG\\frac{Mm_{1}}{r^{2}}=m_{1}\\frac{v^{2}}{r}\n解得\nv=\\sqrt{\\frac{GM}{r}}\n所以\n\\frac{v_{1}}{v_{2}}=\\sqrt{\\frac{r_{2}}{r_{1}}}\n故C错误；\nD．根据开普勒第三定律有\n\\frac{{r}_{1}^{3}}{{T}_{1}^{2}}=\\frac{{r}_{2}^{3}}{{T}_{2}^{2}}\n解得\nT_{2}=T_{1}\\sqrt{\\frac{{r}_{2}^{3}}{{r}_{1}^{3}}}\n故D正确。\n故选D。",
+    "imageCount": 0
+  },
+  {
+    "questionNo": "14",
+    "matched": true,
+    "score": 98.3,
+    "url": "https://xbresource.jiaoyanyun.com/#/boutique/search?sid=4&gid=3&queId=e4f380e24bd448dcae98bcf374f1bd5c",
+    "answer": "C",
+    "analysis": "【详解】A．根据曲线运动的速度与轨迹的关系可知，炮弹到达b点时，炮弹的速度水平向右，不为零，故A错误；\nB．根据曲线运动的条件可知，炮弹到达b点时加速度不为零，方向应指向轨迹的凹侧，故B错误；\nC．炮弹从a点到c点的过程，重力做功为零，阻力做负功，由动能定理可知，炮弹经过a点时的速度大于经过c点时的速度，其他等高点也同样成立，即炮弹经过等高的两点时上升速度大于下落速度，故C正确；\nD．从O到a的过程中，在竖直方向上，受到重力和阻力在竖直向下的分力f1，由牛顿第二定律可得\nmg + f_{1} = ma_{1}\n解得\na_{1} = \\frac{mg + f_{1}}{m}\n在从c到d的过程中，在竖直方向上，受到向下的重力和阻力在竖直向上的分力f2，由牛顿第二定律可得\nmg - f_{2} = ma_{2}\n解得\na_{2} = \\frac{mg - f_{2}}{m}\n对比可得\na_{1} > a_{2}\n即上升阶段的加速度总体比下降阶段的加速度大，再由\nh = vt + \\frac{1}{2}at^{2}\n可定性确定，竖直位移相同，而Oa段加速度大，且va > vc，则Oa段的时间短，所以炮弹由O点运动到a点的时间小于由c点运动到d点的时间，故D错误。\n故选C。",
+    "imageCount": 1
+  },
+  {
+    "questionNo": "15",
+    "matched": true,
+    "score": 73.58,
+    "url": "https://xbresource.jiaoyanyun.com/#/boutique/search?sid=4&gid=3&queId=2712a4759ea04a3ba63342872c9e41a4",
+    "answer": "C\nD",
+    "analysis": "A．由图乙知当F=0时，v^{2}=a，则有\nmg=\\frac{mv^{2}}{R}=\\frac{ma}{R}\n解得\ng=\\frac{a}{R}\n故A为错误选项；\nBC．在最高点，根据牛顿第二定律得\nF+mg=m\\frac{v^{2}}{R}\n整理得\nv^{2}=\\frac{R}{m}F+gR\n图线的斜率为\nk=\\frac{R}{m}\n可知绳长不变，小球的质量越小，斜率越大，故B为错误选项，C为正确选项；\nD．由表达式\nv^{2}=\\frac{R}{m}F+gR\n可知，当F=0时，有\nv^{2}=gR=a\n可知图线与纵轴的交点坐标与小球质量无关，故D为正确选项。\n故答案为CD。",
+    "imageCount": 1
+  },
+  {
+    "questionNo": "16",
+    "matched": true,
+    "score": 91.2,
+    "url": "https://xbresource.jiaoyanyun.com/#/boutique/search?sid=4&gid=3&queId=99ce119731df4c948c953b02b3e6c6cd",
+    "answer": "10     4.0     1.0     1.4",
+    "analysis": "【详解】\n（1）[1] 由ab、bc、cd水平距离相同可知，a到b、b到c运动时间相同，为T=0.10\\text{s} ，平抛运动在竖直方向上为匀变速直线运动，根据\n\\Delta h=g{{T}^{2}}\n解得\ng=\\frac{{{y}_{bc}}-{{y}_{ab}}}{{{T}^{2}}}=\\frac{2L}{{{T}^{2}}}=\\frac{2\\times 1\\times 5}{{{0.1}^{2}}}\\text{cm/}{{\\text{s}}^{\\text{2}}}=10\\text{m/}{{\\text{s}}^{\\text{2}}}\n（2）[2]根据\nmg=m\\frac{{{v}^{2}}}{R}\n解得星球的第一宇宙速度\nv=\\sqrt{gR}=4.0\\text{km/s}\n（3）[3] 小球平抛的初速度是\n{{v}_{0}}=\\frac{2L}{T}=\\frac{2\\times 1\\times 5}{0.1}\\text{cm/s}=1.0\\text{m/s}\n（4）[4] b点竖直分速度\n{{v}_{by}}=\\frac{{{y}_{ac}}}{2T}=\\frac{4L}{2T}=\\frac{4\\times 1\\times 5}{0.2}\\text{cm/s}=\\text{1}\\text{.0m/s}\n小球在b点时的速度大小\n{{v}_{b}}=\\sqrt{{{v}_{0}}^{2}+{{v}_{by}}^{2}}=\\sqrt{2}\\text{m/s}=\\text{1}\\text{.4m/s}",
+    "imageCount": 1
+  },
+  {
+    "questionNo": "17",
+    "matched": true,
+    "score": 48.05,
+    "url": "https://xbresource.jiaoyanyun.com/#/boutique/search?sid=4&gid=3&queId=ddcf7a3b297f45c9ae6065df0a031d5f",
+    "answer": "线速度     A     C     控制变量法",
+    "analysis": "【详解】（1）[1]当传动皮带套在两塔轮半径不同的轮盘上时，它们是皮带传动，塔轮边缘处的线速度相等。\n（2）[2][3]探究向心力和角速度的关系时，利用控制变量法，根据\nF = m\\omega^{2}r\n可知控制质量相同和半径相同，所以将质量相同的小球分别放在挡板A和挡板C处。\n（3）[4]由前面分析可知该实验采用的是控制变量法。",
+    "imageCount": 1
+  },
+  {
+    "questionNo": "18",
+    "matched": true,
+    "score": 72.46,
+    "url": "https://xbresource.jiaoyanyun.com/#/boutique/search?sid=4&gid=3&queId=d051cdcc936547fc81e9a93aac7f0faa",
+    "answer": "(1) 2\\text{s}\n(2) 40\\text{m}\n(3) 20\\sqrt{2}\\text{m}/\\text{s}",
+    "analysis": "(1) 【详解】物体在空中做平抛运动，竖直方向有h = \\frac{1}{2}gt^{2}\n解得t = \\sqrt{\\frac{2h}{g}} = \\sqrt{\\frac{2 \\times 20}{10}}\\text{s} = 2\\text{s}\n(2) 水平方向做匀速直线运动，则有x = v_{0}t = 20 \\times 2\\text{m} = 40\\text{m}\n(3) 物体落地时的竖直分速度大小为v = gt = 20\\text{m}/\\text{s}\n则物体落地时的速度大小为v = \\sqrt{v_{0}^{2} + v_{y}^{2}} = 20\\sqrt{2}\\text{m}/\\text{s}",
+    "imageCount": 1
+  },
+  {
+    "questionNo": "19",
+    "matched": true,
+    "score": 66.22,
+    "url": "https://xbresource.jiaoyanyun.com/#/boutique/search?sid=4&gid=3&queId=2111352873104ab482fede36ab14a19c",
+    "answer": "(1) \\frac{mg}{\\cos \\theta }；\n(2) 2\\pi \\sqrt{\\frac{l\\cos \\theta }{g}}；\n(3) 不变",
+    "analysis": "(1) 对小球进行受力分析如图所示\n![|200](https://tiku-pro-cdn.speiyou.com/imgFile/33828e857ad172c0b573adc78d3901df.png)\n则有\nF=\\frac{mg}{\\cos \\theta }\n(2) 根据\nmg\\tan \\theta =m\\omega ^{2}l\\sin \\theta\n解得\n\\omega =\\sqrt{\\frac{g}{l\\cos \\theta }}\n周期\nT=\\frac{2\\pi }{\\omega }=2\\pi \\sqrt{\\frac{l\\cos \\theta }{g}}\n(3) 根据上述有\n\\omega =\\sqrt{\\frac{g}{l\\cos \\theta }}\n根据几何关系有\n\\cos \\theta =\\frac{h}{l}\n解得\n\\omega =\\sqrt{\\frac{g}{h}}\n可知，若保持轨迹圆的圆心O到悬点B的距离h不变，增大绳长l，小球做匀速圆周运动的角速度ω不会发生改变，周期不变．",
+    "imageCount": 2
+  },
+  {
+    "questionNo": "20",
+    "matched": true,
+    "score": 99.52,
+    "url": "https://xbresource.jiaoyanyun.com/#/boutique/search?sid=4&gid=3&queId=45b6c659faf4457eb947094106793128",
+    "answer": "(1) 证明见解析\n(2) r_{2}:r_{1}",
+    "analysis": "(1) 行星绕太阳的运动轨迹非常接近圆，其运动可近似看作匀速圆周运动，则有F = m\\frac{v^{2}}{r}\n根据开普勒第三定律得\\frac{r^{3}}{T^{2}} = k\n周期与线速度的关系为v = \\frac{2\\pi r}{T}\n联立解得F = \\frac{4km\\pi^{2}}{r^{2}}\n可知太阳对行星的作用力F与r的平方成反比。\n(2) 分别在近日点和远日点取相等的很小时间\\text{Δ}t，根据开普勒第二定律有\\frac{1}{2}v_{1}\\text{Δ}t \\cdot r_{1} = \\frac{1}{2}v_{2}\\text{Δ}t \\cdot r_{2}\n解得\\frac{v_{1}}{v_{2}} = \\frac{r_{2}}{r_{1}}\n则行星在近日点和远日点的速度大小之比r_{2}:r_{1}。",
+    "imageCount": 1
+  },
+  {
+    "questionNo": "21",
+    "matched": true,
+    "score": 96.85,
+    "url": "https://xbresource.jiaoyanyun.com/#/boutique/search?sid=4&gid=3&queId=cb516520c6944882bcd579bbafd562b4",
+    "answer": "(1) a. t = \\sqrt { \\frac { 2 h } { g } }\nb. v = \\sqrt { v _ { 0 } ^ { 2 } + 2 g h }\n(2) \n![|200](https://tiku-pro-cdn.speiyou.com/imgFile/dd17dbaf-5304-468b-b76a-276be997f965.png)",
+    "analysis": "(1) a. 小滑块在竖直方向只受到重力作用，且竖直初速度为零，所以在竖直方向做自由落体运动．小滑块在水平方向只受到指向圆柱体圆心的弹力，圆的切线方向不受力，故在水平方向做匀速圆周运动．根据竖直方向的自由落体运动规律有h = \\frac { 1 } { 2 } g t ^ { 2 }可得：t = \\sqrt { \\frac { 2 h } { g } }\nb.小滑块竖直方向做自由落体运动，水平方向做匀速圆周运动，\n其落到底面的速度大小为v = \\sqrt { v _ { 0 } ^ { 2 } + v _ { y } ^ { 2 } },即v = \\sqrt { v _ { 0 } ^ { 2 } + 2 g h }\n(2) 水平方向小滑块做变速圆周运动，圆柱体内表面对小滑块的弹力提供向心力，设圆柱体的半径为R，即有\nN = m \\frac { v _ { x } ^ { 2 } } { R }\n在摩擦力f的作用下，水平速度 v _ { x }逐渐减小，所以圆柱体内表面对小滑块的弹力N也逐渐减小，根据f = \\mu N可知，小滑块与圆柱体之间的摩擦力f 也逐渐减小，则摩擦力在水平方向上的分量也减小，因此小滑块在水平切线方向上的加速度逐渐减小，则图像斜率也在减小，如图所示．\n![|200](https://tiku-pro-cdn.speiyou.com/imgFile/3f900e98-5de6-441a-8350-e737361da406.png)",
+    "imageCount": 3
+  }
+]
