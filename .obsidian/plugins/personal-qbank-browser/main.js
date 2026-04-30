@@ -149,8 +149,8 @@ module.exports = class PersonalQbankBrowserPlugin extends Plugin {
       new Notice("请先在插件设置里填写教研云 schoolToken");
       return;
     }
-    const source = this.settings.paperSource || activeFile.basename.replace(/(学生版|答案版|解析版|详解版|带图版|带图)$/g, "");
     const content = await this.app.vault.read(activeFile);
+    const source = paperSourceFromContent(content) || this.settings.paperSource || activeFile.basename.replace(/(学生版|答案版|解析版|详解版|带图版|带图)$/g, "");
     const blocks = parsePaperBlocks(content);
     if (!blocks.length) {
       new Notice("当前文件没有找到 > [!ti] 题目块");
@@ -205,11 +205,11 @@ module.exports = class PersonalQbankBrowserPlugin extends Plugin {
   }
 
   async findJiaoyanyunMatch(text) {
-    const queries = buildSearchQueries(text, 3, 120);
+    const queries = buildSearchQueries(text, 7, 120);
     const seen = new Set();
     const candidates = [];
     for (const query of queries) {
-      const results = await this.searchJiaoyanyun(query, 10);
+      const results = await this.searchJiaoyanyun(query, 20);
       for (const item of results) {
         const id = String(item.queId || item.questionId || item.id || "");
         if (!id || seen.has(id)) continue;
@@ -320,7 +320,7 @@ module.exports = class PersonalQbankBrowserPlugin extends Plugin {
       await writePaperCache(this.app, activeFile.path, cache);
     }
     const cacheByNo = new Map(cache.map(item => [String(item.questionNo || ""), item]));
-    const source = this.settings.paperSource || activeFile.basename.replace(/(学生版|答案版|解析版|详解版|带图版|带图)$/g, "");
+    const source = paperSourceFromContent(content) || this.settings.paperSource || activeFile.basename.replace(/(学生版|答案版|解析版|详解版|带图版|带图)$/g, "");
     const title = `${source}${mode === "answer" ? "答案版" : "解析版"}`;
     const markdown = renderPaperVariant(title, blocks, cacheByNo, mode);
     const exportDir = exportDirForActiveFile(activeFile);
@@ -598,7 +598,7 @@ class QbankSettingTab extends PluginSettingTab {
 
     new Setting(containerEl)
       .setName("当前试卷来源")
-      .setDesc("补图和导出时使用的统一来源名，例如：26春北京市第一七一中学高一下期中。")
+      .setDesc("仅作为兜底。补图和导出会优先读取当前 md 的一级标题，例如：# 26春北京市第一六六中学高二下期中 #h0。")
       .addText(text => text
         .setPlaceholder("26春北京市第一七一中学高一下期中")
         .setValue(this.plugin.settings.paperSource || "")
@@ -639,6 +639,14 @@ function parsePaperBlocks(content) {
     });
   }
   return blocks;
+}
+
+function paperSourceFromContent(content) {
+  const text = String(content || "");
+  const h0 = text.match(/^#\s+(.+?)\s*#h0\s*$/m);
+  const heading = h0 || text.match(/^#\s+(.+?)\s*$/m);
+  if (!heading) return "";
+  return normalizeWhitespace(heading[1].replace(/#.*$/g, "").replace(/(学生版|答案版|解析版|详解版|带图版|带图)$/g, ""));
 }
 
 function paperBlockTitle(raw) {
@@ -734,7 +742,18 @@ function buildSearchQueries(text, count, maxChars) {
   const cleaned = cleanSearchText(text);
   const option = cleaned.search(/\s[A-G]\s*[\.\．、]\s*/);
   const head = option > 0 ? cleanSearchText(cleaned.slice(0, option)) : cleaned;
-  const parts = [head, cleaned, longestSentence(cleaned)];
+  const noFormula = cleanSearchText(cleaned.replace(/\$[^$]*\$/g, " "));
+  const headNoFigure = cleanSearchText(head.replace(/如图所示|如下图所示|右图所示|图甲.*?所示|图乙.*?所示/g, " "));
+  const sentences = splitSearchSentences(head);
+  const parts = [
+    head,
+    head.slice(0, 80),
+    head.slice(0, 50),
+    headNoFigure,
+    longestSentence(cleaned),
+    longestSentence(noFormula),
+    ...sentences
+  ];
   const result = [];
   const seen = new Set();
   for (const part of parts) {
@@ -751,12 +770,22 @@ function cleanSearchText(text) {
   return normalizeWhitespace(String(text || "")
     .replace(/^\s*\d+\s*[.、，]\s*/, "")
     .replace(/\b[A-G]\s*[\.\．、]\s*/g, " ")
+    .replace(/\(　　\)|（　　）|\(\s*\)|（\s*）/g, " ")
     .replace(/[，。！？；：()（）【】\[\]{}<>《》]/g, " "));
 }
 
 function longestSentence(text) {
   const parts = String(text || "").split(/[。！？；?]/).map(part => part.trim()).filter(Boolean);
   return parts.length ? parts.sort((a, b) => b.length - a.length)[0] : text;
+}
+
+function splitSearchSentences(text) {
+  return String(text || "")
+    .split(/[。！？；?]/)
+    .map(part => cleanSearchText(part))
+    .filter(part => part.length >= 12)
+    .sort((a, b) => b.length - a.length)
+    .slice(0, 4);
 }
 
 function scoreText(source, candidate) {
