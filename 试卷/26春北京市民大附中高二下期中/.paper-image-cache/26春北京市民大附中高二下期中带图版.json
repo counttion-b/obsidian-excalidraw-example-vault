@@ -1,0 +1,148 @@
+[
+  {
+    "questionNo": "1",
+    "matched": false,
+    "score": 0,
+    "answer": "",
+    "analysis": ""
+  },
+  {
+    "questionNo": "2",
+    "matched": false,
+    "score": 0,
+    "answer": "",
+    "analysis": ""
+  },
+  {
+    "questionNo": "3",
+    "matched": false,
+    "score": 0,
+    "answer": "",
+    "analysis": ""
+  },
+  {
+    "questionNo": "4",
+    "matched": false,
+    "score": 0,
+    "answer": "",
+    "analysis": ""
+  },
+  {
+    "questionNo": "5",
+    "matched": false,
+    "score": 0,
+    "answer": "",
+    "analysis": ""
+  },
+  {
+    "questionNo": "6",
+    "matched": false,
+    "score": 0,
+    "answer": "",
+    "analysis": ""
+  },
+  {
+    "questionNo": "7",
+    "matched": false,
+    "score": 0,
+    "answer": "",
+    "analysis": ""
+  },
+  {
+    "questionNo": "8",
+    "matched": false,
+    "score": 0,
+    "answer": "",
+    "analysis": ""
+  },
+  {
+    "questionNo": "9",
+    "matched": false,
+    "score": 0,
+    "answer": "",
+    "analysis": ""
+  },
+  {
+    "questionNo": "10",
+    "matched": false,
+    "score": 0,
+    "answer": "",
+    "analysis": ""
+  },
+  {
+    "questionNo": "11",
+    "matched": false,
+    "score": 0,
+    "answer": "",
+    "analysis": ""
+  },
+  {
+    "questionNo": "12",
+    "matched": false,
+    "score": 0,
+    "answer": "",
+    "analysis": ""
+  },
+  {
+    "questionNo": "13",
+    "matched": false,
+    "score": 0,
+    "answer": "",
+    "analysis": ""
+  },
+  {
+    "questionNo": "14",
+    "matched": false,
+    "score": 0,
+    "answer": "",
+    "analysis": ""
+  },
+  {
+    "questionNo": "15",
+    "matched": false,
+    "score": 0,
+    "answer": "",
+    "analysis": ""
+  },
+  {
+    "questionNo": "16",
+    "matched": false,
+    "score": 0,
+    "answer": "",
+    "analysis": ""
+  },
+  {
+    "questionNo": "17",
+    "matched": false,
+    "score": 0,
+    "answer": "",
+    "analysis": ""
+  },
+  {
+    "questionNo": "18",
+    "matched": true,
+    "score": 71.46,
+    "url": "https://xbresource.jiaoyanyun.com/#/boutique/search?sid=4&gid=3&queId=3b6c013dff31402e97cda1c0068c7ff8",
+    "answer": "(1) 1.2\\text{N} \\cdot \\text{s}\n(2) 1.6\\text{kg} \\cdot \\text{m}/\\text{s}\n(3) 10\\text{N}，方向竖直向上",
+    "analysis": "(1) 手机在下落过程中做自由落体运动，则有h_{1} = \\frac{1}{2}gt_{1}^{2}\n解得t_{1} = \\sqrt{\\frac{2h_{1}}{g}} = 0.6\\text{s}\n则手机在下落过程中重力冲量的大小为I_{\\text{G}} = mgt_{1} = 1.2\\text{N} \\cdot \\text{s}\n(2) 手机落到瞬间的速度大小为v_{1} = gt_{1} = 6\\text{m}/\\text{s}\n设手机从地面反弹的速度大小为v_{2}，则有- 2gh_{2} = 0 - v_{2}^{2}\n解得v_{2} = 2\\text{m}/\\text{s}\n手机与地面作用过程中，以竖直向上为正方向，则手机动量的变化量为\\Delta p = mv_{2} - ( - mv_{1}) = 1.6\\text{kg} \\cdot \\text{m}/\\text{s}\n(3) 手机与地面作用过程中，以竖直向上为正方向，根据动量定理可得\\overline{F}t_{0} - mgt_{0} = mv_{2} - ( - mv_{1})\n解得手机对地面的平均作用力大小为\\overline{F} = 10\\text{N}\n方向竖直向上。",
+    "imageCount": 0
+  },
+  {
+    "questionNo": "19",
+    "matched": true,
+    "score": 67.94,
+    "url": "https://xbresource.jiaoyanyun.com/#/boutique/search?sid=4&gid=3&queId=e0df9da91c4e46489ffe180616743ecb",
+    "answer": "（1）2\\text{m}/\\text{s}；（2）3\\text{m}/\\text{s}；（3）6\\text{J}。",
+    "analysis": "（1）设B、C碰后瞬间一起运动的速度大小为v{}_{1}，碰撞过程，B、C组成的系统满足动量守恒，则有\n{{m}_{\\text{B}}}v=\\left( {{m}_{\\text{B}}}+{{m}_{\\text{C}}} \\right){{v}_{1}}\n解得\n{{v}_{1}}=2\\text{m}/\\text{s}\n故B、C碰撞后的瞬间B的速度大小为2\\text{m}/\\text{s}；\n（2）弹簧压缩到最短时，A、B、C三物块速度相等，设此时三者速度大小为{{v}_{2}}，从B、C碰撞后到三者共速，A、B、C三个物块组成的系统满足动量守恒，则有\n{{m}_{\\text{A}}}v+\\left( {{m}_{\\text{B}}}+{{m}_{\\text{C}}} \\right){{v}_{1}}=\\left( {{m}_{\\text{A}}}+{{m}_{\\text{B}}}+{{m}_{\\text{C}}} \\right){{v}_{2}}\n解得\n{{v}_{2}}=3\\text{m}/\\text{s}\n故弹簧压缩到最短时A的速度大小为3\\text{m}/\\text{s}；\n（3）弹簧压缩到最短时，弹性势能最大，从B、C碰后到三者共速，A、B、C及弹簧组成的系统满足机械能守恒，则有\n{{E}_{\\text{p}}}=\\frac{1}{2}{{m}_{\\text{A}}}{{v}^{2}}+\\frac{1}{2}\\left( {{m}_{\\text{B}}}+{{m}_{\\text{C}}} \\right)v_{1}^{2}-\\frac{1}{2}\\left( {{m}_{\\text{A}}}+{{m}_{\\text{B}}}+{{m}_{\\text{C}}} \\right)v_{2}^{2}\n解得\n{{E}_{\\text{p}}}=6\\text{J}\n故运动过程中弹性势能的最大值为6\\text{J}。",
+    "imageCount": 1
+  },
+  {
+    "questionNo": "20",
+    "matched": true,
+    "score": 73.48,
+    "url": "https://xbresource.jiaoyanyun.com/#/boutique/search?sid=4&gid=3&queId=ff808081451d64f90145220ddd2506b9",
+    "answer": "(1) v=\\frac{m{{v}_{0}}}{M+m}\n(2) L=3\\text{m}\n(3) 答案见下图\n![|200](https://tiku-pro-cdn.speiyou.com/imgFile/5d081d5a-c261-4a67-9538-6e2a1a985397.png)",
+    "analysis": "(1) 由题意可知，木板A和滑块B的系统动量守恒，则有m{{v}_{0}}=(M+m)v\n所以v=\\frac{m{{v}_{0}}}{M+m}\n(2) 由题意可知：当滑块B以速度v_{1}冲上木板，最终滑块与木板有共同速度v；\n当滑块B以速度v_{2}冲上木板，滑块将冲出木板，\n设滑块B的速度为v_{3}，在此过程中木板的位移为x．\n根据动量守恒定律和动能定理有\nm{ v }_{ 1 }=(M+m)v\nm{ v }_{ 2 }=Mv+m{ v }_{ 3 }\n-\\mu mg(x+L)=\\frac { 1 }{ 2 } m{ v }_{ 3 }^{ 2 }-\\frac { 1 }{ 2 } m{ v }_{ 2 }^{ 2 }\n\\mu mgx=\\frac { 1 }{ 2 } M{ v }^{ 2 }-0\n可求得：L=3\\text{m}",
+    "imageCount": 3
+  }
+]

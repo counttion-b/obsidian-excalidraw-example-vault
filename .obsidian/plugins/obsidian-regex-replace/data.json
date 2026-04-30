@@ -1,0 +1,10 @@
+{
+  "findText": "第一七一中学高一",
+  "replaceText": "第一六六中学高二",
+  "useRegEx": true,
+  "selOnly": false,
+  "caseInsensitive": false,
+  "processLineBreak": false,
+  "processTab": false,
+  "prefillFind": false
+}
