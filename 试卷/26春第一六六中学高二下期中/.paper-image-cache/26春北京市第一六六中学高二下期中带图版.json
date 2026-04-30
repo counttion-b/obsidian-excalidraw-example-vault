@@ -1,0 +1,164 @@
+[
+  {
+    "questionNo": "1",
+    "matched": false,
+    "score": 0,
+    "answer": "",
+    "analysis": ""
+  },
+  {
+    "questionNo": "2",
+    "matched": false,
+    "score": 0,
+    "answer": "",
+    "analysis": ""
+  },
+  {
+    "questionNo": "3",
+    "matched": false,
+    "score": 0,
+    "answer": "",
+    "analysis": ""
+  },
+  {
+    "questionNo": "4",
+    "matched": false,
+    "score": 0,
+    "answer": "",
+    "analysis": ""
+  },
+  {
+    "questionNo": "5",
+    "matched": false,
+    "score": 0,
+    "answer": "",
+    "analysis": ""
+  },
+  {
+    "questionNo": "6",
+    "matched": false,
+    "score": 0,
+    "answer": "",
+    "analysis": ""
+  },
+  {
+    "questionNo": "7",
+    "matched": false,
+    "score": 0,
+    "answer": "",
+    "analysis": ""
+  },
+  {
+    "questionNo": "8",
+    "matched": false,
+    "score": 0,
+    "answer": "",
+    "analysis": ""
+  },
+  {
+    "questionNo": "9",
+    "matched": false,
+    "score": 0,
+    "answer": "",
+    "analysis": ""
+  },
+  {
+    "questionNo": "10",
+    "matched": true,
+    "score": 99.23,
+    "url": "https://xbresource.jiaoyanyun.com/#/boutique/search?sid=4&gid=3&queId=2e6d7e4c06854c8da3d369eadbfbb458",
+    "answer": "B",
+    "analysis": "【详解】A．图甲中分子间距从r_{2}到r_{\\text{3}}，分子间距变大，则分子间的引力和斥力都减小，选项A错误；\nB．分子b运动至r_{\\text{3}}和r_{\\text{1}}位置时，先是分子力表现为引力做正功，后是分子表现为斥力做负功，若正功和负功相等，则分子b运动至r_{\\text{3}}和r_{\\text{1}}位置时动能相等，选项B正确；\nC．图甲中的r_{2}分子力表现为零，在此位置分子势能最小，则r_{2}对应与图乙中的r6位置，则图乙中r_{\\text{5}}一定小于图甲中r_{2}，选项C错误；\nD．因F-r图像与坐标轴围成的面积等于分子力的功，若图甲中阴影面积S_{1} = S_{2}，即分子b以某一速度（设为v0）向a运动时的整个过程中，分子力做的正功和负功相等，则分子b到达r1位置时的速度仍为v0，此后两分子间距继续减小，则两分子间最小距离不等于r_{\\text{1}}，选项D错误。\n故选B。",
+    "imageCount": 1
+  },
+  {
+    "questionNo": "11",
+    "matched": true,
+    "score": 99.25,
+    "url": "https://xbresource.jiaoyanyun.com/#/boutique/search?sid=4&gid=3&queId=8974cc5e71de4e29aa6a1ab0c6103167",
+    "answer": "B",
+    "analysis": "【详解】A．由题图乙知，t=0时，手机加速度为0，由平衡条件可得弹簧弹力大小为F=mg，故A错误；\nB．由题图乙知，t=0.2s时，手机的加速度为正，即加速度方向是竖直向上的，则手机位于平衡位置下方，故B正确；\nC．由题图乙知，从t=0至t=0.2s，手机的加速度增大，手机从平衡位置向最大位移处运动，速度减小，动能减小，故C错误；\nD．由题图乙知T=0.8s\n则角频率\\omega\\text{=}\\frac{\\text{2}\\pi}{T} = \\frac{2\\pi}{0.8}rad/s = 2.5\\pi rad/s\n则a随t变化的关系式为a = 4\\sin(2.5\\pi t)m/s^{2}\n故D错误。\n故选B。",
+    "imageCount": 1
+  },
+  {
+    "questionNo": "12",
+    "matched": true,
+    "score": 73.83,
+    "url": "https://xbresource.jiaoyanyun.com/#/boutique/search?sid=4&gid=3&queId=7b8837253cc240e59786f6b6993a5210",
+    "answer": "C",
+    "analysis": "AB．根据折射定律\nn = \\frac{\\sin\\theta_{0}}{\\sin r}\n可得\nn_{a} = n < n_{b}\n由于可见光中红光折射率最小，可得a光为红光，b光为绿光，故AB错误；\nC．若a光恰好发生全反射，其中\nn = \\frac{1}{\\sin C}\n则a光在该玻璃丝中的传播时间\nt = \\frac{s}{v} = \\frac{\\frac{L}{\\sin C}}{\\frac{c}{n}} = \\frac{n^{2}L}{c}，\n故C正确；\nD．光在左侧面的入射角为90{^\\circ}时，光进入光纤的折射角最大，且等于临界角，即\nr = C\n此时光在光纤侧壁的入射角有最小值\ni = 90{^\\circ} - r\n要使所有入射光线均能在玻璃丝内发生全反射，则\ni \\geqslant C\n联立解得\nC \\leqslant 45{^\\circ}，\n其中\nn = \\frac{1}{\\sin C}，\n解得\nn \\geqslant \\sqrt{2}，\n故D错误．\n故选C．",
+    "imageCount": 1
+  },
+  {
+    "questionNo": "13",
+    "matched": true,
+    "score": 74.16,
+    "url": "https://xbresource.jiaoyanyun.com/#/boutique/search?sid=4&gid=3&queId=a673bba6bf304b39acc92fcf0c9320a9",
+    "answer": "C",
+    "analysis": "【详解】由左手定则知\\alpha衰变后产生的径迹是两个外切的圆，\\beta衰变后产生的径迹是两个内切的圆，根据Bqv = m\\frac{v^{2}}{r}\n可知r = \\frac{mv}{Bq}\n因为发生衰变后动量守恒，两微粒的动量大小相等，则在磁场中的运动半径之比与电荷数成反比，则大圆是\\alpha粒子的轨迹，根据电荷数守恒可知，新核的电荷数为84，所以大圆与小圆的直径之比与电荷数成反比，为84：2，即42：1。\n故选C。",
+    "imageCount": 1
+  },
+  {
+    "questionNo": "14",
+    "matched": true,
+    "score": 99.51,
+    "url": "https://xbresource.jiaoyanyun.com/#/boutique/search?sid=4&gid=3&queId=6c90b532e10143c8bffa8e83c0876cdc",
+    "answer": "C",
+    "analysis": "【详解】A．核反应满足电荷数、质量数守恒，左侧总电荷数为1+1=2，总质量数为2+2=4；右侧中子电荷数为0、质量数为1，因此x的电荷数为2，质量数为4-1=3，即x为_{2}^{3}\\text{He}，故A错误；\nB．质能方程\\Delta E = \\Delta mc^{2}\n又质量亏损\\Delta m = 2m_{1} - m_{x} - m_{2}\n联立得m_{x} = 2m_{1} - m_{2} - \\frac{\\Delta E}{c^{2}}，故B错误；\nC．原子核结合能=比结合能\\times核子数，反应前两个氘核总结合能为2 \\times 2E = 4E\n设x的比结合能为E_{\\text{x}}，反应后x的结合能为3E_{\\text{x}}，聚变释放的能量等于反应后总结合能与反应前总结合能的差，即\\Delta E = 3E_{\\text{x}} - 4E\n解得E_{\\text{x}} = \\frac{4}{3}E + \\frac{\\Delta E}{3}，故C正确；\nD．核聚变需要原子核克服库仑斥力接近到核力作用范围，必须满足高温高压条件，常温常压下即使提升密度也无法发生聚变，故D错误。\n故选C。",
+    "imageCount": 0
+  },
+  {
+    "questionNo": "15",
+    "matched": true,
+    "score": 49.05,
+    "url": "https://xbresource.jiaoyanyun.com/#/boutique/search?sid=4&gid=3&queId=fc88ac14b438407ca5870adb7fdf5a83",
+    "answer": "（1）AC/ CA\n（2）20.6     91.13\n（3）2.25\n（4）C\n（5）D\n（6）\\frac{4{{\\pi }^{2}}l}{T_{1}^{2}-T_{2}^{2}}",
+    "analysis": "（1）AB．为减小实验误差，应选择密度大而体积小的球作为摆球，B为错误选项，A为正确选项；\nCD．实验过程单摆摆长应保持不变，摆线应选用无弹性的轻绳子，D为错误选项，C为正确选项．\n故答案为AC．\n（2）分析图片甲可知，游标卡尺的游标为10分度，且第6个小格与主尺对齐，则摆球直径为d=20\\text{mm}+6\\times 0.1\\text{mm}=20.6\\text{mm}，该单摆的摆长为L=l+\\frac{d}{2}=91.13\\text{cm}．\n（3）分析图片乙可知，秒表的读数为t=67.35\\text{s}，根据题意分析可知，共经历了30个周期，则单摆的周期是T=\\frac{t}{30}\\approx 2.25\\text{s}．\n（4）由单摆的周期公式T=2\\pi \\sqrt{\\frac{L}{g}}可得{{T}^{2}}=\\frac{4{{\\pi }^{2}}}{g}L，则{{T}^{2}}-L图像的斜率的物理意义是\\frac{4{{\\pi }^{2}}}{g}．\n故答案为C．\n（5）A．由（4）分析可得，重力加速度为g=\\frac{4{{\\pi }^{2}}L}{{{T}^{2}}}，可知重力加速度的测量值与振幅无关，振幅偏小，不影响测量结果，故A错误；\nB．将摆线长加直径当成了摆长，图线如图虚线所示\n![|200](https://tiku-pro-cdn.speiyou.com/imgFile/3f051145-7ef8-4adb-a028-ce84abd23993.png)\n图像斜率不变，重力加速度测量结果不变，故B错误；\nC．将摆线长当成了摆长，图线如图虚线所示\n![|200](https://tiku-pro-cdn.speiyou.com/imgFile/54205ccb-2a95-43c9-8120-cdc5857b00b2.png)\n图像斜率不变，重力加速度测量结果不变，故C错误；\nD．开始计时误记为n=1，则周期偏小，图线如图虚线所示\n![|200](https://tiku-pro-cdn.speiyou.com/imgFile/a02f3198-f62d-478b-9b83-5fad15c37360.png)\n图像斜率变小，重力加速度偏大，故D正确．\n故答案为D．\n（6）根据题意分析可知，由单摆的周期公式T=2\\pi \\sqrt{\\frac{L}{g}}可得{{T}_{1}}=2\\pi \\sqrt{\\frac{L}{g}}，{{T}_{2}}=2\\pi \\sqrt{\\frac{L-l}{g}}，联立得g=\\frac{4{{\\pi }^{2}}l}{T_{1}^{2}-T_{2}^{2}}．",
+    "imageCount": 6
+  },
+  {
+    "questionNo": "16",
+    "matched": true,
+    "score": 39.71,
+    "url": "https://xbresource.jiaoyanyun.com/#/boutique/search?sid=4&gid=3&queId=0edc53e6e00441a2bd38250bf2c90090",
+    "answer": "AC     15.50     6.7\\times 10^{-7}",
+    "analysis": "【详解】\n（1）[1] A．为了获得清晰的干涉条纹，灯丝与单缝和双缝必须平行放置，A正确；\nB．观察到光屏上相邻两条亮纹的间距与相邻两条暗纹的间距相等，B错误；\nCD．根据公式\n\\Delta x=\\lambda \\frac{l}{d}\n可知，将绿色滤光片改成红色滤光片，增大了光的波长，则能增大光屏上相邻两条亮纹的间距，相邻两条亮纹的间距与光源和单缝之间的距离无关，D错误，C正确。\n故选AC。\n[2]由图可知，游标为50分度，且第25个小格对齐，此时手轮上的读数为\n15\\mathrm{mm}+25\\times 0.02=15.50\\mathrm{mm}\n[3]根据\n\\Delta x=\\lambda \\frac{l}{d}\n可知\n\\lambda =\\frac{d}{l}\\Delta x=\\frac{d}{l}\\cdot \\frac{x_{2}-x_{1}}{5}\n代入数据解得\n\\lambda =6.7\\times 10^{-7}\\mathrm{m}",
+    "imageCount": 2
+  },
+  {
+    "questionNo": "17",
+    "matched": true,
+    "score": 72.55,
+    "url": "https://xbresource.jiaoyanyun.com/#/boutique/search?sid=4&gid=3&queId=f2df1d5660ed40e799ca2021c67cc19e",
+    "answer": "(1)暗条纹(2)亮条纹",
+    "analysis": "【分析】已知P点与S_{1}和S_{2}的距离之差，由出现亮暗的条件可判断是亮条纹或暗条纹.根据n = \\frac{c}{v}，v = \\lambda f，频率f相等，求出A光在空气中的波长.对于B光，根据临界角公式sinC = \\frac{1}{n}求出折射率，再用同样的方法求出B光在空气中的波长.再判断是亮条纹还是暗条纹．\n【详解】(1)两缝到P的路程之差为：\\bigtriangleup r = 2.1 \\times 10^{- 6}m，\n所以有：N_{1} = \\frac{\\bigtriangleup r}{\\lambda_{1}} = \\frac{2.1 \\times 10^{- 6}}{6 \\times 10^{- 7}} = 3.5\n由此可知，从S_{1}和S_{2}到P点的路程差是波长\\lambda_{1}的3.5倍，所以P点为暗条纹．\n(2)根据临界角与折射率的关系有：sinC = \\frac{1}{n}\n得：n = \\frac{1}{sin37^{\\circ}} = \\frac{5}{3}\n由此可知，B光在空气中波长\\lambda_{3}为：\\lambda_{3} = n\\lambda_{介} = \\frac{5}{3} \\times 3.15 \\times 10^{- 7}m = 5.25 \\times 10^{- 7}m介\n路程差\\bigtriangleup r和波长\\lambda_{3}的关系为：N_{2} = \\frac{\\bigtriangleup r}{\\lambda_{3}} = \\frac{2.1 \\times 10^{- 6}}{5.25 \\times 10^{- 7}} = 4\n可见，用B光作光源，P点为亮条纹．\n【点睛】解决本题的关键掌握形成明条纹或暗条纹的条件、折射率与波长的关系等等知识，注意正确的计算，及路程差的概念．",
+    "imageCount": 1
+  },
+  {
+    "questionNo": "18",
+    "matched": true,
+    "score": 98.93,
+    "url": "https://xbresource.jiaoyanyun.com/#/boutique/search?sid=4&gid=3&queId=cbfa9e47b04e42f8a23d55eb105695c9",
+    "answer": "(1)n = \\frac{\\sqrt{7}}{2}\n(2)U_{c} = \\frac{hc}{e\\lambda} - \\frac{W_{0}}{e}",
+    "analysis": "【详解】（1）\n![|200](https://tiku-pro-cdn.speiyou.com/imgFile/34ce155a5e061943a2e6096bf91774f5.png)\n设光在光纤左端面的折射角为\\gamma，光从真空入射玻璃，由折射定律： \\sin i = n\\sin\\gamma 代入入射角i = 60^{\\circ}\n光在内芯与真空包层的界面恰好发生全反射，设侧面入射角为临界角C，由全反射临界角公式： \\sin C = \\frac{1}{n}\n由几何关系得C + \\gamma = 90^{\\circ}\n因此\\sin C = \\cos\\gamma = \\frac{1}{n}\n结合三角关系\\sin^{2}\\gamma + \\cos^{2}\\gamma = 1\n得\\sin\\gamma = \\sqrt{1 - \\frac{1}{n^{2}}}\n代入折射定律： \\sin 60^{\\circ} = n \\cdot \\sqrt{1 - \\frac{1}{n^{2}}} = \\sqrt{n^{2} - 1}\n代入\\sin 60^{\\circ} = \\frac{\\sqrt{3}}{2}\n两边平方整理得： \\frac{3}{4} = n^{2} - 1 \\Longrightarrow n = \\frac{\\sqrt{7}}{2}\n（2）单色光频率\\nu = \\frac{c}{\\lambda}\n由光电效应方程，光电子最大初动能： E_{k\\text{max}} = h\\nu - W_{0} = \\frac{hc}{\\lambda} - W_{0}\n电流为零时，反向截止电压满足eU_{c} = E_{k\\text{max}}\n整理得： U_{c} = \\frac{hc}{e\\lambda} - \\frac{W_{0}}{e}",
+    "imageCount": 2
+  },
+  {
+    "questionNo": "19",
+    "matched": true,
+    "score": 99.03,
+    "url": "https://xbresource.jiaoyanyun.com/#/boutique/search?sid=4&gid=3&queId=3f5751f3814f4e4abd84ae4ae927f278",
+    "answer": "（1）Q = \\sigma{T_{s}}^{4} \\cdot 4\\pi R_{S}^{2} ；（2）T = \\frac{T_{s}}{\\sqrt{800}}",
+    "analysis": "【详解】（1）根据题意单位时间内从黑体表面单位面积辐射的电磁波的总能量为P_{0} = \\sigma T^{4}，则对于太阳来说每秒从太阳表面辐射的总能量为：Q = P_{0}S = \\sigma T^{4} \\cdot 4\\pi R_{S}^{2}  \n（2）设火星表面温度为T,而太阳辐射到火星表面单位时间单位面积上的能量为:P = P_{0}S \\cdot \\frac{\\pi r^{2}}{4\\pi d^{2}} \\cdot \\frac{1}{4\\pi r^{2}} = \\sigma T_{s}^{4} \\cdot 4\\pi R_{s}^{2} \\cdot \\frac{\\pi r^{2}}{4\\pi d^{2}} \\cdot \\frac{1}{4\\pi r^{2}} ，其中d = 400R_{s}\n再结合P = \\sigma T^{4} 可解得：T = \\frac{T_{s}}{\\sqrt{800}}",
+    "imageCount": 0
+  },
+  {
+    "questionNo": "20",
+    "matched": true,
+    "score": 73.21,
+    "url": "https://xbresource.jiaoyanyun.com/#/boutique/search?sid=4&gid=3&queId=b9ff7a7c5dc84e928286b453e2515d0c",
+    "answer": "(1) \\frac{ke^{2}}{2r_{1}}\n(2) -\\frac{ke^{2}}{2r_{1}}\n(3) 见解析",
+    "analysis": "(1) 电子绕原子核做匀速圆周运动，则有\nk\\frac{e^{2}}{{r}_{1}^{2}}=m\\frac{v^{2}}{r_{1}}\n电子的动能为\nE_{\\text{k}}=\\frac{1}{2}mv^{2}\n解得\nE_{\\text{k}}=\\frac{ke^{2}}{2r_{1}}\n(2) 电势能\nE_{\\text{p}}=-e\\varphi =-k\\frac{e^{2}}{r_{1}}\n基态氢原子能量\nE_{1}=E_{\\text{k}}+E_{\\text{p}}\n解得\nE_{1}=-\\frac{ke^{2}}{2r_{1}}\n(3) 根据玻尔理论，巴尔末系的光子能量\n\\frac{hc}{\\lambda }=E_{n}-E_{2}\n则有\n\\frac{hc}{\\lambda }=\\frac{E_{1}}{n^{2}}-\\frac{E_{1}}{2^{2}}\n根据巴尔末公式\n\\frac{1}{\\lambda }=R\\left(\\frac{1}{2^{2}}-\\frac{1}{n^{2}}\\right)\n解得\nhcR\\left(\\frac{1}{2^{2}}-\\frac{1}{n^{2}}\\right)=\\frac{E_{1}}{n^{2}}-\\frac{E_{1}}{2^{2}}\n既有\nR=-\\frac{E_{1}}{hc}",
+    "imageCount": 0
+  }
+]

@@ -1,0 +1,164 @@
+[
+  {
+    "questionNo": "1",
+    "matched": false,
+    "score": 0,
+    "answer": "",
+    "analysis": ""
+  },
+  {
+    "questionNo": "2",
+    "matched": false,
+    "score": 0,
+    "answer": "",
+    "analysis": ""
+  },
+  {
+    "questionNo": "3",
+    "matched": false,
+    "score": 0,
+    "answer": "",
+    "analysis": ""
+  },
+  {
+    "questionNo": "4",
+    "matched": false,
+    "score": 0,
+    "answer": "",
+    "analysis": ""
+  },
+  {
+    "questionNo": "5",
+    "matched": false,
+    "score": 0,
+    "answer": "",
+    "analysis": ""
+  },
+  {
+    "questionNo": "6",
+    "matched": false,
+    "score": 0,
+    "answer": "",
+    "analysis": ""
+  },
+  {
+    "questionNo": "7",
+    "matched": false,
+    "score": 0,
+    "answer": "",
+    "analysis": ""
+  },
+  {
+    "questionNo": "8",
+    "matched": false,
+    "score": 0,
+    "answer": "",
+    "analysis": ""
+  },
+  {
+    "questionNo": "9",
+    "matched": false,
+    "score": 0,
+    "answer": "",
+    "analysis": ""
+  },
+  {
+    "questionNo": "10",
+    "matched": true,
+    "score": 62.9,
+    "url": "https://xbresource.jiaoyanyun.com/#/boutique/search?sid=4&gid=3&queId=1512e432aadb4611ac3f203a7b4aa6b8",
+    "answer": "(1) r = \\frac{v_{0}^{2}\\cos^{2}\\alpha}{g}\n(2) 见解析\n(3) v_{A} = \\sqrt{\\frac{2GMr_{2}}{r_{1}(r_{1} + r_{2})}}，v_{B} = \\sqrt{\\frac{2GMr_{1}}{r_{2}(r_{1} + r_{2})}}\n;",
+    "analysis": "(1) 物体在最高点的速度为v^{\\prime} = v\\cos\\alpha\n根据牛顿第二定律有mg = m\\frac{{v^{\\prime}}^{2}}{r}\n解得曲率半径r = \\frac{v_{0}^{2}\\cos^{2}\\alpha}{g}\n(2) 卫星在椭圆轨道上运行时，近地点和远地点的等效圆周运动半径分别为R_{1}和R_{2}，根据牛顿第二定律可得\\frac{GMm}{r_{1}^{2}} = m\\frac{v_{1}^{2}}{R_{1}}，\\frac{GMm}{r_{2}^{2}} = m\\frac{v_{2}^{2}}{R_{2}}\n根据椭圆的对称性及题意可知R_{1} = R_{2}\n联立解得v_{1}r_{1} = v_{2}r_{2}\n(3) 卫星和地球组成的系统机械能守恒，故有\\frac{1}{2}mv_{A}^{2} + ( - \\frac{GMm}{r_{1}}) = \\frac{1}{2}mv_{B}^{2} + ( - \\frac{GMm}{r_{2}})\n结合v_{1}r_{1} = v_{2}r_{2}\n解得v_{A} = \\sqrt{\\frac{2GMr_{2}}{r_{1}(r_{1} + r_{2})}}，v_{B} = \\sqrt{\\frac{2GMr_{1}}{r_{2}(r_{1} + r_{2})}}",
+    "imageCount": 3
+  },
+  {
+    "questionNo": "11",
+    "matched": true,
+    "score": 99.13,
+    "url": "https://xbresource.jiaoyanyun.com/#/boutique/search?sid=4&gid=3&queId=8f58ccf6f48a4f24836820ca9d871cb9",
+    "answer": "A\nD",
+    "analysis": "【详解】A．乒乓球起跳后到最高点的过程，其逆过程可看成平抛运动，两球起跳后能到达的最大高度相同，由v_{y}^{2} = 2gh可得，起跳时竖直方向分速度大小相等，故A正确；\nB．速度变化率即加速度，两球在空中的加速度都等于重力加速度，所以两球的速度变化率相同，故B错误；\nC．由h = \\frac{1}{2}gt^{2}可知，两球飞行时间相同，故C错误；\nD．由x = v_{0}t可知，球1的水平位移较大，运动时间相同，则球1的水平速度较大，故D正确。\n故选AD。",
+    "imageCount": 1
+  },
+  {
+    "questionNo": "12",
+    "matched": true,
+    "score": 71.88,
+    "url": "https://xbresource.jiaoyanyun.com/#/boutique/search?sid=4&gid=3&queId=35fe6233f2c7486aa2317496339f902e",
+    "answer": "C\nD",
+    "analysis": "【详解】因为两个物块是同轴转动，所以角速度相等，在绳子产生弹力之前，都是静摩擦力充当向心力，根据\nf_{\\text{m}} = mr\\omega^{\\text{2}}\n解得\n\\omega = \\sqrt{\\frac{f_{\\text{m}}}{mr}}\n可得B物块到达最大静摩擦力时的角速度较小，所以角速度逐渐增大时，B物体先达到最大静摩擦力，之后B受到的绳子的拉力和摩擦力充当向心力，角速度增大，拉力增大，则A物体的摩擦力减小，当拉力增大到一定程度，A物体所受的摩擦力减小到零后反向，角速度增大，A物体的摩擦力反向增大。所以A所受的摩擦力先增大后减小，又增大，方向先指向圆心，然后背离圆心，B物体的静摩擦力一直增大达到最大静摩擦力后不变。\n故选CD。\n【点睛】在转动过程中，两物体都需要向心力来维持，一开始是静摩擦力作为向心力，当摩擦力不足以做摩擦力时，绳子的拉力就会来做补充，速度再快，当这2个力的合力都不足以做向心力时，物体将会发生相对滑动，根据向心力公式进行讨论即可求解。",
+    "imageCount": 1
+  },
+  {
+    "questionNo": "13",
+    "matched": true,
+    "score": 72.84,
+    "url": "https://xbresource.jiaoyanyun.com/#/boutique/search?sid=4&gid=3&queId=669c3711236a497cbb3a65e98f1210be",
+    "answer": "C",
+    "analysis": "A. 小球由O点运动至A点的过程中，天花板对橡皮绳的拉力的位移为零，则天花板对橡皮绳做功为零，故A错误；\nB. 小球由O点运动至A点的过程中，根据动能定理\nW_{合}=0-\\frac{1}{2}mv_{0}^{2}合\n则小球克服合外力做功为\nW_{克}=-W_{合}=\\frac{1}{2}mv_{0}^{2}克合\n故B错误；\nC. 小球由O点运动至A点的过程中，向上的弹力一直大于向下的重力，则合力方向向上，小球向下做减速运动，小球的动能一直减小，故C正确；\nD. 若小球在O点时橡皮绳的伸长量大于或等于x，则由对称性可知，小球此后从A点上升至最高点的位置与A点的间距等于2x；若小球在O点时橡皮绳的伸长量小于x，则小球此后从A点上升至最高点的位置与A点的间距不等于2x，故D错误．\n故选C．",
+    "imageCount": 1
+  },
+  {
+    "questionNo": "14",
+    "matched": true,
+    "score": 65.15,
+    "url": "https://xbresource.jiaoyanyun.com/#/boutique/search?sid=4&gid=3&queId=26f17a8c02c54d6ab7e7dc81f1e5c713",
+    "answer": "C\nD",
+    "analysis": "【详解】A．设该星球的重力加速度为g_{0}，小球刚放到弹簧上时，满足x = 0，只受星球吸引力的作用，由图知g_{0} = a_{0}，方向竖直向下；当弹簧的压缩量为x_{0}时，小球的加速度为0，此时弹簧的弹力为F = mg_{0} = ma_{0}\n之后小球继续向下运动直至速度为0，弹簧的压缩量继续增大，可知当小球的速度为0时，弹簧的弹力F^{\\prime} > ma_{0}，故A错误；\nB．设竖直向下为正方向，故对小球受力分析可知mg_{0} - kx = ma\n解得小球运动的加速度大小为a = - \\frac{k}{m}x + g_{0}\n当a = 0时x = x_{0}，可得k = \\frac{mg_{0}}{x_{0}} = \\frac{ma_{0}}{x_{0}}，故B错误；\nC．根据速度位移公式x = \\frac{v^{2} - v_{0}^{2}}{2a}\n变形得ax = \\frac{v^{2} - v_{0}^{2}}{2}\n可知a - x图像围成的面积表示\\frac{v^{2} - v_{0}^{2}}{2}\n当弹簧的压缩量为x_{0}时小球的加速度为0，此时小球的速度最大，动能最大，已知小球的初速度v_{0} = 0，故a - x图像围成的面积为\\frac{v^{2}}{2} = \\frac{1}{2}a_{0}x_{0}\n则小球的最大动能为E_{\\text{km}} = \\frac{1}{2}mv^{2} = \\frac{1}{2}ma_{0}x_{0}，故C正确；\nD．当弹簧的压缩量为x_{0}时，根据能量守恒有mg_{0}x_{0} = E_{\\text{km}} + E_{\\text{p}}\n解得弹簧的弹性势能为E_{\\text{p}} = \\frac{1}{2}ma_{0}x_{0}，故D正确。\n故选CD。",
+    "imageCount": 1
+  },
+  {
+    "questionNo": "15",
+    "matched": true,
+    "score": 37.5,
+    "url": "https://xbresource.jiaoyanyun.com/#/boutique/search?sid=4&gid=3&queId=89c0800f3eb1405fbb056562410c5410",
+    "answer": "(1)     同时落地     自由落体\n(2)匀速直线\n(3)AC",
+    "analysis": "【详解】\n（1）[1][2]由于任意高度，平抛运动和自由落体运动都会同时落地，说明平抛运动在竖直方向上做自由落体运动。\n（2）[1]在图2中同时断电后P、Q两个小球同时沿着斜槽滚下，观察到P、Q两个小球撞在一起，则说明平抛运动在水平方向方向上做匀速直线运动；\n（3）[1] A．为保证小球做平抛运动初速度水平，安装斜槽轨道，使其末端保持水平，故A正确；\nBCD．为保证小球做平抛运动初速度相同，故每次小球应从同一位置由静止释放，不需要斜槽光滑，故BD错误，C正确。\n故选AC。",
+    "imageCount": 1
+  },
+  {
+    "questionNo": "16",
+    "matched": true,
+    "score": 98.16,
+    "url": "https://xbresource.jiaoyanyun.com/#/boutique/search?sid=4&gid=3&queId=460c8947603b4c91ad586d55c638e74d",
+    "answer": "不需要     \\frac{d}{t_{1}}     \\frac{1}{t^{2}}     \\frac{(M + m)d^{2}}{2mg}",
+    "analysis": "【详解】（1）[1]本实验中要研究钩码和滑块系统的机械能守恒，则不需要保证钩码质量m远小于滑块（含遮光条）的质量M。\n（2）①[2]滑块通过光电门的瞬时速度v_{1} = \\frac{d}{t_{1}}；\n②[3]若钩码和滑块系统的机械能守恒，则满足mgL = \\frac{1}{2}(M + m)v^{2}\n其中v = \\frac{d}{t}\n可得L = \\frac{(M + m)d^{2}}{2mg}\\frac{1}{t^{2}}\n可知以L为纵坐标、以\\frac{1}{t^{2}}为横坐标作图；\n[4]若图线斜率k = \\frac{(M + m)d^{2}}{2mg}，则可验证系统机械能守恒。",
+    "imageCount": 1
+  },
+  {
+    "questionNo": "17",
+    "matched": true,
+    "score": 74.23,
+    "url": "https://xbresource.jiaoyanyun.com/#/boutique/search?sid=4&gid=3&queId=65c4ba8391064785943e6cd5446557df",
+    "answer": "（1）\\frac{v_{0}^{2}}{l}；（2）v_{0}\\sqrt{\\frac{R}{l}}；（3）\\frac{R^{2}{v_{0}}^{2}}{Gl}",
+    "analysis": "【详解】（1）小球在最高点时有\nmg = \\frac{mv_{0}^{2}}{l}\n解得\ng = \\frac{v_{0}^{2}}{l}\n（2）当卫星绕该行星表面做圆周运动时有\nmg = \\frac{mv^{2}}{R}\n解得\nv = \\sqrt{gR} = v_{0}\\sqrt{\\frac{R}{l}}\n即该行星的第一宇宙速度为v_{0}\\sqrt{\\frac{R}{l}}。\n（3）物体在该行星表面或附近时有\n\\frac{GMm}{R^{2}} = mg\n解得\nM = \\frac{gR^{2}}{G} = \\frac{R^{2}{v_{0}}^{2}}{Gl}",
+    "imageCount": 1
+  },
+  {
+    "questionNo": "18",
+    "matched": true,
+    "score": 99,
+    "url": "https://xbresource.jiaoyanyun.com/#/boutique/search?sid=4&gid=3&queId=3ce8fb4aca90479abe4c8704cc6bd6f5",
+    "answer": "(1) \\omega =\\sqrt{\\frac{g\\tan \\theta }{R+l\\sin \\theta }}；\n(2) v=2\\sqrt{15}\\text{m}/\\text{s}；\n(3) H=7\\text{m}",
+    "analysis": "(1) 游客和座椅组成的整体受到绳子拉力和重力作用做匀速圆周运动，根据牛顿第二定律可得\nmg\\tan \\theta =m\\omega ^{2}\\left(R+l\\sin \\theta \\right)\n解得\n\\omega =\\sqrt{\\frac{g\\tan \\theta }{R+l\\sin \\theta }}\n(2) 当旋转飞椅以最大角速度旋转时，绳子与竖直方向的夹角\\theta =37{^{\\circ}}，根据牛顿第二定律可得\nmg\\tan \\theta =m\\frac{v^{2}}{R+l\\sin \\theta }\n解得\nv=2\\sqrt{15}\\text{m}/\\text{s}\n(3) 游客携带的物品掉落后做平抛运动，物品的落点在以轴心为圆心的一个圆周上，竖直方向有\nH-l\\cos \\theta =\\frac{1}{2}gt^{2}\n平抛运动的水平距离为\ns=vt\n由数学知识有\nr^{2}=s^{2}+\\left(R+l\\sin \\theta \\right)^{2}\n联立解得\nH=7\\text{m}",
+    "imageCount": 1
+  },
+  {
+    "questionNo": "19",
+    "matched": true,
+    "score": 72.96,
+    "url": "https://xbresource.jiaoyanyun.com/#/boutique/search?sid=4&gid=3&queId=e82611ca7310431c8347907adcd881b9",
+    "answer": "(1) v=2\\sqrt{gh}；\n(2) P=\\frac{3\\rho gQh}{\\eta}．",
+    "analysis": "(1) 由运动的合成与分解及平抛运动规律可知，竖直方向上有\nh=\\frac{1}{2}g{{t}^{2}}\n水平方向上有\n2h={{v}_{\\text{x}}}t\n解得\n{{v}_{x}}=\\sqrt{2gh}\n水从喷口喷出时竖直方向\n{{v}_{\\text{y}}}=\\sqrt{2gh}\n所以水从喷口喷出时的速度大小为\nv=\\sqrt{v_{x}^{2}+v_{y}^{2}}=2\\sqrt{gh}．\n(2) 在时间\\Delta t内，喷射出水的质量\n\\Delta m=\\rho Q\\Delta t\n在最高点的动能为\\frac{1}{2}\\Delta mv_{x}^{2}，由功能关系可得\n\\eta P\\Delta t=\\Delta mg2h+\\frac{1}{2}\\Delta mv_{x}^{2}\n解得\nP=\\frac{3\\rho gQh}{\\eta}．",
+    "imageCount": 1
+  },
+  {
+    "questionNo": "20",
+    "matched": true,
+    "score": 98.58,
+    "url": "https://xbresource.jiaoyanyun.com/#/boutique/search?sid=4&gid=3&queId=a76fe8d512ee426fab96558a157e549a",
+    "answer": "(1)\\omega = \\sqrt{\\frac{2Gm}{L^{3}}}，M = \\frac{k^{2} - 1}{4}m\n(2)不均匀分布，\\frac{1}{7}",
+    "analysis": "【详解】（1）a.对于双星系统，万有引力提供向心力，由牛顿第二定律可得G\\frac{m^{2}}{L^{2}} = m\\omega^{2}\\frac{L}{2}\n解得\\omega = \\sqrt{\\frac{2Gm}{L^{3}}}\nb.万有引力的合力提供向心力，由牛顿第二定律可得G\\frac{m^{2}}{L^{2}} + G\\frac{Mm}{{(\\frac{L}{2})}^{2}} = m{\\omega^{\\prime}}^{2}\\frac{L}{2}\n又因为\\frac{\\omega^{\\prime}}{\\omega} = k\n解得M = \\frac{k^{2} - 1}{4}m\n（2）a.设球体r = R内物质密度为\\rho_{1}，暗物质的密度为\\rho_{2}，球体内物质总质量为M。则有M = \\frac{4}{3}\\pi R^{3}\\rho_{1}\n设r = R时恒星绕星系中心做匀速圆周运动的角速度为\\omega_{0}，根据万有引力的合力提供向心力得G\\frac{Mm}{R^{2}} = m\\omega_{0}^{2}R\n联立解得\\omega_{0}^{2} = \\frac{4}{3}\\pi G\\rho_{1}\n根据在r＞R＞范围内的恒星运动的\\omega与\\frac{1}{r}成正比，当r = nR时\\omega = \\frac{\\omega_{0}}{n}\n对r = nR的恒星绕星系中心做圆周运动，根据万有引力的合力提供向心力得G\\frac{Mm}{{(nR)}^{2}} + G\\frac{\\frac{4}{3}\\pi{(nR)}^{3}\\rho_{2}m}{{(nR)}^{2}} - G\\frac{\\frac{4}{3}\\pi R^{3}\\rho_{2}m}{{(nR)}^{2}} = m\\omega^{2}(nR)\n联立可得\\rho_{2} = \\frac{n - 1}{n^{3} - 1}\\rho_{1}\n即暗物质密度是球体r = R内物质密度的\\frac{n - 1}{n^{3} - 1}倍，即暗物质不均匀分布；\nb.因为\\rho_{2} = \\frac{n - 1}{n^{3} - 1}\\rho_{1}\n将n = 2代入，解得\\frac{\\rho_{2}}{\\rho_{1}} = \\frac{1}{7}",
+    "imageCount": 0
+  }
+]

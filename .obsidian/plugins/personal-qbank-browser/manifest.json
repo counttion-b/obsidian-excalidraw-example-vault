@@ -1,0 +1,9 @@
+{
+  "id": "personal-qbank-browser",
+  "name": "个人题库筛选",
+  "version": "0.2.0",
+  "minAppVersion": "1.5.0",
+  "description": "按标签筛选题库，并支持给纯文字试卷一键补图、生成答案版和解析版。",
+  "author": "Ava + Codex",
+  "isDesktopOnly": false
+}
