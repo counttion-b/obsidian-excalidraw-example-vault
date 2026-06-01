@@ -1,0 +1,148 @@
+[
+  {
+    "questionNo": "1",
+    "matched": false,
+    "score": 0,
+    "answer": "",
+    "analysis": ""
+  },
+  {
+    "questionNo": "2",
+    "matched": false,
+    "score": 0,
+    "answer": "",
+    "analysis": ""
+  },
+  {
+    "questionNo": "3",
+    "matched": false,
+    "score": 0,
+    "answer": "",
+    "analysis": ""
+  },
+  {
+    "questionNo": "4",
+    "matched": false,
+    "score": 0,
+    "answer": "",
+    "analysis": ""
+  },
+  {
+    "questionNo": "5",
+    "matched": false,
+    "score": 0,
+    "answer": "",
+    "analysis": ""
+  },
+  {
+    "questionNo": "6",
+    "matched": false,
+    "score": 0,
+    "answer": "",
+    "analysis": ""
+  },
+  {
+    "questionNo": "7",
+    "matched": false,
+    "score": 0,
+    "answer": "",
+    "analysis": ""
+  },
+  {
+    "questionNo": "8",
+    "matched": false,
+    "score": 0,
+    "answer": "",
+    "analysis": ""
+  },
+  {
+    "questionNo": "9",
+    "matched": false,
+    "score": 0,
+    "answer": "",
+    "analysis": ""
+  },
+  {
+    "questionNo": "10",
+    "matched": false,
+    "score": 0,
+    "answer": "",
+    "analysis": ""
+  },
+  {
+    "questionNo": "11",
+    "matched": false,
+    "score": 0,
+    "answer": "",
+    "analysis": ""
+  },
+  {
+    "questionNo": "12",
+    "matched": false,
+    "score": 0,
+    "answer": "",
+    "analysis": ""
+  },
+  {
+    "questionNo": "13",
+    "matched": false,
+    "score": 0,
+    "answer": "",
+    "analysis": ""
+  },
+  {
+    "questionNo": "14",
+    "matched": false,
+    "score": 0,
+    "answer": "",
+    "analysis": ""
+  },
+  {
+    "questionNo": "15",
+    "matched": false,
+    "score": 0,
+    "answer": "",
+    "analysis": ""
+  },
+  {
+    "questionNo": "16",
+    "matched": false,
+    "score": 0,
+    "answer": "",
+    "analysis": ""
+  },
+  {
+    "questionNo": "17",
+    "matched": false,
+    "score": 0,
+    "answer": "",
+    "analysis": ""
+  },
+  {
+    "questionNo": "18",
+    "matched": true,
+    "score": 71.59,
+    "url": "https://xbresource.jiaoyanyun.com/#/boutique/search?sid=4&gid=3&queId=c3d9d6a3372c426896392acaf148822f",
+    "answer": "(1) v_{1} > v_{2}\n(2) 见解析\n(3) d = \\frac{30}{41}R\n;",
+    "analysis": "(1) 根据开普勒第二定律可得\\frac{1}{2}v_{1}\\Delta t \\cdot r_{1} = \\frac{1}{2}v_{2}\\Delta t \\cdot r_{2}\n可以判断出近地点速度大于远地点速度，即v_{1} > v_{2}。\n(2) 设行星绕太阳做匀速圆周运动，行星的质量为m，运动半径为r，运动速度大小为v。根据牛顿第二定律得F = m\\frac{v^{2}}{r}\n根据运动学公式可得v = \\frac{2\\pi r}{T}\n根据开普勒第三定律k = \\frac{r^{3}}{T^{2}}\n联立可得F = m\\frac{4\\pi^{2}r^{3}}{T^{2}r^{2}} = m\\frac{4\\pi^{2}k}{r^{2}}\n因此可证明太阳对行星的作用力F与r的平方成反比。\n(3) 设地球质量为M，月球质量为m， O点与地心间距d，地月球心间距L 根据牛顿第二定律，对M有\\frac{GMm}{L^{2}} = M\\omega^{2}d\n对m有\\frac{GMm}{L^{2}} = m\\omega^{2}（L - d）（）\n联立可得d = \\frac{mL}{（M + m）} \\approx \\frac{60}{82}R = \\frac{30}{41}R（）",
+    "imageCount": 1
+  },
+  {
+    "questionNo": "19",
+    "matched": true,
+    "score": 74.29,
+    "url": "https://xbresource.jiaoyanyun.com/#/boutique/search?sid=4&gid=3&queId=3f68c4b352464ebfa87e8e1772636331",
+    "answer": "（1）60°；（2）10\\mathrm{rad}/\\mathrm{s}",
+    "analysis": "（1）当小球转动的角速度\\omega =2\\sqrt{5}\\mathrm{rad}/\\mathrm{s}时，由牛顿第二定律可得\nmg\\tan \\theta =m\\cdot L\\sin \\theta \\cdot \\omega ^{2}\n解得细线OA与竖直方向的夹角为\n\\theta =60^{\\circ }\n（2）O'A被拉直时，O'A恰好与OO'垂直，可知细线与竖直方向夹角满足\n\\sin \\alpha =\\frac{L'}{L}=\\frac{3}{5}\n解得\n\\alpha =37^{\\circ }\n竖直方向由平衡条件可得\nF_{\\mathrm{T}}\\cos \\alpha =mg\n解得细线OA上的拉力恒为\nF_{\\mathrm{T}}=5\\mathrm{N}\n水平方向由牛顿第二定律可得\nF_{\\mathrm{T}}\\sin \\alpha +F=mL'{\\omega }_{\\max }^{2}\n解得\n\\omega _{\\max }=10\\mathrm{rad}/\\mathrm{s}",
+    "imageCount": 1
+  },
+  {
+    "questionNo": "20",
+    "matched": true,
+    "score": 97.66,
+    "url": "https://xbresource.jiaoyanyun.com/#/boutique/search?sid=4&gid=3&queId=725f738fc37c447c92d89d9fbbf441bb",
+    "answer": "(1)I.L = 75\\text{ m}，II.v = 20\\text{ m}/\\text{s}\n(2)     ②     见解析",
+    "analysis": "【详解】（1）I.B、C两点之间的竖直距离h_{BC} = \\frac{1}{2}gt^{2} = 45\\text{ m }\n则B、C两点之间的距离L = \\frac{45}{\\sin 37^{{^\\circ}}} = 75\\text{ m }\nII.运动员从B点水平飞出时的速度大小v = \\frac{L\\cos 37^{{^\\circ}}}{t} = 20\\text{ m}/\\text{s}\n（2）[1][2]若考虑运动员在空中飞行受到的空气阻力的影响，其受力分析如图所示\n![|200](https://tiku-pro-cdn.speiyou.com/imgFile/21be80da5b4462f0802200412a09d4fa.png)\n设运动员在水平方向的加速度为a_{\\text{x}}，竖直方向的加速度为a_{\\text{y}}，飞行时间为t'。水平方向，\\frac{1}{5}mg\\sin 11{^\\circ} = ma_{x}，x = vt' - \\frac{1}{2}a_{x}t^{\\text{'}2}\n竖直方向，mg - \\frac{1}{5}mg\\cos 11{^\\circ} = ma_{y}\\text{ }，y = \\frac{1}{2}a_{y}t^{\\text{'}2}\n根据几何关系，有\\tan 37{^\\circ} = \\frac{y}{x}\n联立可得，t' = 3.6\\text{ s}，L' = 86.8\\text{ m}\n因为L' > L，故距离更远，轨迹为②",
+    "imageCount": 2
+  }
+]

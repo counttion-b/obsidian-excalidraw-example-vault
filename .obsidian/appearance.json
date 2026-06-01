@@ -1,7 +1,7 @@
 {
   "accentColor": "",
   "theme": "moonstone",
-  "baseFontSize": 17,
+  "baseFontSize": 19,
   "cssTheme": "Blue Topaz",
   "translucency": false,
   "enabledCssSnippets": [
@@ -25,6 +25,7 @@
     "question",
     "weekly-homework"
   ],
-  "baseFontSizeAction": false,
-  "textFontFamily": ""
+  "baseFontSizeAction": true,
+  "textFontFamily": "",
+  "interfaceFontFamily": ""
 }
