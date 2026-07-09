@@ -1,0 +1,27 @@
+{
+	"name": "physics-table-editor",
+	"version": "0.5.0",
+	"description": "Obsidian plugin for rendering JSON-backed physics tables.",
+	"main": "main.js",
+	"scripts": {
+		"dev": "node esbuild.config.mjs",
+		"build": "tsc -noEmit -skipLibCheck && node esbuild.config.mjs production"
+	},
+	"keywords": [
+		"obsidian",
+		"physics",
+		"table"
+	],
+	"author": "",
+	"license": "MIT",
+	"devDependencies": {
+		"@types/node": "^20.11.30",
+		"builtin-modules": "^3.3.0",
+		"esbuild": "^0.20.2",
+		"obsidian": "^1.5.12",
+		"typescript": "^5.3.3"
+	},
+	"dependencies": {
+		"tslib": "^2.8.1"
+	}
+}

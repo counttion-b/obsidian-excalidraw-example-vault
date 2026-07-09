@@ -1,6 +1,5 @@
 [
   "obsidian-admonition",
-  "table-editor-obsidian",
   "better-export-pdf",
   "obsidian42-brat",
   "obsidian-contextual-typography",
@@ -20,5 +19,6 @@
   "break-page",
   "obsidian-style-settings",
   "templater-obsidian",
-  "unicode-search-ymjr"
+  "unicode-search-ymjr",
+  "physics-table-editor"
 ]
