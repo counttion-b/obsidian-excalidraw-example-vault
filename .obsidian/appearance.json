@@ -23,7 +23,8 @@
     "horizontal-clean",
     "font",
     "question",
-    "weekly-homework"
+    "weekly-homework",
+    "lecture-spacing-unified"
   ],
   "baseFontSizeAction": true,
   "textFontFamily": "",

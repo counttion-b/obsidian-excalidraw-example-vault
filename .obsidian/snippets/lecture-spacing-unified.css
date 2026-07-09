@@ -1,0 +1,55 @@
+/* Unified lecture text rhythm.
+   Paragraph breaks should occupy the same vertical rhythm as wrapped lines. */
+
+:root {
+  --lecture-line-height: 2.3;
+  --lecture-paragraph-gap: 0em;
+}
+
+.markdown-rendered p,
+.markdown-rendered li,
+.markdown-rendered blockquote,
+.markdown-rendered blockquote p,
+.markdown-rendered blockquote li,
+.markdown-rendered .callout-content,
+.markdown-rendered .callout-content p,
+.markdown-rendered .callout-content li {
+  line-height: var(--lecture-line-height) !important;
+}
+
+.markdown-rendered p,
+.markdown-rendered blockquote p,
+.markdown-rendered .callout-content p {
+  margin-block-start: var(--lecture-paragraph-gap) !important;
+  margin-block-end: var(--lecture-paragraph-gap) !important;
+  margin-top: var(--lecture-paragraph-gap) !important;
+  margin-bottom: var(--lecture-paragraph-gap) !important;
+}
+
+.markdown-rendered ul,
+.markdown-rendered ol,
+.markdown-rendered .callout-content ul,
+.markdown-rendered .callout-content ol {
+  margin-block-start: var(--lecture-paragraph-gap) !important;
+  margin-block-end: var(--lecture-paragraph-gap) !important;
+}
+
+.markdown-rendered li,
+.markdown-rendered .callout-content li,
+.markdown-rendered .callout[data-callout^="opts"] .callout-content li {
+  margin-top: var(--lecture-paragraph-gap) !important;
+  margin-bottom: var(--lecture-paragraph-gap) !important;
+}
+
+.markdown-source-view.mod-cm6 .cm-line,
+.markdown-source-view.mod-cm6 .HyperMD-quote,
+.markdown-source-view.mod-cm6 .HyperMD-quote .cm-line {
+  line-height: var(--lecture-line-height) !important;
+}
+
+@media print {
+  body {
+    --lecture-line-height: 2.3;
+    --lecture-paragraph-gap: 0em;
+  }
+}
