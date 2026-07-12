@@ -5376,7 +5376,7 @@
   "strokeWidthSliderStep": 1,
   "pdfSettings": {
     "pageSize": "A4",
-    "pageOrientation": "landscape",
+    "pageOrientation": "portrait",
     "fitToPage": 1,
     "paperColor": "white",
     "customPaperColor": "#ffffff",
