@@ -1,0 +1,35 @@
+﻿Markdown: 第7讲 电路和电路的能量转化_知识点.md
+Images referenced: 24
+Images copied: 24
+Missing: 0
+Duplicate filenames: 0
+
+Chosen sources:
+188c46e0e1d1d4cd8c4c757741d8dc82.png <- D:\obrepo\papers\教研\各季度讲义\高二暑\第7讲 电路和电路的能量转化_files\188c46e0e1d1d4cd8c4c757741d8dc82.png
+4e42b992-bc54-4ec0-9fd1-df1e80408a19.png <- D:\obrepo\papers\教研\各季度讲义\高二暑\第7讲 电路和电路的能量转化_files\4e42b992-bc54-4ec0-9fd1-df1e80408a19.png
+5402e0c0-7864-4ef5-817b-88677764f729.png <- D:\obrepo\papers\教研\各季度讲义\高二暑\第7讲 电路和电路的能量转化_files\5402e0c0-7864-4ef5-817b-88677764f729.png
+da277dde-c52d-4544-8564-2ac6bd8e91fc.png <- D:\obrepo\papers\教研\各季度讲义\高二暑\第7讲 电路和电路的能量转化_files\da277dde-c52d-4544-8564-2ac6bd8e91fc.png
+ec674836-9e59-4290-9921-ee359c7c925b.png <- D:\obrepo\papers\教研\各季度讲义\高二暑\第7讲 电路和电路的能量转化_files\ec674836-9e59-4290-9921-ee359c7c925b.png
+Pasted image 20260713155939.png <- D:\obrepo\papers\教研\各季度讲义\高二暑\attachments\Pasted image 20260713155939.png
+Pasted image 20260713161218.png <- D:\obrepo\papers\教研\各季度讲义\高二暑\attachments\Pasted image 20260713161218.png
+Pasted image 20260713162014.png <- D:\obrepo\papers\教研\各季度讲义\高二暑\attachments\Pasted image 20260713162014.png
+QQ_1783673848244.png <- D:\obrepo\papers\教研\各季度讲义\高二暑\attachments\QQ_1783673848244.png
+QQ_1783673920052.png <- D:\obrepo\papers\教研\各季度讲义\高二暑\attachments\QQ_1783673920052.png
+QQ_1783673954901.png <- D:\obrepo\papers\教研\各季度讲义\高二暑\attachments\QQ_1783673954901.png
+QQ_1783673991639.png <- D:\obrepo\papers\教研\各季度讲义\高二暑\attachments\QQ_1783673991639.png
+QQ_1783674403635.png <- D:\obrepo\papers\教研\各季度讲义\高二暑\attachments\QQ_1783674403635.png
+QQ_1783674491059.png <- D:\obrepo\papers\教研\各季度讲义\高二暑\attachments\QQ_1783674491059.png
+QQ_1783674555663.png <- D:\obrepo\papers\教研\各季度讲义\高二暑\attachments\QQ_1783674555663.png
+QQ_1783674690846.png <- D:\obrepo\papers\教研\各季度讲义\高二暑\attachments\QQ_1783674690846.png
+QQ_1783674822763.png <- D:\obrepo\papers\教研\各季度讲义\高二暑\attachments\QQ_1783674822763.png
+QQ_1783674888449.png <- D:\obrepo\papers\教研\各季度讲义\高二暑\attachments\QQ_1783674888449.png
+QQ_1783675855497.png <- D:\obrepo\papers\教研\各季度讲义\高二暑\attachments\QQ_1783675855497.png
+QQ_1783675903845.png <- D:\obrepo\papers\教研\各季度讲义\高二暑\attachments\QQ_1783675903845.png
+QQ_1783675947173.png <- D:\obrepo\papers\教研\各季度讲义\高二暑\attachments\QQ_1783675947173.png
+QQ_1783675976601.png <- D:\obrepo\papers\教研\各季度讲义\高二暑\attachments\QQ_1783675976601.png
+QQ_1783676069740.png <- D:\obrepo\papers\教研\各季度讲义\高二暑\attachments\QQ_1783676069740.png
+QQ_1783676104469.png <- D:\obrepo\papers\教研\各季度讲义\高二暑\attachments\QQ_1783676104469.png
+
+Missing files:
+
+Duplicate filenames:
