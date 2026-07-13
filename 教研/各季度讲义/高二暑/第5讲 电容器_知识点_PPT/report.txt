@@ -1,0 +1,44 @@
+﻿Markdown: 第5讲 电容器_知识点.md
+Images referenced: 33
+Images copied: 28
+Missing: 5
+Duplicate filenames: 0
+
+Chosen sources:
+94ebea03fbbf3114a61ff4d2ab5a0a38.png <- D:\obrepo\papers\教研\各季度讲义\高二暑\第5讲 电容器_files\94ebea03fbbf3114a61ff4d2ab5a0a38.png
+b51eab7471f9784858c5c97e42ac1ed3.png <- D:\obrepo\papers\教研\各季度讲义\高二暑\第5讲 电容器_files\b51eab7471f9784858c5c97e42ac1ed3.png
+f9aae510-1638-493c-a528-4a03b2acd75b.png <- D:\obrepo\papers\教研\各季度讲义\高二暑\第5讲 电容器_files\f9aae510-1638-493c-a528-4a03b2acd75b.png
+Pasted image 20260402195329.png <- D:\obrepo\papers\教研\各季度讲义\高二暑\attachments\Pasted image 20260402195329.png
+Pasted image 20260710150822.png <- D:\obrepo\papers\教研\各季度讲义\高二暑\attachments\Pasted image 20260710150822.png
+Pasted image 20260710150854.png <- D:\obrepo\papers\教研\各季度讲义\高二暑\attachments\Pasted image 20260710150854.png
+Pasted image 20260710151451.png <- D:\obrepo\papers\教研\各季度讲义\高二暑\attachments\Pasted image 20260710151451.png
+Pasted image 20260710151511.png <- D:\obrepo\papers\教研\各季度讲义\高二暑\attachments\Pasted image 20260710151511.png
+Pasted image 20260710151524.png <- D:\obrepo\papers\教研\各季度讲义\高二暑\attachments\Pasted image 20260710151524.png
+Pasted image 20260710151630.png <- D:\obrepo\papers\教研\各季度讲义\高二暑\attachments\Pasted image 20260710151630.png
+Pasted image 20260710151658.png <- D:\obrepo\papers\教研\各季度讲义\高二暑\attachments\Pasted image 20260710151658.png
+Pasted image 20260710151739.png <- D:\obrepo\papers\教研\各季度讲义\高二暑\attachments\Pasted image 20260710151739.png
+Pasted image 20260710151919.png <- D:\obrepo\papers\教研\各季度讲义\高二暑\attachments\Pasted image 20260710151919.png
+Pasted image 20260710152132.png <- D:\obrepo\papers\教研\各季度讲义\高二暑\attachments\Pasted image 20260710152132.png
+Pasted image 20260710152232.png <- D:\obrepo\papers\教研\各季度讲义\高二暑\attachments\Pasted image 20260710152232.png
+Pasted image 20260710152548.png <- D:\obrepo\papers\教研\各季度讲义\高二暑\attachments\Pasted image 20260710152548.png
+Pasted image 20260710152627.png <- D:\obrepo\papers\教研\各季度讲义\高二暑\attachments\Pasted image 20260710152627.png
+Pasted image 20260710152711.png <- D:\obrepo\papers\教研\各季度讲义\高二暑\attachments\Pasted image 20260710152711.png
+Pasted image 20260710152905.png <- D:\obrepo\papers\教研\各季度讲义\高二暑\attachments\Pasted image 20260710152905.png
+Pasted image 20260710152930.png <- D:\obrepo\papers\教研\各季度讲义\高二暑\attachments\Pasted image 20260710152930.png
+Pasted image 20260710153001.png <- D:\obrepo\papers\教研\各季度讲义\高二暑\attachments\Pasted image 20260710153001.png
+Pasted image 20260710153040.png <- D:\obrepo\papers\教研\各季度讲义\高二暑\attachments\Pasted image 20260710153040.png
+Pasted image 20260710153119.png <- D:\obrepo\papers\教研\各季度讲义\高二暑\attachments\Pasted image 20260710153119.png
+Pasted image 20260710153223.png <- D:\obrepo\papers\教研\各季度讲义\高二暑\attachments\Pasted image 20260710153223.png
+Pasted image 20260710153307.png <- D:\obrepo\papers\教研\各季度讲义\高二暑\attachments\Pasted image 20260710153307.png
+Pasted image 20260712235447.png <- D:\obrepo\papers\教研\各季度讲义\高二暑\attachments\Pasted image 20260712235447.png
+Pasted image 20260712235640.png <- D:\obrepo\papers\教研\各季度讲义\高二暑\attachments\Pasted image 20260712235640.png
+Pasted image 20260713000445.png <- D:\obrepo\papers\教研\各季度讲义\高二暑\attachments\Pasted image 20260713000445.png
+
+Missing files:
+Pasted image 20251226010312.png
+Pasted image 20251226010345.png
+Pasted image 20251226010503.png
+Pasted image 20251226010905.png
+Pasted image 20251226013348.png
+
+Duplicate filenames:
