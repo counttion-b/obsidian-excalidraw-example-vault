@@ -1,0 +1,39 @@
+﻿Markdown: 第8讲 闭合电路欧姆定律_知识点.md
+Images referenced: 28
+Images copied: 27
+Missing: 1
+Duplicate filenames: 0
+
+Chosen sources:
+05e2aed1-aef6-472b-bc91-451fe2dcdbfb.png <- D:\obrepo\papers\教研\各季度讲义\高二暑\第8讲 闭合电路欧姆定律_files\05e2aed1-aef6-472b-bc91-451fe2dcdbfb.png
+1ea265c284e4fbcfeef9daa173ecb281.png <- D:\obrepo\papers\教研\各季度讲义\高二暑\第8讲 闭合电路欧姆定律_files\1ea265c284e4fbcfeef9daa173ecb281.png
+5fa05dba-323c-49f7-aaa5-34f0d42b1d46.png <- D:\obrepo\papers\教研\各季度讲义\高二暑\第8讲 闭合电路欧姆定律_files\5fa05dba-323c-49f7-aaa5-34f0d42b1d46.png
+90ab380d-1f78-42b0-be02-e7d888b3f05a.png <- D:\obrepo\papers\教研\各季度讲义\高二暑\第8讲 闭合电路欧姆定律_files\90ab380d-1f78-42b0-be02-e7d888b3f05a.png
+daafe01c-206d-4f65-9a6d-28c7f34a83bd.png <- D:\obrepo\papers\教研\各季度讲义\高二暑\第8讲 闭合电路欧姆定律_files\daafe01c-206d-4f65-9a6d-28c7f34a83bd.png
+e741b468c260e13b83a1e040c6034db1.png <- D:\obrepo\papers\教研\各季度讲义\高二暑\第8讲 闭合电路欧姆定律_files\e741b468c260e13b83a1e040c6034db1.png
+fdc3a09a-674b-42bd-b788-62eadd972660.png <- D:\obrepo\papers\教研\各季度讲义\高二暑\第8讲 闭合电路欧姆定律_files\fdc3a09a-674b-42bd-b788-62eadd972660.png
+Pasted image 20260713170123.png <- D:\obrepo\papers\教研\各季度讲义\高二暑\attachments\Pasted image 20260713170123.png
+Pasted image 20260713170521.png <- D:\obrepo\papers\教研\各季度讲义\高二暑\attachments\Pasted image 20260713170521.png
+QQ_1783676565626.png <- D:\obrepo\papers\教研\各季度讲义\高二暑\attachments\QQ_1783676565626.png
+QQ_1783676625218.png <- D:\obrepo\papers\教研\各季度讲义\高二暑\attachments\QQ_1783676625218.png
+QQ_1783676840510.png <- D:\obrepo\papers\教研\各季度讲义\高二暑\attachments\QQ_1783676840510.png
+QQ_1783676973999.png <- D:\obrepo\papers\教研\各季度讲义\高二暑\attachments\QQ_1783676973999.png
+QQ_1783677005969.png <- D:\obrepo\papers\教研\各季度讲义\高二暑\attachments\QQ_1783677005969.png
+QQ_1783677077446.png <- D:\obrepo\papers\教研\各季度讲义\高二暑\attachments\QQ_1783677077446.png
+QQ_1783677152654.png <- D:\obrepo\papers\教研\各季度讲义\高二暑\attachments\QQ_1783677152654.png
+QQ_1783677232104.png <- D:\obrepo\papers\教研\各季度讲义\高二暑\attachments\QQ_1783677232104.png
+QQ_1783677279741.png <- D:\obrepo\papers\教研\各季度讲义\高二暑\attachments\QQ_1783677279741.png
+QQ_1783677315258.png <- D:\obrepo\papers\教研\各季度讲义\高二暑\attachments\QQ_1783677315258.png
+QQ_1783677356781.png <- D:\obrepo\papers\教研\各季度讲义\高二暑\attachments\QQ_1783677356781.png
+QQ_1783677508434.png <- D:\obrepo\papers\教研\各季度讲义\高二暑\attachments\QQ_1783677508434.png
+QQ_1783677546357.png <- D:\obrepo\papers\教研\各季度讲义\高二暑\attachments\QQ_1783677546357.png
+QQ_1783677585387.png <- D:\obrepo\papers\教研\各季度讲义\高二暑\attachments\QQ_1783677585387.png
+QQ_1783677627686.png <- D:\obrepo\papers\教研\各季度讲义\高二暑\attachments\QQ_1783677627686.png
+QQ_1783677697627.png <- D:\obrepo\papers\教研\各季度讲义\高二暑\attachments\QQ_1783677697627.png
+QQ_1783677738319.png <- D:\obrepo\papers\教研\各季度讲义\高二暑\attachments\QQ_1783677738319.png
+QQ_1783677770346.png <- D:\obrepo\papers\教研\各季度讲义\高二暑\attachments\QQ_1783677770346.png
+
+Missing files:
+Pasted image 20251228014539.png
+
+Duplicate filenames:

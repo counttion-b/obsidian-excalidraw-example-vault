@@ -1,0 +1,46 @@
+﻿Markdown: 第10讲 安培力_知识点.md
+Images referenced: 35
+Images copied: 29
+Missing: 6
+Duplicate filenames: 0
+
+Chosen sources:
+2535570d-975b-4ab6-9cd6-2e389d1cf2fa.png <- D:\obrepo\papers\教研\各季度讲义\高二暑\第10讲 安培力_files\2535570d-975b-4ab6-9cd6-2e389d1cf2fa.png
+28736408-48c2-4c65-b256-b57b10d69c43.png <- D:\obrepo\papers\教研\各季度讲义\高二暑\第10讲 安培力_files\28736408-48c2-4c65-b256-b57b10d69c43.png
+ea97997ba877e0c82ae4ddc33a227514.png <- D:\obrepo\papers\教研\各季度讲义\高二暑\第10讲 安培力_files\ea97997ba877e0c82ae4ddc33a227514.png
+ee8bdba9eda15b3ddcac37b1c082c85e.png <- D:\obrepo\papers\教研\各季度讲义\高二暑\第10讲 安培力_files\ee8bdba9eda15b3ddcac37b1c082c85e.png
+Pasted image 20260713212625.png <- D:\obrepo\papers\教研\各季度讲义\高二暑\attachments\Pasted image 20260713212625.png
+Pasted image 20260713215320.png <- D:\obrepo\papers\教研\各季度讲义\高二暑\attachments\Pasted image 20260713215320.png
+QQ_1783683170389.png <- D:\obrepo\papers\教研\各季度讲义\高二暑\attachments\QQ_1783683170389.png
+QQ_1783683193769.png <- D:\obrepo\papers\教研\各季度讲义\高二暑\attachments\QQ_1783683193769.png
+QQ_1783683221987.png <- D:\obrepo\papers\教研\各季度讲义\高二暑\attachments\QQ_1783683221987.png
+QQ_1783683284396.png <- D:\obrepo\papers\教研\各季度讲义\高二暑\attachments\QQ_1783683284396.png
+QQ_1783683379122.png <- D:\obrepo\papers\教研\各季度讲义\高二暑\attachments\QQ_1783683379122.png
+QQ_1783683408889.png <- D:\obrepo\papers\教研\各季度讲义\高二暑\attachments\QQ_1783683408889.png
+QQ_1783683468336.png <- D:\obrepo\papers\教研\各季度讲义\高二暑\attachments\QQ_1783683468336.png
+QQ_1783683512429.png <- D:\obrepo\papers\教研\各季度讲义\高二暑\attachments\QQ_1783683512429.png
+QQ_1783683544381.png <- D:\obrepo\papers\教研\各季度讲义\高二暑\attachments\QQ_1783683544381.png
+QQ_1783683613777.png <- D:\obrepo\papers\教研\各季度讲义\高二暑\attachments\QQ_1783683613777.png
+QQ_1783683635007.png <- D:\obrepo\papers\教研\各季度讲义\高二暑\attachments\QQ_1783683635007.png
+QQ_1783683676282.png <- D:\obrepo\papers\教研\各季度讲义\高二暑\attachments\QQ_1783683676282.png
+QQ_1783683705178.png <- D:\obrepo\papers\教研\各季度讲义\高二暑\attachments\QQ_1783683705178.png
+QQ_1783683760427.png <- D:\obrepo\papers\教研\各季度讲义\高二暑\attachments\QQ_1783683760427.png
+QQ_1783683794972.png <- D:\obrepo\papers\教研\各季度讲义\高二暑\attachments\QQ_1783683794972.png
+QQ_1783683854501.png <- D:\obrepo\papers\教研\各季度讲义\高二暑\attachments\QQ_1783683854501.png
+QQ_1783683878024.png <- D:\obrepo\papers\教研\各季度讲义\高二暑\attachments\QQ_1783683878024.png
+QQ_1783683904189.png <- D:\obrepo\papers\教研\各季度讲义\高二暑\attachments\QQ_1783683904189.png
+QQ_1783683948158.png <- D:\obrepo\papers\教研\各季度讲义\高二暑\attachments\QQ_1783683948158.png
+QQ_1783683976381.png <- D:\obrepo\papers\教研\各季度讲义\高二暑\attachments\QQ_1783683976381.png
+QQ_1783684008117.png <- D:\obrepo\papers\教研\各季度讲义\高二暑\attachments\QQ_1783684008117.png
+QQ_1783684030155.png <- D:\obrepo\papers\教研\各季度讲义\高二暑\attachments\QQ_1783684030155.png
+4f6d46cb-c0c9-4fcc-859b-4272b419e93a.png <- D:\obrepo\papers\教研\各季度讲义\高二暑\第10讲 安培力_files\4f6d46cb-c0c9-4fcc-859b-4272b419e93a.png
+
+Missing files:
+Pasted image 20251211012407.png
+Pasted image 20251211012451.png
+Pasted image 20251211012611.png
+Pasted image 20251211012800.png
+Pasted image 20251211012809.png
+Pasted image 20251211021550.png
+
+Duplicate filenames:
