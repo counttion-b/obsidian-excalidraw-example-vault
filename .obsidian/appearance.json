@@ -24,7 +24,8 @@
     "font",
     "question",
     "weekly-homework",
-    "lecture-spacing-unified"
+    "lecture-spacing-unified",
+    "lambda-theme"
   ],
   "baseFontSizeAction": true,
   "textFontFamily": "",

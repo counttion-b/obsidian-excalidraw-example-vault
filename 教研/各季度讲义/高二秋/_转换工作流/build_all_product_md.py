@@ -20,10 +20,14 @@ class Converter:
         self.soup = BeautifulSoup(html_path.read_text(encoding="utf-8", errors="ignore"), "html.parser")
         self.image_index = 0
         self.parts: list[str] = [
-            f"# 第{self.lesson_no}讲 {self.lesson_title} #h0",
+            f"# 第{self.lesson_no}讲{self.lesson_title} #h0",
             "# 知识讲解",
         ]
         self.question_counters: dict[str, int] = {}
+        self.in_notes = False
+        self.note_heading_index = 1
+        self.current_level = 0
+        self.current_level_sub_index = 0
         self.out_assets.mkdir(parents=True, exist_ok=True)
 
     def convert(self) -> None:
@@ -36,7 +40,9 @@ class Converter:
                 current_section = title
                 if title.startswith("1级：") and "# 题目练习" not in self.parts:
                     self.parts.append("# 题目练习")
-                self.parts.append("#" * level + " " + normalize_title(title))
+                formatted = self.format_title(title, level)
+                if formatted:
+                    self.parts.append(formatted)
                 continue
 
             desc = block.select_one("div.desc-content")
@@ -53,6 +59,54 @@ class Converter:
                     self.parts.append(md)
 
         self.out_md.write_text("\n\n".join(p.strip() for p in self.parts if p.strip()) + "\n", encoding="utf-8")
+
+    def format_title(self, title: str, level: int) -> str:
+        title = normalize_title(title)
+
+        if title == "本讲考情分析":
+            return "### 0.1. 本讲考情分析"
+
+        if title == "笔记整理":
+            self.in_notes = True
+            self.note_heading_index = 1
+            return '### 1. 笔记整理\n\n<div class="page-break" style="page-break-before: always;"></div>'
+
+        level_match = re.match(r"^(\d+)级：(.+)$", title)
+        if level_match:
+            self.in_notes = False
+            self.current_level = int(level_match.group(1))
+            self.current_level_sub_index = 0
+            return f"## {self.current_level}. {title}"
+
+        if title.startswith("考点 "):
+            self.current_level_sub_index = 1
+            return f"### {self.current_level}.{self.current_level_sub_index}. {title}"
+
+        if title == "经典练习":
+            self.current_level_sub_index = 2
+            return f"### {self.current_level}.{self.current_level_sub_index}. 典中典"
+
+        if title == "方法解析":
+            self.current_level_sub_index = 3
+            return f"### {self.current_level}.{self.current_level_sub_index}. 思路分析"
+
+        if title == "锦囊总结":
+            self.current_level_sub_index = 4
+            return f"### {self.current_level}.{self.current_level_sub_index}. 规律总结"
+
+        if title.startswith("真题练习"):
+            self.current_level_sub_index += 1
+            return f"### {self.current_level}.{self.current_level_sub_index}. {title}"
+
+        if title == "挑战进阶" and self.current_level:
+            self.current_level_sub_index += 1
+            return f"### {self.current_level}.{self.current_level_sub_index}. 挑战进阶"
+
+        if self.in_notes and level == 2:
+            self.note_heading_index += 1
+            return f"## {self.note_heading_index}. {title}"
+
+        return "#" * level + " " + title
 
     def is_title(self, block: Tag) -> bool:
         return block.select_one("section.title-common") is not None
@@ -123,6 +177,7 @@ class Converter:
                 stem_md = self.convert_inline_block(stem)
                 if stem_md:
                     if idx > 0 and order:
+                        chunks.append(">")
                         stem_md = f"（{order}）{stem_md}"
                     chunks.extend(prefix_quote(stem_md).splitlines())
 
@@ -161,18 +216,37 @@ class Converter:
         opt = direct_child_with_class(qcont, "option-cont")
         if not opt:
             return ""
-        mode = "opts"
-        for cls in opt.get("class", []):
-            if cls.startswith("option-mode"):
-                mode = "opts" + cls.replace("option-mode", "")
-        lines = [f"[!{mode}]"]
+        option_rows: list[tuple[str, str]] = []
+        has_image = False
         for li in opt.select("li"):
             label = clean_text(li.select_one(".opt-num").get_text(" ", strip=True) if li.select_one(".opt-num") else "")
             cont = li.select_one(".opt-cont")
             text = self.convert_inline_block(cont) if cont else clean_text(li.get_text(" ", strip=True))
             text = text.replace(label, "", 1).strip() if label else text
+            has_image = has_image or "![[assets/" in text
+            option_rows.append((label, text))
+        mode = self.option_mode(option_rows, has_image)
+        lines = [f"[!opts{mode}]"]
+        for label, text in option_rows:
             lines.append(f"- {label} {text}".strip())
         return "\n".join(lines)
+
+    def option_mode(self, option_rows: list[tuple[str, str]], has_image: bool) -> int:
+        if has_image:
+            return 1
+        if not option_rows:
+            return 1
+
+        lengths = [option_visual_length(text) for _, text in option_rows]
+        max_len = max(lengths)
+        avg_len = sum(lengths) / len(lengths)
+        formula_count = sum(text.count("$") // 2 for _, text in option_rows)
+
+        if max_len <= 10 and avg_len <= 8 and formula_count <= len(option_rows):
+            return 4
+        if max_len <= 24 and avg_len <= 18:
+            return 2
+        return 1
 
     def block_to_md(self, node) -> str:
         if isinstance(node, NavigableString):
@@ -237,12 +311,24 @@ class Converter:
             rows.append([clean_markdown_line(self.convert_inline_block(c)).replace("\n", "<br>") for c in cells])
         if not rows:
             return ""
+        if len(rows[0]) >= 4 and "级别" in rows[0][0] and "题型" in rows[0][2]:
+            rows[0][2] = rows[0][2].replace("题型", "难度")
+            for row in rows[1:]:
+                if len(row) >= 3:
+                    row[2] = str(self.difficulty_for_level(row[0]))
         width = max(len(r) for r in rows)
         rows = [r + [""] * (width - len(r)) for r in rows]
         out = ["| " + " | ".join(rows[0]) + " |", "| " + " | ".join(["---"] * width) + " |"]
         for row in rows[1:]:
             out.append("| " + " | ".join(row) + " |")
         return "\n".join(out)
+
+    def difficulty_for_level(self, level_text: str) -> int:
+        level_match = re.search(r"(\d+)级", level_text)
+        level = int(level_match.group(1)) if level_match else 1
+        if self.lesson_no == 1:
+            return {1: 2, 2: 2, 3: 3, 4: 2, 5: 4}.get(level, level)
+        return level
 
     def copy_image(self, img: Tag | None) -> str:
         if img is None:
@@ -290,6 +376,22 @@ def clean_markdown_line(text: str) -> str:
     text = re.sub(r"\$\{\{\\alpha \}_\{([^}]+)\}\}\$", r"$\\alpha_{\1}$", text)
     text = re.sub(r"\$\{\{\\beta \}_\{([^}]+)\}\}\$", r"$\\beta_{\1}$", text)
     return text.strip()
+
+
+def option_visual_length(text: str) -> int:
+    compact = re.sub(r"!\[\[[^\]]+\]\]", "图", text)
+    compact = re.sub(r"\$([^$]+)\$", lambda m: formula_visual_text(m.group(1)), compact)
+    compact = re.sub(r"\s+", "", compact)
+    return len(compact)
+
+
+def formula_visual_text(tex: str) -> str:
+    tex = re.sub(r"\\frac\{([^{}]+)\}\{([^{}]+)\}", r"\1/\2", tex)
+    tex = re.sub(r"\{\{([^{}]+)\}\}", r"\1", tex)
+    tex = re.sub(r"\\(?:text|mathrm)\{([^{}]+)\}", r"\1", tex)
+    tex = re.sub(r"\\[a-zA-Z]+", "x", tex)
+    tex = re.sub(r"[{}\\]", "", tex)
+    return tex
 
 
 def normalize_title(title: str) -> str:
