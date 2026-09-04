@@ -1,0 +1,259 @@
+/* Live PDF Preview compatibility for Lambda lecture PDFs.
+   Keep Better Export PDF as the final renderer; this file only makes Live's A4
+   preview follow the same visual rules more closely. */
+
+#pdf-preview-sandbox .pdf-preview-page,
+#pdf-preview-sandbox .pdf-preview-page .markdown-preview-view,
+#pdf-preview-sandbox .pdf-preview-page .markdown-rendered {
+  --lambda-black: #252525;
+  --lambda-orange: #e58a2b;
+  --lambda-ivory: #f7f3ec;
+  --lambda-line: #d8d1c7;
+  --lambda-gray: #68635d;
+  --lambda-orange-soft: rgba(229, 138, 43, 0.16);
+  --lecture-line-height: 2.3;
+  --lecture-paragraph-gap: 0em;
+  color: var(--lambda-black) !important;
+  background: #fff !important;
+}
+
+#pdf-preview-sandbox .pdf-preview-page .markdown-preview-view,
+#pdf-preview-sandbox .pdf-preview-page .markdown-rendered {
+  font-size: 15px;
+  line-height: 1.65;
+  counter-reset: ti;
+}
+
+#pdf-preview-sandbox .pdf-preview-page p,
+#pdf-preview-sandbox .pdf-preview-page li,
+#pdf-preview-sandbox .pdf-preview-page blockquote,
+#pdf-preview-sandbox .pdf-preview-page blockquote p,
+#pdf-preview-sandbox .pdf-preview-page blockquote li,
+#pdf-preview-sandbox .pdf-preview-page .callout-content,
+#pdf-preview-sandbox .pdf-preview-page .callout-content p,
+#pdf-preview-sandbox .pdf-preview-page .callout-content li {
+  line-height: var(--lecture-line-height) !important;
+}
+
+#pdf-preview-sandbox .pdf-preview-page p,
+#pdf-preview-sandbox .pdf-preview-page blockquote p,
+#pdf-preview-sandbox .pdf-preview-page .callout-content p {
+  margin-block-start: var(--lecture-paragraph-gap) !important;
+  margin-block-end: var(--lecture-paragraph-gap) !important;
+  margin-top: var(--lecture-paragraph-gap) !important;
+  margin-bottom: var(--lecture-paragraph-gap) !important;
+}
+
+#pdf-preview-sandbox .pdf-preview-page ul,
+#pdf-preview-sandbox .pdf-preview-page ol,
+#pdf-preview-sandbox .pdf-preview-page .callout-content ul,
+#pdf-preview-sandbox .pdf-preview-page .callout-content ol {
+  margin-block-start: var(--lecture-paragraph-gap) !important;
+  margin-block-end: var(--lecture-paragraph-gap) !important;
+}
+
+#pdf-preview-sandbox .pdf-preview-page .el-h6,
+#pdf-preview-sandbox .pdf-preview-page h6 {
+  height: 0 !important;
+  margin: 0 !important;
+  padding: 0 !important;
+  overflow: hidden !important;
+}
+
+#pdf-preview-sandbox .pdf-preview-page .el-h6 h6 {
+  font-size: 0.01px !important;
+  margin: 0 !important;
+  padding: 0 !important;
+}
+
+#pdf-preview-sandbox .pdf-preview-page .callout[data-callout="ti"] {
+  counter-increment: ti;
+  background: transparent !important;
+  border: none !important;
+  border-left: none !important;
+  box-shadow: none !important;
+  padding: 0 !important;
+  margin: 14px 0 !important;
+}
+
+#pdf-preview-sandbox .pdf-preview-page .callout[data-callout="ti"] .callout-title {
+  background: transparent !important;
+  border: none !important;
+  box-shadow: none !important;
+  padding: 0 !important;
+  margin: 0 0 6px 0 !important;
+  font-weight: 700;
+  font-size: 1.05em;
+  display: flex;
+  align-items: baseline;
+  gap: 8px;
+  color: var(--lambda-black) !important;
+}
+
+#pdf-preview-sandbox .pdf-preview-page .callout[data-callout="ti"] .callout-title .callout-title-inner::before {
+  content: counter(ti) "." !important;
+  font-weight: 900 !important;
+  margin-right: 0.35em !important;
+  color: var(--lambda-orange) !important;
+}
+
+#pdf-preview-sandbox .pdf-preview-page .callout[data-callout="ti"] .callout-icon {
+  display: none !important;
+}
+
+#pdf-preview-sandbox .pdf-preview-page .callout[data-callout="ti"] .callout-title em {
+  color: var(--lambda-gray) !important;
+  font-style: normal !important;
+  font-weight: 400;
+  font-size: 0.9em;
+}
+
+#pdf-preview-sandbox .pdf-preview-page .callout[data-callout="ti"] .callout-content {
+  background: transparent !important;
+  border: none !important;
+  padding: 0 !important;
+  margin: 0 !important;
+  font-size: 1em;
+  line-height: 1.9;
+}
+
+#pdf-preview-sandbox .pdf-preview-page .callout[data-callout="ti"]:not(:has(.callout[data-callout^="opts"])) {
+  padding-bottom: 4em !important;
+  border-bottom: 4em solid transparent !important;
+}
+
+#pdf-preview-sandbox .pdf-preview-page .callout-content > .callout {
+  margin-top: 0 !important;
+  padding-top: 0 !important;
+  border-top: 0 solid transparent !important;
+}
+
+#pdf-preview-sandbox .pdf-preview-page .callout[data-callout^="opts"] {
+  background: transparent !important;
+  border: none !important;
+  box-shadow: none !important;
+  padding: 0 !important;
+  margin: 6px 0 0 0 !important;
+}
+
+#pdf-preview-sandbox .pdf-preview-page .callout[data-callout^="opts"] .callout-title {
+  display: none !important;
+}
+
+#pdf-preview-sandbox .pdf-preview-page .callout[data-callout^="opts"] .callout-content {
+  padding: 0 !important;
+  margin: 0 !important;
+}
+
+#pdf-preview-sandbox .pdf-preview-page .callout[data-callout^="opts"] .callout-content ul,
+#pdf-preview-sandbox .pdf-preview-page .callout[data-callout^="opts"] ul.has-list-bullet {
+  list-style: none !important;
+  margin: 0 !important;
+  margin-left: 0 !important;
+  padding-left: 0 !important;
+}
+
+#pdf-preview-sandbox .pdf-preview-page .callout[data-callout^="opts"] ul.has-list-bullet > li > span.list-bullet {
+  display: none !important;
+  width: 0 !important;
+  margin: 0 !important;
+  padding: 0 !important;
+}
+
+#pdf-preview-sandbox .pdf-preview-page .callout[data-callout^="opts"] .callout-content li,
+#pdf-preview-sandbox .pdf-preview-page .callout[data-callout^="opts"] ul.has-list-bullet > li {
+  text-indent: 0 !important;
+  margin-left: 0 !important;
+  break-inside: avoid;
+}
+
+#pdf-preview-sandbox .pdf-preview-page .callout[data-callout="opts2"] .callout-content ul {
+  display: grid !important;
+  grid-template-columns: 1fr 1fr;
+  column-gap: 28px;
+  row-gap: 6px;
+}
+
+#pdf-preview-sandbox .pdf-preview-page .callout[data-callout="opts2"] .callout-content li {
+  margin: 0 !important;
+  line-height: 1.9;
+}
+
+#pdf-preview-sandbox .pdf-preview-page .callout[data-callout="opts4"] .callout-content ul {
+  column-count: 4;
+  column-gap: 22px;
+}
+
+#pdf-preview-sandbox .pdf-preview-page h1:has(a.tag[href="#h0"]) {
+  color: var(--lambda-black) !important;
+  background: transparent !important;
+  border-top: 1px solid var(--lambda-line) !important;
+  border-bottom-width: 4px !important;
+  border-bottom-color: var(--lambda-orange) !important;
+  padding-top: 0.55em !important;
+  padding-bottom: 0.55em !important;
+  box-shadow: none !important;
+}
+
+#pdf-preview-sandbox .pdf-preview-page h1:not(:has(a.tag[href="#h0"])),
+#pdf-preview-sandbox .pdf-preview-page h2,
+#pdf-preview-sandbox .pdf-preview-page h3,
+#pdf-preview-sandbox .pdf-preview-page h4,
+#pdf-preview-sandbox .pdf-preview-page h5 {
+  color: var(--lambda-black) !important;
+}
+
+#pdf-preview-sandbox .pdf-preview-page h2 {
+  border: 1px solid var(--lambda-line) !important;
+  border-left: 4px solid var(--lambda-orange) !important;
+  border-radius: 3px;
+  padding: 0.26em 0.65em;
+  background: transparent !important;
+  box-shadow: none !important;
+}
+
+#pdf-preview-sandbox .pdf-preview-page h3 {
+  border-left: none !important;
+  border-bottom: 1.5px solid var(--lambda-orange) !important;
+  display: table;
+  max-width: 100%;
+  padding-left: 0 !important;
+  padding-right: 0.35em;
+  padding-bottom: 0.08em;
+}
+
+#pdf-preview-sandbox .pdf-preview-page table {
+  border-color: var(--lambda-line) !important;
+}
+
+#pdf-preview-sandbox .pdf-preview-page table th,
+#pdf-preview-sandbox .pdf-preview-page table td {
+  border-color: var(--lambda-line) !important;
+  color: var(--lambda-black) !important;
+  background: transparent !important;
+}
+
+#pdf-preview-sandbox .pdf-preview-page table th {
+  background: var(--lambda-ivory) !important;
+  font-weight: 700;
+}
+
+#pdf-preview-sandbox .pdf-preview-page mjx-container[jax="CHTML"][display="true"] {
+  border-left: 3px solid var(--lambda-orange);
+  padding-left: 0.8em;
+}
+
+#pdf-preview-sandbox .pdf-preview-page .gap {
+  display: block;
+  height: calc(var(--n, 1) * 0.8em);
+  outline: none !important;
+}
+
+#pdf-preview-sandbox .pdf-preview-page .gap::after {
+  content: "" !important;
+}
+
+#pdf-preview-sandbox .pdf-preview-page div.page-break::after,
+#pdf-preview-sandbox .pdf-preview-page div.pdf-page-break::after {
+  display: none !important;
+}

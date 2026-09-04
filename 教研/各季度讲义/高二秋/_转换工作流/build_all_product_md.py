@@ -28,6 +28,7 @@ class Converter:
         self.note_heading_index = 1
         self.current_level = 0
         self.current_level_sub_index = 0
+        self.skip_current_section = False
         self.out_assets.mkdir(parents=True, exist_ok=True)
 
     def convert(self) -> None:
@@ -37,12 +38,19 @@ class Converter:
                 title, level = self.convert_title(block)
                 if not title:
                     continue
+                normalized_title = normalize_title(title)
+                self.skip_current_section = normalized_title.startswith("考点 ")
+                if self.skip_current_section:
+                    continue
                 current_section = title
                 if title.startswith("1级：") and "# 题目练习" not in self.parts:
                     self.parts.append("# 题目练习")
                 formatted = self.format_title(title, level)
                 if formatted:
                     self.parts.append(formatted)
+                continue
+
+            if self.skip_current_section:
                 continue
 
             desc = block.select_one("div.desc-content")
@@ -78,21 +86,19 @@ class Converter:
             self.current_level_sub_index = 0
             return f"## {self.current_level}. {title}"
 
-        if title.startswith("考点 "):
-            self.current_level_sub_index = 1
-            return f"### {self.current_level}.{self.current_level_sub_index}. {title}"
-
         if title == "经典练习":
-            self.current_level_sub_index = 2
+            self.current_level_sub_index = 1
             return f"### {self.current_level}.{self.current_level_sub_index}. 典中典"
 
         if title == "方法解析":
-            self.current_level_sub_index = 3
-            return f"### {self.current_level}.{self.current_level_sub_index}. 思路分析"
+            self.current_level_sub_index = 2
+            marker = "####" if self.lesson_no >= 2 else "###"
+            return f"{marker} {self.current_level}.{self.current_level_sub_index}. 思路分析"
 
         if title == "锦囊总结":
-            self.current_level_sub_index = 4
-            return f"### {self.current_level}.{self.current_level_sub_index}. 规律总结"
+            self.current_level_sub_index = 3
+            marker = "####" if self.lesson_no >= 2 else "###"
+            return f"{marker} {self.current_level}.{self.current_level_sub_index}. 规律总结"
 
         if title.startswith("真题练习"):
             self.current_level_sub_index += 1

@@ -37,7 +37,7 @@ var ExamplePlugin = class extends import_obsidian.Plugin {
       editorCallback: (editor) => {
         const currentPosition = editor.getCursor();
         editor.replaceRange(
-          '<div class="page-break" style="page-break-before: always;"></div>\n',
+          '<div class="page-break pdf-page-break" style="page-break-before: always;"></div>\n',
           currentPosition
         );
         editor.setCursor(editor.getCursor().line + 1, 0);

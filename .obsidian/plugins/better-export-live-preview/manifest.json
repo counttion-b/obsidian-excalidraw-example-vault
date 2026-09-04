@@ -1,0 +1,9 @@
+{
+  "id": "better-export-live-preview",
+  "name": "Better Export Live Preview",
+  "version": "0.1.0",
+  "minAppVersion": "0.15.0",
+  "description": "Generate and preview the current note as a live PDF using a Better Export PDF compatible rendering path.",
+  "author": "Codex",
+  "isDesktopOnly": true
+}

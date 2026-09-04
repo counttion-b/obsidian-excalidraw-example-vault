@@ -265,5 +265,14 @@
       ],
       "key": "Numpad6"
     }
+  ],
+  "live-pdf-preview:open-preview": [
+    {
+      "modifiers": [
+        "Alt",
+        "Mod"
+      ],
+      "key": "Numpad5"
+    }
   ]
 }

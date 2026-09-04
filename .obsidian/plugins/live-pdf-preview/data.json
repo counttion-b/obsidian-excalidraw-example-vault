@@ -1,0 +1,13 @@
+{
+  "pageSize": "A4",
+  "customPageWidth": 210,
+  "customPageHeight": 297,
+  "landscape": false,
+  "margin": "10mm",
+  "scale": 100,
+  "showTitle": false,
+  "customCss": "",
+  "fontFamily": "default",
+  "fontSize": 16,
+  "textColor": "default"
+}
