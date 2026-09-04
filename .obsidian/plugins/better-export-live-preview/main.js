@@ -95,6 +95,19 @@ function sleep(ms) {
   return new Promise((resolve) => setTimeout(resolve, ms));
 }
 
+function formatSeconds(ms) {
+  return `${(ms / 1000).toFixed(1)} 秒`;
+}
+
+async function timed(timings, name, fn) {
+  const startedAt = performance.now();
+  try {
+    return await fn();
+  } finally {
+    timings[name] = performance.now() - startedAt;
+  }
+}
+
 function safeParseFloat(value, fallback) {
   const parsed = parseFloat(value);
   return Number.isFinite(parsed) ? parsed : fallback;
@@ -428,7 +441,10 @@ class BetterExportLivePreviewView extends ItemView {
   async onOpen() {
     this.buildUi();
     this.currentFile = this.plugin.getActiveMarkdownFile();
-    await this.refresh(true);
+    if (this.currentFile) {
+      this.setStatus(`当前文件：${this.currentFile.basename}，点击刷新生成预览`);
+    }
+    this.warmupRenderEngine();
   }
 
   async onClose() {
@@ -482,6 +498,24 @@ class BetterExportLivePreviewView extends ItemView {
     this.setStatus(`当前文件：${file.basename}，点击刷新生成预览`);
   }
 
+  async warmupRenderEngine() {
+    if (this.rendering || !this.hiddenHost) return;
+    try {
+      const { config } = this.plugin.getBetterExportSettings();
+      const fileText = this.currentFile ? `当前文件：${this.currentFile.basename}，` : "";
+      this.setStatus(`${fileText}正在预热 PDF 引擎...`);
+      const startedAt = performance.now();
+      await this.plugin.getRenderWebview(this.hiddenHost, config);
+      if (!this.rendering) this.setStatus(`${fileText}预热完成，点击刷新生成预览`);
+      console.info(`Better Export Live Preview warmup: ${formatSeconds(performance.now() - startedAt)}`);
+    } catch (error) {
+      console.warn("Better Export Live Preview warmup failed:", error);
+      if (this.currentFile) {
+        this.setStatus(`当前文件：${this.currentFile.basename}，点击刷新生成预览`);
+      }
+    }
+  }
+
   scheduleRefresh() {
     this.debouncedRefresh();
   }
@@ -508,12 +542,16 @@ class BetterExportLivePreviewView extends ItemView {
 
     try {
       const previewState = await this.capturePreviewState();
-      const pdfPath = await this.plugin.generatePreviewPdf(file, this.hiddenHost);
+      const result = await this.plugin.generatePreviewPdf(file, this.hiddenHost, (text) => this.setStatus(text));
+      const pdfPath = result.pdfPath;
       this.latestPdfPath = pdfPath;
       this.loadPreviewPdf(pdfPath, previewState);
       this.placeholder.hide();
-      const seconds = ((performance.now() - startedAt) / 1000).toFixed(1);
-      this.setStatus(`已刷新：${seconds} 秒`);
+      const totalMs = performance.now() - startedAt;
+      const parts = result.timings || {};
+      this.setStatus(
+        `已刷新：${formatSeconds(totalMs)}（渲染 ${formatSeconds(parts.markdown || 0)} / 生成 ${formatSeconds(parts.pdf || 0)}）`
+      );
     } catch (error) {
       console.error(error);
       this.setStatus(`生成失败：${error.message || error}`);
@@ -801,19 +839,26 @@ module.exports = class BetterExportLivePreviewPlugin extends Plugin {
     return { doc, frontMatter, file };
   }
 
-  async generatePreviewPdf(file, hiddenHost) {
+  async generatePreviewPdf(file, hiddenHost, onStatus) {
+    const timings = {};
     const { settings, config } = this.getBetterExportSettings();
-    const docData = await this.renderMarkdownDoc(file, config);
+    if (onStatus) onStatus("正在渲染 Markdown...");
+    const docData = await timed(timings, "markdown", () => this.renderMarkdownDoc(file, config));
     const outputPath = path.join(this.cacheDir, `preview-${Date.now()}.pdf`);
-    const webview = await this.getRenderWebview(hiddenHost, config);
+    if (onStatus) onStatus("正在准备 PDF 引擎...");
+    const webview = await timed(timings, "engine", () => this.getRenderWebview(hiddenHost, config));
     const printOptions = this.makePrintOptions(Object.assign({}, settings, config), docData.frontMatter);
 
     try {
-      await this.loadDocIntoRenderWebview(webview, docData.doc);
-      const data = await webview.printToPDF(printOptions);
-      await fs.promises.writeFile(outputPath, data);
+      if (onStatus) onStatus("正在排版并生成 PDF...");
+      const data = await timed(timings, "pdf", async () => {
+        await this.loadDocIntoRenderWebview(webview, docData.doc);
+        return await webview.printToPDF(printOptions);
+      });
+      if (onStatus) onStatus("正在写入预览文件...");
+      await timed(timings, "write", () => fs.promises.writeFile(outputPath, data));
       this.cleanupOldPreviewPdfs(outputPath);
-      return outputPath;
+      return { pdfPath: outputPath, timings };
     } finally {}
   }
 
@@ -839,6 +884,7 @@ module.exports = class BetterExportLivePreviewPlugin extends Plugin {
   async getRenderWebview(hiddenHost, config) {
     const existing = this.renderWebview;
     if (existing && existing.parentElement === hiddenHost) {
+      if (this.renderWebviewReady) await this.renderWebviewReady;
       await this.ensureCssBundle(existing, config);
       return existing;
     }
