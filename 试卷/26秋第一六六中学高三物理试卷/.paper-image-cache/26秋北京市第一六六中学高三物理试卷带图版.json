@@ -1,0 +1,182 @@
+[
+  {
+    "questionNo": "1",
+    "matched": true,
+    "score": 100,
+    "url": "https://xbresource.jiaoyanyun.com/#/boutique/search?sid=4&gid=3&queId=1a3fa5b36e564f7da6a29e10e6f82bc2",
+    "answer": "A",
+    "analysis": "A选项：自由落体运动是初速度为0，加速度为g的匀加速直线运动，故A正确；\nB选项：初速度为0且只受重力作用的物体所做的运动称为自由落体运动，故B错误；\nC选项：根据G=mg质量大的物体受到的重力大，做自由落体运动的物体有：h=\\frac{1}{2}g{{t}^{2}}，则落到地面时的速度为v=\\sqrt{2gh}，可知落地速度与重力大小无关，故C错误；\nD选项：物体做自由落体运动时受到重力的作用，故D错误；\n故选A.",
+    "imageCount": 0
+  },
+  {
+    "questionNo": "2",
+    "matched": true,
+    "score": 72.69,
+    "url": "https://xbresource.jiaoyanyun.com/#/boutique/search?sid=4&gid=3&queId=c769f50d11db440b83e6c24a64280931",
+    "answer": "B",
+    "analysis": "AB．设两个力间的夹角为2\\theta，水桶的质量为m，则根据平衡条件有\n2F_{1}\\cos\\theta = mg\n显然，夹角越小，\\cos\\theta越大，F_{1}越小，因此可知，两个力间的夹角小些比大些省力，故A错误，B正确；\nCD．根据平衡条件知合力始终不变，大小始终等于水桶的重力，因此可知，两个力间的夹角变大，F1、F2的合力保持不变，故C错误，D错误．\n故选B．",
+    "imageCount": 1
+  },
+  {
+    "questionNo": "3",
+    "matched": true,
+    "score": 98.26,
+    "url": "https://xbresource.jiaoyanyun.com/#/boutique/search?sid=4&gid=3&queId=22f53bca615c47a7b1f5919340cbe0ad",
+    "answer": "B",
+    "analysis": "A．拉手向前进方向偏离竖直方向角度不变，与列车的加速度相同，沿水平方向，根据牛顿第二定律可知拉手所受合力的方向一定沿水平方向，故A为错误选项；\nBC．根据力的分解和牛顿第二定律有\n\\tan \\alpha =\\frac{F}{mg}=\\frac{ma}{mg}=\\frac{a}{g}=\\tan \\beta\n所以两拉手偏离竖直方向的角度满足α=β，且列车的加速度大小为\na=g\\tan \\alpha\n故B为正确选项，C为错误选项；\nD．分析图片可以知拉手加速度方向与速度方向相反，所以做减速运动，即列车正在减速行驶，故D为错误选项。\n故答案为B。",
+    "imageCount": 1
+  },
+  {
+    "questionNo": "4",
+    "matched": true,
+    "score": 100,
+    "url": "https://xbresource.jiaoyanyun.com/#/boutique/search?sid=4&gid=3&queId=ea0d51328f074aa5b47a3308d4750c37",
+    "answer": "C\nD",
+    "analysis": "AB．分析图片可以知前4s内，航拍仪是在升力作用下匀加速竖直向上起飞的过程，最后0.5s内是失去动力继续上升的过程，所以在t=4.5\\mathrm{s}时，航拍仪离地面最远，故AB为错误选项；\nC．根据v-t图像与t轴所围面积表示位移可求得航拍仪在运动过程中上升的最大高度为\nh=\\frac{v}{2}t=\\frac{6.0\\times 4.5}{2}\\mathrm{m}=13.5\\mathrm{m}\n故C为正确选项；\nD．航拍仪在上升过程中前4s的加速度为\na_{1}=\\frac{\\Delta v_{1}}{t_{1}}=1.5\\mathrm{m}/s^{2}\n最后0.5s内的加速度为\na_{2}=\\frac{\\Delta v_{2}}{t_{2}}=-12\\mathrm{m}/\\mathrm{s}^{2}\n故加速度最大值为12\\mathrm{m}/s^{2}，故D为正确选项。\n故答案为CD。",
+    "imageCount": 1
+  },
+  {
+    "questionNo": "5",
+    "matched": true,
+    "score": 74.29,
+    "url": "https://xbresource.jiaoyanyun.com/#/boutique/search?sid=4&gid=3&queId=5327ee1884f24d4a8202f63bbb3b9e54",
+    "answer": "D",
+    "analysis": "A．小球在由静止释放后，小球向下运动，故小球的重力做正功，小球会加速向下运动，小球做圆周运动的线速度在增大，故它受到的合外力是变化的，A为错误选项；\nB．根据能量守恒，小球在左侧也能摆到与右侧同样的高度，不会大于右侧，B为错误选项；\nC．细绳与钉子碰后的瞬间，小球的线速度可以认为是不变的，而半径变小了，故根据向心加速度\na=\\frac{{{v}^{2}}}{R}\n可知，加速度变大了，C为错误选项；\nD．钉子的位置越靠近小球，细绳与钉子相碰时，即R变小；小球在最下端，根据牛顿第二定律可知\nF-mg=m\\frac{{{v}^{2}}}{R}\n所以\nF=mg+m\\frac{{{v}^{2}}}{R}\n所以R越小，则F越大，绳就越容易断，D为正确选项。\n故答案为D。",
+    "imageCount": 1
+  },
+  {
+    "questionNo": "6",
+    "matched": true,
+    "score": 99.26,
+    "url": "https://xbresource.jiaoyanyun.com/#/boutique/search?sid=4&gid=3&queId=ca561bdb7a0e42f2a1a239d5a3dc896d",
+    "answer": "D",
+    "analysis": "A．如果知道绕中子星做圆周运动的卫星的周期与轨道半径，可以求出中子星的质量，而根据题意仅知道中子星的自转周期T、中子星的半径R与万有引力常量G，无法求出中子星质量，根据\n\\rho =\\frac{M}{\\frac{4}{3}\\pi R^{3}}\n可知无法求出该中子星的密度，故A为错误选项；\nB．根据万有引力提供向心力，则有\nG\\frac{Mm}{R^{2}}=m\\frac{v^{2}}{R}\n解得\nv=\\sqrt{\\frac{GM}{R}}\n因无法求出中子星的质量，则无法求出该中子星的第一宇宙速度，故B为错误选项；\nC．在中子星表面，根据万有引力等于重力，则有\nG\\frac{Mm}{R^{2}}=mg\n解得\ng=\\frac{GM}{R^{2}}\n因无法求出中子星的质量，则无法求出该中子星表面的重力加速度，故C为错误选项；\nD．该中子星赤道上的物体随中子星转动的线速度\nv=\\frac{\\begin{array}{l} 2\\pi R \\end{array}}{T}\n故D为正确选项。\n故答案为D。",
+    "imageCount": 0
+  },
+  {
+    "questionNo": "7",
+    "matched": true,
+    "score": 74.36,
+    "url": "https://xbresource.jiaoyanyun.com/#/boutique/search?sid=4&gid=3&queId=f10e3692acde4f8c89ea8aed49486187",
+    "answer": "B\nC",
+    "analysis": "【详解】A．由图可知，绳波是沿水平方向向右传播的，而绳上各点的振动方向是竖直方向，波的传播方向与质点的振动方向垂直，所以该波是横波，故A错误；\nB．由图可知，现在O点在最上方，P点在平衡位置，且向上振动，根据同侧法可知，P点在如图所示的\\frac{1}{4}\\lambda的位置，也可以是\\left( n + \\frac{1}{4} \\right)\\lambda 的位置，则有\n\\left( n + \\frac{1}{4} \\right)\\lambda = L\n解得\n\\lambda = \\frac{4L}{4n + 1} (n=0、1、2、3……)\n当n=0，可求得\\lambda=4L，可见波的最大波长是4L，故B正确；\n![|200](https://tiku-pro-cdn.speiyou.com/imgFile/52745ba00c64ff4b16c12a66158a2eec.png)\nC．在t=\\frac{\\text{3}}{\\text{8}}T时，因为\\frac{\\text{3}}{\\text{8}}T>\\frac{\\text{1}}{4}T，说明质点P向上运动到最大位置后又向下运动了，故此时P的振动方向是竖直向下的，故C正确；\nD．若手上下的振动加快，说明周期变小，而波速是不变的，根据\\lambda=vT可知，波长将变小，故D错误。\n故选BC。",
+    "imageCount": 2
+  },
+  {
+    "questionNo": "8",
+    "matched": true,
+    "score": 74.23,
+    "url": "https://xbresource.jiaoyanyun.com/#/boutique/search?sid=4&gid=3&queId=92e0be3f04574d3ba7c3f7cfad400fed",
+    "answer": "C",
+    "analysis": "AB．由题知，当速度为v0时自行车不受侧向摩擦力作用，则由重力和支持力提供向心力，对自行车和运动员受力分析，可得向心力大小为\nF_{\\mathrm{n}}=mg\\tan \\theta\n自行车所受的支持力大小为\nF_{\\mathrm{N}}=\\frac{mg}{\\cos \\theta }\n故AB为错误选项；\nCD．当速度为v1时，因v1>v0，故自行车和运动员有向外滑的趋势，则自行车所受的侧向摩擦力方向沿赛道向内，与重力、支持力一起提供向心力，故此时自行车和运动员的向心力大于mg\\tan \\theta，故C为正确选项，D为错误选项。\n故答案为C。",
+    "imageCount": 1
+  },
+  {
+    "questionNo": "9",
+    "matched": true,
+    "score": 100,
+    "url": "https://xbresource.jiaoyanyun.com/#/boutique/search?sid=4&gid=3&queId=dc551544cbae4ff981800e9b03e31626",
+    "answer": "B",
+    "analysis": "【详解】\nAB．当此车匀速上坡时，乘客处于平衡状态，乘客受到竖直向下的重力与座椅竖直向上的支持力两个力的作用，故A错误，B正确；\nC．当此车加速上坡时，乘客的加速度方向沿斜坡向上，乘客受到竖直向下的重力、竖直向上的支持力与水平向前的摩擦力作用，故C错误；\nD．此车减速上坡时，乘客的加速度方向沿斜坡向下，由牛顿第二定律可知，乘客所受合力方向沿斜坡向下，故D错误。\n故选B。",
+    "imageCount": 1
+  },
+  {
+    "questionNo": "10",
+    "matched": true,
+    "score": 98.97,
+    "url": "https://xbresource.jiaoyanyun.com/#/boutique/search?sid=4&gid=3&queId=3330aa152c114ad287ddefd8b9015818",
+    "answer": "C",
+    "analysis": "【详解】\nA．由题意可得\nf=kv\n根据牛顿定律可得\nmg+f=ma\n速度减小则加速度减小，所以物体不是匀变速运动，故A错误；\nB．根据牛顿第二定律可得\nmg+kv=ma\n即加速度和速度是线性关系，因速度和时间不是线性关系，因此加速度与时间不成线性关系，故B错误；\nC．上升过程，由动能定理可得\n-mgh-fh=E_{\\mathrm{k}}-E_{\\mathrm{k}0}\n解得\nE_{\\mathrm{k}}=E_{\\mathrm{k}0}-(mg+f)h=E_{\\mathrm{k}0}-(mg+kv)h\n由于速度减小，则E_{\\mathrm{k}}-h图像的斜率逐渐减小，故C正确；\nD．设初位置的重力势能为E_{\\mathrm{p}0}，则有\nE_{\\mathrm{p}}-E_{\\mathrm{p}0}=mgh\n可得\nE_{\\mathrm{p}}=mgh+E_{\\mathrm{p}0}\n可知E_{\\mathrm{p}}-h图像为一条倾斜直线，故D错误。\n故选C。",
+    "imageCount": 4
+  },
+  {
+    "questionNo": "11",
+    "matched": true,
+    "score": 75,
+    "url": "https://xbresource.jiaoyanyun.com/#/boutique/search?sid=4&gid=3&queId=e746c15029a441128b39ad128a522d2c",
+    "answer": "B\nD",
+    "analysis": "A．甲图中小车A和B组成的系统合外力为零，系统的动量守恒，系统的初动量为零，根据动量守恒定律可知，当弹簧的压缩量减小到原来一半时，小车A和B组成的系统的动量为零，故A为错误选项；\nB．乙图中，当弹簧的压缩量减小到原来一半时，A向左运动，动量不为零。B静止，动量为零，则乙图中小车A和B组成的系统的动量不为零，故B为正确选项；\nC．设甲、乙的质量均为m，弹簧释放前的弹性势能为Ep。甲图中，设当弹簧恢复原长时，A车速度大小是vA，B车速度大小是vB，取向左为正方向，由动量守恒定律得\n0=mv_{A}-mv_{B}\n根据机械能守恒得\nE_{P}=\\frac{1}{2}m{v}_{A}^{2}+\\frac{1}{2}m{v}_{B}^{2}\n联立得\nv_{A}=\\sqrt{\\frac{E_{p}}{m}}\n乙图中，当弹簧恢复原长时，A车速度为vA′。根据机械能守恒得\nE_{P}=\\frac{1}{2}mv_{A}'^{2}\n联立得\nv_{A}'=\\sqrt{\\frac{2E_{p}}{m}}\n则\nv_{A}'=\\sqrt{2}v_{A}\n故C为错误选项；\nD．从烧断细线到弹簧恢复原长的过程中，乙图中弹簧对B车的冲量与弹簧对A车的冲量大小相等，对A车，根据动量定理得，弹簧对A车的冲量大小\nI_{A}=mv_{A}'-0=mv_{A}'\n甲图中弹簧对B车的冲量大小为\nI_{B}=mv_{B}=mv_{A}\n则\nI_{A}=\\sqrt{2}I_{B}\n乙图中弹簧对B车的冲量是甲图中弹簧对B车的冲量的\\sqrt{2}倍，故D为正确选项。\n故答案为BD。",
+    "imageCount": 1
+  },
+  {
+    "questionNo": "12",
+    "matched": true,
+    "score": 75,
+    "url": "https://xbresource.jiaoyanyun.com/#/boutique/search?sid=4&gid=3&queId=2085416aa1e04e8e967bf9c7f2240417",
+    "answer": "A",
+    "analysis": "A．由题意，汽车行驶过程中受到的阻力大小为\nf=\\frac{P}{v}\n当汽车的速度大小为\\frac{v}{2}时，汽车的牵引力大小为\nF=\\frac{2P}{v}\n设此时汽车的加速度大小为a，根据牛顿第二定律有\nF-f=ma\n解得\na=\\frac{P}{mv}\n故A为正确选项；\nB．汽车以恒定功率启动，随着速度的增大，牵引力减小，合外力减小，则加速度减小，当速度达到最大值时，加速度为零，其大致的v-t图像如图所示，可知当汽车速度达到\\frac{v}{2}时，所经历的的时间小于\\frac{t}{2}，所以该过程中牵引力做的功小于\\frac{Pt}{2}，故B为错误选项；\n![|200](https://tiku-pro-cdn.speiyou.com/imgFile/5234e580c8e0ebcd1432bb2c01880053.png?resizew=184)\nC．v-t图像与t轴所围的面积表示位移，根据v-t图像可知，汽车速度达到v的过程中，汽车行驶的距离大于\\frac{v}{2}t，故C为错误选项；\nD．根据动能定理可知\nW_{\\mathrm{牵}}-W_{\\mathrm{阻}}=\\frac{1}{2}mv^{2}牵阻\n可得\nW_{\\mathrm{牵}}=W_{\\mathrm{阻}}+\\frac{1}{2}mv^{2}牵阻\n故D为错误选项。\n故答案为A。",
+    "imageCount": 1
+  },
+  {
+    "questionNo": "13",
+    "matched": true,
+    "score": 74.24,
+    "url": "https://xbresource.jiaoyanyun.com/#/boutique/search?sid=4&gid=3&queId=fe9099603de54c6a9f59913068794196",
+    "answer": "D",
+    "analysis": "A． t1时刻小物块恰好滑至长木板的最右端，所以相对位移就是板长，分析图片2可知相对位移为\nL=\\Delta x=\\frac{{{v}_{0}}{{t}_{1}}}{2}\n故A为错误选项；\nB．相对运动过程中，设相互间的摩擦力大小为f，物块的加速度大小\na=\\frac{f}{m}=\\frac{{{v}_{0}}-{{v}_{1}}}{{{t}_{1}}}\n木板加速度大小\n{{a}^{'}}=\\frac{f}{M}=\\frac{{{v}_{1}}}{{{t}_{1}}}\n所以物块与木板的质量之比为\n\\frac{m}{M}=\\frac{{{v}_{1}}}{{{v}_{0}}-{{v}_{1}}}\n故B为错误选项；\nC．摩擦力为\nf=\\mu mg\n所以物块与木板之间的动摩擦因数\n\\mu =\\frac{f}{mg}=\\frac{a}{g}=\\frac{{{v}_{0}}-{{v}_{1}}}{g{{t}_{1}}}\n故C为错误选项；\nD．0\\sim {{t}_{1}}时间内，木板的动能增加量为\n\\Delta {{E}_{\\text{k}2}}=\\frac{1}{2}Mv_{1}^{2}\n物块的动能减少量为\n\\Delta {{E}_{\\text{k}1}}=\\frac{1}{2}m(v_{0}^{2}-v_{1}^{2}））\n物块动能的减少量与木板动能的增加量之比为\n\\frac{\\Delta {{E}_{\\text{k}1}}}{\\Delta {{E}_{\\text{k}2}}}=\\frac{\\frac{1}{2}m(v_{0}^{2}-v_{1}^{2}）}{\\frac{1}{2}Mv_{1}^{2}}）\n又\n\\frac{m}{M}=\\frac{{{v}_{1}}}{{{v}_{0}}-{{v}_{1}}}\n联立得\n\\frac{\\Delta {{E}_{\\text{k}1}}}{\\Delta {{E}_{\\text{k}2}}}=\\frac{{{v}_{0}}+{{v}_{1}}}{{{v}_{1}}}\n故D为正确选项．\n故答案为D．",
+    "imageCount": 1
+  },
+  {
+    "questionNo": "14",
+    "matched": true,
+    "score": 73.38,
+    "url": "https://xbresource.jiaoyanyun.com/#/boutique/search?sid=4&gid=3&queId=a5c31750156242ee96994244aea4af66",
+    "answer": "D",
+    "analysis": "AB选项：由图线读得，转盘的转动周期T=0.8\\text{s}不变，故角速度 \\omega =\\frac{2 \\pi }{T}=2.5\\pi \\text{rad/s}不变，根据v=\\omega r，可知圆盘在做匀速转动，故AB错误；\nC选项：由于电脉冲信号宽度在逐渐变窄，表明光能通过狭缝的时间逐渐减少，即圆盘上对应探测器所在位置的线速度逐渐增加，因此激光器和探测器沿半径由中心向边缘移动，故C错误；\nD选项：设狭缝宽度为d，探测器接收到第i个脉冲时距转轴的距离为{{r}_{i}}，第i个脉冲的宽度为\\Delta {{t}_{i}}，激光器和探测器沿半径的运动速度为v，有\\Delta {{t}_{i}}=\\frac{d}{2{{ \\pi }_{i}}}T， {{r}_{3}}-{{r}_{2}}={{r}_{2}}-{{r}_{1}}=vT， {{r}_{2}}-{{r}_{1}}=\\frac{dT}{2 \\pi }\\left( \\frac{1}{\\Delta {{t}_{2}}}-\\frac{1}{\\Delta {{t}_{1}}} \\right)， {{r}_{3}}-{{r}_{2}}=\\frac{dT}{2 \\pi }\\left( \\frac{1}{\\Delta {{t}_{3}}}-\\frac{1}{\\Delta {{t}_{2}}} \\right)；联立得\\Delta {{t}_{3}}=\\frac{\\Delta {{t}_{1}}\\cdot \\Delta {{t}_{2}}}{2\\Delta {{t}_{1}}-\\Delta {{t}_{2}}}=\\frac{1.0\\times {{10}^{-3}}\\times 0.8\\times {{10}^{-3}}}{2\\times 1.0\\times {{10}^{-3}}-0.8\\times {{10}^{-3}}}\\approx 0.67\\times {{10}^{-3}}\\text{s}，故D正确．\n故选D．",
+    "imageCount": 2
+  },
+  {
+    "questionNo": "15",
+    "matched": true,
+    "score": 74.2,
+    "url": "https://xbresource.jiaoyanyun.com/#/boutique/search?sid=4&gid=3&queId=6ac77481659b4fca973d139a4aa816f4",
+    "answer": "（1）a=3\\text{m/}{{\\text{s}}^{\\text{2}}}；（2）{{v}_{2}}=6\\text{m/s}；（3）x=9\\text{m}",
+    "analysis": "（1）对物体受力分析，由牛顿第二定律有\nF-\\mu mg=ma\n解得\na=3\\text{m/}{{\\text{s}}^{\\text{2}}}\n（2）由速度与时间关系可知\nv=a{{t}_{2}}=6\\text{m/s}\n（3）若经过2.0\\text{s}后撒去拉力F，物体受摩擦力做匀减速直线运动，设加速度为{a}'，有\n\\mu mg=m{a}'\n可得\n{a}'=2\\text{m/}{{\\text{s}}^{\\text{2}}}\n则减速滑行的最大距离为\nx=\\frac{{{v}^{2}}}{2{a}'}=9\\text{m}",
+    "imageCount": 1
+  },
+  {
+    "questionNo": "16",
+    "matched": true,
+    "score": 72.71,
+    "url": "https://xbresource.jiaoyanyun.com/#/boutique/search?sid=4&gid=3&queId=afb12a8b43954013a00377bc7c14e1ea",
+    "answer": "（1）6m/s；（2）3m/s；（3）见解析",
+    "analysis": "【详解】\n（1）A在水平面上做匀减速运动，根据动能定理得\n-\\mu mgx=\\frac{1}{2}m{{v}_{A}}^{2}-\\frac{1}{2}m{{v}_{0}}^{2}\n解得\n{{v}_{A}}=6\\text{m/s}\n（2）A、B碰撞过程中，由动量守恒定律得\nm{{v}_{A}}=2m{{v}_{共}}共\n解得\n{{v}_{共}}=3\\text{m/s}共\n（3）假设能到达c点，AB从b到c过程中，由机械能守恒定律得\n\\frac{1}{2}\\cdot 2m{{v}_{共}}^{2}=2mg\\cdot 2R+\\frac{1}{2}\\cdot 2m{{v}_{C}}^{2}共\n解得\n{{v}_{C}}=1\\text{m/s}\n在c点，根据牛顿第二定律得\n{{F}_{N}}+2mg=2m\\frac{{{v}_{C}}^{2}}{R}\n当{{F}_{N}}=0时解得\n{{v}_{C\\min }}=\\sqrt{\\text{2}}\\text{m/s}\n由于{{v}_{C}}< {{v}_{C}}_{\\text{min}}，故不能到达最高点c；由于假设到达c点时还具有速度，说明AB已沿轨道越过圆心高度，离开轨道后AB将做斜抛运动。",
+    "imageCount": 1
+  },
+  {
+    "questionNo": "17",
+    "matched": true,
+    "score": 74.39,
+    "url": "https://xbresource.jiaoyanyun.com/#/boutique/search?sid=4&gid=3&queId=b1e7be92d06545e4b4ba1b994f3754ee",
+    "answer": "(1)\\text{ }\\!\\!~\\!\\!\\text{ }\\sqrt{6gL}，\\left( \\sqrt{3}+1 \\right)m\\sqrt{2gL}；(2)\\text{ }\\!\\!~\\!\\!\\text{ }4\\sqrt{hL}。",
+    "analysis": "(1)小球从最高点A运动到最低点B过程，由动能定理，有\nmg\\times 2L=\\frac{1}{2}m{{v}^{2}}-\\frac{1}{2}mv_{0}^{2}\n解得\nv=\\sqrt{6gL}\n小球从A点运动至最低点B点过程中，设在A点的速度方向为正方向，其所受合外力的冲量为\nI=-mv-m{{v}_{0}}=-\\left( \\sqrt{3}+1 \\right)m\\sqrt{2gL}\n所以合外力的冲量大小为\\left( \\sqrt{3}+1 \\right)m\\sqrt{2gL}。\n(2)小球运动到最低点B点时绳恰好被拉断,由牛顿第二定律可得\n{{F}_{\\text{m}}}-mg=m\\frac{v_{\\text{临}}^{2}}{L}临\n小球飞出后做平抛运动，有\nx={{v}_{\\text{临}}}t\\text{，}h=\\frac{1}{2}g{{t}^{2}}临，\n联立，可得\nx=4\\sqrt{hL}",
+    "imageCount": 1
+  },
+  {
+    "questionNo": "18",
+    "matched": true,
+    "score": 72.54,
+    "url": "https://xbresource.jiaoyanyun.com/#/boutique/search?sid=4&gid=3&queId=d9a800d5729242eba663be9b54144bf5",
+    "answer": "(1) -0.4\\mathrm{J}\n(2) 0.2\\mathrm{J}\n(3) 0.4\\text{N}\\cdot \\text{s}",
+    "analysis": "(1) 小球由A静止释放运动到最低点B的过程中，根据动能定理有\nm_{1}gR+W_{\\mathrm{f}}=\\frac{1}{2}m_{1}{v}_{1}^{2}\n小球在最低点，根据牛顿第三定律可知，小球受到轨道的支持力\nF_{\\mathrm{N}}=2m_{1}g\n根据牛顿第二定律\nF_{\\mathrm{N}}-m_{1}g=m_{1}\\frac{{v}_{1}^{2}}{R}\n联立，代入相关已知数据求得\nW_{\\mathrm{f}}=-0.4\\mathrm{J}\n(2) 小球a与小球b通过弹簧相互作用，达到共同速度v_{2}过程中，由动量守恒定律可得\nm_{1}v_{1}=(m_{1}+m_{2})v_{2}\n由能量转化和守恒定律可得\n\\frac{1}{2}m_{1}{v}_{1}^{2}=\\frac{1}{2}\\left(m_{1}+m_{2}\\right){v}_{2}^{2}+E_{\\mathrm{p}}\n联立代入相关已知数据求得：小球a通过弹簧与小球b相互作用的过程中，弹簧的最大弹性势能\nE_{\\mathrm{p}}=0.2\\mathrm{J}\n(3) 小球a与小球b通过弹簧相互作用的整个过程中，设a后来速度为v_{3}，b后来速度为v_{4}，由动量守恒定律可得\nm_{1}v_{1}=m_{1}v_{3}+m_{2}v_{4}\n由能量转化和守恒定律有\n\\frac{1}{2}m_{1}{v}_{1}^{2}=\\frac{1}{2}m_{1}{v}_{3}^{2}+\\frac{1}{2}m_{2}{v}_{4}^{2}\n对b，根据动量定理有\nI=m_{2}v_{4}\n联立代入相关已知数据可得\nI=0.4\\mathrm{N}\\cdot \\mathrm{s}",
+    "imageCount": 1
+  },
+  {
+    "questionNo": "19",
+    "matched": true,
+    "score": 99.3,
+    "url": "https://xbresource.jiaoyanyun.com/#/boutique/search?sid=4&gid=3&queId=c839fcadbf2e4b35bc8ef7d31137cf08",
+    "answer": "(1) (1) \\frac{2\\cdot \\Delta S}{r\\cdot \\Delta t}，证明过程见解析\n(2) 证明过程见解析\n(2) a．k=\\frac{GM_{\\text{S}}}{4\\pi ^{2}}；b．k'=\\frac{G\\left(M_{\\text{S}}+M_{\\text{P}}\\right)}{4\\pi ^{2}}，行星质量远小于太阳质量；",
+    "analysis": "(1) (1) 根据扇形面积公式可得时间\\Delta t内行星扫过的扇形面积满足\n\\frac{1}{2}\\times r\\times v\\cdot \\Delta t=\\Delta S\n解得\nv=\\frac{2\\cdot \\Delta S}{r\\cdot \\Delta t}\n根据开普勒第二定律：对任意一个行星来说，它与太阳的连线在相等的时间内扫过的面积相等，即\\frac{\\Delta S}{\\Delta t}为常量，则行星绕太阳运动的线速度的大小v也为常量，所以行星做匀速圆周运动\n(2) 设行星质量为m，根据题意可知行星的圆周运动由太阳对行星的引力F提供向心力，则根据牛顿第二定律有\nF=\\frac{mv^{2}}{r}=\\frac{m}{r}\\times \\left(\\frac{2\\pi r}{T}\\right)^{2}\n根据开普勒第三定律可得\n\\frac{a^{3}}{T^{2}}=k\n即\n\\frac{r^{3}}{T^{2}}=k\n联立以上两式可得\nF=\\frac{4\\pi ^{2}mk}{r^{2}}\n其中4\\pi ^{2}mk为常量，则太阳对行星的引力F与行星轨道半径r的平方成反比\n(2) a．行星绕太阳做匀速圆周运动由万有引力提供向心力，所以根据牛顿第二定律有\n\\frac{GM_{\\text{S}}M_{\\text{P}}}{L^{2}}=\\frac{M_{\\text{P}}}{L}\\times \\left(\\frac{2\\pi L}{T}\\right)^{2}\n解得\nk=\\frac{L^{3}}{T^{2}}=\\frac{GM_{\\text{S}}}{4\\pi ^{2}}\nb．设行星做匀速圆周运动的轨道半径为r，太阳做匀速圆周运动的轨道半径为R，则有\nR+r=L\n行星做匀速圆周运动由万有引力提供向心力，所以根据牛顿第二定律有\n\\frac{GM_{\\text{S}}M_{\\text{P}}}{L^{2}}=\\frac{M_{\\text{P}}}{r}\\times \\left(\\frac{2\\pi r}{T_{0}}\\right)^{2}\n太阳做匀速圆周运动由万有引力提供向心力，所以根据牛顿第二定律有\n\\frac{GM_{\\text{S}}M_{\\text{P}}}{L^{2}}=\\frac{M_{\\text{S}}}{R}\\times \\left(\\frac{2\\pi R}{T_{0}}\\right)^{2}\n将以上两式相加可得\n\\frac{GM_{\\text{S}}+GM_{\\text{P}}}{L^{2}}=\\frac{4\\pi ^{2}\\left(R+r\\right)}{{T}_{0}^{2}}=\\frac{4\\pi ^{2}L}{{T}_{0}^{2}}\n解得\nk'=\\frac{L^{3}}{{T}_{0}^{2}}=\\frac{G\\left(M_{\\text{S}}+M_{\\text{P}}\\right)}{4\\pi ^{2}}\n则若要使k'\\approx k，即\n\\frac{G\\left(M_{\\text{S}}+M_{\\text{P}}\\right)}{4\\pi ^{2}}\\approx \\frac{GM_{\\text{S}}}{4\\pi ^{2}}\n需要行星的质量远小于太阳的质量．",
+    "imageCount": 1
+  },
+  {
+    "questionNo": "20",
+    "matched": true,
+    "score": 97.52,
+    "url": "https://xbresource.jiaoyanyun.com/#/boutique/search?sid=4&gid=3&queId=733d1b42b8e14ad092db8703a3503890",
+    "answer": "(1) \n![|200](https://tiku-pro-cdn.speiyou.com/imgFile/d50c3524-8e07-4b23-9b85-2a17fd24494d.png)\n(2) (1) v_{1}=\\sqrt{{v}_{0}^{2}+\\frac{mg}{10k}}，W=-1.1mg\\left(h-\\frac{m}{20k}\\right)\n(2) 1.1m\\sqrt{{v}_{0}^{2}+g^{2}t^{2}}",
+    "analysis": "(1) 对热气球由牛顿第二定律\nF_{浮}-mg-f=ma浮\n故可知当热气球的质量调整为0.9m，热气球向上加速，随着速度增大，受到的空气阻力增大，故加速度在减小，即v-t图像的斜率在变小，最后以某一速度匀速运动，故图像如下：\n![|200](https://tiku-pro-cdn.speiyou.com/imgFile/fa27e8b4-1182-4db0-9534-5ae47957b65b.png)\n(2) (1) 热气球在无风空中悬浮时，有\nF_{\\text{浮}}=mg浮\n设热气球在水平气流中平衡时水平方向速度为vx、竖直方向速度为vy；水平方向有\nvx = v0\n竖直方向，依据平衡有\nF_{\\text{浮}}+kv_{y}^{2}=1.1mg浮\n解得\nv_{y}=\\sqrt{\\frac{mg}{10k}}\n热气球平衡时的速率\nv_{1}=\\sqrt{{v}_{0}^{2}+{v}_{y}^{2}}=\\sqrt{{v}_{0}^{2}+\\frac{mg}{10k}}\n对热气球下降过程，依据动能定理有\n1.1mgh+W=\\frac{1}{2}\\times 1.1m{v}_{1}^{2}-\\frac{1}{2}\\times 1.1m{v}_{0}^{2}\n解得空气对热气球做功\nW=-1.1mg\\left(h-\\frac{m}{20k}\\right)\n(2) 热气球再次平衡后，水平方向\nv′x =0\n竖直方向\nv'_{y}=~ v_{y}=\\sqrt{\\frac{mg}{10k}}\n设空气对气球在水平方向的冲量为Ix，竖直方向的冲量大小为Iy，由动量定理，水平方向\nIx = 0-1.1mv0\n竖直方向\nIy-1.1mgt=0\n联立解得空气对气球冲量大小\nI=\\sqrt{{I}_{x}^{2}+{I}_{y}^{2}}=1.1m\\sqrt{{v}_{0}^{2}+g^{2}t^{2}}",
+    "imageCount": 3
+  }
+]

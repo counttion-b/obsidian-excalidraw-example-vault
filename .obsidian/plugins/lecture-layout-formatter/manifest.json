@@ -1,0 +1,9 @@
+{
+  "id": "lecture-layout-formatter",
+  "name": "讲义一键排版",
+  "version": "0.1.0",
+  "minAppVersion": "1.5.0",
+  "description": "自动整理 opts 选项列数，并按图片比例设置适合 A4 打印的显示宽度。",
+  "author": "Local",
+  "isDesktopOnly": false
+}

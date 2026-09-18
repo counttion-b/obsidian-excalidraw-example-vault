@@ -10,30 +10,33 @@ const DEFAULT_SETTINGS = {
   paperSource: "",
   subjectId: "4",
   gradeGroupId: "3",
-  minMatchScore: 35
+  minMatchScore: 35,
+  jiaoyanyunDelayMs: 1500,
+  jiaoyanyunRetryDelayMs: 15000,
+  beijingSchoolPriority: "人大附中、北京四中、清华附中、北师大实验、北京十一学校、北大附中、北京八中、北京一零一中学、北师大附中、首师大附中、北京二中、北京十二中、北京八十中、五十五中、三十五中、工大附中、西城外国语"
 };
 
-const PRESTIGE_SCHOOLS = [
-  "人大附中",
-  "中国人民大学附属中学",
-  "北京四中",
-  "北京市第四中学",
-  "十一学校",
-  "北京市十一学校",
-  "清华附中",
-  "清华大学附属中学",
-  "北大附中",
-  "北京大学附属中学",
-  "北京八中",
-  "北京市第八中学",
-  "一零一中学",
-  "北京一零一中学",
-  "首师大附中",
-  "首都师范大学附属中学",
-  "五十五中",
-  "北京市第五十五中学",
-  "西城外国语学校"
+const BEIJING_SCHOOL_PREFERENCES = [
+  { name: "人大附中", aliases: ["人大附中", "中国人民大学附属中学"] },
+  { name: "北京四中", aliases: ["北京四中", "北京市第四中学"] },
+  { name: "清华附中", aliases: ["清华附中", "清华大学附属中学"] },
+  { name: "北师大实验", aliases: ["北师大实验", "北京师范大学附属实验中学"] },
+  { name: "北京十一学校", aliases: ["十一学校", "北京市十一学校"] },
+  { name: "北大附中", aliases: ["北大附中", "北京大学附属中学"] },
+  { name: "北京八中", aliases: ["北京八中", "北京市第八中学"] },
+  { name: "北京一零一中学", aliases: ["一零一中学", "北京一零一中学", "北京市第一〇一中学", "北京市第一零一中学", "北京101中学", "101中学"] },
+  { name: "北师大附中", aliases: ["北师大附中", "北京师范大学附属中学"] },
+  { name: "首师大附中", aliases: ["首师大附中", "首都师范大学附属中学"] },
+  { name: "北京二中", aliases: ["北京二中", "北京市第二中学"] },
+  { name: "北京十二中", aliases: ["北京十二中", "北京市第十二中学"] },
+  { name: "北京八十中", aliases: ["北京八十中", "北京市第八十中学"] },
+  { name: "五十五中", aliases: ["五十五中", "北京市第五十五中学"] },
+  { name: "三十五中", aliases: ["三十五中", "北京市第三十五中学"] },
+  { name: "工大附中", aliases: ["工大附中", "北京工业大学附属中学"] },
+  { name: "西城外国语", aliases: ["西城外国语", "北京市西城外国语学校"] }
 ];
+
+const PRESTIGE_SCHOOLS = BEIJING_SCHOOL_PREFERENCES.flatMap(item => item.aliases);
 
 module.exports = class PersonalQbankBrowserPlugin extends Plugin {
   async onload() {
@@ -77,6 +80,16 @@ module.exports = class PersonalQbankBrowserPlugin extends Plugin {
       callback: () => this.fillCurrentPaperImages()
     });
     this.addCommand({
+      id: "update-current-paper-sources",
+      name: "当前试卷：一键更新题目来源（北京优先）",
+      callback: () => this.updateCurrentPaperSources()
+    });
+    this.addCommand({
+      id: "test-jiaoyanyun-token",
+      name: "测试教研云 schoolToken",
+      callback: () => this.testJiaoyanyunToken()
+    });
+    this.addCommand({
       id: "make-current-paper-answer",
       name: "当前试卷：一键制作答案版",
       callback: () => this.exportCurrentPaperVariant("answer")
@@ -86,10 +99,38 @@ module.exports = class PersonalQbankBrowserPlugin extends Plugin {
       name: "当前试卷：一键制作解析版",
       callback: () => this.exportCurrentPaperVariant("detail")
     });
+    this.addCommand({
+      id: "make-current-folder-paper-answers",
+      name: "当前文件夹试卷：批量制作答案版",
+      callback: () => this.exportCurrentFolderPaperVariants("answer")
+    });
+    this.addCommand({
+      id: "make-current-folder-paper-details",
+      name: "当前文件夹试卷：批量制作解析版",
+      callback: () => this.exportCurrentFolderPaperVariants("detail")
+    });
   }
 
   async saveSettings() {
     await this.saveData(this.settings);
+  }
+
+  async testJiaoyanyunToken() {
+    if (!this.settings.jiaoyanyunToken) {
+      new Notice("请先在插件设置里填写教研云 schoolToken");
+      return;
+    }
+    if (isProbablyTalToken(this.settings.jiaoyanyunToken)) {
+      new Notice("这里要填 Local Storage 里的 schoolToken，不是 Cookie 里的 tal_token");
+      return;
+    }
+    try {
+      const results = await this.searchJiaoyanyun("自由落体运动", 1);
+      new Notice(`教研云 schoolToken 可用，测试搜索返回 ${results.length} 条结果`);
+    } catch (error) {
+      console.error(error);
+      new Notice(String(error?.message || error));
+    }
   }
 
   async activateView() {
@@ -149,28 +190,50 @@ module.exports = class PersonalQbankBrowserPlugin extends Plugin {
       new Notice("请先在插件设置里填写教研云 schoolToken");
       return;
     }
-    const content = await this.app.vault.read(activeFile);
-    const source = paperSourceFromContent(content) || this.settings.paperSource || activeFile.basename.replace(/(学生版|答案版|解析版|详解版|带图版|带图)$/g, "");
+    if (isProbablyTalToken(this.settings.jiaoyanyunToken)) {
+      new Notice("教研云认证值填错了：请填 Local Storage 里的 schoolToken，不要填 Cookie 里的 tal_token");
+      return;
+    }
+    const originalContent = await this.app.vault.read(activeFile);
+    const outputPath = paperImageOutputPath(activeFile);
+    const hasImageVersion = outputPath !== activeFile.path && await this.app.vault.adapter.exists(outputPath);
+    const content = hasImageVersion ? await this.app.vault.adapter.read(outputPath) : originalContent;
+    const source = paperSourceFromContent(content) || paperSourceFromContent(originalContent) || this.settings.paperSource || stripPaperVariantSuffix(activeFile.basename);
     const blocks = parsePaperBlocks(content);
     if (!blocks.length) {
       new Notice("当前文件没有找到 > [!ti] 题目块");
       return;
     }
 
-    new Notice(`开始补图：共 ${blocks.length} 道题`);
-    const attachmentsDir = `${activeFile.parent?.path && activeFile.parent.path !== "/" ? `${activeFile.parent.path}/` : ""}attachments/${safeFilename(activeFile.basename)}`;
+    const completedCount = blocks.filter(block => paperBlockHasImages(block.raw)).length;
+    new Notice(`开始补图：共 ${blocks.length} 道题，已带图 ${completedCount} 道，将继续缺图题`);
+    const attachmentsDir = `${activeFile.parent?.path && activeFile.parent.path !== "/" ? `${activeFile.parent.path}/` : ""}attachments/${safeFilename(stripPaperVariantSuffix(activeFile.basename))}`;
     await ensureFolder(this.app, attachmentsDir);
 
+    const oldCache = await readPaperCache(this.app, outputPath);
+    const oldCacheByNo = new Map(oldCache.map(item => [String(item.questionNo || ""), item]));
     const summaries = [];
     let rewritten = content;
     for (let index = blocks.length - 1; index >= 0; index -= 1) {
       const block = blocks[index];
       const questionNo = block.questionNo || String(index + 1);
+      if (paperBlockHasImages(block.raw)) {
+        summaries.unshift(oldCacheByNo.get(String(questionNo)) || {
+          questionNo,
+          matched: true,
+          score: 100,
+          answer: "",
+          analysis: "",
+          imageCount: paperBlockImageCount(block.raw),
+          skipped: true
+        });
+        continue;
+      }
       try {
-        const match = await this.findJiaoyanyunMatch(block.searchText);
+        const match = await this.findJiaoyanyunMatch(block.searchText, { needDetail: false });
         if (!match || match.score < Number(this.settings.minMatchScore || 0)) {
           summaries.unshift({ questionNo, matched: false, score: match?.score || 0, answer: "", analysis: "" });
-          rewritten = replaceRange(rewritten, block.start, block.end, retitlePaperBlock(block.raw, source, questionNo));
+          rewritten = replaceRange(rewritten, block.start, block.end, retitlePaperBlock(block.raw, "例题", questionNo));
           continue;
         }
 
@@ -178,34 +241,111 @@ module.exports = class PersonalQbankBrowserPlugin extends Plugin {
         const questionDir = `${attachmentsDir}/第${questionNo}题`;
         await ensureFolder(this.app, questionDir);
         const imageMap = await this.downloadQuestionImages(detail.imageUrls, questionDir);
-        const replacement = renderMatchedPaperBlock(block.raw, source, questionNo, relativeImageMap(imageMap, activeFile));
+        const replacement = renderMatchedPaperBlock(block.raw, match.preferredSource || "例题", questionNo, relativeImageMap(imageMap, activeFile));
         rewritten = replaceRange(rewritten, block.start, block.end, replacement);
         summaries.unshift({
           questionNo,
           matched: true,
           score: match.score,
           url: detail.url,
+          source: match.preferredSource || null,
           answer: detail.answer || "",
           analysis: detail.analysis || "",
           imageCount: imageMap.size
         });
       } catch (error) {
         console.error(error);
+        if (isJiaoyanyunAuthError(error)) {
+          new Notice(error.message);
+          return;
+        }
         summaries.unshift({ questionNo, matched: false, score: 0, answer: "", analysis: "", error: String(error?.message || error) });
-        rewritten = replaceRange(rewritten, block.start, block.end, retitlePaperBlock(block.raw, source, questionNo));
+        rewritten = replaceRange(rewritten, block.start, block.end, retitlePaperBlock(block.raw, "例题", questionNo));
       }
     }
 
     rewritten = rewritePaperTitle(rewritten, source);
-    const outputPath = await uniqueVaultPath(this.app, siblingPath(activeFile, `${activeFile.basename}带图版.md`), activeFile.path);
     await this.app.vault.adapter.write(outputPath, rewritten);
     await writePaperCache(this.app, outputPath, summaries);
-    new Notice(`已生成带图版：${summaries.filter(item => item.matched).length}/${blocks.length} 道匹配成功`);
+    new Notice(`已更新带图版：${summaries.filter(item => item.matched).length}/${blocks.length} 道已有或匹配成功`);
     this.app.workspace.openLinkText(outputPath, "", false);
   }
 
-  async findJiaoyanyunMatch(text) {
-    const queries = buildSearchQueries(text, 7, 120);
+  async updateCurrentPaperSources() {
+    const activeFile = this.app.workspace.getActiveFile();
+    if (!activeFile) {
+      new Notice("请先打开一份试卷 md");
+      return;
+    }
+    if (!this.settings.jiaoyanyunToken) {
+      new Notice("请先在插件设置里填写教研云 schoolToken");
+      return;
+    }
+    if (isProbablyTalToken(this.settings.jiaoyanyunToken)) {
+      new Notice("教研云认证值填错了：请填 Local Storage 里的 schoolToken，不要填 Cookie 里的 tal_token");
+      return;
+    }
+
+    const content = await this.app.vault.read(activeFile);
+    const blocks = parsePaperBlocks(content);
+    if (!blocks.length) {
+      new Notice("当前文件没有找到 > [!ti] 题目块");
+      return;
+    }
+
+    const outputPath = paperSourceOutputPath(activeFile);
+    const minMatchScore = Number(this.settings.minMatchScore || 0);
+    let rewritten = content;
+    const summaries = [];
+    new Notice(`开始更新来源：共 ${blocks.length} 道题`);
+
+    for (let index = blocks.length - 1; index >= 0; index -= 1) {
+      const block = blocks[index];
+      try {
+        const match = await this.findJiaoyanyunMatch(block.searchText, { needDetail: false });
+        const source = match && match.score >= minMatchScore ? match.preferredSource : null;
+        const titleSource = source || "例题";
+        rewritten = replaceRange(rewritten, block.start, block.end, retitlePaperBlock(block.raw, titleSource, block.questionNo));
+        summaries.unshift({
+          questionNo: block.questionNo,
+          matched: Boolean(source),
+          score: match?.score || 0,
+          candidateCount: match?.candidateCount || 0,
+          source: source || null,
+          fallback: !source,
+          url: match?.question?.url || ""
+        });
+        new Notice(source
+          ? `第${block.questionNo}题：${source.name}`
+          : `第${block.questionNo}题：未找到北京学校来源，标为例题`);
+      } catch (error) {
+        console.error(error);
+        if (isJiaoyanyunAuthError(error) || isJiaoyanyunVerificationError(error)) {
+          new Notice(String(error?.message || error));
+          return;
+        }
+        rewritten = replaceRange(rewritten, block.start, block.end, retitlePaperBlock(block.raw, "例题", block.questionNo));
+        summaries.unshift({
+          questionNo: block.questionNo,
+          matched: false,
+          score: 0,
+          candidateCount: 0,
+          source: null,
+          fallback: true,
+          error: String(error?.message || error)
+        });
+      }
+    }
+
+    await this.app.vault.adapter.write(outputPath, rewritten);
+    const matched = summaries.filter(item => item.matched).length;
+    new Notice(`来源更新完成：${matched}/${blocks.length} 道找到北京学校来源，${blocks.length - matched} 道标为例题`);
+    this.logProgress("题目来源更新完成", { file: activeFile.path, outputPath, matched, total: blocks.length, summaries });
+    this.app.workspace.openLinkText(outputPath, "", false);
+  }
+
+  async findJiaoyanyunMatch(text, options = {}) {
+    const queries = buildSearchQueries(text, 1, 120);
     const seen = new Set();
     const candidates = [];
     for (const query of queries) {
@@ -214,17 +354,37 @@ module.exports = class PersonalQbankBrowserPlugin extends Plugin {
         const id = String(item.queId || item.questionId || item.id || "");
         if (!id || seen.has(id)) continue;
         seen.add(id);
-        const question = await this.fetchJiaoyanyunDetail(id, item);
-        const score = scoreText(text, `${question.stem} ${question.options.join(" ")} ${question.source}`);
-        candidates.push({ score, question });
+        const question = questionFromJiaoyanyunItem(
+          item,
+          this.settings.subjectId || "4",
+          this.settings.gradeGroupId || "3",
+          this.settings
+        );
+        const score = scoreText(text, `${question.stem} ${question.options.join(" ")}`);
+        candidates.push({ score, question, item, id });
       }
     }
-    candidates.sort((a, b) => b.score - a.score);
-    return candidates[0] || null;
+    const best = selectBestQuestionCandidate(candidates, this.settings);
+    if (!best) return null;
+    if (!options.needDetail || questionHasSolution(best.question)) {
+      return {
+        score: best.score,
+        question: best.question,
+        preferredSource: best.question.preferredSource || null,
+        candidateCount: candidates.length
+      };
+    }
+    const detail = await this.fetchJiaoyanyunDetail(best.id, best.item);
+    return {
+      score: best.score,
+      question: detail,
+      preferredSource: detail.preferredSource || best.question.preferredSource || null,
+      candidateCount: candidates.length
+    };
   }
 
   async searchJiaoyanyun(query, limit) {
-    const response = await requestUrl({
+    const response = await this.requestJiaoyanyun({
       url: `${DEFAULT_JIAOYANYUN_API}/v1/question/page`,
       method: "POST",
       headers: this.jiaoyanyunHeaders(),
@@ -244,7 +404,7 @@ module.exports = class PersonalQbankBrowserPlugin extends Plugin {
   async fetchJiaoyanyunDetail(questionId, fallback) {
     let item = fallback || {};
     try {
-      const response = await requestUrl({
+      const response = await this.requestJiaoyanyun({
         url: `${DEFAULT_JIAOYANYUN_API}/v1/question/detailByIds`,
         method: "POST",
         headers: this.jiaoyanyunHeaders(),
@@ -259,9 +419,15 @@ module.exports = class PersonalQbankBrowserPlugin extends Plugin {
         item = Object.assign({}, item, response.json.data[0]);
       }
     } catch (error) {
+      if (isJiaoyanyunAuthError(error)) throw error;
       console.warn("detailByIds failed", error);
     }
-    return questionFromJiaoyanyunItem(item, this.settings.subjectId || "4", this.settings.gradeGroupId || "3");
+    return questionFromJiaoyanyunItem(
+      item,
+      this.settings.subjectId || "4",
+      this.settings.gradeGroupId || "3",
+      this.settings
+    );
   }
 
   jiaoyanyunHeaders() {
@@ -270,6 +436,33 @@ module.exports = class PersonalQbankBrowserPlugin extends Plugin {
       "Origin": DEFAULT_JIAOYANYUN_WEB,
       "authorization": this.settings.jiaoyanyunToken || ""
     };
+  }
+
+  async requestJiaoyanyun(options, attempt = 0) {
+    await this.waitForJiaoyanyunSlot();
+    try {
+      const response = await requestUrl(options);
+      assertJiaoyanyunLoggedIn(response.json);
+      assertJiaoyanyunNotThrottled(response.json);
+      return response;
+    } catch (error) {
+      if (isJiaoyanyunThrottleError(error) && attempt < 2) {
+        const retryDelay = Number(this.settings.jiaoyanyunRetryDelayMs || 15000) * (attempt + 1);
+        new Notice(`教研云请求过快，暂停 ${Math.round(retryDelay / 1000)} 秒后重试`);
+        await sleep(retryDelay);
+        return this.requestJiaoyanyun(options, attempt + 1);
+      }
+      throw error;
+    }
+  }
+
+  async waitForJiaoyanyunSlot() {
+    const delayMs = Math.max(0, Number(this.settings.jiaoyanyunDelayMs || 0));
+    const now = Date.now();
+    const last = Number(this.lastJiaoyanyunRequestAt || 0);
+    const waitMs = Math.max(0, last + delayMs - now);
+    if (waitMs > 0) await sleep(waitMs);
+    this.lastJiaoyanyunRequestAt = Date.now();
   }
 
   async downloadQuestionImages(imageUrls, folderPath) {
@@ -296,39 +489,177 @@ module.exports = class PersonalQbankBrowserPlugin extends Plugin {
       new Notice("请先打开一份试卷 md");
       return;
     }
+    const outputPath = await this.exportPaperVariantForFile(activeFile, mode);
+    if (outputPath) {
+      this.app.workspace.openLinkText(outputPath, "", false);
+    }
+  }
+
+  async exportCurrentFolderPaperVariants(mode) {
+    const activeFile = this.app.workspace.getActiveFile();
+    if (!activeFile) {
+      new Notice("请先打开一个 md 文件");
+      return;
+    }
+    const parentPath = activeFile.parent?.path || "/";
+    const files = this.app.vault.getMarkdownFiles()
+      .filter(file => (file.parent?.path || "/") === parentPath)
+      .filter(file => !/(学生版|答案版|解析版|详解版|带图版|带图)$/.test(file.basename));
+    new Notice(`开始批量生成${mode === "answer" ? "答案版" : "解析版"}：${files.length} 个文件`);
+    let count = 0;
+    for (let index = 0; index < files.length; index += 1) {
+      const file = files[index];
+      new Notice(`批量进度 ${index + 1}/${files.length}：${file.basename}`);
+      const outputPath = await this.exportPaperVariantForFile(file, mode, true);
+      if (outputPath) {
+        count += 1;
+        new Notice(`已完成 ${index + 1}/${files.length}：${outputPath}`);
+      } else {
+        new Notice(`已跳过 ${index + 1}/${files.length}：${file.basename}`);
+      }
+    }
+    new Notice(`批量生成完成：${count}/${files.length} 个文件`);
+  }
+
+  async exportPaperVariantForFile(activeFile, mode, quiet = false) {
+    const modeName = mode === "answer" ? "答案版" : "解析版";
+    this.logProgress(`开始生成${modeName}`, { file: activeFile.path, quiet });
+    if (!quiet) new Notice(`开始生成${modeName}：${activeFile.basename}`);
     const content = await this.app.vault.read(activeFile);
     const blocks = parsePaperBlocks(content);
     if (!blocks.length) {
-      new Notice("当前文件没有找到题目块");
-      return;
+      if (!quiet) new Notice("当前文件没有找到题目块");
+      this.logProgress("未找到题目块", { file: activeFile.path });
+      return "";
     }
+    if (!quiet) new Notice(`识别到 ${blocks.length} 道题`);
+    this.logProgress("识别题块完成", { file: activeFile.path, count: blocks.length });
+    const exportDir = exportDirForActiveFile(activeFile);
+    await ensureFolder(this.app, exportDir);
     let cache = await readPaperCache(this.app, activeFile.path);
+    if (!cache.length) {
+      cache = await readPaperCache(this.app, paperImageOutputPath(activeFile));
+    }
+    if (cache.length) {
+      if (!quiet) new Notice(`已读取缓存：${cache.length} 道题`);
+      this.logProgress("使用已有答案解析缓存", { file: activeFile.path, count: cache.length });
+    }
+    if (!cache.length && !this.settings.jiaoyanyunToken) {
+      if (!quiet) new Notice("没有找到答案解析缓存，请先填写教研云 schoolToken");
+      return "";
+    }
+    if (!cache.length && isProbablyTalToken(this.settings.jiaoyanyunToken)) {
+      if (!quiet) new Notice("教研云认证值填错了：请填 Local Storage 里的 schoolToken，不要填 Cookie 里的 tal_token");
+      return "";
+    }
     if (!cache.length && this.settings.jiaoyanyunToken) {
-      new Notice("没有找到补图缓存，正在按题干检索答案解析");
+      if (!quiet) new Notice(`没有找到缓存，开始联网检索 ${blocks.length} 道题答案解析`);
+      this.logProgress("开始联网检索答案解析", { file: activeFile.path, count: blocks.length });
       cache = [];
-      for (const block of blocks) {
-        const match = await this.findJiaoyanyunMatch(block.searchText);
-        cache.push({
-          questionNo: block.questionNo,
-          matched: Boolean(match),
-          score: match?.score || 0,
-          url: match?.question?.url || "",
-          answer: match?.question?.answer || "",
-          analysis: match?.question?.analysis || ""
-        });
+      for (let index = 0; index < blocks.length; index += 1) {
+        const block = blocks[index];
+        try {
+          if (!quiet) new Notice(`检索 ${index + 1}/${blocks.length}：第${block.questionNo}题`);
+          this.logProgress("开始检索题目", {
+            file: activeFile.path,
+            questionNo: block.questionNo,
+            queryPreview: block.searchText.slice(0, 80)
+          });
+          const match = await this.findJiaoyanyunMatch(block.searchText, { needDetail: true });
+          const solution = match ? await this.prepareQuestionSolutionAssets(match.question, activeFile, block.questionNo, exportDir) : { answer: "", analysis: "" };
+          const hasAnswer = Boolean(normalizeWhitespace(solution.answer));
+          const hasAnalysis = Boolean(normalizeWhitespace(solution.analysis));
+          if (!quiet) {
+            new Notice(match
+              ? `第${block.questionNo}题匹配成功：${Math.round(match.score)} 分，候选 ${match.candidateCount || 0} 条${hasAnswer ? "，有答案" : "，无答案"}${hasAnalysis ? "，有解析" : "，无解析"}`
+              : `第${block.questionNo}题未找到匹配`);
+          }
+          this.logProgress("检索题目完成", {
+            file: activeFile.path,
+            questionNo: block.questionNo,
+            matched: Boolean(match),
+            score: match?.score || 0,
+            candidateCount: match?.candidateCount || 0,
+            url: match?.question?.url || "",
+            hasAnswer,
+            hasAnalysis
+          });
+          cache.push({
+            questionNo: block.questionNo,
+            matched: Boolean(match),
+            score: match?.score || 0,
+            url: match?.question?.url || "",
+            source: match?.preferredSource || null,
+            answer: solution.answer,
+            analysis: solution.analysis
+          });
+        } catch (error) {
+          console.error(error);
+          if (isJiaoyanyunAuthError(error) || isJiaoyanyunVerificationError(error)) {
+            new Notice(String(error?.message || error));
+            this.logProgress("检索中断", { file: activeFile.path, questionNo: block.questionNo, error: String(error?.message || error) });
+            return "";
+          }
+          if (!quiet) new Notice(`第${block.questionNo}题检索失败，已跳过：${String(error?.message || error).slice(0, 40)}`);
+          this.logProgress("题目检索失败并跳过", { file: activeFile.path, questionNo: block.questionNo, error: String(error?.message || error) });
+          cache.push({ questionNo: block.questionNo, matched: false, score: 0, answer: "", analysis: "", error: String(error?.message || error) });
+        }
       }
+      await writePaperCache(this.app, activeFile.path, cache);
+      if (!quiet) new Notice(`答案解析缓存已写入：${cache.filter(item => item.matched).length}/${cache.length} 道匹配成功`);
+    }
+    let cacheChanged = false;
+    for (const item of cache) {
+      const remoteUrls = [...markdownImageUrls(item.answer || ""), ...markdownImageUrls(item.analysis || "")];
+      if (!remoteUrls.length) continue;
+      if (!quiet) new Notice(`下载第${item.questionNo}题答案/解析图片：${remoteUrls.length} 张`);
+      const solution = await this.prepareQuestionSolutionAssets(item, activeFile, item.questionNo, exportDir);
+      item.answer = solution.answer;
+      item.analysis = solution.analysis;
+      cacheChanged = true;
+    }
+    if (cacheChanged) {
       await writePaperCache(this.app, activeFile.path, cache);
     }
     const cacheByNo = new Map(cache.map(item => [String(item.questionNo || ""), item]));
-    const source = paperSourceFromContent(content) || this.settings.paperSource || activeFile.basename.replace(/(学生版|答案版|解析版|详解版|带图版|带图)$/g, "");
+    const source = paperSourceFromContent(content) || this.settings.paperSource || stripPaperVariantSuffix(activeFile.basename);
     const title = `${source}${mode === "answer" ? "答案版" : "解析版"}`;
     const markdown = renderPaperVariant(title, blocks, cacheByNo, mode);
-    const exportDir = exportDirForActiveFile(activeFile);
-    await ensureFolder(this.app, exportDir);
     const outputPath = await uniqueVaultPath(this.app, `${exportDir}/${safeFilename(title)}.md`, activeFile.path);
     await this.app.vault.adapter.write(outputPath, markdown);
-    new Notice(`已生成${mode === "answer" ? "答案版" : "解析版"}`);
-    this.app.workspace.openLinkText(outputPath, "", false);
+    const matched = cache.filter(item => item.matched).length;
+    const withAnswer = cache.filter(item => normalizeWhitespace(item.answer || "")).length;
+    const withAnalysis = cache.filter(item => normalizeWhitespace(item.analysis || "")).length;
+    if (!quiet) {
+      new Notice(`已生成${modeName}：匹配 ${matched}/${blocks.length}，答案 ${withAnswer}/${blocks.length}，解析 ${withAnalysis}/${blocks.length}`);
+      new Notice(`输出：${outputPath}`);
+    }
+    this.logProgress(`生成${modeName}完成`, { file: activeFile.path, outputPath, matched, withAnswer, withAnalysis, total: blocks.length });
+    return outputPath;
+  }
+
+  logProgress(message, data = {}) {
+    console.log(`[个人题库筛选] ${message}`, data);
+  }
+
+  async prepareQuestionSolutionAssets(question, activeFile, questionNo, outputDir) {
+    const answer = String(question?.answer || "");
+    const analysis = String(question?.analysis || "");
+    const urls = [...new Set([...markdownImageUrls(answer), ...markdownImageUrls(analysis)])];
+    if (!urls.length) return { answer, analysis };
+
+    const baseName = stripPaperVariantSuffix(activeFile.basename);
+    const folderPath = `${outputDir}/attachments/${safeFilename(baseName)}答案解析/第${questionNo}题`;
+    await ensureFolder(this.app, folderPath);
+    const imageMap = await this.downloadQuestionImages(urls, folderPath);
+    const relativeMap = new Map();
+    for (const [url, path] of imageMap.entries()) {
+      relativeMap.set(url, relativeVaultPath(path, outputDir));
+    }
+    return {
+      answer: localizePlatformImages(answer, relativeMap),
+      analysis: localizePlatformImages(analysis, relativeMap)
+    };
   }
 };
 
@@ -584,17 +915,22 @@ class QbankSettingTab extends PluginSettingTab {
 
     new Setting(containerEl)
       .setName("教研云 schoolToken")
-      .setDesc("用于在 Obsidian 内搜索题库、下载题图、读取答案解析。只保存在本地插件数据中。")
+      .setDesc("打开教研云后按 F12，在“应用程序 / Local Storage / https://xbresource.jiaoyanyun.com”里复制 schoolToken。不要复制 Cookie 里的 tal_token。只保存在本地插件数据中。")
       .addText(text => {
         text.inputEl.type = "password";
         text
-          .setPlaceholder("粘贴 schoolToken")
+          .setPlaceholder("例如 7a6c2825-6b42-4d3f-b413-31da7a63f432")
           .setValue(this.plugin.settings.jiaoyanyunToken || "")
           .onChange(async value => {
             this.plugin.settings.jiaoyanyunToken = value.trim();
             await this.plugin.saveSettings();
           });
-      });
+      })
+      .addButton(button => button
+        .setButtonText("测试")
+        .onClick(async () => {
+          await this.plugin.testJiaoyanyunToken();
+        }));
 
     new Setting(containerEl)
       .setName("当前试卷来源")
@@ -608,6 +944,17 @@ class QbankSettingTab extends PluginSettingTab {
         }));
 
     new Setting(containerEl)
+      .setName("北京学校偏好顺序")
+      .setDesc("更新来源时先保证北京且有明确学校名，再取年份较新的来源；同一年按这里的顺序优先。用顿号或逗号分隔，可按你的经验修改。")
+      .addText(text => text
+        .setPlaceholder("人大附中、北京四中、清华附中、北师大实验")
+        .setValue(this.plugin.settings.beijingSchoolPriority || DEFAULT_SETTINGS.beijingSchoolPriority)
+        .onChange(async value => {
+          this.plugin.settings.beijingSchoolPriority = value.trim();
+          await this.plugin.saveSettings();
+        }));
+
+    new Setting(containerEl)
       .setName("最低匹配分")
       .setDesc("低于该分数的题不会自动替换。一般 35-50 比较合适。")
       .addText(text => text
@@ -617,11 +964,33 @@ class QbankSettingTab extends PluginSettingTab {
           this.plugin.settings.minMatchScore = Number(value) || 35;
           await this.plugin.saveSettings();
         }));
+
+    new Setting(containerEl)
+      .setName("教研云请求间隔")
+      .setDesc("补图时每次搜索/详情请求之间的停顿，单位毫秒。遇到中途停止或 0/20，可调到 1500-2500。")
+      .addText(text => text
+        .setPlaceholder("1500")
+        .setValue(String(this.plugin.settings.jiaoyanyunDelayMs ?? 1500))
+        .onChange(async value => {
+          this.plugin.settings.jiaoyanyunDelayMs = Number(value) || 1500;
+          await this.plugin.saveSettings();
+        }));
+
+    new Setting(containerEl)
+      .setName("教研云限流重试等待")
+      .setDesc("出现请求过快时等待多久再重试，单位毫秒。")
+      .addText(text => text
+        .setPlaceholder("15000")
+        .setValue(String(this.plugin.settings.jiaoyanyunRetryDelayMs ?? 15000))
+        .onChange(async value => {
+          this.plugin.settings.jiaoyanyunRetryDelayMs = Number(value) || 15000;
+          await this.plugin.saveSettings();
+        }));
   }
 }
 
 function parsePaperBlocks(content) {
-  const matches = [...content.matchAll(/^>\s*\[!ti\].*$/gm)];
+  const matches = paperBlockStarts(content);
   const blocks = [];
   for (let index = 0; index < matches.length; index += 1) {
     const start = matches[index].index;
@@ -641,6 +1010,22 @@ function parsePaperBlocks(content) {
   return blocks;
 }
 
+function paperBlockStarts(content) {
+  const starts = [
+    ...String(content || "").matchAll(/^>\s*\[!ti\].*$/gm),
+    ...String(content || "").matchAll(/^#{6}\s*(?:第\s*)?\d{1,3}\s*(?:题|[.．、])?.*$/gm)
+  ].map(match => ({ index: match.index, text: match[0] }));
+  starts.sort((a, b) => a.index - b.index);
+
+  const result = [];
+  for (const start of starts) {
+    const previous = result[result.length - 1];
+    if (previous && previous.index === start.index) continue;
+    result.push(start);
+  }
+  return result;
+}
+
 function paperSourceFromContent(content) {
   const text = String(content || "");
   const h0 = text.match(/^#\s+(.+?)\s*#h0\s*$/m);
@@ -652,17 +1037,21 @@ function paperSourceFromContent(content) {
 function paperBlockTitle(raw) {
   const first = String(raw || "").split(/\r?\n/, 1)[0] || "";
   const match = first.match(/\*([^*]+)\*/);
-  return normalizeWhitespace(match ? match[1] : first.replace(/^>\s*\[!ti\]\s*/, ""));
+  return normalizeWhitespace(match ? match[1] : first.replace(/^>\s*\[!ti\]\s*/, "").replace(/^#{1,6}\s*/, ""));
 }
 
 function paperQuestionNo(text) {
-  const match = String(text || "").match(/第\s*(\d{1,3})\s*题/);
-  return match ? String(Number(match[1])) : "";
+  const match = String(text || "").match(/第\s*(\d{1,3})\s*题|^#{1,6}\s*(\d{1,3})(?:\s|[.．、题]|$)|^\s*(\d{1,3})(?:\s|[.．、题]|$)/);
+  if (!match) return "";
+  const value = match[1] || match[2] || match[3];
+  return value ? String(Number(value)) : "";
 }
 
 function paperSearchText(raw) {
   const lines = String(raw || "").split(/\r?\n/);
   if (lines[0] && /^\s*>\s*\[!ti\]/.test(lines[0])) {
+    lines.shift();
+  } else if (lines[0] && /^#{1,6}\s*/.test(lines[0])) {
     lines.shift();
   }
   return normalizeWhitespace(
@@ -676,11 +1065,21 @@ function paperSearchText(raw) {
 }
 
 function retitlePaperBlock(raw, source, questionNo) {
-  const title = `${source}第${questionNo}题`;
+  const title = questionTitle(source, questionNo);
   if (/^>\s*\[!ti\].*$/m.test(raw)) {
     return raw.replace(/^>\s*\[!ti\].*$/m, `> [!ti] *${title}*`);
   }
+  if (/^#{6}\s*.*$/m.test(raw)) {
+    return raw.replace(/^#{6}\s*.*$/m, `###### ${title}`);
+  }
   return `> [!ti] *${title}*\n${raw}`;
+}
+
+function questionTitle(source, questionNo) {
+  const name = normalizeWhitespace(typeof source === "object" ? source?.name : source);
+  if (!name) return `例题第${questionNo}题`;
+  if (/第\s*\d{1,3}\s*题(?:\s*\d+(?:\.\d+)?\s*分)?\s*$/.test(name)) return name;
+  return `${name}第${questionNo}题`;
 }
 
 function rewritePaperTitle(content, source) {
@@ -715,6 +1114,17 @@ function renderMatchedPaperBlock(originalRaw, source, questionNo, imageMap) {
   return lines.join("\n");
 }
 
+function paperBlockHasImages(raw) {
+  return paperBlockImageCount(raw) > 0;
+}
+
+function paperBlockImageCount(raw) {
+  const text = String(raw || "");
+  const markdownImages = text.match(/!\[[^\]]*\]\([^)]+\)/g) || [];
+  const wikiImages = text.match(/!\[\[[^\]]+\]\]/g) || [];
+  return markdownImages.length + wikiImages.length;
+}
+
 function relativeImageMap(imageMap, activeFile) {
   const base = activeFile.parent?.path && activeFile.parent.path !== "/" ? activeFile.parent.path : "";
   const result = new Map();
@@ -736,6 +1146,16 @@ function localizePlatformImages(markdown, imageMap) {
     text = text.split(url).join(path);
   }
   return text.replace(/!\[[^\]]*\]\(([^)]+)\)/g, "![|200]($1)");
+}
+
+function markdownImageUrls(markdown) {
+  const urls = [];
+  const image = /!\[[^\]]*\]\((https?:\/\/[^)\s]+)\)/g;
+  let match;
+  while ((match = image.exec(String(markdown || ""))) !== null) {
+    urls.push(match[1]);
+  }
+  return [...new Set(urls)];
 }
 
 function buildSearchQueries(text, count, maxChars) {
@@ -815,14 +1235,61 @@ function findQuestionItems(data) {
   return Object.values(data).flatMap(findQuestionItems);
 }
 
-function questionFromJiaoyanyunItem(item, subjectId, gradeGroupId) {
+function assertJiaoyanyunLoggedIn(data) {
+  const msg = normalizeWhitespace(data?.msg || data?.message || "");
+  const code = String(data?.code ?? "");
+  if (msg.includes("未登录") || msg.includes("登录") || msg.includes("鉴权") || msg.includes("token") || code === "20000" || code === "401" || code === "403") {
+    throw new Error("教研云登录已失效，请在插件设置里更新 schoolToken 后重试");
+  }
+}
+
+function assertJiaoyanyunNotThrottled(data) {
+  const msg = normalizeWhitespace(data?.msg || data?.message || "");
+  const code = String(data?.code ?? "");
+  if (code === "50302" || /进行验证|人机验证|安全验证/i.test(msg)) {
+    throw new Error(`教研云需要浏览器验证：${msg || code}`);
+  }
+  if (code === "429" || /频繁|过快|限流|稍后|too many/i.test(msg)) {
+    throw new Error(`教研云请求过快：${msg || code}`);
+  }
+}
+
+function isJiaoyanyunAuthError(error) {
+  return String(error?.message || error || "").includes("教研云登录已失效");
+}
+
+function isJiaoyanyunThrottleError(error) {
+  const message = String(error?.message || error || "");
+  return !isJiaoyanyunVerificationError(error) && /429|频繁|过快|限流|稍后|too many/i.test(message);
+}
+
+function isJiaoyanyunVerificationError(error) {
+  return /浏览器验证|进行验证|人机验证|安全验证|50302/i.test(String(error?.message || error || ""));
+}
+
+function isProbablyTalToken(value) {
+  const token = String(value || "").trim();
+  return /^tal/i.test(token) || token.length > 80;
+}
+
+function sleep(ms) {
+  return new Promise(resolve => setTimeout(resolve, ms));
+}
+
+function questionHasSolution(question) {
+  return Boolean(normalizeWhitespace(question?.answer || "") || normalizeWhitespace(question?.analysis || ""));
+}
+
+function questionFromJiaoyanyunItem(item, subjectId, gradeGroupId, settings = {}) {
   const questionId = String(item.queId || item.questionId || item.id || "");
   const stemHtml = contentFromApiItem(item);
   const answerHtml = fieldFromApiItem(item, ["answer", "answers", "referenceAnswer", "correctAnswer", "blankAnswer"]);
   const analysisHtml = fieldFromApiItem(item, ["analysis", "analyze", "answerAnalysis", "explain"]);
   const optionHtmls = optionHtmlValues(item);
   const options = optionsFromApiItem(item);
-  const source = sourceFromApiItem(item);
+  const sources = sourcesFromApiItem(item, subjectId, gradeGroupId, settings);
+  const preferredSource = selectPreferredSource(sources, settings);
+  const source = preferredSource?.name || sources[0]?.name || sourceFromApiItem(item);
   const url = `${DEFAULT_JIAOYANYUN_WEB}/#/boutique/search?sid=${subjectId}&gid=${gradeGroupId}&queId=${questionId}`;
   const allHtml = [stemHtml, answerHtml, analysisHtml, ...optionHtmls].join("\n");
   return {
@@ -833,6 +1300,8 @@ function questionFromJiaoyanyunItem(item, subjectId, gradeGroupId) {
     answer: htmlToMarkdownText(answerHtml || ""),
     analysis: htmlToMarkdownText(analysisHtml || ""),
     source,
+    sources,
+    preferredSource,
     imageUrls: collectImageUrls(allHtml)
   };
 }
@@ -943,27 +1412,203 @@ function optionsFromApiItem(item) {
 }
 
 function sourceFromApiItem(item) {
-  const queSource = item.queSource;
+  const queSource = item?.queSource;
   if (Array.isArray(queSource) && queSource.length) return normalizeWhitespace(queSource[0]);
   if (typeof queSource === "string") return normalizeWhitespace(queSource);
-  const list = item.questionSourceList;
-  if (Array.isArray(list) && list[0]) {
-    return normalizeWhitespace([
-      namedValue(list[0].schoolYear) ? `${namedValue(list[0].schoolYear)}学年` : "",
-      namedValue(list[0].province),
-      namedValue(list[0].area),
-      namedValue(list[0].school),
-      namedValue(list[0].grade),
-      namedValue(list[0].semester),
-      namedValue(list[0].examType),
-      list[0].startQueIndex ? `第${list[0].startQueIndex}题` : ""
-    ].join(""));
-  }
+  const list = item?.questionSourceList;
+  if (Array.isArray(list) && list[0]) return buildSourceNameFromApiRecord(list[0]);
   return normalizeWhitespace(firstValue(item, ["sourceString", "source", "paperName", "examPaperName"]));
 }
 
 function namedValue(value) {
   return normalizeWhitespace(value && typeof value === "object" ? value.name || "" : value || "");
+}
+
+function sourcesFromApiItem(item, subjectId, gradeGroupId, settings = {}) {
+  const questionId = String(item?.queId || item?.questionId || item?.id || "");
+  const url = `${DEFAULT_JIAOYANYUN_WEB}/#/boutique/search?sid=${subjectId}&gid=${gradeGroupId}&queId=${questionId}`;
+  const rawNames = Array.isArray(item?.queSource)
+    ? item.queSource
+    : item?.queSource
+      ? [item.queSource]
+      : [];
+  const records = Array.isArray(item?.questionSourceList) ? item.questionSourceList : [];
+  const sources = [];
+
+  records.forEach((record, index) => {
+    const source = sourceFromApiRecord(record, rawNames[index], url);
+    if (source.name) sources.push(source);
+  });
+  rawNames.slice(records.length).forEach(name => {
+    const source = sourceFromApiName(name, url);
+    if (source.name) sources.push(source);
+  });
+  if (!sources.length) {
+    const fallback = sourceFromApiItem(item);
+    if (fallback) sources.push(sourceFromApiName(fallback, url));
+  }
+
+  const unique = new Map();
+  for (const source of sources) {
+    const key = normalize(source.name);
+    if (!key) continue;
+    const previous = unique.get(key);
+    if (!previous || sourceHasMoreMetadata(source, previous)) unique.set(key, source);
+  }
+  return [...unique.values()].map(source => enrichApiSource(source, settings));
+}
+
+function sourceFromApiRecord(record, fallbackName, url) {
+  const item = record && typeof record === "object" ? record : {};
+  const source = {
+    name: normalizeWhitespace(fallbackName || buildSourceNameFromApiRecord(item)),
+    url: url || "",
+    provider: "教研云",
+    school_year: namedValue(item.schoolYear),
+    province: namedValue(item.province),
+    city: namedValue(item.city),
+    area: namedValue(item.area),
+    school: namedValue(item.school),
+    grade: namedValue(item.grade),
+    semester: namedValue(item.semester),
+    exam_type: namedValue(item.examType),
+    paper_tag: namedValue(item.paperTag),
+    question_index: namedValue(item.startQueIndex || item.endQueIndex),
+    score_value: namedValue(item.score),
+    month: namedValue(item.month),
+    note: normalizeWhitespace(item.note || "")
+  };
+  return source;
+}
+
+function sourceFromApiName(name, url) {
+  return {
+    name: normalizeWhitespace(name),
+    url: url || "",
+    provider: "教研云",
+    school_year: "",
+    province: "",
+    city: "",
+    area: "",
+    school: "",
+    grade: "",
+    semester: "",
+    exam_type: "",
+    paper_tag: "",
+    question_index: "",
+    score_value: "",
+    month: "",
+    note: ""
+  };
+}
+
+function buildSourceNameFromApiRecord(record) {
+  const item = record && typeof record === "object" ? record : {};
+  const schoolYear = namedValue(item.schoolYear);
+  const year = namedValue(item.year);
+  const yearText = schoolYear
+    ? /学年$/.test(schoolYear) ? schoolYear : `${schoolYear}学年`
+    : year ? `${year}年` : "";
+  const month = namedValue(item.month);
+  const location = [namedValue(item.province), namedValue(item.city), namedValue(item.area)].filter(Boolean).join("");
+  const note = normalizeWhitespace(item.note || "");
+  const index = namedValue(item.startQueIndex || item.endQueIndex);
+  const score = namedValue(item.score);
+  return normalizeWhitespace([
+    yearText,
+    month ? `${month}月` : "",
+    location,
+    namedValue(item.school),
+    namedValue(item.grade),
+    namedValue(item.semester),
+    namedValue(item.examType),
+    note,
+    index ? `第${index}题` : "",
+    score ? `${score}分` : ""
+  ].join(""));
+}
+
+function sourceHasMoreMetadata(source, previous) {
+  const fields = ["school_year", "province", "city", "area", "school", "grade", "semester", "exam_type", "question_index"];
+  return fields.filter(field => source[field]).length > fields.filter(field => previous[field]).length;
+}
+
+function enrichApiSource(source, settings = {}) {
+  const ranked = rankQuestionSource(source, settings);
+  return { ...source, ...ranked };
+}
+
+function rankQuestionSource(source, settings = {}) {
+  const year = sourceYear(source);
+  const isBeijing = isBeijingSource(source);
+  const hasSchool = hasExplicitSchool(source);
+  const schoolRank = schoolPreferenceRank(source, settings.beijingSchoolPriority);
+  return {
+    year,
+    isBeijing,
+    hasSchool,
+    isBeijingSchool: isBeijing && hasSchool,
+    schoolRank,
+    sourceTier: isBeijing && hasSchool ? (schoolRank ? "北京学校" : "北京学校（未列入偏好）") : isBeijing ? "北京来源（无明确学校）" : "外地来源"
+  };
+}
+
+function isBeijingSource(source) {
+  const fields = [source?.province, source?.city, source?.area, source?.school, source?.name, source?.note];
+  return fields.some(value => /北京/.test(String(value || "")));
+}
+
+function hasExplicitSchool(source) {
+  const school = normalizeWhitespace(`${source?.school || ""} ${source?.name || ""} ${source?.note || ""}`);
+  if (!school) return false;
+  const withoutGenericSchool = school.replace(/部分学校|若干学校|各学校|多所学校|学校联考|各校/g, "");
+  if (source?.school && !/部分学校|若干学校|各学校|多所学校|学校联考|各校/.test(source.school)) return true;
+  return /学校|中学|附中|高中|一中|二中|三中|四中|五中|六中|七中|八中|九中|十中|十一中|十二中|十三中|十四中|十五中|十六中|十七中|十八中|十九中|二十中/.test(withoutGenericSchool);
+}
+
+function schoolPreferenceRank(source, priorityText) {
+  const text = normalize(`${source?.school || ""} ${source?.name || ""} ${source?.note || ""}`);
+  if (!text) return 0;
+  const custom = String(priorityText || "").split(/[、,，;；>]+/).map(normalize).filter(Boolean);
+  for (let index = 0; index < custom.length; index += 1) {
+    if (text.includes(custom[index])) return custom.length - index;
+  }
+  for (let index = 0; index < BEIJING_SCHOOL_PREFERENCES.length; index += 1) {
+    if (BEIJING_SCHOOL_PREFERENCES[index].aliases.some(alias => text.includes(normalize(alias)))) {
+      return BEIJING_SCHOOL_PREFERENCES.length - index;
+    }
+  }
+  return 0;
+}
+
+function selectPreferredSource(sources, settings = {}) {
+  return [...(sources || [])]
+    .filter(source => source.isBeijingSchool || (isBeijingSource(source) && hasExplicitSchool(source)))
+    .sort(comparePreferredSources)[0] || null;
+}
+
+function comparePreferredSources(a, b) {
+  if (Boolean(a?.isBeijingSchool) !== Boolean(b?.isBeijingSchool)) {
+    return Boolean(b?.isBeijingSchool) - Boolean(a?.isBeijingSchool);
+  }
+  if (Number(a?.year || 0) !== Number(b?.year || 0)) {
+    return Number(b?.year || 0) - Number(a?.year || 0);
+  }
+  if (Number(a?.schoolRank || 0) !== Number(b?.schoolRank || 0)) {
+    return Number(b?.schoolRank || 0) - Number(a?.schoolRank || 0);
+  }
+  if (Boolean(a?.school) !== Boolean(b?.school)) return Boolean(b?.school) - Boolean(a?.school);
+  return String(a?.name || "").localeCompare(String(b?.name || ""), "zh-Hans-CN");
+}
+
+function selectBestQuestionCandidate(candidates, settings = {}) {
+  if (!candidates.length) return null;
+  const threshold = Number(settings.minMatchScore || 0);
+  const beijingMatches = candidates
+    .filter(candidate => candidate.question?.preferredSource && candidate.score >= threshold)
+    .sort((a, b) => b.score - a.score || comparePreferredSources(a.question.preferredSource, b.question.preferredSource));
+  if (beijingMatches.length) return beijingMatches[0];
+  return [...candidates].sort((a, b) => b.score - a.score)[0];
 }
 
 function collectImageUrls(html) {
@@ -1040,14 +1685,50 @@ function renderPaperVariant(title, blocks, cacheByNo, mode) {
     if (mode === "answer") {
       lines.push(`${block.questionNo}. ${info.answer || "暂无"}`, "");
     } else {
-      lines.push(retitlePaperBlock(block.raw, title.replace(/解析版$/, ""), block.questionNo), "", "### 答案", "", info.answer || "暂无", "", "### 详解", "", info.analysis || "暂无", "");
+      lines.push(
+        renderDetailQuestionBlock(block, info.source || title.replace(/解析版$/, "")),
+        "",
+        "### 答案",
+        "",
+        info.answer || "暂无",
+        "",
+        "### 详解",
+        "",
+        info.analysis || "暂无",
+        ""
+      );
     }
   }
   return `${lines.join("\n").trim()}\n`;
 }
 
+function renderDetailQuestionBlock(block, source) {
+  if (/^>\s*\[!ti\]/.test(block.raw)) {
+    return retitlePaperBlock(block.raw, source, block.questionNo);
+  }
+  return block.raw;
+}
+
 function siblingPath(file, name) {
   return `${file.parent?.path && file.parent.path !== "/" ? `${file.parent.path}/` : ""}${safeFilename(name)}`;
+}
+
+function paperImageOutputPath(file) {
+  const basename = stripPaperVariantSuffix(file.basename);
+  if (/带图版$|带图$/.test(file.basename)) {
+    return file.path;
+  }
+  return siblingPath(file, `${basename}带图版.md`);
+}
+
+function paperSourceOutputPath(file) {
+  if (/来源更新版$|来源版$/.test(file.basename)) return file.path;
+  const basename = stripPaperVariantSuffix(file.basename);
+  return siblingPath(file, `${basename}来源版.md`);
+}
+
+function stripPaperVariantSuffix(name) {
+  return String(name || "").replace(/(学生版|答案版|解析版|详解版|带图版|带图|来源更新版|来源版)$/g, "");
 }
 
 function normalizeWhitespace(value) {

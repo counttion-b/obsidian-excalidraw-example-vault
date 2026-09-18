@@ -21,5 +21,6 @@
   "templater-obsidian",
   "unicode-search-ymjr",
   "table-editor-obsidian",
-  "better-export-live-preview"
+  "better-export-live-preview",
+  "lecture-layout-formatter"
 ]

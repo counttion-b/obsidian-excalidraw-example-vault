@@ -1,0 +1,330 @@
+[
+  {
+    "questionNo": "14",
+    "matched": true,
+    "score": 74.45,
+    "url": "https://xbresource.jiaoyanyun.com/#/boutique/search?sid=4&gid=3&queId=aceeb937cabf402aa23c0fde50f3e358",
+    "answer": "(1)C\n(2)B\n(3)     越大     越小\n(4)     越大     越小\n(5)     距离     电荷量     增大     增大",
+    "analysis": "【详解】（1）带电小球平衡时，根据平衡条件可知，小球所受带电体的作用力大小为F = mg\\tan\\theta\n所以，为了比较带电小球所受带电体的作用力的大小，最好的办法是比较丝线偏离竖直方向的角度。\n故选C。\n（2）使小球系于同一位置，增大或减小小球所带的电荷量，比较小球所受作用力的大小。所以，用的是控制变量法。\n故选B。\n（3）[1][2]根据库仑定律F = k\\frac{Qq}{r^{2}}可知在电荷量不变的情况下，小球离带电体越近，所受的库仑力越大，角度越大，离带电体越远，所受的库仑力越小，角度\\theta越小。\n（4）[1][2]根据库仑定律F = k\\frac{Qq}{r^{2}}可知在距离不变的情况下，带电体电荷量越大，所受的库仑力越大，则角度\\theta越大，电荷量越小，所受的库仑力越小，则角度\\theta越小。\n（5）[1][2][3][4]结论：影响两电荷之间相互作用力的因素：距离、电荷量。电荷间的相互作用力随带电体间距离的减小而增大，随带电体所带电荷量的增加而增大。"
+  },
+  {
+    "questionNo": "1",
+    "matched": false,
+    "score": 0,
+    "url": "",
+    "answer": "",
+    "analysis": ""
+  },
+  {
+    "questionNo": "4",
+    "matched": true,
+    "score": 97.27,
+    "url": "https://xbresource.jiaoyanyun.com/#/boutique/search?sid=4&gid=3&queId=41b21dee66d140e2b508030146040b02",
+    "answer": "D",
+    "analysis": "AC．两电荷间的作用力是相互作用力，无论两球带电量是否相同，则两球之间的库仑力总是等大反向，则题中电荷电量可能不同，也可能相同，但各自所受的电场力大小却相同，方向相反，故AC为错误选项；\nBD．根据共点力平衡条件可得\n\\tan \\alpha _{1}=\\frac{F_{\\mathrm{电}}}{m_{1}g}电\n\\tan \\alpha _{2}=\\frac{F_{\\mathrm{电}}}{m_{2}g}电\n联立得\nm_{1}\\tan \\alpha _{1}=m_{2}\\tan \\alpha _{2}\n由于\\alpha _{1}=\\alpha _{2}，则有\nm_{1}=m_{2}\n故D为正确选项，B为错误选项。\n故答案为D。"
+  },
+  {
+    "questionNo": "2",
+    "matched": false,
+    "score": 0,
+    "url": "",
+    "answer": "",
+    "analysis": ""
+  },
+  {
+    "questionNo": "4",
+    "matched": true,
+    "score": 74.04,
+    "url": "https://xbresource.jiaoyanyun.com/#/boutique/search?sid=4&gid=3&queId=eb01fd9f58194da0b05fa2044e18344e",
+    "answer": "B",
+    "analysis": "A．根据同种电荷相互排斥可知，两小球一定带同种电荷，A错误；\nBC．对两球受力分析可得\nF_{库}=k\\frac{q_{{A}}q_{{B}}}{r^{2}}=m_{{A}}g\\tan \\alpha =m_{{B}}g\\tan \\beta库\n因为\\alpha > \\beta，所以有\n\\tan \\alpha > \\tan \\beta\n可得{{m}_{{A}}} < {{m}_{{B}}}\n可知A小球的质量一定小于B小球的质量，不同夹角的小球质量不同，与电荷量无关，所以无法确定A小球所带电荷量与B小球所带电荷量的大小关系，B正确，C错误；\nD．根据库仑定律F_{库}=k\\frac{q_{{A}}q_{{B}}}{r^{2}}库\n可知两球间的库仑力为相互作用力，所以总是大小相等，D错误；\n故选B．"
+  },
+  {
+    "questionNo": "3",
+    "matched": false,
+    "score": 0,
+    "url": "",
+    "answer": "",
+    "analysis": ""
+  },
+  {
+    "questionNo": "13",
+    "matched": true,
+    "score": 71.49,
+    "url": "https://xbresource.jiaoyanyun.com/#/boutique/search?sid=4&gid=3&queId=74cd0677e78446359f86243ae60e7a14",
+    "answer": "D",
+    "analysis": "AD选项：设小球\\text A受静电斥力作用发生偏移达到平衡后细丝线与竖直方向的夹角为\\theta，由于l\\gg d，可以认为两小球在一直线上，小球A所受的静电力\nF=mg\\tan \\theta\n由于\\theta很小，\\tan \\theta \\approx \\sin \\theta=\\frac{d}{l}，所以\nF\\approx mg\\frac{d}{l}\n再由库仑定律\nF=k\\frac{Q^{2}}{r^{2}}=mg\\frac{d}{l}\n可得\nd=\\frac{klQ^{2}}{mgr^{2}}\n所以实验中仅测量d与r，也可以验证“静电力与距离平方成反比的关系”，故A错误，故D为正确；\nB选项：为方便验证“静电力与距离平方成反比的关系”，应由实验数据作出F与\\frac{1}{r^{2}}的关系图像，得到一条倾斜的直线，故B错误；\nC选项：用完全相同的不带电导体球C先与\\text A接触，\\text A的电量减半；C再与\\text B球接触时，由于C球此时已经带有一定电量，故\\text B小球的电量不会减半，\\text A、\\text B两球带电量不相等，故C错误．\n故选D．"
+  },
+  {
+    "questionNo": "10",
+    "matched": true,
+    "score": 52.58,
+    "url": "https://xbresource.jiaoyanyun.com/#/boutique/search?sid=4&gid=3&queId=b179cac98cd5483faf276d8c58dbc2bd",
+    "answer": "A\nC\nD",
+    "analysis": "【详解】\nA．开始处于静止状态，对B球受力分析及结合三角形相似可得\n\\frac{G}{h}=\\frac{F_{\\text{库}}}{R}库\nF_{\\text{库}}=k\\frac{Qq}{R^{2}}库\n联立解得\nG=\\frac{kQqh}{R^{3}}\n故A正确；\nBCD．缓慢拉动细线过程，由上述分析可得\nR=\\sqrt[3]{\\frac{kQqh}{G}}\n其中k、Q、q、h、G均保持不变，所以A、B两球之间的距离R也不会改变，即B球的运动轨迹是以A为圆心，以R为半径的圆弧，再次结合三角形相似可得\n\\frac{G}{h}=\\frac{F_{\\text{库}}}{R}=\\frac{F}{L_{\\text{绳}}}库绳\nL_{\\text{绳}}绳不断减小，其他量都不变，所以细线上的拉力一直减小，故B错误，CD正确．\n故选ACD．"
+  },
+  {
+    "questionNo": "9",
+    "matched": true,
+    "score": 100,
+    "url": "https://xbresource.jiaoyanyun.com/#/boutique/search?sid=4&gid=3&queId=ff808081485991fa0148674f62ed090d",
+    "answer": "D",
+    "analysis": "ABC、以A球为研究对象，分析受力，作出力图如图1所示：\n![|200](attachments/第1讲-静电场力学模型_知识点_v2_恢复候选答案解析/第9题/image_01.png)\n设B对A的库仑力F与墙壁的夹角为\\theta，由平衡条件得竖直墙面对小球A的弹力为：\nN _ { 1 } = m _ { A } g \\tan \\theta ,\n将小球B向左推动少许时\\theta减小，则N _ { 1 }在减小．\n再以AB整体为研究对象，分析受力如图2所示，由平衡条件得:\nF = N _ { 1 }\nN _ { 2 } = ( m _ { A } + m _ { B } ) g\n则F减小，地面对小球B的弹力一定不变．故A错误，B错误，C错误；\nD、由上分析得到库仑力F _ { 库 } = \\frac { m _ { A } g } { \\cos \\theta }库，\\theta 减小，\\cos\\theta增大，F _ { 左 }左减小，根据库仑定律分析得知，两球之间的距离增大．故D正确．\n故选D．"
+  },
+  {
+    "questionNo": "10",
+    "matched": true,
+    "score": 71.01,
+    "url": "https://xbresource.jiaoyanyun.com/#/boutique/search?sid=4&gid=3&queId=26c9012f7aec4695b27904fd84c2b8a9",
+    "answer": "A\nC",
+    "analysis": "电量为+q的小球静止在斜面上，受重力、支持力和电场力，三力的合力为零，则三个力的首尾相连构成矢量三角形，如图所示：\n![|200](attachments/第1讲-静电场力学模型_知识点_v2_恢复候选答案解析/第10题/image_01.png)\nA、由上图可知，当电场力与支持力垂直时即电场力沿斜面向上时，电场力最小，则电场强度最小，由平衡得：q{{E}_{min }}=mgsin theta，解得：{{E}_{min }}=frac{mgsin theta }{q}，故A正确；\nB、若电场强度E=frac{mg}{q}，则电场力与重力大小相等，由上图可知，电场力方向可能竖直向上，也可能斜向下，故B错误；\nCD、由上图可知，若电场强度方向从沿斜面向上逐渐转到竖直向上，则电场力与竖直方向夹角逐渐减小，电场力逐渐增大，则电场强度逐渐增大，故C正确，D错误；\n故选AC．"
+  },
+  {
+    "questionNo": "4",
+    "matched": false,
+    "score": 0,
+    "url": "",
+    "answer": "",
+    "analysis": ""
+  },
+  {
+    "questionNo": "8",
+    "matched": true,
+    "score": 94.83,
+    "url": "https://xbresource.jiaoyanyun.com/#/boutique/search?sid=4&gid=3&queId=928d71724de546e59fb93f792c98d5b5",
+    "answer": "D",
+    "analysis": "【详解】对B球受力分析如下：\n![|200](attachments/第1讲-静电场力学模型_知识点_v2_恢复候选答案解析/第8题/image_01.png)\nAB．B球受重力及A、C对B球的库仑力而受于平衡状态，则A与C球对B球的库仑力的合力应与重力大小相等，方向相反；库仑力的方向只能沿两电荷的连线方向，说明A对B的库仑力应指向A，C对B的作用力应指向B的左侧．因A带负电，则可知B、C都应带正电，故AB错误；CD．由受力分析图可知，A对B的库仑力应为C对B库仑力的2倍，故C带电量应为A带电量的一半；同理分析C可知，B带电量也应为A带电量的一半，故B、C带电量应相同，故C错误，D正确．故选D．"
+  },
+  {
+    "questionNo": "5",
+    "matched": false,
+    "score": 0,
+    "url": "",
+    "answer": "",
+    "analysis": ""
+  },
+  {
+    "questionNo": "3",
+    "matched": true,
+    "score": 97.08,
+    "url": "https://xbresource.jiaoyanyun.com/#/boutique/search?sid=4&gid=3&queId=2c06c59f2e8a427fb92ce8dc28415ae9",
+    "answer": "B",
+    "analysis": "存在+Q球时，对A、B球受力分析，由于悬线都沿竖直方向，说明水平方向各自合力为零，说明a球带负电，b球带正电，对+Q 而言，a、b对+Q的水平方向的库仑力大小相等方向相反．根据F=k\\frac{Qq}{{{r}^{2}}}得A离+Q较近，所以a球带电荷量较小，b球带电荷量较大．\nA. a球带正电，b球带正电，并且a球带电荷量较大，与结论不相符，选项A为错误选项；\nB. a球带负电，b球带正电，并且a球带电荷量较小，与结论相符，选B为正确选项；\nC. a球带负电，b球带正电，并且a球带电荷量较大，与结论不相符，选项C为错误选项；\nD. a球带正电，b球带负电，并且a球带电荷量较小，与结论不相符，选项D为错误选项．"
+  },
+  {
+    "questionNo": "6",
+    "matched": false,
+    "score": 0,
+    "url": "",
+    "answer": "",
+    "analysis": ""
+  },
+  {
+    "questionNo": "16",
+    "matched": true,
+    "score": 99.1,
+    "url": "https://xbresource.jiaoyanyun.com/#/boutique/search?sid=4&gid=3&queId=91132dfeb6fc498384b03f31ef48d2f6",
+    "answer": "B\nC",
+    "analysis": "【详解】根据三点电荷均处于平衡状态的条件：三点共线，两大夹小，两同夹异；可判断A、C为同种电荷，与B互为异种电荷，而B夹在中间是电荷量最小的电荷。\n故选BC。"
+  },
+  {
+    "questionNo": "7",
+    "matched": false,
+    "score": 0,
+    "url": "",
+    "answer": "",
+    "analysis": ""
+  },
+  {
+    "questionNo": "18",
+    "matched": true,
+    "score": 48.82,
+    "url": "https://xbresource.jiaoyanyun.com/#/boutique/search?sid=4&gid=3&queId=17267aefab3d442b91edd90076435fd8",
+    "answer": "(1) \n(2) \n(3)",
+    "analysis": "(1) 由库仑定律得：．\n(2) 由电场强度的定义，知点处电场强度的大小为：．\n(3) 电场强度由电场本身决定，与试探电荷是否存在没有关系，故将放在处的点电荷取走，该处的电场强度没有变化；电场强度仍为．"
+  },
+  {
+    "questionNo": "7",
+    "matched": true,
+    "score": 47.01,
+    "url": "https://xbresource.jiaoyanyun.com/#/boutique/search?sid=4&gid=3&queId=5b140c86775046fbaa2e3120f9555361",
+    "answer": "D",
+    "analysis": "A．根据电场线的对称性可以知道，\na\n、\nb\n两点电势相同，场强大小相等，但方向相反，所以电场强度不同，故A错误；\nB．沿电场线方向电势降低，\nab\n两点电势不相等，故B错误；\nC．\na\n、\nb\n是离点电荷等距的\na\n、\nb\n两点，处于同一等势面上，电势相同，场强大小相等，但方向不同，则电场强度不同，故C错误；\nD．导体内部场强电势都为零，故D正确．\n故选D．"
+  },
+  {
+    "questionNo": "8",
+    "matched": false,
+    "score": 0,
+    "url": "",
+    "answer": "",
+    "analysis": ""
+  },
+  {
+    "questionNo": "2",
+    "matched": true,
+    "score": 75,
+    "url": "https://xbresource.jiaoyanyun.com/#/boutique/search?sid=4&gid=3&queId=a86eefddc6c445cba514f0a497fbcf4a",
+    "answer": "C",
+    "analysis": "【详解】\nA．电荷量为-q的试探电荷在a点受到的库仑力方向指向Q，电场强度方向背离Q，则Q带正电，故A错误；\nB．根据公式\nE=k\\frac{Q}{r^{2}}\n知b、c两点电场强度大小相同，但方向不同，故B错误；\nC．根据公式E=k\\frac{Q}{r^{2}}，可知\n\\frac{E_{a}}{E_{b}}=\\frac{{r}_{b}^{2}}{{r}_{a}^{2}}=\\frac{4}{1}\n故C正确；\nD．场强由电场本身决定，与试探电荷无关，所以a处的试探电荷电荷量变为+2q，该处场强不变，故D错误。\n故选C。"
+  },
+  {
+    "questionNo": "9",
+    "matched": false,
+    "score": 0,
+    "url": "",
+    "answer": "",
+    "analysis": ""
+  },
+  {
+    "questionNo": "9",
+    "matched": true,
+    "score": 68.68,
+    "url": "https://xbresource.jiaoyanyun.com/#/boutique/search?sid=4&gid=3&queId=b3a37f9a09c744dc99ac12ff6382b394",
+    "answer": "B",
+    "analysis": "A．根据对称性可知，B、C两点处的电场线疏密程度相同，则B、C两点处的电场强度相等，由图甲可看出B、C两点处的电场的方向相同，故A正确；\nB．根据对称性可知，A、D两点处的电场线疏密程度相同，则A、D两点处的电场强度相等，由图甲可看出A、D两点处的电场的方向相同，故B错误；\nC．由图甲可以看出E、O、F三点中，O点处的电场线最密，所以O点电场强度最强，故C正确；\nD．由图甲可以看出B、O、C三点中，O点处的电场线最疏，O点电场强度最弱，故D正确．\n故选：B．"
+  },
+  {
+    "questionNo": "14",
+    "matched": true,
+    "score": 73.43,
+    "url": "https://xbresource.jiaoyanyun.com/#/boutique/search?sid=4&gid=3&queId=59ecdab558554aa5a990a454ce3ccf31",
+    "answer": "C",
+    "analysis": "根据P点的电场线方向可以得P点的电场强度方向是垂直于金属板向左，两异号点电荷电荷量的大小均为q，它们之间的距离为2d，P点与点电荷O之间的距离为r，根据点电荷的场强公式E=\\frac{kQ}{{{r}^{2}}}，P点的电场是由两异号点电荷分别产生的场强叠加产生的．根据场强的叠加法则和几何关系得：大小为\\frac{2kqd}{{{r}^{3}}}~．故选C．"
+  },
+  {
+    "questionNo": "10",
+    "matched": false,
+    "score": 0,
+    "url": "",
+    "answer": "",
+    "analysis": ""
+  },
+  {
+    "questionNo": "2",
+    "matched": true,
+    "score": 69.77,
+    "url": "https://xbresource.jiaoyanyun.com/#/boutique/search?sid=4&gid=3&queId=aad9c414bf3e4b4b975dc6e0cacef43e",
+    "answer": "A",
+    "analysis": "四个电荷的电荷量相等，两对对角线的电荷都是一对等量异种点电荷，在交点处的电场强度的方向指向负电荷，且大小相等，则合场强的方向水平向左．根据对称性可知，电场强度的大小为\nE_{\\text{合}}=2\\times \\frac{2kQ}{\\left(\\frac{\\sqrt{2}}{2}a\\right)^{2}}\\cos 45^{{^{\\circ}}}=\\frac{4\\sqrt{2}kQ}{a^{2}}合\n故选A．"
+  },
+  {
+    "questionNo": "11",
+    "matched": false,
+    "score": 0,
+    "url": "",
+    "answer": "",
+    "analysis": ""
+  },
+  {
+    "questionNo": "8",
+    "matched": true,
+    "score": 70.24,
+    "url": "https://xbresource.jiaoyanyun.com/#/boutique/search?sid=4&gid=3&queId=29b2dfbf1e6c447ab22da75d4d3b4aba",
+    "answer": "C",
+    "analysis": "本题主要考查场强的矢量性，同一直线上两点电荷产生场强的叠加则变成了代数的加或减．由于两个点电荷带异种电荷且电量不等，则{{E}_{1}}={{E}_{2}}的点必有两个，其中一处合场强为零，另一处合场强为2E．故选C．"
+  },
+  {
+    "questionNo": "12",
+    "matched": false,
+    "score": 0,
+    "url": "",
+    "answer": "",
+    "analysis": ""
+  },
+  {
+    "questionNo": "11",
+    "matched": true,
+    "score": 64.4,
+    "url": "https://xbresource.jiaoyanyun.com/#/boutique/search?sid=4&gid=3&queId=025ddfca76a844b3b5fdcc6355044109",
+    "answer": "B",
+    "analysis": "根据电场线从正电荷出发到负电荷终止，叠加后的电场满足矢量加减，故两板间的电场强度为2E．两板相互靠近，两板间的电场强度会叠加，但计算电场力时，应将其中一个平板看作试探电荷，它处在另外一个平板产生的电场中，故其所受电场力为Eq，同理可得，另一个平板也可以看作是一个试探电荷，它所受的电场力也为Eq，故两板的相互作用力大小为Eq．故选B．"
+  },
+  {
+    "questionNo": "31",
+    "matched": true,
+    "score": 52.44,
+    "url": "https://xbresource.jiaoyanyun.com/#/boutique/search?sid=4&gid=3&queId=de5fec43daea47c2b40460744b87b7bf",
+    "answer": "D",
+    "analysis": "取长度为\\text{ }\\!\\!\\Delta\\!\\!\\text{ }x的微元，微元的带电量为\n{{q}_{0}}=\\frac{Q}{2\\pi R}\\cdot \\text{ }\\!\\!\\Delta\\!\\!\\text{ }x\n微元对A点的+q在竖直向上的分力为\n{{F}_{y}}=\\frac{kq{{q}_{0}}}{{{(\\sqrt{2}R)}^{2}}}\\cos 45{}^\\circ\n根据对称性可知，圆环对电荷在水平方向上的分力相互抵消，则+q在A点所受的静电力为\nF=\\frac{2\\pi R}{\\text{ }\\!\\!\\Delta\\!\\!\\text{ }x}\\cdot {{F}_{y}}=\\frac{\\sqrt{2}kQq}{4{{R}^{2}}}\n方向向上。\n故答案为D。"
+  },
+  {
+    "questionNo": "13",
+    "matched": false,
+    "score": 0,
+    "url": "",
+    "answer": "",
+    "analysis": ""
+  },
+  {
+    "questionNo": "33",
+    "matched": true,
+    "score": 70.87,
+    "url": "https://xbresource.jiaoyanyun.com/#/boutique/search?sid=4&gid=3&queId=5f8b5f1d74a544a5803953e2715e63e2",
+    "answer": "D",
+    "analysis": "设想将圆环等分为n个小段，当n相当大时，每一小段都可以看做点电荷，其所带电荷量为：q=frac{Q}{n}\n如图所示，由点电荷场强公式可求得每一点电荷在P处的场强为：\nE=kfrac{Q}{n{{r}^{2}}}=kfrac{Q}{n({{R}^{2}}+{{L}^{2}})}\n由对称性可知，各小段带电环在P处的场强E垂直于轴向的分量{{E}_{y}}相互抵消，而E的轴向分量{{E}_{x}}之和即为带电环在P处的场强{{E}_text{p}}，故\n{{E}_{总}}=n{{E}_{x}}=ntimes frac{kQ}{n({{L}^{2}}+{{R}^{2}})}times frac{L}{r}=frac{kQL}{r({{L}^{2}}+{{R}^{2}})}总，\n而r=sqrt{{{L}^{2}}+{{R}^{2}}}．\n![|200](attachments/第1讲-静电场力学模型_知识点_v2_恢复候选答案解析/第33题/image_01.png)\n故选D．"
+  },
+  {
+    "questionNo": "14",
+    "matched": false,
+    "score": 0,
+    "url": "",
+    "answer": "",
+    "analysis": ""
+  },
+  {
+    "questionNo": "3",
+    "matched": true,
+    "score": 69.83,
+    "url": "https://xbresource.jiaoyanyun.com/#/boutique/search?sid=4&gid=3&queId=6851e77942594086917a4337a23f87dc",
+    "answer": "B",
+    "analysis": "根据点电荷的电场强度公式E=\\dfrac{kq}{{{r}^{2}}}可得各\\dfrac{1}{4}圆环上的电荷在O点的电场场强大小，再根据矢量合成，求出合场强，最后比较它们的大小即可．\n由于电荷均匀分布，则各\\dfrac{1}{4}圆环上的电荷等效集中于\\dfrac{1}{4}圆环的中心，设圆的半径为r，则A图O点处的场强大小为E_{A}=\\dfrac{k q}{r^{2}}；\n将B图中正、负电荷产生的场强进行叠加，等效两电荷场强方向间的夹角为90^\\circ，则在O点的合场强E_{B}=\\dfrac{\\sqrt{2} k q}{r^{2}}，方向沿x轴负方向；\nC图中两正电荷在O点的合场强为零，则C中的场强大小为E_{C}=\\dfrac{k q}{r^{2}}，D图由于完全对称，易得合场强E_D=0．\n故O处电场强度最大的是图B．\n故答案为B．"
+  },
+  {
+    "questionNo": "15",
+    "matched": false,
+    "score": 0,
+    "url": "",
+    "answer": "",
+    "analysis": ""
+  },
+  {
+    "questionNo": "37",
+    "matched": true,
+    "score": 71.25,
+    "url": "https://xbresource.jiaoyanyun.com/#/boutique/search?sid=4&gid=3&queId=da5890b3180f44ba8f2b97d349ccaed6",
+    "answer": "D",
+    "analysis": "已知P点的合场强为零，说明半球上电荷与点电荷Q在P点产生的场强大小相等、方向相反，点电荷Q在P点产生场强大小为\nE=k\\frac{Q}{{{(2R)}^{2}}}=k\\frac{Q}{4{{R}^{2}}}\n方向水平向左，所以，半球在P点产生的场强大小为k\\frac{Q}{4{{R}^{2}}}，方向水平向右．假如是一个封闭球壳，球壳内部电场强度处处为零，则知右半球在P点产生的场强大小也等于k\\frac{Q}{4{{R}^{2}}}，方向向左，根据对称性可知，左半球在M点产生的场强大小为k\\frac{Q}{4{{R}^{2}}}，方向向右，点电荷在M点产生的场强为\n{E}^{\\prime }=k\\frac{Q}{{{R}^{2}}}\n方向向左所以M点的合场强为\nE_{M}=k\\frac{Q}{R^{2}}-k\\frac{Q}{4R^{2}}=k\\frac{3Q}{4R^{2}}\n方向向左，故D正确．\n故选D．"
+  },
+  {
+    "questionNo": "16",
+    "matched": false,
+    "score": 0,
+    "url": "",
+    "answer": "",
+    "analysis": ""
+  },
+  {
+    "questionNo": "4",
+    "matched": true,
+    "score": 73.26,
+    "url": "https://xbresource.jiaoyanyun.com/#/boutique/search?sid=4&gid=3&queId=43a1e6b08f5f4271b9c443d28c710fab",
+    "answer": "D",
+    "analysis": "因M点场强为零，则带电薄板在M点产生的场强与+q在M点产生的场强等大方向，则带电薄板在M点的场强为\nE=k\\frac{q}{\\left(3d\\right)^{2}}=k\\frac{q}{9d^{2}}\n方向向右，所以带电薄板带负电；因为M点和N点与带电薄板的距离相等，由对称性可知，带电薄板在N点的场强为\nE^{\\prime }=k\\frac{q}{9d^{2}}\n方向向左，则N点的合场强为\nE_{\\text{N}}=k\\frac{q}{d^{2}}+k\\frac{q}{\\left(3d\\right)^{2}}=k\\frac{10q}{9d^{2}}\n方向向左；\n综上所述，故ABC错误，故D正确．\n故选D．"
+  },
+  {
+    "questionNo": "40",
+    "matched": true,
+    "score": 57.93,
+    "url": "https://xbresource.jiaoyanyun.com/#/boutique/search?sid=4&gid=3&queId=aafb08256e0646aba130ce010e1185a6",
+    "answer": "(1)4πkQ；E_{1}> E_{2}\n(2)B；见解析",
+    "analysis": "【详解】（1）a.由题可得\n\\Phi =ES=\\frac{kQ}{R_{1}^{2}}\\cdot 4\\pi R_{1}^{2}=4\\pi kQ\nb.单位面积的电通量即电场强度，则\nE=\\frac{\\Phi }{S}=\\frac{kQ}{r^{2}}\n其中\nR_{1}< R_{2}\n则\nE_{1}> E_{2}\n（2）a.b.可把整个球体分为一个个半径逐渐增大的球壳，每个球壳内部电荷量与球壳半径成正比．设球体带电荷量Q，球体带电密度\n\\frac{Q}{V}=\\frac{3Q}{4\\pi R^{3}}\n半径为x的球体带电量\nQ'=\\frac{3Q}{4\\pi R^{3}}\\cdot \\frac{4}{3}\\pi x^{3}=\\frac{Q}{R^{3}}x^{3}\n根据点电荷电场强度公式，整个球体内部电场强度\nE=\\frac{kQ'}{x^{2}}=\\frac{kQ}{R^{3}}x\n与x成正比．在球体外部，根据点电荷电场强度公式，电场强度与x的二次方成反比．所以从带电球体的球心开始，沿着半径（x）方向场强的分布图是B图．"
+  },
+  {
+    "questionNo": "41",
+    "matched": true,
+    "score": 99.25,
+    "url": "https://xbresource.jiaoyanyun.com/#/boutique/search?sid=4&gid=3&queId=52ccb61722c842248ba1a9c2d374ad25",
+    "answer": "B",
+    "analysis": "根据题意分析可知，半径为R的均匀带电体可以看成是点电荷存在O点，根据库仑定律可知对在A点的电荷的电场力为\n{{F}_{1}}=\\frac{kQq}{{{(2R)}^{2}}}=\\frac{kQq}{4{{R}^{2}}}\n同理割出的小球，因为电荷均匀分布其带电荷量\n{Q}'=\\frac{\\frac{4}{3}\\pi {{(\\frac{R}{2})}^{3}}}{\\frac{4}{3}\\pi {{R}^{3}}}Q\n同理对A处点电荷的电场力为\n{{F}_{2}}=\\frac{k{{Q}^{'}}q}{{{(\\frac{3R}{2})}^{2}}}=\\frac{kQq}{18{{R}^{2}}}\n所以剩余空腔部分电荷在A处点电荷的电场力\nF=F1-F2=\\frac{7kQq}{36{{R}^{2}}}\n故答案为B。"
+  }
+]
