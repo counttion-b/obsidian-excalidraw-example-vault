@@ -11,6 +11,7 @@ const DEFAULT_SETTINGS = {
   subjectId: "4",
   gradeGroupId: "3",
   minMatchScore: 35,
+  maxImagesPerQuestion: 1,
   jiaoyanyunDelayMs: 1500,
   jiaoyanyunRetryDelayMs: 15000,
   beijingSchoolPriority: "人大附中、北京四中、清华附中、北师大实验、北京十一学校、北大附中、北京八中、北京一零一中学、北师大附中、首师大附中、北京二中、北京十二中、北京八十中、五十五中、三十五中、工大附中、西城外国语"
@@ -181,6 +182,22 @@ module.exports = class PersonalQbankBrowserPlugin extends Plugin {
   }
 
   async fillCurrentPaperImages() {
+    if (this.imageFillRunning) {
+      new Notice("补图正在进行，请等待当前任务完成");
+      return;
+    }
+    this.imageFillRunning = true;
+    try {
+      await this.fillCurrentPaperImagesForActiveFile();
+    } catch (error) {
+      console.error(error);
+      new Notice(`补图已停止：${String(error?.message || error)}`);
+    } finally {
+      this.imageFillRunning = false;
+    }
+  }
+
+  async fillCurrentPaperImagesForActiveFile() {
     const activeFile = this.app.workspace.getActiveFile();
     if (!activeFile) {
       new Notice("请先打开一份纯文字试卷 md");
@@ -212,13 +229,17 @@ module.exports = class PersonalQbankBrowserPlugin extends Plugin {
 
     const oldCache = await readPaperCache(this.app, outputPath);
     const oldCacheByNo = new Map(oldCache.map(item => [String(item.questionNo || ""), item]));
-    const summaries = [];
+    const summaries = blocks.map(block => ({ questionNo: block.questionNo, pending: true }));
     let rewritten = content;
+    const saveProgress = async () => {
+      await this.app.vault.adapter.write(outputPath, rewritePaperTitle(rewritten, source));
+      await writePaperCache(this.app, outputPath, summaries);
+    };
     for (let index = blocks.length - 1; index >= 0; index -= 1) {
       const block = blocks[index];
       const questionNo = block.questionNo || String(index + 1);
       if (paperBlockHasImages(block.raw)) {
-        summaries.unshift(oldCacheByNo.get(String(questionNo)) || {
+        summaries[index] = oldCacheByNo.get(String(questionNo)) || {
           questionNo,
           matched: true,
           score: 100,
@@ -226,24 +247,27 @@ module.exports = class PersonalQbankBrowserPlugin extends Plugin {
           analysis: "",
           imageCount: paperBlockImageCount(block.raw),
           skipped: true
-        });
+        };
         continue;
       }
       try {
-        const match = await this.findJiaoyanyunMatch(block.searchText, { needDetail: false });
+        const match = await this.findJiaoyanyunMatch(block.searchText, { needDetail: false, forImages: true });
         if (!match || match.score < Number(this.settings.minMatchScore || 0)) {
-          summaries.unshift({ questionNo, matched: false, score: match?.score || 0, answer: "", analysis: "" });
+          summaries[index] = { questionNo, matched: false, score: match?.score || 0, answer: "", analysis: "" };
           rewritten = replaceRange(rewritten, block.start, block.end, retitlePaperBlock(block.raw, "例题", questionNo));
+          await saveProgress();
           continue;
         }
 
         const detail = match.question;
         const questionDir = `${attachmentsDir}/第${questionNo}题`;
         await ensureFolder(this.app, questionDir);
-        const imageMap = await this.downloadQuestionImages(detail.imageUrls, questionDir);
+        // Choose before downloading: never fetch the discarded diagrams or solution images.
+        const imageUrls = detail.imageUrls.slice(0, imageLimit(this.settings.maxImagesPerQuestion));
+        const imageMap = await this.downloadQuestionImages(imageUrls, questionDir);
         const replacement = renderMatchedPaperBlock(block.raw, match.preferredSource || "例题", questionNo, relativeImageMap(imageMap, activeFile));
         rewritten = replaceRange(rewritten, block.start, block.end, replacement);
-        summaries.unshift({
+        summaries[index] = {
           questionNo,
           matched: true,
           score: match.score,
@@ -251,23 +275,27 @@ module.exports = class PersonalQbankBrowserPlugin extends Plugin {
           source: match.preferredSource || null,
           answer: detail.answer || "",
           analysis: detail.analysis || "",
-          imageCount: imageMap.size
-        });
+          imageCount: new Set(imageMap.values()).size,
+          diagramCount: detail.imageUrls.length
+        };
+        await saveProgress();
       } catch (error) {
         console.error(error);
-        if (isJiaoyanyunAuthError(error)) {
-          new Notice(error.message);
+        if (isJiaoyanyunStopError(error)) {
+          await saveProgress();
+          new Notice(`${error.message}。已保存补图进度，稍后再次运行可继续`);
+          this.app.workspace.openLinkText(outputPath, "", false);
           return;
         }
-        summaries.unshift({ questionNo, matched: false, score: 0, answer: "", analysis: "", error: String(error?.message || error) });
-        rewritten = replaceRange(rewritten, block.start, block.end, retitlePaperBlock(block.raw, "例题", questionNo));
+        summaries[index] = { questionNo, matched: false, score: 0, answer: "", analysis: "", error: String(error?.message || error) };
+        await saveProgress();
       }
     }
 
     rewritten = rewritePaperTitle(rewritten, source);
     await this.app.vault.adapter.write(outputPath, rewritten);
     await writePaperCache(this.app, outputPath, summaries);
-    new Notice(`已更新带图版：${summaries.filter(item => item.matched).length}/${blocks.length} 道已有或匹配成功`);
+    new Notice(`已更新带图版：${summaries.filter(item => item.imageCount > 0).length}/${blocks.length} 道带图（每题最多 ${imageLimit(this.settings.maxImagesPerQuestion)} 张）`);
     this.app.workspace.openLinkText(outputPath, "", false);
   }
 
@@ -320,7 +348,7 @@ module.exports = class PersonalQbankBrowserPlugin extends Plugin {
           : `第${block.questionNo}题：未找到北京学校来源，标为例题`);
       } catch (error) {
         console.error(error);
-        if (isJiaoyanyunAuthError(error) || isJiaoyanyunVerificationError(error)) {
+        if (isJiaoyanyunStopError(error)) {
           new Notice(String(error?.message || error));
           return;
         }
@@ -364,7 +392,10 @@ module.exports = class PersonalQbankBrowserPlugin extends Plugin {
         candidates.push({ score, question, item, id });
       }
     }
-    const best = selectBestQuestionCandidate(candidates, this.settings);
+    // Images belong to the closest question; school preference must not choose a different diagram.
+    const best = options.forImages
+      ? [...candidates].sort((a, b) => b.score - a.score)[0]
+      : selectBestQuestionCandidate(candidates, this.settings);
     if (!best) return null;
     if (!options.needDetail || questionHasSolution(best.question)) {
       return {
@@ -384,7 +415,16 @@ module.exports = class PersonalQbankBrowserPlugin extends Plugin {
   }
 
   async searchJiaoyanyun(query, limit) {
-    const response = await this.requestJiaoyanyun({
+    // Keep successful searches briefly, including in-flight requests from other commands.
+    if (this.searchCacheToken !== this.settings.jiaoyanyunToken) {
+      this.searchCache = new Map();
+      this.searchCacheToken = this.settings.jiaoyanyunToken;
+    }
+    this.searchCache ||= new Map();
+    const key = JSON.stringify([this.settings.subjectId, this.settings.gradeGroupId, query, limit]);
+    const cached = this.searchCache.get(key);
+    if (cached && Date.now() - cached.at < 15 * 60 * 1000) return cached.promise;
+    const promise = this.requestJiaoyanyun({
       url: `${DEFAULT_JIAOYANYUN_API}/v1/question/page`,
       method: "POST",
       headers: this.jiaoyanyunHeaders(),
@@ -397,8 +437,15 @@ module.exports = class PersonalQbankBrowserPlugin extends Plugin {
         searchContent: query,
         isSearchImg: 0
       })
-    });
-    return findQuestionItems(response.json).slice(0, limit);
+    }).then(response => findQuestionItems(response.json).slice(0, limit));
+    if (this.searchCache.size >= 100) this.searchCache.delete(this.searchCache.keys().next().value);
+    this.searchCache.set(key, { at: Date.now(), promise });
+    try {
+      return await promise;
+    } catch (error) {
+      this.searchCache.delete(key);
+      throw error;
+    }
   }
 
   async fetchJiaoyanyunDetail(questionId, fallback) {
@@ -419,7 +466,7 @@ module.exports = class PersonalQbankBrowserPlugin extends Plugin {
         item = Object.assign({}, item, response.json.data[0]);
       }
     } catch (error) {
-      if (isJiaoyanyunAuthError(error)) throw error;
+      if (isJiaoyanyunStopError(error)) throw error;
       console.warn("detailByIds failed", error);
     }
     return questionFromJiaoyanyunItem(
@@ -438,45 +485,89 @@ module.exports = class PersonalQbankBrowserPlugin extends Plugin {
     };
   }
 
-  async requestJiaoyanyun(options, attempt = 0) {
-    await this.waitForJiaoyanyunSlot();
-    try {
-      const response = await requestUrl(options);
-      assertJiaoyanyunLoggedIn(response.json);
-      assertJiaoyanyunNotThrottled(response.json);
-      return response;
-    } catch (error) {
-      if (isJiaoyanyunThrottleError(error) && attempt < 2) {
-        const retryDelay = Number(this.settings.jiaoyanyunRetryDelayMs || 15000) * (attempt + 1);
-        new Notice(`教研云请求过快，暂停 ${Math.round(retryDelay / 1000)} 秒后重试`);
-        await sleep(retryDelay);
-        return this.requestJiaoyanyun(options, attempt + 1);
+  requestJiaoyanyun(options, expectImage = false) {
+    // One queue covers searches, details and image downloads, even across overlapping commands.
+    const pending = (this.jiaoyanyunQueue || Promise.resolve()).then(async () => {
+      for (let attempt = 0; attempt < 3; attempt += 1) {
+        await this.waitForJiaoyanyunSlot();
+        let response;
+        try {
+          response = await requestUrl({ ...options, throw: false });
+          const status = Number(response.status || 200);
+          const type = responseContentType(response);
+          if (status === 429) throw new Error("教研云请求过快（429）");
+          if (status === 401 || status === 403) throw new Error("教研云登录已失效或资源访问被拒绝，请在网站检查登录状态");
+          if (status >= 400) throw new Error(`教研云请求失败（${status}）`);
+          if (!expectImage || /json/i.test(type)) {
+            assertJiaoyanyunLoggedIn(response.json);
+            assertJiaoyanyunNotThrottled(response.json);
+          }
+          if (expectImage && /text\/html/i.test(type)) {
+            throw new Error("教研云需要浏览器验证：图片请求返回了网页");
+          }
+          if (expectImage && (!/^(image\/|application\/octet-stream)/i.test(type) || !response.arrayBuffer?.byteLength)) {
+            throw new Error("图片下载失败：服务器未返回有效图片");
+          }
+          return response;
+        } catch (error) {
+          if (!isJiaoyanyunThrottleError(error)) throw error;
+          const retryDelay = Math.max(
+            15000,
+            Number(this.settings.jiaoyanyunRetryDelayMs) || 15000
+          ) * (2 ** attempt);
+          const delay = Math.max(retryDelay, retryAfterMs(response?.headers));
+          this.jiaoyanyunCooldownUntil = Math.max(this.jiaoyanyunCooldownUntil || 0, Date.now() + delay);
+          if (attempt === 2) throw error;
+          new Notice(`教研云请求过快，暂停 ${Math.ceil(delay / 1000)} 秒后重试`);
+        }
       }
-      throw error;
-    }
+    });
+    this.jiaoyanyunQueue = pending.catch(() => {});
+    return pending;
   }
 
   async waitForJiaoyanyunSlot() {
-    const delayMs = Math.max(0, Number(this.settings.jiaoyanyunDelayMs || 0));
+    const delayMs = Math.max(1000, Number(this.settings.jiaoyanyunDelayMs) || 1500);
     const now = Date.now();
     const last = Number(this.lastJiaoyanyunRequestAt || 0);
-    const waitMs = Math.max(0, last + delayMs - now);
+    const waitMs = Math.max(0, last + delayMs - now, (this.jiaoyanyunCooldownUntil || 0) - now);
     if (waitMs > 0) await sleep(waitMs);
     this.lastJiaoyanyunRequestAt = Date.now();
   }
 
   async downloadQuestionImages(imageUrls, folderPath) {
     const imageMap = new Map();
-    let index = 1;
-    for (const url of imageUrls) {
+    if (!imageUrls.length) return imageMap;
+    const cachePath = `${folderPath}/.qbank-image-cache.json`;
+    let cache = {};
+    if (await this.app.vault.adapter.exists(cachePath)) {
       try {
-        const response = await requestUrl({ url, method: "GET", headers: this.jiaoyanyunHeaders() });
-        const suffix = imageSuffix(response.headers?.["content-type"], url);
-        const path = `${folderPath}/image_${String(index).padStart(2, "0")}${suffix}`;
-        await this.app.vault.adapter.writeBinary(path, response.arrayBuffer);
+        const saved = JSON.parse(await this.app.vault.adapter.read(cachePath));
+        if (saved && typeof saved === "object" && !Array.isArray(saved)) cache = saved;
+      } catch { /* An invalid index can be rebuilt without deleting image files. */ }
+    }
+    for (const url of [...new Set(imageUrls)]) {
+      try {
+        const key = imageIdentity(url);
+        const existing = cache[key];
+        if (typeof existing === "string" && existing.startsWith(`${folderPath}/image_`) && !existing.includes("..") && await this.app.vault.adapter.exists(existing)) {
+          imageMap.set(url, existing);
+          continue;
+        }
+        const headers = { Referer: `${DEFAULT_JIAOYANYUN_WEB}/` };
+        // The login token is for the API, not image CDNs.
+        const response = await this.requestJiaoyanyun({ url, method: "GET", headers }, true);
+        const suffix = imageSuffix(responseContentType(response), url);
+        const digest = await imageDigest(response.arrayBuffer);
+        const path = `${folderPath}/image_${digest}${suffix}`;
+        if (!(await this.app.vault.adapter.exists(path))) {
+          await this.app.vault.adapter.writeBinary(path, response.arrayBuffer);
+        }
         imageMap.set(url, path);
-        index += 1;
+        cache[key] = path;
+        await this.app.vault.adapter.write(cachePath, JSON.stringify(cache, null, 2));
       } catch (error) {
+        if (isJiaoyanyunStopError(error)) throw error;
         console.warn("download image failed", url, error);
       }
     }
@@ -595,7 +686,7 @@ module.exports = class PersonalQbankBrowserPlugin extends Plugin {
           });
         } catch (error) {
           console.error(error);
-          if (isJiaoyanyunAuthError(error) || isJiaoyanyunVerificationError(error)) {
+          if (isJiaoyanyunStopError(error)) {
             new Notice(String(error?.message || error));
             this.logProgress("检索中断", { file: activeFile.path, questionNo: block.questionNo, error: String(error?.message || error) });
             return "";
@@ -966,8 +1057,19 @@ class QbankSettingTab extends PluginSettingTab {
         }));
 
     new Setting(containerEl)
+      .setName("每题补图上限")
+      .setDesc("默认只下载并插入 1 张题干示意图，排除答案、解析、选项和公式小图。确实需要甲乙图等多张图时可调高；已有图片的题目会跳过。")
+      .addDropdown(dropdown => dropdown
+        .addOptions({ "1": "1 张（默认）", "2": "最多 2 张", "3": "最多 3 张", "4": "最多 4 张", "6": "最多 6 张", "10": "最多 10 张" })
+        .setValue(String(imageLimit(this.plugin.settings.maxImagesPerQuestion)))
+        .onChange(async value => {
+          this.plugin.settings.maxImagesPerQuestion = imageLimit(value);
+          await this.plugin.saveSettings();
+        }));
+
+    new Setting(containerEl)
       .setName("教研云请求间隔")
-      .setDesc("补图时每次搜索/详情请求之间的停顿，单位毫秒。遇到中途停止或 0/20，可调到 1500-2500。")
+      .setDesc("搜索、详情和图片下载共用一个队列，单位毫秒，最短 1000。默认 1500；容易限流时可调到 2500-5000。")
       .addText(text => text
         .setPlaceholder("1500")
         .setValue(String(this.plugin.settings.jiaoyanyunDelayMs ?? 1500))
@@ -978,7 +1080,7 @@ class QbankSettingTab extends PluginSettingTab {
 
     new Setting(containerEl)
       .setName("教研云限流重试等待")
-      .setDesc("出现请求过快时等待多久再重试，单位毫秒。")
+      .setDesc("首次限流至少等待 15000 毫秒，再次限流加倍，并遵守网站要求的等待时间。最多重试两次，仍被限流则保存补图进度并停止。")
       .addText(text => text
         .setPlaceholder("15000")
         .setValue(String(this.plugin.settings.jiaoyanyunRetryDelayMs ?? 15000))
@@ -997,7 +1099,7 @@ function parsePaperBlocks(content) {
     const end = index + 1 < matches.length ? matches[index + 1].index : content.length;
     const raw = content.slice(start, end).trimEnd();
     const title = paperBlockTitle(raw);
-    const questionNo = paperQuestionNo(title) || paperQuestionNo(raw) || String(index + 1);
+    const questionNo = paperQuestionNo(raw) || paperQuestionNo(title) || String(index + 1);
     blocks.push({
       start,
       end,
@@ -1021,6 +1123,11 @@ function paperBlockStarts(content) {
   for (const start of starts) {
     const previous = result[result.length - 1];
     if (previous && previous.index === start.index) continue;
+    // A heading followed only by whitespace and a callout is its number, not a separate question.
+    if (previous && /^#{6}/.test(previous.text) && /^>/.test(start.text)
+      && !content.slice(previous.index + previous.text.length, start.index).trim()) {
+      continue;
+    }
     result.push(start);
   }
   return result;
@@ -1035,7 +1142,8 @@ function paperSourceFromContent(content) {
 }
 
 function paperBlockTitle(raw) {
-  const first = String(raw || "").split(/\r?\n/, 1)[0] || "";
+  const text = String(raw || "");
+  const first = text.match(/^>\s*\[!ti\].*$/m)?.[0] || text.split(/\r?\n/, 1)[0] || "";
   const match = first.match(/\*([^*]+)\*/);
   return normalizeWhitespace(match ? match[1] : first.replace(/^>\s*\[!ti\]\s*/, "").replace(/^#{1,6}\s*/, ""));
 }
@@ -1054,8 +1162,11 @@ function paperSearchText(raw) {
   } else if (lines[0] && /^#{1,6}\s*/.test(lines[0])) {
     lines.shift();
   }
+  while (lines.length && !lines[0].trim()) lines.shift();
+  if (lines[0] && /^\s*>\s*\[!ti\]/.test(lines[0])) lines.shift();
   return normalizeWhitespace(
     lines.join("\n")
+      .replace(/%%[\s\S]*?%%/g, " ")
       .replace(/!\[[^\]]*\]\([^)]+\)/g, " ")
       .replace(/\[\[[^\]]+\]\]/g, " ")
       .replace(/^>+\s?/gm, "")
@@ -1094,12 +1205,11 @@ function replaceRange(text, start, end, replacement) {
 }
 
 function renderMatchedPaperBlock(originalRaw, source, questionNo, imageMap) {
-  const title = `${source}第${questionNo}题`;
   let raw = retitlePaperBlock(originalRaw, source, questionNo);
   if (!imageMap.size) return raw;
   if (/!\[[^\]]*\]\([^)]+\)/.test(raw)) return raw;
 
-  const imageLines = [...imageMap.values()].map(path => `> ![|200](${path})`);
+  const imageLines = [...new Set(imageMap.values())].map(path => `> ![|200](${path})`);
   const lines = raw.split(/\r?\n/);
   let insertAt = lines.findIndex(line => /^\s*>(?:\s*>\s*)?\[!opts/.test(line));
   if (insertAt === -1) {
@@ -1267,6 +1377,21 @@ function isJiaoyanyunVerificationError(error) {
   return /浏览器验证|进行验证|人机验证|安全验证|50302/i.test(String(error?.message || error || ""));
 }
 
+function isJiaoyanyunStopError(error) {
+  return isJiaoyanyunAuthError(error) || isJiaoyanyunVerificationError(error) || isJiaoyanyunThrottleError(error);
+}
+
+function responseContentType(response) {
+  return String(Object.entries(response?.headers || {}).find(([key]) => key.toLowerCase() === "content-type")?.[1] || "");
+}
+
+function retryAfterMs(headers) {
+  const value = Object.entries(headers || {}).find(([key]) => key.toLowerCase() === "retry-after")?.[1];
+  if (!value) return 0;
+  const seconds = Number(value);
+  return Number.isFinite(seconds) ? Math.max(0, seconds * 1000) : Math.max(0, Date.parse(value) - Date.now()) || 0;
+}
+
 function isProbablyTalToken(value) {
   const token = String(value || "").trim();
   return /^tal/i.test(token) || token.length > 80;
@@ -1285,13 +1410,11 @@ function questionFromJiaoyanyunItem(item, subjectId, gradeGroupId, settings = {}
   const stemHtml = contentFromApiItem(item);
   const answerHtml = fieldFromApiItem(item, ["answer", "answers", "referenceAnswer", "correctAnswer", "blankAnswer"]);
   const analysisHtml = fieldFromApiItem(item, ["analysis", "analyze", "answerAnalysis", "explain"]);
-  const optionHtmls = optionHtmlValues(item);
   const options = optionsFromApiItem(item);
   const sources = sourcesFromApiItem(item, subjectId, gradeGroupId, settings);
   const preferredSource = selectPreferredSource(sources, settings);
   const source = preferredSource?.name || sources[0]?.name || sourceFromApiItem(item);
   const url = `${DEFAULT_JIAOYANYUN_WEB}/#/boutique/search?sid=${subjectId}&gid=${gradeGroupId}&queId=${questionId}`;
-  const allHtml = [stemHtml, answerHtml, analysisHtml, ...optionHtmls].join("\n");
   return {
     url,
     title: source || questionId || "教研云试题",
@@ -1302,7 +1425,7 @@ function questionFromJiaoyanyunItem(item, subjectId, gradeGroupId, settings = {}
     source,
     sources,
     preferredSource,
-    imageUrls: collectImageUrls(allHtml)
+    imageUrls: collectStemDiagramUrls(stemHtml)
   };
 }
 
@@ -1611,6 +1734,64 @@ function selectBestQuestionCandidate(candidates, settings = {}) {
   return [...candidates].sort((a, b) => b.score - a.score)[0];
 }
 
+function imageLimit(value) {
+  const count = Number(value);
+  return Number.isFinite(count) && count >= 1 ? Math.min(10, Math.floor(count)) : 1;
+}
+
+function imageIdentity(url) {
+  try {
+    const parsed = new URL(absoluteImageUrl(String(url || "").replace(/&amp;/gi, "&")));
+    parsed.hash = "";
+    // Only known image presentation parameters are disposable. Keep IDs/signatures and unknown queries.
+    for (const key of [...parsed.searchParams.keys()]) {
+      if (/^(x-oss-process|imageMogr2|imageView2)$/i.test(key)) parsed.searchParams.delete(key);
+    }
+    parsed.searchParams.sort();
+    return parsed.href;
+  } catch {
+    return String(url || "");
+  }
+}
+
+function isFormulaImage(url, tag = "") {
+  return /(?:latexlib[^/]*\/|\/latex\/|codecogs\.com|[?&](?:latex|tex)=)/i.test(url)
+    || /\b(?:data-latex|data-tex|data-mathml)\s*=/i.test(tag)
+    || /\bclass\s*=\s*["'][^"']*(?:mathjax|mathml|latex|equation|formula)[^"']*["']/i.test(tag);
+}
+
+function collectStemDiagramUrls(html) {
+  // The stem can include subquestions; exclude formulas before considering the per-question cap.
+  const text = String(html || "")
+    .replace(/<(?:span|div)\b[^>]*class\s*=\s*["'][^"']*(?:mathjax|mathml|latex|equation|formula)[^"']*["'][^>]*>[\s\S]*?<\/(?:span|div)>/gi, "");
+  const images = [];
+  for (const match of text.matchAll(/<img\b[^>]*>/gi)) {
+    const tag = match[0];
+    const attributes = {};
+    for (const attr of tag.matchAll(/([\w-]+)\s*=\s*(?:"([^"]*)"|'([^']*)'|([^\s>]+))/g)) {
+      attributes[attr[1].toLowerCase()] = attr[2] ?? attr[3] ?? attr[4];
+    }
+    const url = absoluteImageUrl(htmlEntities(attributes["data-original"] || attributes["data-src"] || attributes.src || ""));
+    if (/^https?:\/\//i.test(url) && !isFormulaImage(url, tag)) images.push(url);
+  }
+  for (const match of text.matchAll(/!\[[^\]]*\]\((https?:\/\/[^)\s]+)\)/g)) {
+    const url = htmlEntities(match[1]);
+    if (!isFormulaImage(url)) images.push(url);
+  }
+  const unique = new Map();
+  for (const url of images) {
+    const key = imageIdentity(url);
+    if (!unique.has(key)) unique.set(key, url);
+  }
+  return [...unique.values()];
+}
+
+async function imageDigest(buffer) {
+  const cryptoApi = globalThis.crypto?.subtle ? globalThis.crypto : require("crypto").webcrypto;
+  const digest = await cryptoApi.subtle.digest("SHA-256", buffer);
+  return [...new Uint8Array(digest)].map(value => value.toString(16).padStart(2, "0")).join("").slice(0, 24);
+}
+
 function collectImageUrls(html) {
   const urls = [];
   const img = /<img\b[^>]*(?:src|data-src|data-original)=["']([^"']+)["'][^>]*>/gi;
@@ -1649,9 +1830,9 @@ function htmlEntities(text) {
 
 function imageSuffix(contentType, url) {
   const type = String(contentType || "").split(";")[0].toLowerCase();
-  const byType = { "image/jpeg": ".jpg", "image/jpg": ".jpg", "image/png": ".png", "image/gif": ".gif", "image/webp": ".webp", "image/bmp": ".bmp" };
+  const byType = { "image/jpeg": ".jpg", "image/jpg": ".jpg", "image/png": ".png", "image/gif": ".gif", "image/webp": ".webp", "image/bmp": ".bmp", "image/svg+xml": ".svg" };
   if (byType[type]) return byType[type];
-  const match = String(url || "").split("?", 1)[0].match(/\.(jpg|jpeg|png|gif|webp|bmp)$/i);
+  const match = String(url || "").split("?", 1)[0].match(/\.(jpg|jpeg|png|gif|webp|bmp|svg)$/i);
   return match ? `.${match[1].toLowerCase().replace("jpeg", "jpg")}` : ".jpg";
 }
 
@@ -1703,7 +1884,7 @@ function renderPaperVariant(title, blocks, cacheByNo, mode) {
 }
 
 function renderDetailQuestionBlock(block, source) {
-  if (/^>\s*\[!ti\]/.test(block.raw)) {
+  if (/^>\s*\[!ti\]/m.test(block.raw)) {
     return retitlePaperBlock(block.raw, source, block.questionNo);
   }
   return block.raw;
