@@ -1,0 +1,190 @@
+{
+  "schema": 1,
+  "entries": {
+    "e669e3236a87ccb6a8cbc792": {
+      "question": {
+        "smart": {
+          "id": "c713812b832f49e9ac0228473a297ad7",
+          "problem": "如图所示为静电场中的一簇电场线，比较其中A、B两位置的电势高低和电场强度的大小，下列关系式中正确的是（        ）\n![|200](<https://tiku-pro-cdn.speiyou.com/imgFile/e5dee01617c28c0f825bdcfcf6b69e8b.png>)\n\nA. φ<sub>A</sub>＞φ<sub>B</sub>，E<sub>A</sub>＞E<sub>B</sub>\n\nB. φ<sub>A</sub>＞φ<sub>B</sub>，E<sub>A</sub>＜E<sub>B</sub>\n\nC. φ<sub>A</sub>＜φ<sub>B</sub>，E<sub>A</sub>＞E<sub>B</sub>\n\nD. φ<sub>A</sub>＜φ<sub>B</sub>，E<sub>A</sub>＜E<sub>B</sub>",
+          "answer": "B",
+          "analysis": "【详解】电场强度比较：电场线的疏密表示电场强度大小，电场线越密场强越大。由图可知，A处电场线比B处稀疏，因此$E_{A} < E_{B}$\n\n电势高低比较：沿电场线方向电势逐渐降低，因此$\\varphi_{A} > \\varphi_{B}$\n\n故选B。",
+          "doubtful": false,
+          "issues": []
+        },
+        "url": "https://xbresource.jiaoyanyun.com/#/boutique/search?sid=4&gid=3&queId=c713812b832f49e9ac0228473a297ad7",
+        "title": "2025~2026学年江苏盐城盐都区盐城市伍佑中学高二上学期期末第8题",
+        "stem": "如图所示为静电场中的一簇电场线，比较其中A、B两位置的电势高低和电场强度的大小，下列关系式中正确的是（        ）\n![|200](https://tiku-pro-cdn.speiyou.com/imgFile/e5dee01617c28c0f825bdcfcf6b69e8b.png)",
+        "options": [
+          "A. φA＞φB，EA＞EB",
+          "B. φA＞φB，EA＜EB",
+          "C. φA＜φB，EA＞EB",
+          "D. φA＜φB，EA＜EB"
+        ],
+        "answer": "B",
+        "analysis": "【详解】电场强度比较：电场线的疏密表示电场强度大小，电场线越密场强越大。由图可知，A处电场线比B处稀疏，因此E_{A} < E_{B}\n电势高低比较：沿电场线方向电势逐渐降低，因此\\varphi_{A} > \\varphi_{B}\n故选B。",
+        "source": "2025~2026学年江苏盐城盐都区盐城市伍佑中学高二上学期期末第8题",
+        "sources": [
+          {
+            "name": "2025~2026学年江苏盐城盐都区盐城市伍佑中学高二上学期期末第8题",
+            "url": "https://xbresource.jiaoyanyun.com/#/boutique/search?sid=4&gid=3&queId=c713812b832f49e9ac0228473a297ad7",
+            "provider": "教研云",
+            "school_year": "2025~2026",
+            "province": "江苏",
+            "city": "盐城",
+            "area": "盐都区",
+            "school": "盐城市伍佑中学",
+            "grade": "高二",
+            "semester": "上学期",
+            "exam_type": "期末",
+            "paper_tag": "",
+            "question_index": "8",
+            "score_value": "",
+            "month": "",
+            "note": "",
+            "year": 2026,
+            "isBeijing": false,
+            "hasSchool": true,
+            "isBeijingSchool": false,
+            "schoolRank": 0,
+            "sourceTier": "外地来源"
+          }
+        ],
+        "preferredSource": null,
+        "imageUrls": [
+          "https://tiku-pro-cdn.speiyou.com/imgFile/e5dee01617c28c0f825bdcfcf6b69e8b.png"
+        ]
+      }
+    },
+    "04bed2838dab9141f9997bd6": {
+      "question": {
+        "smart": {
+          "id": "b70f35663e06486688dae03913adb440",
+          "problem": "AC两球（可视为点电荷）带等量正电荷，其周围电场的电场线如图所示。O点为两球心连线的中点，PN两点在两球心连线的中垂线上。则（　　）\n![|200](<https://tiku-pro-cdn.speiyou.com/imgFile/7717e84a00b2ccdcf6c27664d00c2d76.png>)\n\nA. 从O向P延伸到无穷远的射线上电场强度一直增大\n\nB. P点处电场强度的方向从P指向O\n\nC. P点的电势高于N点的电势\n\nD. 一负点电荷位于P点时的电势能大于位于N点时的电势能",
+          "answer": "C",
+          "analysis": "【详解】AB．根据等量正电荷中垂线场强分布特点可知，从O向P延伸到无穷远的射线上电场强度先增大后减小；P点处电场强度的方向从O指向P，故AB错误；\n\nCD．根据沿场强方向电势逐渐降低，中垂线上的场强方向由O出发指向无穷远处，则P点的电势高于N点的电势，根据$E_{\\text{p}} = q\\varphi$可知，一负点电荷位于P点时的电势能小于位于N点时的电势能，故C正确，D错误。\n\n故选C。",
+          "doubtful": false,
+          "issues": []
+        },
+        "url": "https://xbresource.jiaoyanyun.com/#/boutique/search?sid=4&gid=3&queId=b70f35663e06486688dae03913adb440",
+        "title": "天津高二上学期专题练习《专题01 静电场及其应用》（期中真题汇编,天津专用）第31题",
+        "stem": "AC两球（可视为点电荷）带等量正电荷，其周围电场的电场线如图所示。O点为两球心连线的中点，PN两点在两球心连线的中垂线上。则（　　）\n![|200](https://tiku-pro-cdn.speiyou.com/imgFile/7717e84a00b2ccdcf6c27664d00c2d76.png)",
+        "options": [
+          "A. 从O向P延伸到无穷远的射线上电场强度一直增大",
+          "B. P点处电场强度的方向从P指向O",
+          "C. P点的电势高于N点的电势",
+          "D. 一负点电荷位于P点时的电势能大于位于N点时的电势能"
+        ],
+        "answer": "C",
+        "analysis": "【详解】AB．根据等量正电荷中垂线场强分布特点可知，从O向P延伸到无穷远的射线上电场强度先增大后减小；P点处电场强度的方向从O指向P，故AB错误；\nCD．根据沿场强方向电势逐渐降低，中垂线上的场强方向由O出发指向无穷远处，则P点的电势高于N点的电势，根据E_{\\text{p}} = q\\varphi可知，一负点电荷位于P点时的电势能小于位于N点时的电势能，故C正确，D错误。\n故选C。",
+        "source": "天津高二上学期专题练习《专题01 静电场及其应用》（期中真题汇编,天津专用）第31题",
+        "sources": [
+          {
+            "name": "天津高二上学期专题练习《专题01 静电场及其应用》（期中真题汇编,天津专用）第31题",
+            "url": "https://xbresource.jiaoyanyun.com/#/boutique/search?sid=4&gid=3&queId=b70f35663e06486688dae03913adb440",
+            "provider": "教研云",
+            "school_year": "",
+            "province": "天津",
+            "city": "天津",
+            "area": "",
+            "school": "",
+            "grade": "高二",
+            "semester": "上学期",
+            "exam_type": "专题练习",
+            "paper_tag": "",
+            "question_index": "31",
+            "score_value": "",
+            "month": "",
+            "note": "（期中真题汇编,天津专用）",
+            "year": 0,
+            "isBeijing": false,
+            "hasSchool": false,
+            "isBeijingSchool": false,
+            "schoolRank": 0,
+            "sourceTier": "外地来源"
+          }
+        ],
+        "preferredSource": null,
+        "imageUrls": [
+          "https://tiku-pro-cdn.speiyou.com/imgFile/7717e84a00b2ccdcf6c27664d00c2d76.png"
+        ]
+      }
+    },
+    "0cddc143398912467815f08d": {
+      "question": {
+        "smart": {
+          "id": "887bfb0418d44504a1fefcfd169cb1ad",
+          "problem": "如图所示为某同学利用传感器研究电容器放电过程的实验电路，实验时先使开关S与1端相连，电源向电容器充电，待电路稳定后把开关S掷向2端，电容器通过电阻R放电，传感器将电流信息传入计算机，屏幕上显示出电流随时间变化的i-t曲线，这个曲线的横坐标是放电时间，纵坐标是放电电流。下列说法中不正确的是（　　）\n![|200](<https://tiku-pro-cdn.speiyou.com/imgFile/c1f6697f2f7dc37dd9be7094ca8610c5.png>)\n\nA. 如果仅提高电源两端的电压，则电容器在t=0时刻的放电电流变大\n\nB. 如果仅将电阻R的阻值变大，则电容器在t=0时刻的放电电流变小\n\nC. 如果仅将电阻R的阻值变大，则电容器放电更快\n\nD. 如果仅将电阻R的阻值变大，则i﹣t曲线与两坐标轴所围的面积保持不变",
+          "answer": "C",
+          "analysis": "【详解】A．如果仅提高电源两端的电压，则电容器的电压增大，放电时电容器相当于电源，根据\n\n$I = \\frac{U}{R}$\n\n可知电容器在t=0时刻的放电电流变大，A正确；\n\nB．如果仅将电阻R的阻值变大，则电容器电压不变，放电电流\n\n$I = \\frac{U}{R}$\n\n可知电容器在t=0时刻的放电电流变小，B正确；\n\nC．如果仅将电阻R的阻值变大，则电容器放电电流会减小，则放电变慢，C错误；\n\nD．因为i﹣t曲线与两坐标轴所围的面积等于电容器的带电量，则如果仅将电阻R的阻值变大，则i﹣t曲线与两坐标轴所围的面积保持不变，D正确。\n\n本题选不正确的，故选C。",
+          "doubtful": false,
+          "issues": []
+        },
+        "url": "https://xbresource.jiaoyanyun.com/#/boutique/search?sid=4&gid=3&queId=887bfb0418d44504a1fefcfd169cb1ad",
+        "title": "2024~2025学年12月北京西城区北京市第十五中学高三上学期月考第8题",
+        "stem": "如图所示为某同学利用传感器研究电容器放电过程的实验电路，实验时先使开关S与1端相连，电源向电容器充电，待电路稳定后把开关S掷向2端，电容器通过电阻R放电，传感器将电流信息传入计算机，屏幕上显示出电流随时间变化的i-t曲线，这个曲线的横坐标是放电时间，纵坐标是放电电流。下列说法中不正确的是（　　）\n![|200](https://tiku-pro-cdn.speiyou.com/imgFile/c1f6697f2f7dc37dd9be7094ca8610c5.png)",
+        "options": [
+          "A. 如果仅提高电源两端的电压，则电容器在t=0时刻的放电电流变大",
+          "B. 如果仅将电阻R的阻值变大，则电容器在t=0时刻的放电电流变小",
+          "C. 如果仅将电阻R的阻值变大，则电容器放电更快",
+          "D. 如果仅将电阻R的阻值变大，则i﹣t曲线与两坐标轴所围的面积保持不变"
+        ],
+        "answer": "C",
+        "analysis": "【详解】A．如果仅提高电源两端的电压，则电容器的电压增大，放电时电容器相当于电源，根据\nI = \\frac{U}{R}\n可知电容器在t=0时刻的放电电流变大，A正确；\nB．如果仅将电阻R的阻值变大，则电容器电压不变，放电电流\nI = \\frac{U}{R}\n可知电容器在t=0时刻的放电电流变小，B正确；\nC．如果仅将电阻R的阻值变大，则电容器放电电流会减小，则放电变慢，C错误；\nD．因为i﹣t曲线与两坐标轴所围的面积等于电容器的带电量，则如果仅将电阻R的阻值变大，则i﹣t曲线与两坐标轴所围的面积保持不变，D正确。\n本题选不正确的，故选C。",
+        "source": "2024~2025学年12月北京西城区北京市第十五中学高三上学期月考第8题",
+        "sources": [
+          {
+            "name": "2024~2025学年12月北京西城区北京市第十五中学高三上学期月考第8题",
+            "url": "https://xbresource.jiaoyanyun.com/#/boutique/search?sid=4&gid=3&queId=887bfb0418d44504a1fefcfd169cb1ad",
+            "provider": "教研云",
+            "school_year": "2024~2025",
+            "province": "北京",
+            "city": "北京",
+            "area": "西城区",
+            "school": "北京市第十五中学",
+            "grade": "高三",
+            "semester": "上学期",
+            "exam_type": "月考",
+            "paper_tag": "",
+            "question_index": "8",
+            "score_value": "",
+            "month": "12",
+            "note": "",
+            "year": 2025,
+            "isBeijing": true,
+            "hasSchool": true,
+            "isBeijingSchool": true,
+            "schoolRank": 21,
+            "sourceTier": "北京学校"
+          }
+        ],
+        "preferredSource": {
+          "name": "2024~2025学年12月北京西城区北京市第十五中学高三上学期月考第8题",
+          "url": "https://xbresource.jiaoyanyun.com/#/boutique/search?sid=4&gid=3&queId=887bfb0418d44504a1fefcfd169cb1ad",
+          "provider": "教研云",
+          "school_year": "2024~2025",
+          "province": "北京",
+          "city": "北京",
+          "area": "西城区",
+          "school": "北京市第十五中学",
+          "grade": "高三",
+          "semester": "上学期",
+          "exam_type": "月考",
+          "paper_tag": "",
+          "question_index": "8",
+          "score_value": "",
+          "month": "12",
+          "note": "",
+          "year": 2025,
+          "isBeijing": true,
+          "hasSchool": true,
+          "isBeijingSchool": true,
+          "schoolRank": 21,
+          "sourceTier": "北京学校"
+        },
+        "imageUrls": [
+          "https://tiku-pro-cdn.speiyou.com/imgFile/c1f6697f2f7dc37dd9be7094ca8610c5.png"
+        ]
+      }
+    }
+  }
+}
