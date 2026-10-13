@@ -38,7 +38,7 @@ function setup(request = async () => imageResponse()) {
       Notice: class { constructor(message) { notices.push(message); } },
       Plugin: class {}, PluginSettingTab: class {}, Setting: class {}, setIcon() {},
       requestUrl: options => request(options, time)
-    } : require(name)
+    } : require(name === './smart-paper' ? '../smart-paper' : name)
   };
   vm.runInNewContext(code + hooks, context);
   const Plugin = context.module.exports;

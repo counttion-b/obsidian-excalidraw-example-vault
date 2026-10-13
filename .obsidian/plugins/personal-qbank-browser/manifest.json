@@ -1,9 +1,9 @@
 {
   "id": "personal-qbank-browser",
   "name": "个人题库筛选",
-  "version": "0.3.1",
+  "version": "0.4.0",
   "minAppVersion": "1.5.0",
-  "description": "按标签筛选题库，支持纯文字试卷补图、按北京学校偏好更新题目来源，并生成答案版和解析版。",
+  "description": "逐题智能补齐配图、答案与解析，一键生成学生版、教师版和先答案后解析的答案版；支持缓存、限流退避及核对清单。",
   "author": "Ava + Codex",
   "isDesktopOnly": false
 }
