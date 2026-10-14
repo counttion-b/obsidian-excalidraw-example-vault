@@ -1,0 +1,208 @@
+{
+  "schema": 1,
+  "entries": {
+    "e08b52378a569b8d9878c8c9": {
+      "question": {
+        "smart": {
+          "id": "d9fb698ca5624e41ac96989c411bf19e",
+          "problem": "如图所示，在带电体C的右侧有两个原来不带电的、相互接触的金属导体A和B，A、B、C均放在绝缘支座上。由于静电感应，导体A、B均带电。下列说法正确的是（　　）\n![|200](<https://tiku-pro-cdn.speiyou.com/imgFile/867924baba6ff06a7bc090b3d6feb4b1.png>)\n\nA. 如图所示状态中，导体A带负电，B带正电\n\nB. 在图示状态下移走带电体C，导体A带负电、B带正电\n\nC. 无论是移走带电体C还是将导体A、B分开，导体A、B上的总电荷量始终为零\n\nD. 在图示状态下将导体A、B分开，分开后A、B仍带电，该过程创造了电荷",
+          "answer": "A；C",
+          "analysis": "【详解】\nA．导体A的左端感应出负电荷，导体B的右端感应出等量的正电荷，故A正确；\nB．若先移走C，此时导体A和B中的电荷又发生中和，不再带电，故B错误；\nC．根据电荷守恒定律，可知无论是移走带电体C还是将导体A、B分开，导体A、B上的总电荷始终为零，故C正确；\nD．在图示状态下将导体A、B分开，分开后A、B仍带电，该过程不是创造了电荷，是电荷的重新分布，故D错误。\n故选AC。",
+          "doubtful": false,
+          "issues": []
+        },
+        "url": "https://xbresource.jiaoyanyun.com/#/boutique/search?sid=4&gid=3&queId=d9fb698ca5624e41ac96989c411bf19e",
+        "title": "2023~2024学年黑龙江鸡西密山市密山市朝鲜族高级中学高二上学期期末（等三校12月）第11题4分",
+        "stem": "如图所示，在带电体C的右侧有两个原来不带电的、相互接触的金属导体A和B，A、B、C均放在绝缘支座上。由于静电感应，导体A、B均带电。下列说法正确的是（　　）\n![|200](https://tiku-pro-cdn.speiyou.com/imgFile/867924baba6ff06a7bc090b3d6feb4b1.png)",
+        "options": [
+          "A. 如图所示状态中，导体A带负电，B带正电",
+          "B. 在图示状态下移走带电体C，导体A带负电、B带正电",
+          "C. 无论是移走带电体C还是将导体A、B分开，导体A、B上的总电荷量始终为零",
+          "D. 在图示状态下将导体A、B分开，分开后A、B仍带电，该过程创造了电荷"
+        ],
+        "answer": "A\nC",
+        "analysis": "【详解】\nA．导体A的左端感应出负电荷，导体B的右端感应出等量的正电荷，故A正确；\nB．若先移走C，此时导体A和B中的电荷又发生中和，不再带电，故B错误；\nC．根据电荷守恒定律，可知无论是移走带电体C还是将导体A、B分开，导体A、B上的总电荷始终为零，故C正确；\nD．在图示状态下将导体A、B分开，分开后A、B仍带电，该过程不是创造了电荷，是电荷的重新分布，故D错误。\n故选AC。",
+        "source": "2023~2024学年黑龙江鸡西密山市密山市朝鲜族高级中学高二上学期期末（等三校12月）第11题4分",
+        "sources": [
+          {
+            "name": "2023~2024学年黑龙江鸡西密山市密山市朝鲜族高级中学高二上学期期末（等三校12月）第11题4分",
+            "url": "https://xbresource.jiaoyanyun.com/#/boutique/search?sid=4&gid=3&queId=d9fb698ca5624e41ac96989c411bf19e",
+            "provider": "教研云",
+            "school_year": "2023~2024",
+            "province": "黑龙江",
+            "city": "鸡西",
+            "area": "密山市",
+            "school": "密山市朝鲜族高级中学",
+            "grade": "高二",
+            "semester": "上学期",
+            "exam_type": "期末",
+            "paper_tag": "",
+            "question_index": "11",
+            "score_value": "4",
+            "month": "",
+            "note": "（等三校12月）",
+            "year": 2024,
+            "isBeijing": false,
+            "hasSchool": true,
+            "isBeijingSchool": false,
+            "schoolRank": 0,
+            "sourceTier": "外地来源"
+          },
+          {
+            "name": "2023~2024学年安徽安庆桐城市桐城中学高二上学期月考(第二次)第8题",
+            "url": "https://xbresource.jiaoyanyun.com/#/boutique/search?sid=4&gid=3&queId=d9fb698ca5624e41ac96989c411bf19e",
+            "provider": "教研云",
+            "school_year": "2023~2024",
+            "province": "安徽",
+            "city": "安庆",
+            "area": "桐城市",
+            "school": "桐城中学",
+            "grade": "高二",
+            "semester": "上学期",
+            "exam_type": "月考",
+            "paper_tag": "",
+            "question_index": "8",
+            "score_value": "",
+            "month": "",
+            "note": "(第二次)",
+            "year": 2024,
+            "isBeijing": false,
+            "hasSchool": true,
+            "isBeijingSchool": false,
+            "schoolRank": 0,
+            "sourceTier": "外地来源"
+          },
+          {
+            "name": "2023~2024学年广东东莞市寮步镇东莞市外国语学校高二上学期期中（11月）第8题3分",
+            "url": "https://xbresource.jiaoyanyun.com/#/boutique/search?sid=4&gid=3&queId=d9fb698ca5624e41ac96989c411bf19e",
+            "provider": "教研云",
+            "school_year": "2023~2024",
+            "province": "广东",
+            "city": "东莞市",
+            "area": "寮步镇",
+            "school": "东莞市外国语学校",
+            "grade": "高二",
+            "semester": "上学期",
+            "exam_type": "期中",
+            "paper_tag": "",
+            "question_index": "8",
+            "score_value": "3",
+            "month": "",
+            "note": "（11月）",
+            "year": 2024,
+            "isBeijing": false,
+            "hasSchool": true,
+            "isBeijingSchool": false,
+            "schoolRank": 0,
+            "sourceTier": "外地来源"
+          },
+          {
+            "name": "2023~2024学年10月云南红河哈尼族彝族自治州高二上学期月考（元阳中学）第11题",
+            "url": "https://xbresource.jiaoyanyun.com/#/boutique/search?sid=4&gid=3&queId=d9fb698ca5624e41ac96989c411bf19e",
+            "provider": "教研云",
+            "school_year": "2023~2024",
+            "province": "云南",
+            "city": "红河哈尼族彝族自治州",
+            "area": "",
+            "school": "",
+            "grade": "高二",
+            "semester": "上学期",
+            "exam_type": "月考",
+            "paper_tag": "",
+            "question_index": "11",
+            "score_value": "",
+            "month": "10",
+            "note": "（元阳中学）",
+            "year": 2024,
+            "isBeijing": false,
+            "hasSchool": true,
+            "isBeijingSchool": false,
+            "schoolRank": 0,
+            "sourceTier": "外地来源"
+          }
+        ],
+        "preferredSource": null,
+        "imageUrls": [
+          "https://tiku-pro-cdn.speiyou.com/imgFile/867924baba6ff06a7bc090b3d6feb4b1.png"
+        ]
+      }
+    },
+    "cc9287659bc4f4dce71664a2": {
+      "question": {
+        "smart": {
+          "id": "91a5d75007354a9584a9394dca50dd49",
+          "problem": "如图所示，两个等量异种点电荷分别位于M、N两点，P、Q是MN连线上的两点，且MP=QN。下列说法正确的是（　　）\n![|200](<https://tiku-pro-cdn.speiyou.com/imgFile/e75102c6a52a5458e2972a4352f5ce53.png>)\n\nA. P点电场强度与Q点电场强度相同\n\nB. P点电势比Q点电势高\n\nC. 若两点电荷的电荷量均变为原来的2倍，P点电场强度大小也变为原来的2倍\n\nD. 若两点电荷的电荷量均变为原来的2倍，P、Q两点间电势差不变",
+          "answer": "A；B；C",
+          "analysis": "【详解】A．由等量异种点电荷的电场线分布特点知，P、Q两点电场强度相同，故A正确；\n\nB．由沿电场线方向电势越来越低知，P点电势高于Q点电势，故B正确；\n\nCD．由电场叠加得P点电场强度为$E = k\\frac{Q}{MP^{2}} + k\\frac{Q}{NP^{2}}$\n\n若仅两点电荷的电荷量均变为原来的2倍，则P点电场强度大小也变为原来的2倍，同理Q点电场强度大小也变为原来的2倍，而PQ间距不变，可知P、Q两点间电势差变大，故C正确，D错误。\n\n故选ABC。",
+          "doubtful": false,
+          "issues": []
+        },
+        "url": "https://xbresource.jiaoyanyun.com/#/boutique/search?sid=4&gid=3&queId=91a5d75007354a9584a9394dca50dd49",
+        "title": "2024~2025学年北京顺义区顺义区第一中学高二上学期期末第16题",
+        "stem": "如图所示，两个等量异种点电荷分别位于M、N两点，P、Q是MN连线上的两点，且MP=QN。下列说法正确的是（　　）\n![|200](https://tiku-pro-cdn.speiyou.com/imgFile/e75102c6a52a5458e2972a4352f5ce53.png)",
+        "options": [
+          "A. P点电场强度与Q点电场强度相同",
+          "B. P点电势比Q点电势高",
+          "C. 若两点电荷的电荷量均变为原来的2倍，P点电场强度大小也变为原来的2倍",
+          "D. 若两点电荷的电荷量均变为原来的2倍，P、Q两点间电势差不变"
+        ],
+        "answer": "A\nB\nC",
+        "analysis": "【详解】A．由等量异种点电荷的电场线分布特点知，P、Q两点电场强度相同，故A正确；\nB．由沿电场线方向电势越来越低知，P点电势高于Q点电势，故B正确；\nCD．由电场叠加得P点电场强度为E = k\\frac{Q}{MP^{2}} + k\\frac{Q}{NP^{2}}\n若仅两点电荷的电荷量均变为原来的2倍，则P点电场强度大小也变为原来的2倍，同理Q点电场强度大小也变为原来的2倍，而PQ间距不变，可知P、Q两点间电势差变大，故C正确，D错误。\n故选ABC。",
+        "source": "2024~2025学年北京顺义区顺义区第一中学高二上学期期末第16题",
+        "sources": [
+          {
+            "name": "2024~2025学年北京顺义区顺义区第一中学高二上学期期末第16题",
+            "url": "https://xbresource.jiaoyanyun.com/#/boutique/search?sid=4&gid=3&queId=91a5d75007354a9584a9394dca50dd49",
+            "provider": "教研云",
+            "school_year": "2024~2025",
+            "province": "北京",
+            "city": "北京",
+            "area": "顺义区",
+            "school": "顺义区第一中学",
+            "grade": "高二",
+            "semester": "上学期",
+            "exam_type": "期末",
+            "paper_tag": "",
+            "question_index": "16",
+            "score_value": "",
+            "month": "",
+            "note": "",
+            "year": 2025,
+            "isBeijing": true,
+            "hasSchool": true,
+            "isBeijingSchool": true,
+            "schoolRank": 0,
+            "sourceTier": "北京学校（未列入偏好）"
+          }
+        ],
+        "preferredSource": {
+          "name": "2024~2025学年北京顺义区顺义区第一中学高二上学期期末第16题",
+          "url": "https://xbresource.jiaoyanyun.com/#/boutique/search?sid=4&gid=3&queId=91a5d75007354a9584a9394dca50dd49",
+          "provider": "教研云",
+          "school_year": "2024~2025",
+          "province": "北京",
+          "city": "北京",
+          "area": "顺义区",
+          "school": "顺义区第一中学",
+          "grade": "高二",
+          "semester": "上学期",
+          "exam_type": "期末",
+          "paper_tag": "",
+          "question_index": "16",
+          "score_value": "",
+          "month": "",
+          "note": "",
+          "year": 2025,
+          "isBeijing": true,
+          "hasSchool": true,
+          "isBeijingSchool": true,
+          "schoolRank": 0,
+          "sourceTier": "北京学校（未列入偏好）"
+        },
+        "imageUrls": [
+          "https://tiku-pro-cdn.speiyou.com/imgFile/e75102c6a52a5458e2972a4352f5ce53.png"
+        ]
+      }
+    }
+  }
+}
