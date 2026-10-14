@@ -90,7 +90,8 @@ test('one question with a numbered heading and a callout produces one search blo
   assert.equal(blocks[1].questionNo, '2');
   assert.equal(blocks[0].searchText, questionText);
   assert.ok(!blocks[0].raw.includes('###### 2'));
-  const rendered = hooks.renderMatchedPaperBlock(blocks[0].raw, '北京某中学', '1', new Map([['a', 'one.png'], ['b', 'one.png']]));
+  const rendered = hooks.renderMatchedPaperBlock(blocks[0].raw, new Map([['a', 'one.png'], ['b', 'one.png']]));
+  assert.match(rendered, /\*原卷第13题\*/);
   assert.match(rendered, /^###### 1/);
   assert.equal((rendered.match(/!\[\|200\]/g) || []).length, 1);
 });
@@ -110,8 +111,18 @@ test('full fill performs one search and one image GET, keeps the original and sk
   assert.equal(calls[1].options.headers.authorization, undefined);
   assert.equal((env.files.get('lesson带图版.md').match(/!\[\|200\]/g) || []).length, 1);
   assert.equal(env.files.get('lesson.md'), original);
+  assert.match(env.files.get('lesson带图版.md'), /\*原卷第13题\*/);
+  assert.match(env.files.get('lesson带图版.md'), /^# 讲义 #h0/);
   await env.plugin.fillCurrentPaperImages();
   assert.equal(calls.length, 2);
+});
+
+test('an unsuccessful image search preserves the source and document title', async () => {
+  const env = setup(async () => ({ status: 200, json: { code: 200, data: [] } }));
+  const original = `# 原试卷 #h0\n\n###### 1\n\n> [!ti] *2026年10月北京市第一七一中学高二上学期月考物理第1题*\n> ${questionText}`;
+  env.files.set('lesson.md', original);
+  await env.plugin.fillCurrentPaperImages();
+  assert.equal(env.files.get('lesson带图版.md'), original);
 });
 
 test('raising the cap keeps distinct diagrams and never downloads solution assets', async () => {

@@ -1,7 +1,7 @@
 {
   "id": "personal-qbank-browser",
   "name": "个人题库筛选",
-  "version": "0.4.0",
+  "version": "0.4.1",
   "minAppVersion": "1.5.0",
   "description": "逐题智能补齐配图、答案与解析，一键生成学生版、教师版和先答案后解析的答案版；支持缓存、限流退避及核对清单。",
   "author": "Ava + Codex",

@@ -298,7 +298,7 @@ async function prepareRow(plugin, row, matched, file, assetsDir, outputDir, deps
     result.matchedId = bank.id;
     result.link = matched.question.url;
     result.issues.push(...bank.issues);
-    result.source = matched.question.preferredSource?.name || row.source || "例题";
+    result.source = row.source || "例题";
     const answerConflict = !missing(row.answer) && !missing(bank.answer) && canonical(row.answer) !== canonical(bank.answer);
     for (const field of ["answer", "analysis"]) {
       if (field === "analysis" && answerConflict && missing(row.analysis)) {

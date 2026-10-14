@@ -40,6 +40,16 @@ test('mixed local fields, three outputs, source untouched, all answers precede a
   assert.ok(e.files.has(result.paths.student));
 });
 
+test('smart completion preserves the input source even with a preferred bank source', async () => {
+  const e = setup(request());
+  e.files.set(e.file.path, block());
+  const originalConverter = e.deps.questionFromJiaoyanyunItem;
+  e.deps.questionFromJiaoyanyunItem = (...args) => ({ ...originalConverter(...args), preferredSource: { name: '另一学校第8题' } });
+  const result = await e.run();
+  assert.equal(result.rows[0].source, '原学校第1题');
+  assert.match(e.files.get(result.paths.student), /\*原学校第1题\*/);
+});
+
 test('missing either solution field fetches detail once using the same ID', async () => {
   const e = setup(async o => {
     if (o.method === 'GET') return imageResponse();

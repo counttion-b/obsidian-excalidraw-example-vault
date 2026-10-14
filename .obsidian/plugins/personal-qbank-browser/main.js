@@ -302,7 +302,7 @@ async function prepareRow(plugin, row, matched, file, assetsDir, outputDir, deps
     result.matchedId = bank.id;
     result.link = matched.question.url;
     result.issues.push(...bank.issues);
-    result.source = matched.question.preferredSource?.name || row.source || "例题";
+    result.source = row.source || "例题";
     const answerConflict = !missing(row.answer) && !missing(bank.answer) && canonical(row.answer) !== canonical(bank.answer);
     for (const field of ["answer", "analysis"]) {
       if (field === "analysis" && answerConflict && missing(row.analysis)) {
@@ -731,7 +731,6 @@ module.exports = class PersonalQbankBrowserPlugin extends Plugin {
     const outputPath = paperImageOutputPath(activeFile);
     const hasImageVersion = outputPath !== activeFile.path && await this.app.vault.adapter.exists(outputPath);
     const content = hasImageVersion ? await this.app.vault.adapter.read(outputPath) : originalContent;
-    const source = paperSourceFromContent(content) || paperSourceFromContent(originalContent) || this.settings.paperSource || stripPaperVariantSuffix(activeFile.basename);
     const blocks = parsePaperBlocks(content);
     if (!blocks.length) {
       new Notice("当前文件没有找到 > [!ti] 题目块");
@@ -748,7 +747,7 @@ module.exports = class PersonalQbankBrowserPlugin extends Plugin {
     const summaries = blocks.map(block => ({ questionNo: block.questionNo, pending: true }));
     let rewritten = content;
     const saveProgress = async () => {
-      await this.app.vault.adapter.write(outputPath, rewritePaperTitle(rewritten, source));
+      await this.app.vault.adapter.write(outputPath, rewritten);
       await writePaperCache(this.app, outputPath, summaries);
     };
     for (let index = blocks.length - 1; index >= 0; index -= 1) {
@@ -770,7 +769,6 @@ module.exports = class PersonalQbankBrowserPlugin extends Plugin {
         const match = await this.findJiaoyanyunMatch(block.searchText, { needDetail: false, forImages: true });
         if (!match || match.score < Number(this.settings.minMatchScore || 0)) {
           summaries[index] = { questionNo, matched: false, score: match?.score || 0, answer: "", analysis: "" };
-          rewritten = replaceRange(rewritten, block.start, block.end, retitlePaperBlock(block.raw, "例题", questionNo));
           await saveProgress();
           continue;
         }
@@ -781,7 +779,7 @@ module.exports = class PersonalQbankBrowserPlugin extends Plugin {
         // Choose before downloading: never fetch the discarded diagrams or solution images.
         const imageUrls = detail.imageUrls.slice(0, imageLimit(this.settings.maxImagesPerQuestion));
         const imageMap = await this.downloadQuestionImages(imageUrls, questionDir);
-        const replacement = renderMatchedPaperBlock(block.raw, match.preferredSource || "例题", questionNo, relativeImageMap(imageMap, activeFile));
+        const replacement = renderMatchedPaperBlock(block.raw, relativeImageMap(imageMap, activeFile));
         rewritten = replaceRange(rewritten, block.start, block.end, replacement);
         summaries[index] = {
           questionNo,
@@ -1548,7 +1546,7 @@ class QbankSettingTab extends PluginSettingTab {
 
     new Setting(containerEl)
       .setName("当前试卷来源")
-      .setDesc("仅作为兜底。补图和导出会优先读取当前 md 的一级标题，例如：# 26春北京市第一六六中学高二下期中 #h0。")
+      .setDesc("用于导出的来源兜底；一键填充图片保留原稿题目来源和标题。需要更换来源时，单独执行更新题目来源命令。")
       .addText(text => text
         .setPlaceholder("26春北京市第一七一中学高一下期中")
         .setValue(this.plugin.settings.paperSource || "")
@@ -1727,8 +1725,8 @@ function replaceRange(text, start, end, replacement) {
   return `${text.slice(0, start)}${replacement.trimEnd()}\n\n${text.slice(end).replace(/^\s+/, "")}`;
 }
 
-function renderMatchedPaperBlock(originalRaw, source, questionNo, imageMap) {
-  let raw = retitlePaperBlock(originalRaw, source, questionNo);
+function renderMatchedPaperBlock(originalRaw, imageMap) {
+  const raw = originalRaw;
   if (!imageMap.size) return raw;
   if (/!\[[^\]]*\]\([^)]+\)/.test(raw)) return raw;
 
