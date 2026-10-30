@@ -1,0 +1,49 @@
+{
+  "levels": 26,
+  "subtypes": 50,
+  "matched_subtypes": 47,
+  "gaps": [
+    "等效替代",
+    "割补法",
+    "φ-θ 图像测匀强电场"
+  ],
+  "question_count": 79,
+  "documents": {
+    "00_使用说明与课堂路线.md": {
+      "questions": 0,
+      "image_refs": 0
+    },
+    "01_题型目录与方法.md": {
+      "questions": 0,
+      "image_refs": 0
+    },
+    "02_课堂带看_学生版.md": {
+      "questions": 26,
+      "image_refs": 37
+    },
+    "03_课堂带讲_答案解析.md": {
+      "questions": 26,
+      "image_refs": 55
+    },
+    "04_课后对应_学生版.md": {
+      "questions": 26,
+      "image_refs": 33
+    },
+    "05_课后对应_答案解析.md": {
+      "questions": 26,
+      "image_refs": 48
+    },
+    "06_细类备题_学生版.md": {
+      "questions": 27,
+      "image_refs": 37
+    },
+    "07_细类备题_答案解析.md": {
+      "questions": 27,
+      "image_refs": 59
+    },
+    "08_选题与核验说明.md": {
+      "questions": 0,
+      "image_refs": 0
+    }
+  }
+}

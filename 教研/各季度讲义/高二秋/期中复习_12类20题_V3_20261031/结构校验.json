@@ -1,0 +1,15 @@
+{
+  "categories": 12,
+  "questions": 20,
+  "choice_questions": 15,
+  "calculation_questions": 5,
+  "east_city_questions": 17,
+  "figures": 19,
+  "editable_body_and_math": true,
+  "paired_versions": true,
+  "source_labels_verified": true,
+  "math_expressions_checked": 755,
+  "math_errors": 0,
+  "image_load_failures": 0,
+  "layout_overflow": 0
+}

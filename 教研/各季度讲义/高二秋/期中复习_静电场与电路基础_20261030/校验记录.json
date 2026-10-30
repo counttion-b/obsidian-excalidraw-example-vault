@@ -1,0 +1,32 @@
+{
+  "01_课堂带看版.md": {
+    "questions": 14,
+    "image_references": 12,
+    "math_delimiters_even": true
+  },
+  "02_教师带讲与答案.md": {
+    "questions": 14,
+    "image_references": 12,
+    "math_delimiters_even": true
+  },
+  "03_课后自测_学生版.md": {
+    "questions": 14,
+    "image_references": 15,
+    "math_delimiters_even": true
+  },
+  "04_课后自测_答案解析.md": {
+    "questions": 14,
+    "image_references": 16,
+    "math_delimiters_even": true
+  },
+  "05_补充提高_学生版.md": {
+    "questions": 4,
+    "image_references": 5,
+    "math_delimiters_even": true
+  },
+  "06_补充提高_答案解析.md": {
+    "questions": 4,
+    "image_references": 6,
+    "math_delimiters_even": true
+  }
+}

@@ -1,0 +1,258 @@
+[
+  {
+    "role": "课堂",
+    "number": 1,
+    "path": "D:\\obrepo\\papers\\教研\\各季度讲义\\高二秋\\第1讲 静电场力学模型_知识点_v2_恢复候选.md",
+    "line": 147,
+    "source": "2022~2023学年北京大兴区大兴区第一中学高二上学期期中第4题3分",
+    "question_sha256": "7d8e26fdacb9021f2ec21739922ace9b93cca543492bd5ee58594cf10397ab18"
+  },
+  {
+    "role": "课后",
+    "number": 1,
+    "path": "D:\\obrepo\\papers\\教研\\各季度讲义\\高二秋\\第1讲 静电场力学模型_知识点_v2_恢复候选.md",
+    "line": 161,
+    "source": "2022~2023 学年北京海淀区北京交通大学附属中学高二上学期期中第 4 题",
+    "question_sha256": "27c471de4ba43f105121b1d856f58e2739c89acd3621f314545469a039bf4700"
+  },
+  {
+    "role": "课堂",
+    "number": 2,
+    "path": "D:\\obrepo\\papers\\教研\\各季度讲义\\高二秋\\第1讲 静电场力学模型_知识点_v2_恢复候选.md",
+    "line": 377,
+    "source": "2023~2024学年12月北京朝阳区清华大学附属中学朝阳学校高二上学期月考第2题4分",
+    "question_sha256": "3278f5ba7da778df42b5a5c87dcc48abb15670a89c04df707baeb68df7d99a12"
+  },
+  {
+    "role": "课后",
+    "number": 2,
+    "path": "D:\\obrepo\\papers\\教研\\各季度讲义\\高二秋\\第1讲 静电场力学模型_知识点_v2_恢复候选.md",
+    "line": 390,
+    "source": "2024~2025学年10月北京海淀区北京理工大学附属中学高二上学期月考第8题",
+    "question_sha256": "c7c10c217ffbb59a78ed899ff985b455a8e7520c4d09f49e17fb4dcfda8adddc"
+  },
+  {
+    "role": "课堂",
+    "number": 3,
+    "path": "D:\\obrepo\\papers\\教研\\各季度讲义\\高二秋\\第2讲 电场中能的性质_课后作业.md",
+    "line": 57,
+    "source": "2024~2025学年北京市第五十中学高二上学期9月月考第4题",
+    "question_sha256": "471e3186655b9a8de6910fd734a94661b1821f6eb764ff5d6ca1756e36698361"
+  },
+  {
+    "role": "课后",
+    "number": 3,
+    "path": "D:\\obrepo\\papers\\教研\\各季度讲义\\高二秋\\第2讲 电场中能的性质_课后作业.md",
+    "line": 68,
+    "source": "2024~2025学年北京景山学校高二上学期10月月考第5题",
+    "question_sha256": "be3726aa9cd69897aa1497ad725e4a7ac3981072cae2ab84d7fb16fc0efc2a46"
+  },
+  {
+    "role": "课堂",
+    "number": 4,
+    "path": "D:\\obrepo\\papers\\教研\\各季度讲义\\高二秋\\第2讲 电场中能的性质_课后作业.md",
+    "line": 30,
+    "source": "2023~2024学年度北京市日坛中学高二上学期10月月考第8题",
+    "question_sha256": "8b84b2668dfe6d56981e99a37ff21e5dc5005cb8d053f6eee643b060a1d63dcf"
+  },
+  {
+    "role": "课后",
+    "number": 4,
+    "path": "D:\\obrepo\\papers\\教研\\各季度讲义\\高二秋\\第2讲 电场中能的性质_课后作业.md",
+    "line": 115,
+    "source": "2024~2025学年北京市日坛中学高二上学期10月月考第19题",
+    "question_sha256": "d0f64701219d5d2fc25ac7c0a4e0f79c9998e15ac7dc68d1e36a29f0afa19743"
+  },
+  {
+    "role": "课堂",
+    "number": 5,
+    "path": "D:\\obrepo\\papers\\教研\\各季度讲义\\高二秋\\第3讲 静电场综合问题_课后作业.md",
+    "line": 10,
+    "source": "2024~2025学年北京市日坛中学高二上学期10月月考第13题（多选）",
+    "question_sha256": "a45bf8ee5a954399a0331c69d723e9624cf0b46099a82539e15642eca937a2e2"
+  },
+  {
+    "role": "课后",
+    "number": 5,
+    "path": "D:\\obrepo\\papers\\教研\\各季度讲义\\高二秋\\第3讲 静电场综合问题_课后作业.md",
+    "line": 38,
+    "source": "2023~2024学年北京市日坛中学高二上学期10月月考第18题（单选，选不正确项）",
+    "question_sha256": "b1b7a9d8ed55f88102e3049cd00dfab9f5ba4d6ab07558b119f28ca58ad56f3c"
+  },
+  {
+    "role": "课堂",
+    "number": 6,
+    "path": "D:\\obrepo\\papers\\教研\\各季度讲义\\高二秋\\第3讲 静电场综合问题_课后作业.md",
+    "line": 56,
+    "source": "2022~2023学年北京市第一六六中学高二上学期期中物理（选考）第14题（单选）",
+    "question_sha256": "1d2336611e78802e511dc5d67822a52d0fe679744abc170238478ef2abb5c0df"
+  },
+  {
+    "role": "课后",
+    "number": 6,
+    "path": "D:\\obrepo\\papers\\教研\\各季度讲义\\高二秋\\第3讲 静电场综合问题_知识点_v2.md",
+    "line": 245,
+    "source": "2022~2023学年北京东城区北京市东直门中学高三上学期期中第14题",
+    "question_sha256": "02743b9d096f7fe5554df8deb9749ff891aaf5a6daa4e7c83f8bf98ac4fcd357"
+  },
+  {
+    "role": "课堂",
+    "number": 7,
+    "path": "D:\\obrepo\\papers\\教研\\各季度讲义\\高二秋\\第3讲 静电场综合问题_课后作业.md",
+    "line": 84,
+    "source": "2024~2025学年北京市第一七一中学高二上学期10月月考第9题（单选）",
+    "question_sha256": "e0d5ba0a9c7b5577ae97a5bd3123e09a71e62625a3147578b861c1d8a177d51b"
+  },
+  {
+    "role": "课后",
+    "number": 7,
+    "path": "D:\\obrepo\\papers\\教研\\各季度讲义\\高二秋\\第3讲 静电场综合问题_课后作业.md",
+    "line": 72,
+    "source": "2024~2025学年北京景山学校高二上学期10月月考第8题（单选）",
+    "question_sha256": "ec91b303cc8777d5f7e8ec7dee4e5eb4c637a77250dba22c83eebc9356d8a46c"
+  },
+  {
+    "role": "课堂",
+    "number": 8,
+    "path": "D:\\obrepo\\papers\\教研\\各季度讲义\\高二秋\\第4讲 电容和静电问题_课后作业.md",
+    "line": 10,
+    "source": "2022~2023学年北京市第一六六中学高二上学期期中物理（选考）第2题（单选）",
+    "question_sha256": "95caf299c38e31fa981fd28e559935a5d8611b5f3999aad677e98d38509c6fe6"
+  },
+  {
+    "role": "课后",
+    "number": 8,
+    "path": "D:\\obrepo\\papers\\教研\\各季度讲义\\高二秋\\第4讲 电容和静电问题_课后作业.md",
+    "line": 20,
+    "source": "2024~2025学年北京市景山学校高二上学期10月月考第11题（单选）",
+    "question_sha256": "f6573265bc748c833524946a1afd481fb7226f30a751a23f27f6b36dc7ed3504"
+  },
+  {
+    "role": "课堂",
+    "number": 9,
+    "path": "D:\\obrepo\\papers\\教研\\各季度讲义\\高二秋\\第4讲 电容和静电问题_课后作业.md",
+    "line": 54,
+    "source": "2023~2024学年北京市日坛中学高二上学期期中第8题（单选）",
+    "question_sha256": "20dbb37911cf0aabc9fe40fb4adc4679e35e0176fe6ace5e86a4410147cb88b2"
+  },
+  {
+    "role": "课后",
+    "number": 9,
+    "path": "D:\\obrepo\\papers\\教研\\各季度讲义\\高二秋\\第4讲 电容和静电问题_课后作业.md",
+    "line": 66,
+    "source": "2025~2026学年北京市东直门中学高二上学期期中物理（选考）第6题（单选）",
+    "question_sha256": "2e6020c640e3a425ff7a3611b6eea7c63d89094a027f86c0662e2d0abdc9af2e"
+  },
+  {
+    "role": "课堂",
+    "number": 10,
+    "path": "D:\\obrepo\\papers\\教研\\各季度讲义\\高二秋\\第4讲 电容和静电问题_课后作业.md",
+    "line": 82,
+    "source": "2022~2023学年北京市第一六六中学高二上学期期中物理（选考）第6题（单选）",
+    "question_sha256": "9dca0ca5bbc8bb83a4bb917997cc7ba13c3f0c718a34f053bff44e0025578c41"
+  },
+  {
+    "role": "课后",
+    "number": 10,
+    "path": "D:\\obrepo\\papers\\教研\\各季度讲义\\高二秋\\第4讲 电容和静电问题_课后作业.md",
+    "line": 100,
+    "source": "2024~2025学年北京市第一七一中学高二上学期10月月考第16题第（2）问①②（节选）",
+    "question_sha256": "b7a66dc63c72ba853653add6d2001ba764c979cd211b453bbd9fae43c71db3d1"
+  },
+  {
+    "role": "课堂",
+    "number": 11,
+    "path": "D:\\obrepo\\papers\\教研\\各季度讲义\\高二秋\\第5讲 带电粒子的运动_课后作业.md",
+    "line": 42,
+    "source": "2022~2023学年北京市第一六六中学高二上学期期中物理（选考）第9题（单选）",
+    "question_sha256": "5fb979ac4ca18e291066562be58f1fcd1bcf39edd935dbd8e1ed0ee3efb88c86"
+  },
+  {
+    "role": "课后",
+    "number": 11,
+    "path": "D:\\obrepo\\papers\\教研\\各季度讲义\\高二秋\\第5讲 带电粒子的运动_课后作业.md",
+    "line": 54,
+    "source": "2022~2023学年北京市第一七一中学高二上学期10月月考第8题（单选）",
+    "question_sha256": "52d2a72508e18fc0434187860d3f780908465d1a5ab3bdcc7ff4662e9e12afc1"
+  },
+  {
+    "role": "课堂",
+    "number": 12,
+    "path": "D:\\obrepo\\papers\\教研\\各季度讲义\\高二秋\\第5讲 带电粒子的运动_课后作业.md",
+    "line": 86,
+    "source": "2024~2025学年北京市景山学校高二上学期10月月考第12题（单选）",
+    "question_sha256": "a37520c8900743160e140f1ac4d64051e2a426904512df6ef1ab47b5ca220029"
+  },
+  {
+    "role": "课后",
+    "number": 12,
+    "path": "D:\\obrepo\\papers\\教研\\各季度讲义\\高二秋\\第5讲 带电粒子的运动_课后作业.md",
+    "line": 98,
+    "source": "2024~2025学年北京市日坛中学高二上学期10月月考第17题",
+    "question_sha256": "ce4fc1de557c4d01a9dbdf67d05103ee00a40caf59e344e5ef02c243cde88238"
+  },
+  {
+    "role": "课堂",
+    "number": 13,
+    "path": "D:\\obrepo\\papers\\教研\\各季度讲义\\高二秋\\第6讲 电路原理_课后作业.md",
+    "line": 10,
+    "source": "2023~2024学年北京市日坛中学高二上学期期中第6题（单选）",
+    "question_sha256": "9a10a64c2f75c8d8823940f30cd794883a5d27ab9d0d81fc894f4f65212bae1d"
+  },
+  {
+    "role": "课后",
+    "number": 13,
+    "path": "D:\\obrepo\\papers\\教研\\各季度讲义\\高二秋\\第6讲 电路原理_课后作业.md",
+    "line": 20,
+    "source": "2022~2023学年北京市第一七一中学高二上学期期中第9题（单选）",
+    "question_sha256": "e772b6c774b8f45503ca0d374a51f79cd7808cec167f10481173613d95322fc0"
+  },
+  {
+    "role": "课堂",
+    "number": 14,
+    "path": "D:\\obrepo\\papers\\教研\\各季度讲义\\高二秋\\第6讲-电路原理_知识点.md",
+    "line": 456,
+    "source": "2022~2023学年北京东城区北京市第五十五中学高二上学期期中第12题",
+    "question_sha256": "dc2ab502570afeadd54ffcf8342e68c7bc4b8168f3718811c156e489f432fe9c"
+  },
+  {
+    "role": "课后",
+    "number": 14,
+    "path": "D:\\obrepo\\papers\\教研\\各季度讲义\\高二秋\\第6讲 电路原理_课后作业.md",
+    "line": 54,
+    "source": "2025~2026学年北京市东直门中学高二上学期期中物理（选考）第5题（单选）",
+    "question_sha256": "2ae8fbc602bd6b84d3a2a72b44ff59498d3d4b290b3236dbd3f8cfed346d8ce0"
+  },
+  {
+    "role": "补充",
+    "number": 1,
+    "path": "D:\\obrepo\\papers\\教研\\各季度讲义\\高二秋\\第6讲-电路原理_知识点.md",
+    "line": 378,
+    "source": "> [!ti] *2025~2026学年北京海淀区北京市第五十七中学高二上学期期中第12题*",
+    "question_sha256": "88ab4e270fdc9e7287e7343c21e44bf961fceeeced5f1f7c915d22fc07802d8e"
+  },
+  {
+    "role": "补充",
+    "number": 2,
+    "path": "D:\\obrepo\\papers\\教研\\各季度讲义\\高二秋\\第5讲 带电粒子的运动_课后作业.md",
+    "line": 22,
+    "source": "> [!ti] *2022~2023学年北京市东城区第一七一中学高二上学期期中第19题第（1）（2）问（节选）*",
+    "question_sha256": "5a4794930fcd047f23070015eb41e22be8f09d49fb519429aba3f95afd057e27"
+  },
+  {
+    "role": "补充",
+    "number": 3,
+    "path": "D:\\obrepo\\papers\\教研\\各季度讲义\\高二秋\\第3讲 静电场综合问题_课后作业.md",
+    "line": 114,
+    "source": "> [!ti] *2022~2023学年北京市第一七一中学高二上学期10月月考第16题*",
+    "question_sha256": "2545693ef209cfb628787e01b251aa86cd4230ddfefe24cf85a287f8d94f5657"
+  },
+  {
+    "role": "补充",
+    "number": 4,
+    "path": "D:\\obrepo\\papers\\教研\\各季度讲义\\高二秋\\第1讲 静电场力学模型_知识点_v2_恢复候选.md",
+    "line": 484,
+    "source": "> [!ti] *2023~2024学年北京东城区高二上学期期末第4题2分*",
+    "question_sha256": "ef247083dd8ac9900593a8df6c3ef3fa30f3ab0e85226514139852383de67bc0"
+  }
+]
