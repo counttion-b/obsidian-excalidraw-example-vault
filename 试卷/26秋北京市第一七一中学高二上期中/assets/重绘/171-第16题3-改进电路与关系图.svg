@@ -1,0 +1,33 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="1100" height="440" viewBox="0 0 1100 440">
+<rect width="1100" height="440" fill="white"/>
+<defs><marker id="arrow" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="8" markerHeight="8" orient="auto-start-reverse"><path d="M0 0 L10 5 L0 10 Z" fill="black"/></marker></defs>
+<g fill="none" stroke="black" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round">
+<!-- Adjustable wire and series ammeter -->
+<path d="M110 105 H310" stroke-width="4"/><path d="M310 105 H360 M410 105 H470 V195"/>
+<circle cx="385" cy="105" r="25"/>
+<!-- contact P and voltage branch -->
+<path d="M90 195 H155 M155 195 V151 L145 110" marker-end="url(#arrow)"/>
+<path d="M155 195 H285 M335 195 H470"/><circle cx="310" cy="195" r="25"/>
+<path d="M90 195 V370 H185 M202 370 H260 M305 370 H510 V285 H385"/>
+<!-- power and switch -->
+<path d="M185 357 V383 M202 346 V394 M260 370 L299 346"/>
+<!-- potentiometer ends across source; slider output -->
+<path d="M90 285 H305"/><rect x="305" y="272" width="80" height="26"/>
+<path d="M470 195 V237 H345 V268" marker-end="url(#arrow)"/>
+<!-- l dimension -->
+<path d="M145 96 V62 M310 96 V62" stroke-width="1.5"/>
+<path d="M148 72 H307" marker-start="url(#arrow)" marker-end="url(#arrow)" stroke-width="1.5"/>
+<!-- graph -->
+<path d="M720 365 V110" marker-end="url(#arrow)"/><path d="M720 365 H1030" marker-end="url(#arrow)"/>
+<path d="M720 310 L996 139" stroke-width="3"/>
+<path d="M720 170 H946 V365" stroke-dasharray="7 6" stroke-width="1.7"/>
+<path d="M710 65 H740" stroke-width="1.5"/>
+</g>
+<g fill="black"><circle cx="110" cy="105" r="4"/><circle cx="155" cy="195" r="4"/><circle cx="90" cy="285" r="4"/><circle cx="470" cy="195" r="4"/><circle cx="260" cy="370" r="3"/><circle cx="305" cy="370" r="3"/>
+<circle cx="720" cy="310" r="4"/><circle cx="720" cy="170" r="4"/><circle cx="946" cy="365" r="4"/></g>
+<g fill="black" font-family="Times New Roman,serif" font-size="30" text-anchor="middle">
+<text x="385" y="115">A</text><text x="310" y="205">V</text>
+<g font-style="italic"><text x="130" y="139">P</text><text x="228" y="61">l</text><text x="345" y="331">R</text><text x="193" y="427">E</text><text x="283" y="409">S</text>
+<text x="725" y="55">U</text><text x="725" y="93">I</text>
+<text x="698" y="391">O</text><text x="1045" y="374">l</text><text x="946" y="399">a</text><text x="696" y="180">b</text><text x="697" y="320">c</text></g></g>
+</svg>
