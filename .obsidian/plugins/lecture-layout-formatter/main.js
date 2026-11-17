@@ -68,6 +68,7 @@ function collectOptionItems(lines, headerIndex) {
 
 function chooseOptionColumns(items, settings) {
   if (items.length <= 1) return 1;
+  if (items.some(item => item.text.includes("!["))) return 1;
   if (items.length === 2) return 2;
 
   const longest = Math.max(...items.map((item) => visualUnits(item.text)));
@@ -82,7 +83,7 @@ function formatOptionCallouts(lines, settings) {
 
   for (let index = 0; index < lines.length; index += 1) {
     const line = lines[index];
-    if (/^\s*(```|~~~)/.test(line)) {
+    if (/^[ \t]*(?:>[ \t]*)*(?:```|~~~)/.test(line)) {
       inFence = !inFence;
       continue;
     }
@@ -134,6 +135,27 @@ function imageWidthForSize(width, height, settings) {
   return settings.normalImageWidth;
 }
 
+const IMAGE_LINE = /^([ \t]*(?:>[ \t]*)*)(!\[\[[^\]\n]+\]\]|!\[[^\]\n]*\]\([^\n]+\))[ \t]*$/;
+
+function imageRow(lines) {
+  const images = lines.map(line => line.match(IMAGE_LINE));
+  if (images.length < 2 || images.length > 4 || images.some(image => !image)) return null;
+  const prefix = images[0][1];
+  if (images.some(image => image[1] !== prefix)) return null;
+  const body = images.flatMap((image, index) => index ? [`${prefix}---`, image[0]] : [image[0]]);
+  return [prefix + "```horizontal", ...body, prefix + "```"];
+}
+
+function splitImageRow(lines) {
+  const start = lines[0]?.match(/^([ \t]*(?:>[ \t]*)*)```(?:horizontal|hblock)[ \t]*$/);
+  if (!start || lines.at(-1)?.trimEnd() !== start[1] + "```") return null;
+  const body = lines.slice(1, -1);
+  const images = body.filter((_, index) => index % 2 === 0);
+  if (body.length !== images.length * 2 - 1 || !imageRow(images)) return null;
+  if (body.some((line, index) => index % 2 && line.trimEnd() !== start[1] + "---")) return null;
+  return images.flatMap((line, index) => index ? [start[1].trimEnd(), line] : [line]);
+}
+
 class LectureLayoutFormatterPlugin extends Plugin {
   async onload() {
     this.settings = Object.assign({}, DEFAULT_SETTINGS, await this.loadData());
@@ -144,6 +166,41 @@ class LectureLayoutFormatterPlugin extends Plugin {
       name: "一键排版：当前笔记",
       callback: () => this.formatActiveNote()
     });
+    this.addCommand({
+      id: "rough-layout-current-note",
+      name: "试卷排版：一键粗排选项和题图",
+      callback: () => this.formatActiveNote(true)
+    });
+    this.addCommand({
+      id: "group-selected-images",
+      name: "试卷排版：将选中的图片并排",
+      editorCallback: editor => this.transformSelectedLines(
+        editor,
+        lines => imageRow(lines.filter(line => !/^[ \t]*(?:>[ \t]*)*$/.test(line))),
+        "请选中同一层级的 2–4 行图片"
+      )
+    });
+    this.addCommand({
+      id: "split-selected-image-row",
+      name: "试卷排版：将选中的并排图片拆开",
+      editorCallback: editor => this.transformSelectedLines(editor, splitImageRow, "请选择完整的纯图片并排块")
+    });
+    this.addCommand({
+      id: "cycle-current-options",
+      name: "试卷排版：切换当前选项组列数（1→2→4）",
+      editorCallback: editor => {
+        for (let line = editor.getCursor().line; line >= 0; line--) {
+          const text = editor.getLine(line);
+          if (!/^\s*>/.test(text) || /\[!ti\]/i.test(text)) break;
+          const match = text.match(/^\s*(?:>\s*)+\[!opts([124])\]/i);
+          if (!match) continue;
+          const next = { 1: 2, 2: 4, 4: 1 }[match[1]];
+          editor.setLine(line, text.replace(/\[!opts[124]\]/i, `[!opts${next}]`));
+          return;
+        }
+        new Notice("请把光标放在选项组内");
+      }
+    });
 
     this.addRibbonIcon("layout-dashboard", "一键排版当前笔记", () => {
       this.formatActiveNote();
@@ -152,7 +209,21 @@ class LectureLayoutFormatterPlugin extends Plugin {
     this.addSettingTab(new LectureLayoutSettingTab(this.app, this));
   }
 
-  async formatActiveNote() {
+  transformSelectedLines(editor, transform, hint) {
+    const from = editor.getCursor("from");
+    const to = editor.getCursor("to");
+    const lastLine = to.line > from.line && to.ch === 0 ? to.line - 1 : to.line;
+    const lines = [];
+    for (let line = from.line; line <= lastLine; line++) lines.push(editor.getLine(line));
+    const replacement = transform(lines);
+    if (!replacement) {
+      new Notice(hint);
+      return;
+    }
+    editor.replaceRange(replacement.join("\n"), { line: from.line, ch: 0 }, { line: lastLine, ch: lines.at(-1).length });
+  }
+
+  async formatActiveNote(rough = false) {
     const file = this.app.workspace.getActiveFile();
     if (!(file instanceof TFile) || file.extension.toLowerCase() !== "md") {
       new Notice("请先打开一个 Markdown 笔记。");
@@ -160,33 +231,77 @@ class LectureLayoutFormatterPlugin extends Plugin {
     }
 
     const original = await this.app.vault.read(file);
-    const result = await this.formatMarkdown(original, file.path);
+    const result = await this.formatMarkdown(original, file.path, rough);
 
     if (result.text === original) {
       new Notice("当前笔记已经符合排版规则，没有需要修改的地方。");
       return;
     }
 
-    await this.app.vault.modify(file, result.text);
+    try {
+      await this.app.vault.process(file, current => {
+        if (current !== original) throw new Error("排版期间笔记有改动，请重新运行");
+        return result.text;
+      });
+    } catch (error) {
+      new Notice(`排版未保存：${error.message}`);
+      return;
+    }
     const unresolved = result.unresolvedImages > 0
       ? `；${result.unresolvedImages} 张图片未找到，已保持原样`
       : "";
     new Notice(
-      `排版完成：${result.optionGroups} 个选项组，${result.resizedImages} 张图片${unresolved}`
+      `排版完成：${result.optionGroups} 个选项组，${result.resizedImages} 张图片，${result.imageRows} 组并排${unresolved}`
     );
   }
 
-  async formatMarkdown(content, sourcePath) {
+  async formatMarkdown(content, sourcePath, rough = false) {
     const lines = content.split(/\r?\n/);
     const optionGroups = formatOptionCallouts(lines, this.settings);
-    const imageResult = await this.resizeWikiImages(lines, sourcePath);
+    const imageResult = rough
+      ? { resizedImages: 0, unresolvedImages: 0 }
+      : await this.resizeWikiImages(lines, sourcePath);
+    const imageRows = rough ? this.groupSmallImagePairs(lines) : 0;
 
     return {
       text: lines.join(content.includes("\r\n") ? "\r\n" : "\n"),
       optionGroups,
+      imageRows,
       resizedImages: imageResult.resizedImages,
       unresolvedImages: imageResult.unresolvedImages
     };
+  }
+
+  groupSmallImagePairs(lines) {
+    let count = 0;
+    let inFence = false;
+    let inQuestion = false;
+    for (let index = 0; index < lines.length; index++) {
+      const line = lines[index];
+      if (/^[ \t]*(?:>[ \t]*)*(?:```|~~~)/.test(line)) {
+        inFence = !inFence;
+        continue;
+      }
+      if (inFence) continue;
+      if (!/^\s*>/.test(line)) inQuestion = false;
+      if (/^\s*>\s*\[!ti\]/i.test(line)) inQuestion = true;
+      if (!inQuestion) continue;
+      const pair = lines.slice(index, index + 2);
+      const adjacent = [lines[index - 1], lines[index + 2]];
+      if (adjacent.some(value => value && IMAGE_LINE.test(value))) continue;
+      if (!pair.every(value => {
+        const image = value.match(IMAGE_LINE);
+        if (!image || quoteDepth(image[1]) !== 1) return false;
+        const width = Number(image[2].match(/\|(\d+)\]\]/)?.[1] || image[2].match(/\|(\d+)\]\(/)?.[1]);
+        return width > 0 && width <= 200;
+      })) continue;
+      const row = imageRow(pair);
+      if (!row) continue;
+      lines.splice(index, 2, ...row);
+      index += row.length - 1;
+      count++;
+    }
+    return count;
   }
 
   async resizeWikiImages(lines, sourcePath) {

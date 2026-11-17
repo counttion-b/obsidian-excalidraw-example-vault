@@ -69,6 +69,33 @@ function stemItem() {
   };
 }
 
+test('image fill selects the junior bank from the title or explicit command and keeps stage caches separate', async () => {
+  const stages = [];
+  const env = setup(async options => {
+    if (options.method !== 'POST') return imageResponse();
+    const { gradeGroupId } = JSON.parse(options.body);
+    stages.push(gradeGroupId);
+    return { status: 200, json: { code: 200, data: { list: gradeGroupId === '2' ? [stemItem()] : [] } } };
+  });
+  const body = `\n\n###### 1\n\n> [!ti] *原卷第13题*\n> ${questionText}\n`;
+  env.files.set('lesson.md', '# 讲义' + body);
+  await env.plugin.fillCurrentPaperImages();
+  env.files.set('lesson.md', '# 九年级讲义' + body);
+  await env.plugin.fillCurrentPaperImages();
+  assert.deepEqual(stages, ['3', '2']);
+  assert.ok(env.writes.some(file => file.endsWith('.png')));
+  assert.equal(env.plugin.settings.gradeGroupId, '3');
+
+  const manual = setup(async options => {
+    if (options.method !== 'POST') return imageResponse();
+    assert.equal(JSON.parse(options.body).gradeGroupId, '2');
+    return { status: 200, json: { code: 200, data: { list: [stemItem()] } } };
+  });
+  manual.files.set('lesson.md', '# 讲义' + body);
+  await manual.plugin.fillCurrentPaperImages('2');
+  assert.ok(manual.writes.some(file => file.endsWith('.png')));
+});
+
 test('only stem diagrams survive; lazy images, formulas, solutions and resize duplicates are handled before downloading', () => {
   const { hooks } = setup();
   const item = stemItem();
@@ -113,6 +140,7 @@ test('full fill performs one search and one image GET, keeps the original and sk
   assert.equal(env.files.get('lesson.md'), original);
   assert.match(env.files.get('lesson带图版.md'), /\*原卷第13题\*/);
   assert.match(env.files.get('lesson带图版.md'), /^# 讲义 #h0/);
+  assert.match(env.notices.at(-1), /已更新带图版：1\/1/);
   await env.plugin.fillCurrentPaperImages();
   assert.equal(calls.length, 2);
 });

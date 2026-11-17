@@ -567,6 +567,16 @@ module.exports = class PersonalQbankBrowserPlugin extends Plugin {
       callback: () => this.fillCurrentPaperImages()
     });
     this.addCommand({
+      id: "fill-current-paper-images-junior",
+      name: "当前纯文字试卷：一键填充图片（初中物理）",
+      callback: () => this.fillCurrentPaperImages("2")
+    });
+    this.addCommand({
+      id: "resize-current-paper-images",
+      name: "当前试卷：一键调整图片大小",
+      callback: () => this.resizeCurrentPaperImages()
+    });
+    this.addCommand({
       id: "update-current-paper-sources",
       name: "当前试卷：一键更新题目来源（北京优先）",
       callback: () => this.updateCurrentPaperSources()
@@ -603,7 +613,7 @@ module.exports = class PersonalQbankBrowserPlugin extends Plugin {
   }
 
   async completeCurrentPaper() {
-    if (this.smartPaperRunning || this.imageFillRunning) {
+    if (this.smartPaperRunning || this.imageFillRunning || this.imageResizeRunning) {
       new Notice("正在整理题集，请等待当前任务完成");
       return;
     }
@@ -697,14 +707,69 @@ module.exports = class PersonalQbankBrowserPlugin extends Plugin {
     new Notice(`已同步 ${count} 道题标题`);
   }
 
-  async fillCurrentPaperImages() {
-    if (this.imageFillRunning || this.smartPaperRunning) {
+  async resizeCurrentPaperImages() {
+    const file = this.app.workspace.getActiveFile();
+    if (file?.extension !== "md") {
+      new Notice("请先打开需要调整图片的试卷");
+      return;
+    }
+    if (this.imageFillRunning || this.smartPaperRunning || this.imageResizeRunning) {
+      new Notice("正在处理题图，请等待当前任务完成");
+      return;
+    }
+    this.imageResizeRunning = true;
+    try {
+      const original = await this.app.vault.read(file);
+      const matches = [...original.matchAll(/^[ \t]*(?:>[ \t]*)?!\[\|200\]\(([^\r\n]+)\)[ \t]*$/gm)];
+      const widths = new Map();
+      let skipped = 0;
+      for (const [, link] of matches) {
+        if (widths.has(link)) continue;
+        try {
+          if (/^(?:[a-z][a-z\d+.-]*:|\/\/)/i.test(link)) continue;
+          const target = this.app.metadataCache.getFirstLinkpathDest(link, file.path)
+            || this.app.metadataCache.getFirstLinkpathDest(decodeURIComponent(link), file.path);
+          if (!target) continue;
+          widths.set(link, await measurePaperImageWidth(this.app.vault.getResourcePath(target)));
+        } catch (error) {
+          console.warn("无法读取题图尺寸", error);
+        }
+      }
+      let updated = original;
+      let changed = 0;
+      for (const match of matches.reverse()) {
+        const width = widths.get(match[1]);
+        if (!width) {
+          skipped++;
+          continue;
+        }
+        if (width === 200) continue;
+        const start = match.index + match[0].indexOf("![|200]") + 3;
+        updated = updated.slice(0, start) + width + updated.slice(start + 3);
+        changed++;
+      }
+      if (changed) {
+        await this.app.vault.process(file, current => {
+          if (current !== original) throw new Error("试卷在调整期间有改动，请重新运行");
+          return updated;
+        });
+      }
+      new Notice(`已调整 ${changed} 张题图${skipped ? `，${skipped} 张无法读取` : ""}。仅处理默认宽度 200 的独立图片`);
+    } catch (error) {
+      new Notice(`图片尺寸调整失败：${error.message}`);
+    } finally {
+      this.imageResizeRunning = false;
+    }
+  }
+
+  async fillCurrentPaperImages(gradeGroupOverride) {
+    if (this.imageFillRunning || this.smartPaperRunning || this.imageResizeRunning) {
       new Notice("补图正在进行，请等待当前任务完成");
       return;
     }
     this.imageFillRunning = true;
     try {
-      await this.fillCurrentPaperImagesForActiveFile();
+      await this.fillCurrentPaperImagesForActiveFile(gradeGroupOverride);
     } catch (error) {
       console.error(error);
       new Notice(`补图已停止：${String(error?.message || error)}`);
@@ -713,7 +778,7 @@ module.exports = class PersonalQbankBrowserPlugin extends Plugin {
     }
   }
 
-  async fillCurrentPaperImagesForActiveFile() {
+  async fillCurrentPaperImagesForActiveFile(gradeGroupOverride) {
     const activeFile = this.app.workspace.getActiveFile();
     if (!activeFile) {
       new Notice("请先打开一份纯文字试卷 md");
@@ -728,6 +793,8 @@ module.exports = class PersonalQbankBrowserPlugin extends Plugin {
       return;
     }
     const originalContent = await this.app.vault.read(activeFile);
+    const gradeGroupId = gradeGroupOverride || paperImageGradeGroup(activeFile, originalContent)
+      || this.settings.gradeGroupId || "3";
     const outputPath = paperImageOutputPath(activeFile);
     const hasImageVersion = outputPath !== activeFile.path && await this.app.vault.adapter.exists(outputPath);
     const content = hasImageVersion ? await this.app.vault.adapter.read(outputPath) : originalContent;
@@ -738,7 +805,8 @@ module.exports = class PersonalQbankBrowserPlugin extends Plugin {
     }
 
     const completedCount = blocks.filter(block => paperBlockHasImages(block.raw)).length;
-    new Notice(`开始补图：共 ${blocks.length} 道题，已带图 ${completedCount} 道，将继续缺图题`);
+    const stage = gradeGroupId === "2" ? "初中" : gradeGroupId === "3" ? "高中" : "当前学段";
+    new Notice(`开始补图（${stage}）：共 ${blocks.length} 道题，已带图 ${completedCount} 道，将继续缺图题`);
     const attachmentsDir = `${activeFile.parent?.path && activeFile.parent.path !== "/" ? `${activeFile.parent.path}/` : ""}attachments/${safeFilename(stripPaperVariantSuffix(activeFile.basename))}`;
     await ensureFolder(this.app, attachmentsDir);
 
@@ -766,7 +834,7 @@ module.exports = class PersonalQbankBrowserPlugin extends Plugin {
         continue;
       }
       try {
-        const match = await this.findJiaoyanyunMatch(block.searchText, { needDetail: false, forImages: true });
+        const match = await this.findJiaoyanyunMatch(block.searchText, { forImages: true, gradeGroupId });
         if (!match || match.score < Number(this.settings.minMatchScore || 0)) {
           summaries[index] = { questionNo, matched: false, score: match?.score || 0, answer: "", analysis: "" };
           await saveProgress();
@@ -806,7 +874,6 @@ module.exports = class PersonalQbankBrowserPlugin extends Plugin {
       }
     }
 
-    rewritten = rewritePaperTitle(rewritten, source);
     await this.app.vault.adapter.write(outputPath, rewritten);
     await writePaperCache(this.app, outputPath, summaries);
     new Notice(`已更新带图版：${summaries.filter(item => item.imageCount > 0).length}/${blocks.length} 道带图（每题最多 ${imageLimit(this.settings.maxImagesPerQuestion)} 张）`);
@@ -887,11 +954,12 @@ module.exports = class PersonalQbankBrowserPlugin extends Plugin {
   }
 
   async findJiaoyanyunMatch(text, options = {}) {
+    const gradeGroupId = options.gradeGroupId || this.settings.gradeGroupId || "3";
     const queries = buildSearchQueries(text, 1, 120);
     const seen = new Set();
     const candidates = [];
     for (const query of queries) {
-      const results = await this.searchJiaoyanyun(query, 20);
+      const results = await this.searchJiaoyanyun(query, 20, gradeGroupId);
       for (const item of results) {
         const id = String(item.queId || item.questionId || item.id || "");
         if (!id || seen.has(id)) continue;
@@ -899,7 +967,7 @@ module.exports = class PersonalQbankBrowserPlugin extends Plugin {
         const question = questionFromJiaoyanyunItem(
           item,
           this.settings.subjectId || "4",
-          this.settings.gradeGroupId || "3",
+          gradeGroupId,
           this.settings
         );
         const score = scoreText(text, `${question.stem} ${question.options.join(" ")}`);
@@ -919,7 +987,7 @@ module.exports = class PersonalQbankBrowserPlugin extends Plugin {
         candidateCount: candidates.length
       };
     }
-    const detail = await this.fetchJiaoyanyunDetail(best.id, best.item);
+    const detail = await this.fetchJiaoyanyunDetail(best.id, best.item, false, gradeGroupId);
     return {
       score: best.score,
       question: detail,
@@ -928,14 +996,14 @@ module.exports = class PersonalQbankBrowserPlugin extends Plugin {
     };
   }
 
-  async searchJiaoyanyun(query, limit) {
+  async searchJiaoyanyun(query, limit, gradeGroupId = this.settings.gradeGroupId || "3") {
     // Keep successful searches briefly, including in-flight requests from other commands.
     if (this.searchCacheToken !== this.settings.jiaoyanyunToken) {
       this.searchCache = new Map();
       this.searchCacheToken = this.settings.jiaoyanyunToken;
     }
     this.searchCache ||= new Map();
-    const key = JSON.stringify([this.settings.subjectId, this.settings.gradeGroupId, query, limit]);
+    const key = JSON.stringify([this.settings.subjectId, gradeGroupId, query, limit]);
     const cached = this.searchCache.get(key);
     if (cached && Date.now() - cached.at < 15 * 60 * 1000) return cached.promise;
     const promise = this.requestJiaoyanyun({
@@ -945,7 +1013,7 @@ module.exports = class PersonalQbankBrowserPlugin extends Plugin {
       contentType: "application/json",
       body: JSON.stringify({
         subjectId: this.settings.subjectId || "4",
-        gradeGroupId: this.settings.gradeGroupId || "3",
+        gradeGroupId,
         pageNo: 1,
         pageSize: limit,
         searchContent: query,
@@ -962,7 +1030,7 @@ module.exports = class PersonalQbankBrowserPlugin extends Plugin {
     }
   }
 
-  async fetchJiaoyanyunDetail(questionId, fallback, strict = false) {
+  async fetchJiaoyanyunDetail(questionId, fallback, strict = false, gradeGroupId = this.settings.gradeGroupId || "3") {
     let item = fallback || {};
     try {
       const response = await this.requestJiaoyanyun({
@@ -973,7 +1041,7 @@ module.exports = class PersonalQbankBrowserPlugin extends Plugin {
         body: JSON.stringify({
           idList: [String(questionId)],
           subjectId: this.settings.subjectId || "4",
-          gradeGroupId: this.settings.gradeGroupId || "3"
+          gradeGroupId
         })
       });
       const record = (Array.isArray(response.json?.data) ? response.json.data : [])
@@ -992,7 +1060,7 @@ module.exports = class PersonalQbankBrowserPlugin extends Plugin {
     return questionFromJiaoyanyunItem(
       item,
       this.settings.subjectId || "4",
-      this.settings.gradeGroupId || "3",
+      gradeGroupId,
       this.settings
     );
   }
@@ -1612,6 +1680,56 @@ class QbankSettingTab extends PluginSettingTab {
   }
 }
 
+async function measurePaperImageWidth(url) {
+  const image = new Image();
+  image.src = url;
+  await image.decode();
+  const { naturalWidth, naturalHeight } = image;
+  const sampleScale = Math.min(1, 256 / Math.max(naturalWidth, naturalHeight));
+  const canvas = document.createElement("canvas");
+  canvas.width = Math.max(1, Math.round(naturalWidth * sampleScale));
+  canvas.height = Math.max(1, Math.round(naturalHeight * sampleScale));
+  const context = canvas.getContext("2d", { willReadFrequently: true });
+  context.drawImage(image, 0, 0, canvas.width, canvas.height);
+  const pixels = context.getImageData(0, 0, canvas.width, canvas.height).data;
+  return paperImageDisplayWidth(naturalWidth, naturalHeight, canvas.width, canvas.height, pixels);
+}
+
+function paperImageDisplayWidth(width, height, sampleWidth, sampleHeight, pixels) {
+  let left = sampleWidth;
+  let right = -1;
+  let top = sampleHeight;
+  let bottom = -1;
+  for (let y = 0; y < sampleHeight; y++) {
+    for (let x = 0; x < sampleWidth; x++) {
+      const index = (y * sampleWidth + x) * 4;
+      if (pixels[index + 3] < 32 || Math.min(pixels[index], pixels[index + 1], pixels[index + 2]) >= 230) continue;
+      left = Math.min(left, x);
+      right = Math.max(right, x);
+      top = Math.min(top, y);
+      bottom = Math.max(bottom, y);
+    }
+  }
+  const visibleWidth = right >= left ? Math.max(0.6, (right - left + 1) / sampleWidth) : 1;
+  const visibleHeight = bottom >= top ? Math.max(0.6, (bottom - top + 1) / sampleHeight) : 1;
+  const aspect = width / height;
+  const visibleAspect = aspect * visibleWidth / visibleHeight;
+  const isWide = visibleAspect >= 2.1;
+  const target = isWide ? 460 : 240;
+  const displayWidth = Math.min(target / visibleWidth, 520, 205 * aspect / visibleHeight, 255 * aspect, width * 1.25);
+  const printScale = isWide ? 0.78 : 0.67;
+  return Math.max(1, Math.round(Math.round(displayWidth) * printScale));
+}
+
+function paperImageGradeGroup(file, content) {
+  const title = String(content).match(/^#[ \t]+(.+)$/m)?.[1] || "";
+  const location = `${file.basename} ${title} ${file.parent?.path || ""}`;
+  const junior = /初[中一二三]|[七八九７８９789]年级|中考/.test(location);
+  const senior = /高[中一二三]|高考/.test(location);
+  if (junior === senior) return "";
+  return junior ? "2" : "3";
+}
+
 function parsePaperBlocks(content) {
   const matches = paperBlockStarts(content);
   const blocks = [];
@@ -1712,13 +1830,6 @@ function questionTitle(source, questionNo) {
   if (!name) return `例题第${questionNo}题`;
   if (/第\s*\d{1,3}\s*题(?:\s*\d+(?:\.\d+)?\s*分)?\s*$/.test(name)) return name;
   return `${name}第${questionNo}题`;
-}
-
-function rewritePaperTitle(content, source) {
-  if (/^# .+#h0\s*$/m.test(content)) {
-    return content.replace(/^# .+#h0\s*$/m, `# ${source} #h0`);
-  }
-  return content;
 }
 
 function replaceRange(text, start, end, replacement) {
